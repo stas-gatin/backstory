@@ -45,9 +45,10 @@ def _token(pid):
 def _fetch_json(pid):
     r = requests.get("https://cdn.syndication.twimg.com/tweet-result",
                      params={"id": pid, "token": _token(pid), "lang": "en"}, headers=UA, timeout=20)
-    if r.status_code == 404 or not r.text.strip():
+    if r.status_code in (400, 404) or not r.text.strip():
         return {"missing": True}
-    r.raise_for_status()
+    if r.status_code != 200:
+        raise PostError("X did not answer (HTTP %d); try again later" % r.status_code)
     return r.json()
 
 
@@ -65,7 +66,9 @@ def read(url):
     """{'id', 'url', 'author', 'text', 'posted_on', 'photos': [bytes], 'video': bytes or None,
         'community_note': str or None}"""
     pid = post_id(url)
-    j = replay.cached("xpost", {"id": pid}, lambda: _fetch_json(pid), note="x post " + pid)
+    # A "missing" answer is not recorded: it may be a passing error, and a deleted post costs nothing to ask again.
+    j = replay.cached("xpost", {"id": pid}, lambda: _fetch_json(pid), note="x post " + pid,
+                      keep=lambda r: not r.get("missing"))
     if j.get("missing") or j.get("__typename") == "TweetTombstone":
         raise PostError("the post is deleted, private or age-restricted")
     start, end = (j.get("display_text_range") or [0, len(j.get("text", ""))])[:2]

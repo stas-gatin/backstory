@@ -26,7 +26,7 @@ class VideoError(Exception):
 def _run(args):
     p = subprocess.run(args, capture_output=True, timeout=180)
     if p.returncode != 0:
-        raise VideoError(p.stderr.decode(errors="ignore")[-300:])
+        raise VideoError("the file is damaged or not a video format Backstory can read")
     return p.stdout
 
 

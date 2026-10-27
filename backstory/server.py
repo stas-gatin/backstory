@@ -11,11 +11,11 @@ from fastapi import FastAPI, File, Form, HTTPException, UploadFile
 from fastapi.responses import FileResponse, StreamingResponse
 from fastapi.staticfiles import StaticFiles
 
-from . import config, pipeline
+from . import config, media, pipeline
 
 WEB = config.ROOT / "web"
 EXAMPLES = Path(os.environ.get("BACKSTORY_EXAMPLES_DIR", config.ROOT / "examples"))
-MAX_UPLOAD = 8 * 1024 * 1024
+MAX_UPLOAD = 20 * 1024 * 1024
 MAX_VIDEO = 60 * 1024 * 1024
 
 app = FastAPI(title="Backstory")
@@ -87,7 +87,12 @@ async def check(caption: str = Form(""), posted_on: str = Form(""), example_id: 
             data, video_path = None, f.name
             cleanup = f.name
         elif len(data) > MAX_UPLOAD:
-            raise HTTPException(413, "photo larger than 8 MB")
+            raise HTTPException(413, "photo larger than 20 MB")
+        else:
+            try:
+                data = media.normalise_image(data)
+            except media.BadMedia as e:
+                raise HTTPException(400, str(e))
     events = pipeline.run(data, caption, posted_on or None, matches=matches, video_path=video_path)
     return StreamingResponse(_ndjson(events, cleanup), media_type="application/x-ndjson")
 
