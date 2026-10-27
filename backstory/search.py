@@ -16,7 +16,7 @@ from . import config, replay
 
 FACT_CHECKERS = """maldita.es newtral.es efe.com verificat.cat factly.in pesacheck.org africacheck.org afp.com
 boomlive.in altnews.in newschecker.in thequint.com vishvasnews.com snopes.com reuters.com factcheck.org
-politifact.com fullfact.org logicallyfacts.com misbar.com dubawa.org faktisk.no haqcheck.org ethiopiacheck.org""".split()
+politifact.com fullfact.org leadstories.com checkyourfact.com logicallyfacts.com misbar.com dubawa.org faktisk.no haqcheck.org ethiopiacheck.org""".split()
 
 
 def domain(url):
