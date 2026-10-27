@@ -34,7 +34,7 @@ def status():
 
 @app.get("/api/examples")
 def examples():
-    return [{k: e[k] for k in ("id", "title", "caption", "posted_on", "credit", "kind") if k in e} for e in _examples()]
+    return [{k: e[k] for k in ("id", "title", "caption", "posted_on", "credit", "kind", "post_url") if k in e} for e in _examples()]
 
 
 @app.get("/api/examples/{ex_id}/image")
@@ -56,8 +56,11 @@ def _ndjson(events, cleanup=None):
 
 @app.post("/api/check")
 async def check(caption: str = Form(""), posted_on: str = Form(""), example_id: str = Form(""),
-                image: UploadFile | None = File(None)):
+                post_url: str = Form(""), image: UploadFile | None = File(None)):
     video_path, cleanup = None, None
+    if post_url.strip():
+        return StreamingResponse(_ndjson(pipeline.run(None, "", None, post_url=post_url.strip())),
+                                 media_type="application/x-ndjson")
     if example_id:
         ex = next((e for e in _examples() if e["id"] == example_id), None)
         if not ex:
@@ -65,6 +68,9 @@ async def check(caption: str = Form(""), posted_on: str = Form(""), example_id: 
         caption, posted_on = ex["caption"], ex.get("posted_on") or ""
         # Dataset cases carry their recorded search results instead of a live image search.
         matches = ex.get("matches")
+        if ex.get("kind") == "link":
+            return StreamingResponse(_ndjson(pipeline.run(None, "", None, post_url=ex["post_url"])),
+                                     media_type="application/x-ndjson")
         if ex.get("kind") == "video":
             data, video_path = None, str(EXAMPLES / ex["video"])
         else:

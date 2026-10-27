@@ -176,3 +176,11 @@ td:nth-child(2) { min-width: 150px; }
 td:last-child { min-width: 220px; }
 .thumbs { display: flex; gap: 8px; margin-top: 8px; flex-wrap: wrap; }
 .thumbs img { height: 64px; border-radius: 8px; border: 2px solid var(--blue-line); }
+.linkfield { margin-top: 0; }
+.linkbox { display: flex; align-items: center; gap: 8px; margin-top: 6px; padding: 0 12px; border: 1px solid var(--line); border-radius: 10px; background: var(--bg); color: var(--muted); }
+.linkbox:focus-within { outline: 2px solid var(--blue); background: #fff; }
+.linkbox input { flex: 1; border: 0; background: transparent; padding: 10px 0; font: inherit; color: var(--ink); outline: none; min-width: 0; }
+.linkfield small { display: block; margin-top: 4px; font-weight: 400; }
+.compare-note { margin-top: 16px; border: 1px dashed var(--line); border-radius: 12px; padding: 12px 14px; font-size: 14px; }
+.compare-note .k { font-size: 12px; font-weight: 600; color: var(--muted); text-transform: uppercase; letter-spacing: .05em; margin-bottom: 4px; }
+.compare-note p { margin: 0; white-space: pre-line; color: var(--muted); }

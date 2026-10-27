@@ -18,6 +18,7 @@ and checks the caption against that record. Every verdict cites its evidence. Wi
 |---|---|
 | The agents and how they hand work to each other | [`backstory/pipeline.py`](backstory/pipeline.py) |
 | Claim reader (Muse Spark + web search) | [`backstory/claim.py`](backstory/claim.py) |
+| Reading a post on X from its link | [`backstory/xpost.py`](backstory/xpost.py) |
 | Video frames and speech (Muse Voice Transcribe) | [`backstory/video.py`](backstory/video.py) |
 | Photo finder for screenshots and collages (SAM 3.1) | [`backstory/sam.py`](backstory/sam.py) |
 | Reverse image search | [`backstory/search.py`](backstory/search.py) |
@@ -33,6 +34,7 @@ and checks the caption against that record. Every verdict cites its evidence. Wi
 
 | Step | Agent | Model or tool | What it does |
 |---|---|---|---|
+| 0 | Post reader | X embed data (no account) | From a link to a post on X: its text, date, photos or video. The post's Community Note, if any, is shown next to the verdict for comparison and never given to the agents |
 | 0 | Frame grabber, speech reader | ffmpeg, **Muse Voice Transcribe** | Video posts only: four still frames to search for, and the words spoken in the clip |
 | 1 | Claim reader | **Muse Spark** + web search | Extracts place, event and date from the caption, in any language; resolves "yesterday" or a named event to a real date |
 | 2 | Photo finder | **SAM 3.1** | Cuts the separate photos out of a post screenshot or collage; each is searched along with the whole image |

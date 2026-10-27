@@ -41,6 +41,21 @@ def store(kind, payload, response, note=None):
         p.write_text(json.dumps({"note": note, "response": response}, ensure_ascii=False, indent=1))
 
 
+def cached_bytes(kind, payload, fetch):
+    """Like cached(), for binary answers (downloaded media). fetch() returns bytes or None (not stored)."""
+    p = config.REPLAY_DIR / kind / (request_hash(payload) + ".bin")
+    if p.exists():
+        return p.read_bytes()
+    if config.MODE != "live":
+        raise NotInReplay(kind)
+    data = fetch()
+    if data:
+        with _lock:
+            p.parent.mkdir(parents=True, exist_ok=True)
+            p.write_bytes(data)
+    return data
+
+
 def cached(kind, payload, fetch, note=None, keep=lambda r: True):
     """Return the stored answer for payload, or call fetch() (live mode only) and store it if keep(answer)."""
     hit = lookup(kind, payload)

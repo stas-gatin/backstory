@@ -54,8 +54,10 @@ async function init() {
 
 function pickExample(e) {
   chosenExample = e; chosenFile = null;
+  $("#postUrl").value = e.kind === "link" ? e.post_url : "";
   document.querySelectorAll(".ex").forEach((b) => b.classList.toggle("on", b.dataset.id === e.id));
-  if (e.kind === "video") showVideo(`/api/examples/${encodeURIComponent(e.id)}/video`);
+  if (e.kind === "link") clearPreview();
+  else if (e.kind === "video") showVideo(`/api/examples/${encodeURIComponent(e.id)}/video`);
   else showPreview(`/api/examples/${encodeURIComponent(e.id)}/image`);
   $("#caption").value = e.caption;
   $("#posted").value = /^\d{4}-\d\d-\d\d$/.test(e.posted_on || "") ? e.posted_on : "";
@@ -64,6 +66,11 @@ function pickExample(e) {
 function showPreview(src) {
   $("#preview").src = src; $("#preview").hidden = false; $("#dropText").hidden = true;
   $("#previewVideo").hidden = true; $("#previewVideo").removeAttribute("src");
+}
+
+function clearPreview() {
+  $("#preview").hidden = true; $("#previewVideo").hidden = true; $("#previewVideo").removeAttribute("src");
+  $("#dropText").hidden = false;
 }
 
 function showVideo(src) {
@@ -84,6 +91,12 @@ const drop = $("#drop");
 drop.addEventListener("dragover", (e) => { e.preventDefault(); drop.classList.add("over"); });
 drop.addEventListener("dragleave", () => drop.classList.remove("over"));
 drop.addEventListener("drop", (e) => { e.preventDefault(); drop.classList.remove("over"); pickFile(e.dataTransfer.files[0]); });
+$("#postUrl").addEventListener("input", () => {
+  if (chosenExample && $("#postUrl").value !== (chosenExample.post_url || "")) {
+    chosenExample = null;
+    document.querySelectorAll(".ex").forEach((b) => b.classList.remove("on"));
+  }
+});
 $("#caption").addEventListener("input", () => {
   if (chosenExample && $("#caption").value !== chosenExample.caption) {
     chosenExample = null;
@@ -94,8 +107,16 @@ $("#caption").addEventListener("input", () => {
 $("#form").addEventListener("submit", async (e) => {
   e.preventDefault();
   const fd = new FormData();
+  const link = $("#postUrl").value.trim();
   if (chosenExample) fd.append("example_id", chosenExample.id);
-  else {
+  else if (link) {
+    if (!/^https?:\/\/(www\.|mobile\.)?(x|twitter)\.com\/[^/]+\/status\/\d+/.test(link)) {
+      $("#formError").textContent = "That is not a link to a post on X (x.com/user/status/…).";
+      return;
+    }
+    fd.append("post_url", link);
+    clearPreview();
+  } else {
     if (!chosenFile || !$("#caption").value.trim()) {
       $("#formError").textContent = "Choose a photo or video and enter the caption it was shared with.";
       return;
@@ -153,6 +174,12 @@ function handle(ev) {
 }
 
 function addStep(ev) {
+  if (ev.agent === "post" && ev.status === "done") {
+    if (ev.post) { $("#caption").value = ev.post.text; $("#posted").value = ev.post.posted_on || ""; }
+    if ((ev.thumbs || []).length) showPreview(ev.thumbs[0]);
+  }
+  if (ev.agent === "frames" && ev.status === "done" && $("#preview").hidden && $("#previewVideo").hidden
+      && (ev.thumbs || []).length) showPreview(ev.thumbs[0]);
   // A finished step replaces its own "running" line; a second round of judge/critic gets a new line.
   const open = [...$("#steps").children].reverse().find((li) => li.dataset.agent === ev.agent && li.classList.contains("running"));
   const li = ev.status === "done" && open ? open : document.createElement("li");
@@ -216,7 +243,9 @@ function showResult(r) {
     ${compare}
     ${r.timeline.length ? `<h3>Timeline</h3><div class="timeline">${r.timeline.map((t) => `
       <div class="${t.kind}"><time>${esc(t.date)}</time><span class="tag">${TAG[t.kind]}</span><span>${t.url ? ext(t.url, t.text) : esc(t.text)}</span></div>`).join("")}</div>` : ""}
-    <div class="basis">${esc(BASIS[r.basis] || r.basis)} · ${calls} model calls · $${(r.cost?.usd ?? 0).toFixed(3)}${r.mode === "replay" ? " · recorded run" : ""}</div>`;
+    ${r.community_note ? `<div class="compare-note"><div class="k">For comparison: the X Community Note on this post</div>
+      <p>${esc(r.community_note)}</p><small class="hint">Not shown to the agents. Backstory reached its verdict without it.</small></div>` : ""}
+    <div class="basis">${r.post ? `Post: ${ext(r.post.url, "@" + r.post.author + ", " + r.post.posted_on)} · ` : ""}${esc(BASIS[r.basis] || r.basis)} · ${calls} model calls · $${(r.cost?.usd ?? 0).toFixed(3)}${r.mode === "replay" ? " · recorded run" : ""}</div>`;
   (r.cited || []).forEach((id) => document.getElementById("ev-" + id)?.classList.add("cited"));
   box.scrollIntoView({ behavior: "smooth", block: "start" });
 }

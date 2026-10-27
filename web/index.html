@@ -6,7 +6,7 @@
 <title>Backstory</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="/static/style.css?v=9">
+<link rel="stylesheet" href="/static/style.css?v=10">
 </head>
 <body>
 <header class="top">
@@ -26,9 +26,14 @@
     <div id="examplesWrap" hidden>
       <div class="label">Examples</div>
       <div id="examples" class="examples"></div>
-      <div class="or"><span>or upload your own</span></div>
+      <div class="or"><span>or check your own</span></div>
     </div>
     <form id="form">
+      <label class="field linkfield">Link to a post on X
+        <div class="linkbox"><span data-icon="link"></span><input type="url" id="postUrl" placeholder="https://x.com/user/status/…" autocomplete="off"></div>
+        <small class="hint">Backstory takes the post's photo or video, text and date itself.</small>
+      </label>
+      <div class="or"><span>or upload a photo or video</span></div>
       <label class="drop" id="drop">
         <input type="file" id="file" accept="image/*,video/*" hidden>
         <img id="preview" alt="" hidden>
@@ -79,6 +84,6 @@
   </section>
 </main>
 <footer>Backstory · built on Muse Spark and Muse Wonder · <a href="https://github.com/stas-gatin/backstory">Source code</a></footer>
-<script src="/static/app.js?v=9"></script>
+<script src="/static/app.js?v=10"></script>
 </body>
 </html>

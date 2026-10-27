@@ -7,12 +7,15 @@ import base64
 import concurrent.futures as cf
 import io
 import re
+import tempfile
+from pathlib import Path
 
 from PIL import Image
 
-from . import archive, claim, config, matcher, meta, reader, replay, sam, search, verdict, video
+from . import archive, claim, config, matcher, meta, reader, replay, sam, search, verdict, video, xpost
 
 AGENTS = {
+    "post": "Post reader · X",
     "frames": "Frame grabber · ffmpeg",
     "speech": "Speech reader · Muse Voice Transcribe",
     "claim": "Claim reader · Muse Spark + web search",
@@ -52,12 +55,18 @@ def _min_date(*dates):
     return min(dates) if dates else None
 
 
-def run(image_bytes, caption, posted_on=None, matches=None, exclude_fact_checkers=False, video_path=None):
+def run(image_bytes, caption, posted_on=None, matches=None, exclude_fact_checkers=False, video_path=None,
+        post_url=None):
     """matches: a fixed search result (evaluation); None means live reverse image search.
-    video_path: a video post instead of a photo; its frames are searched and its speech joins the caption."""
+    video_path: a video post instead of a photo; its frames are searched and its speech joins the caption.
+    post_url: a link to a post on X; its text, date and media replace the other inputs."""
     budget = meta.Budget()
+    tmp = []
     try:
-        yield from _run(image_bytes, caption, posted_on, matches, exclude_fact_checkers, budget, video_path)
+        yield from _run(image_bytes, caption, posted_on, matches, exclude_fact_checkers, budget, video_path, post_url,
+                        tmp)
+    except xpost.PostError as e:
+        yield {"type": "error", "text": "Could not read the post: %s" % e}
     except replay.NotInReplay as e:
         yield {"type": "error", "text": "This check was not recorded, and the demo runs without keys (replay mode). "
                                         "Pick one of the examples, or run Backstory locally with keys. (%s)" % e}
@@ -69,10 +78,35 @@ def run(image_bytes, caption, posted_on=None, matches=None, exclude_fact_checker
         yield {"type": "error", "text": "Stopped: %s." % e}
     except Exception as e:  # noqa: BLE001 - reported to the page, never swallowed silently
         yield {"type": "error", "text": "%s: %s" % (type(e).__name__, e)}
+    finally:
+        for f in tmp:
+            Path(f).unlink(missing_ok=True)
 
 
-def _run(image_bytes, caption, posted_on, matches, exclude_fact_checkers, budget, video_path=None):
+def _run(image_bytes, caption, posted_on, matches, exclude_fact_checkers, budget, video_path=None, post_url=None,
+         tmp=None):
+    extra = {}
     search_images = [image_bytes]
+    if post_url:
+        # 0. A link to a post: take its own text, date and media.
+        yield step("post", "running", "Reading the post")
+        post = xpost.read(post_url)
+        caption, posted_on = post["text"], post["posted_on"] or posted_on
+        if post["video"]:
+            with tempfile.NamedTemporaryFile(suffix=".mp4", delete=False) as f:
+                f.write(post["video"])
+            video_path = f.name
+            tmp.append(f.name)
+        elif post["photos"]:
+            image_bytes, search_images = post["photos"][0], list(post["photos"])
+        else:
+            raise xpost.PostError("the post has no photo or video")
+        media = "a video" if post["video"] else _count(len(post["photos"]), "photo", "photos")
+        yield step("post", "done", '@%s, %s, with %s: "%s"' % (post["author"], post["posted_on"], media, post["text"][:240]),
+                   post={k: post[k] for k in ("url", "author", "text", "posted_on")},
+                   thumbs=[_thumb(p) for p in post["photos"]])
+        extra = {"post": {k: post[k] for k in ("url", "author", "posted_on")},
+                 "community_note": post["community_note"]}
     if video_path:
         # 0. A video: still frames to search for, and the words spoken in it.
         yield step("frames", "running", "Taking still frames from the video")
@@ -81,7 +115,8 @@ def _run(image_bytes, caption, posted_on, matches, exclude_fact_checkers, budget
             raise video.VideoError("no frames could be read")
         image_bytes, search_images = shots[0]["jpeg"], [f["jpeg"] for f in shots]
         yield step("frames", "done", "%s taken at %s s" % (_count(len(shots), "frame", "frames"),
-                                                          ", ".join(str(f["t"]) for f in shots)))
+                                                          ", ".join(str(f["t"]) for f in shots)),
+                   thumbs=[_thumb(f["jpeg"]) for f in shots])
         yield step("speech", "running", "Transcribing what is said in the video")
         wav = video.audio_wav(video_path)
         spoken = video.transcribe(wav, budget=budget) if wav else ""
@@ -94,17 +129,21 @@ def _run(image_bytes, caption, posted_on, matches, exclude_fact_checkers, budget
     yield step("claim", "running", "Reading the caption")
     c = claim.read_claim(caption, posted_on, budget=budget)
     said = " · ".join(str(v) for v in (c.get("event"), c.get("place"), c.get("claimed_date")) if v)
-    yield step("claim", "done", "The caption claims: %s" % (said or "nothing checkable"), claim=c)
+    if not c.get("place") and not c.get("period_start"):
+        text = "The caption names no place or date to check; the record will still show where the photo comes from"
+    else:
+        text = "The caption claims: %s" % said
+    yield step("claim", "done", text, claim=c)
 
-    # 2. Where else is this photo online?
     # 1b. A post screenshot or collage: find the separate photos in it; each is searched as well.
-    if not video_path and matches is None:
+    if not video_path and matches is None and not post_url:
         yield step("cutout", "running", "Looking for separate photos inside the post")
         regions = sam.photo_regions(image_bytes, budget=budget)
         search_images = [image_bytes] + [r["jpeg"] for r in regions]
         yield step("cutout", "done", ("Cut out %s; searched along with the whole image" % _count(len(regions), "photo", "separate photos"))
                    if regions else "The image is a single photo", thumbs=[_thumb(r["jpeg"]) for r in regions])
 
+    # 2. Where else is this photo online?
     what = "these frames" if video_path else "this exact photo"
     yield step("search", "running", "Searching the web for %s" % what)
     similar = []
@@ -148,7 +187,7 @@ def _run(image_bytes, caption, posted_on, matches, exclude_fact_checkers, budget
             _count(len(confirmed), "image is", "images are"), "; ".join(search.domain(m["url"]) for m in confirmed)))
             if confirmed else "None of them is the same photo or footage", checked=len(cands))
     if not pages:
-        yield from _finish(c, [], None, None, None, budget, "No earlier copy of this photo was found online, "
+        yield from _finish(c, [], None, None, None, budget, extra, "No earlier copy of this photo was found online, "
                                                             "so there is nothing to check the caption against.")
         return
 
@@ -223,10 +262,10 @@ def _run(image_bytes, caption, posted_on, matches, exclude_fact_checkers, budget
     yield step("critic", "done", "Approved: the cited evidence supports the verdict" if cr["approve"]
                else "Still not convinced: %s" % cr.get("problem"),
                critic=cr, approve=cr["approve"])
-    yield from _finish(c, useful, rule, j, cr, budget)
+    yield from _finish(c, useful, rule, j, cr, budget, extra)
 
 
-def _finish(c, evidence, rule, judged, crit, budget, empty_reason=None):
+def _finish(c, evidence, rule, judged, crit, budget, extra, empty_reason=None):
     if rule:
         final, basis = "inconsistent", "date rule"
         summary = (judged or {}).get("summary") if (judged or {}).get("verdict") == "inconsistent" else None
@@ -263,4 +302,4 @@ def _finish(c, evidence, rule, judged, crit, budget, empty_reason=None):
         cited.add(rule["evidence_id"])
     yield {"type": "result", "verdict": final, "basis": basis, "summary": summary, "claim": c,
            "actual": (judged or {}).get("actual"), "rule": rule, "cited": sorted(cited), "evidence": evidence,
-           "timeline": timeline, "critic": crit, "cost": budget.summary(), "mode": config.MODE}
+           "timeline": timeline, "critic": crit, "cost": budget.summary(), "mode": config.MODE, **extra}
