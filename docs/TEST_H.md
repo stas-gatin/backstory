@@ -64,3 +64,23 @@ fact-checker says shared copies of the clip were mirrored or cropped (edited med
 two fakes without an exact true origin, one parody account, one fake whose place is partly in on-screen text, two
 true captions with a small error (a weekday; a region instead of the island), and five true posts that are the
 originals of footage used in fakes in the set (pairs on the same media, so not independent).
+
+## H1 result (2026-10-27, pipeline at commit 73ce957, 11.76 USD)
+105 cases, 210 checks, 1 error (a false caption).
+
+| | false captions | true captions |
+|---|---|---|
+| "inconsistent" | 83 (detection 0.790) | 24 (false alarm 0.229) |
+| "cannot_tell" | 20 | 51 |
+| "consistent" | 1 | 30 |
+
+Date rule alone: detection 0.486, false alarm 0.000 (Test E: 0.486 / 0.010).
+
+Decision under the rule above: false alarm 0.229 > 0.10, so **the pipeline at this commit is worse than Test E's
+simple version on this data** (more catches, 0.790 vs 0.667, but far more false alarms, 0.229 vs 0.086).
+All 24 false alarms came from the judge, approved by the critic; none from the date rule.
+
+Reading (after the result, not part of the rule): in the false alarms the judge treated a copy published a few
+days before the claimed date, or a single page describing the image differently, as proof. Several "true" dates in
+5Pils are when the image was first found or published, not when it was taken, so an older copy is not always an
+error of the pipeline; that is a property of the data and is not used to excuse the number.
