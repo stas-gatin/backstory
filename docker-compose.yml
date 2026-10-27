@@ -1,0 +1,9 @@
+services:
+  backstory:
+    build: .
+    ports:
+      - "8000:8000"
+    environment:
+      - MODEL_API_KEY=${MODEL_API_KEY:-}
+      - GOOGLE_VISION_API_KEY=${GOOGLE_VISION_API_KEY:-}
+      - BACKSTORY_MODE=${BACKSTORY_MODE:-}

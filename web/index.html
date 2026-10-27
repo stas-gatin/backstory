@@ -1,0 +1,59 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Backstory</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+<header class="top">
+  <div class="brand"><span class="logo">B</span> Backstory</div>
+  <div class="tag">Does the caption fit the photo's past?</div>
+  <div id="mode" class="mode"></div>
+</header>
+
+<main>
+  <section class="input card">
+    <h2>Check a photo</h2>
+    <div id="examples" class="examples"></div>
+    <form id="form">
+      <label class="drop" id="drop">
+        <input type="file" id="file" accept="image/*" hidden>
+        <img id="preview" alt="" hidden>
+        <span id="dropText">Drop a photo here or click to choose</span>
+      </label>
+      <label class="field">Caption, as it was shared
+        <textarea id="caption" rows="3" placeholder="e.g. Valencia yesterday after the DANA. Nobody is talking about this."></textarea>
+      </label>
+      <label class="field">Posted on <span class="hint">(optional, resolves "yesterday")</span>
+        <input type="date" id="posted">
+      </label>
+      <button id="go" type="submit">Check the caption</button>
+    </form>
+    <p class="note">Backstory never judges from the pixels. It finds where this exact photo appeared online before,
+      and when, and checks the caption against that record. No record, no verdict.</p>
+  </section>
+
+  <section class="work">
+    <div class="card" id="stepsCard" hidden>
+      <h2>Agents at work</h2>
+      <ol id="steps" class="steps"></ol>
+    </div>
+    <div class="card result" id="result" hidden></div>
+    <div class="card" id="evidenceCard" hidden>
+      <h2>Evidence <span class="hint">where this photo was found, and what each page says</span></h2>
+      <div class="tablewrap"><table id="evidence">
+        <thead><tr><th>#</th><th>Page</th><th>Image archived</th><th>Page archived</th><th>Published</th><th>Says the photo shows</th></tr></thead>
+        <tbody></tbody>
+      </table></div>
+    </div>
+  </section>
+</main>
+<footer>Built for the Meta AI Developer Hackathon 2026 with Muse Spark and Muse Wonder ·
+  <a href="https://github.com/stas-gatin/backstory">source</a></footer>
+<script src="/static/app.js"></script>
+</body>
+</html>
