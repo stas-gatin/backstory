@@ -63,3 +63,11 @@ IoU 0.9 with the recorded photo position (many 5Pils images are themselves scree
 Observation, not part of the rule: searching the screenshot never returns full matches but Google's partial
 matching still finds the right pages; SAM's crop brings back full matches when the cut is right, and loses the
 photo when it cuts the wrong region (most often with the banner). Searching both and merging was not tested.
+
+## Follow-up (exploratory, same 17 cases, no new SAM calls)
+
+Searching the screenshot and SAM's cut-outs together never loses a hit (union hit = S = 0.824). Taking every
+confident (>= 0.5), not-tiny (>= 6% of the image), not-nested 'photo' box instead of only the top one, and searching
+each crop in addition to the screenshot, found 225 of the original's pages versus 164 for the screenshot alone (+37%).
+These selection settings were chosen while looking at these same cases, so this is a lead, not a result; the full
+pipeline evaluation will measure it on new data. On this basis SAM is used as an extra search input, never a replacement.

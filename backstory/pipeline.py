@@ -167,7 +167,9 @@ def _run(image_bytes, caption, posted_on, matches, exclude_fact_checkers, budget
           for i, p in enumerate(pages)]
     yield step("archive", "running", "Looking up first archive dates for %s and %s"
                % (_count(len(image_jobs), "image file", "image files"), _count(len(to_read), "page", "pages")))
-    yield step("reader", "running", "Opening %s to see how they describe the photo" % _count(len(to_read), "page", "pages"))
+    if to_read:
+        yield step("reader", "running", "Opening %s to see how they describe the photo"
+                   % _count(len(to_read), "page", "pages"))
     with cf.ThreadPoolExecutor(max_workers=5) as pool:
         futs = {}
         for i in read_idx:
@@ -193,7 +195,8 @@ def _run(image_bytes, caption, posted_on, matches, exclude_fact_checkers, budget
     useful = [e for i, e in enumerate(ev) if i in read_idx or e["image_first"]]
     dated = sum(1 for e in useful if e["image_first"] or e["page_first"])
     yield step("archive", "done", "%d of %d page%s dated by the Internet Archive" % (dated, len(useful), "" if len(useful) == 1 else "s"))
-    yield step("reader", "done", _count(sum(1 for e in useful if e.get("relevant")), "page describes", "pages describe") + " the photo")
+    if to_read:
+        yield step("reader", "done", _count(sum(1 for e in useful if e.get("relevant")), "page describes", "pages describe") + " the photo")
 
     # 5. Fixed date rule.
     rule = verdict.date_rule(c, useful)
