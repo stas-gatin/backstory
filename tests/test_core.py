@@ -263,7 +263,7 @@ def test_lookup_missing_from_recording_counts_as_no_data(offline):
         raise replay.NotInReplay("wayback")
     offline.setattr(pipeline.archive, "first_capture", not_recorded)
     result = run_events()[-1]
-    assert result["type"] == "result" and result["rule"] is None
+    assert result["type"] == "result" and result["rule"] is None, result
 
 
 def test_same_page_from_two_search_images_keeps_the_full_match(offline):
@@ -312,3 +312,46 @@ def test_claim_never_uses_todays_date(monkeypatch):
     c = pipeline.claim.read_claim("Valencia yesterday", None)
     assert "The post was published on: unknown" in seen["prompt"]
     assert c["period_start"] is None
+
+
+# Proof check ---------------------------------------------------------------------------------------------------------
+
+CLAIM = {"period_start": "2025-01-07"}
+
+
+def row(i, domain, **kw):
+    return dict({"id": "E%d" % i, "domain": domain, "match": "full", "fact_checker": False}, **kw)
+
+
+def test_grounds_accepts_a_copy_older_than_the_margin():
+    g = verdict.grounds(CLAIM, [row(1, "a.com", image_first="2024-12-01")], {"cited": ["E1"]})
+    assert g["ok"] and g["kind"] == "earlier copy"
+
+
+def test_grounds_rejects_a_copy_only_days_older():
+    g = verdict.grounds(CLAIM, [row(1, "a.com", page_published="2025-01-05T10:00")], {"cited": ["E1"]})
+    assert not g["ok"]
+
+
+def test_grounds_ignores_the_page_archive_date_and_partial_matches():
+    ev = [row(1, "a.com", page_first="2010-01-01"), row(2, "b.com", match="partial", image_first="2010-01-01")]
+    assert not verdict.grounds(CLAIM, ev, {"cited": ["E1", "E2"]})["ok"]
+
+
+def test_grounds_needs_two_sites_describing_the_image():
+    one = [row(1, "a.com", described_place="Turkey"), row(2, "a.com", described_place="Turkey")]
+    assert not verdict.grounds({}, one, {"cited": ["E1", "E2"]})["ok"]
+    two = [row(1, "a.com", described_place="Turkey"), row(2, "b.org", described_event="drill")]
+    assert verdict.grounds({}, two, {"cited": ["E1", "E2"]})["kind"] == "independent descriptions"
+    checker = [row(1, "a.com", described_place="Turkey"), row(2, "snopes.com", described_place="Turkey",
+                                                             fact_checker=True)]
+    assert not verdict.grounds({}, checker, {"cited": ["E1", "E2"]})["ok"]
+
+
+def test_weak_proof_turns_into_cannot_tell(offline):
+    offline.setattr(pipeline.archive, "first_capture", lambda url: {"date": None, "snapshot": None, "ok": True})
+    offline.setattr(pipeline.reader, "read_page", lambda url, imgs, budget=None: {
+        "url": url, "opened": True, "relevant": True, "place": "Turkey", "page_date": "2025-01-06"})
+    search_one_page(offline)
+    result = run_events()[-1]
+    assert result["verdict"] == "cannot_tell" and result["basis"] == "proof too weak"

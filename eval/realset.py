@@ -70,7 +70,9 @@ def main():
         usd = (res.get("cost") or {}).get("usd", 0)
         row = dict(item, i=i, verdict=res.get("verdict") if res["type"] == "result" else "error",
                    basis=res.get("basis"), summary=res.get("summary") or res.get("text"), actual=res.get("actual"),
-                   community_note=bool(res.get("community_note")), steps=steps, usd=usd)
+                   community_note=bool(res.get("community_note")), grounds=res.get("grounds"),
+                   cited_rows=[e for e in res.get("evidence") or [] if e["id"] in (res.get("cited") or [])],
+                   steps=steps, usd=usd)
         with lock:
             spent[0] += usd
             rows.append(row)

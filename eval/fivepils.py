@@ -16,6 +16,7 @@ import concurrent.futures as cf
 import io
 import json
 import os
+import random
 import re
 import sys
 import threading
@@ -47,7 +48,7 @@ def load_cases(root, split):
     for e in json.load(open(root / "dataset/retrieval_results/evidence_urls.json")):
         ev_by[e["image_path"]].append(e)
     rows = [x for x in json.load(open(root / ("dataset/%s.json" % split)))
-            if x["type_of_image"] == "out-of-context" and NE not in (x["claimed_date"], x["date"])]
+            if x["type_of_image"] == "out-of-context" and NE not in (x.get("claimed_date", NE), x.get("date", NE))]
     cases = []
     for x in rows:
         if not ev_by.get(x["image_path"]) or not re.search(r"(19|20)\d\d", x["claimed_date"]):
@@ -123,7 +124,8 @@ def check_case(k, case, image, spend):
         res = res or {"type": "error", "text": "no result"}
         spend.add((res.get("cost") or {}).get("usd", 0))
         row[tag] = {"caption": caption, "verdict": res.get("verdict") if res["type"] == "result" else "error",
-                    "basis": res.get("basis"), "rule_fired": bool(res.get("rule")),
+                    "basis": res.get("basis"), "rule_fired": bool(res.get("rule")), "grounds": res.get("grounds"),
+                    "cited_rows": [e for e in res.get("evidence") or [] if e["id"] in (res.get("cited") or [])],
                     "summary": res.get("summary") or res.get("text"), "steps": steps, "cost": res.get("cost")}
     return row
 
@@ -154,6 +156,9 @@ def main():
     ap.add_argument("--wayback-cache", help="JSON url -> first capture timestamp, imported before the run")
     ap.add_argument("--workers", type=int, default=1)
     ap.add_argument("--out")
+    ap.add_argument("--sample", type=int, help="check a random sample of this many cases (fixed seed)")
+    ap.add_argument("--seed", type=int, default=11)
+    ap.add_argument("--prefetch", action="store_true", help="only download the images, no checks")
     a = ap.parse_args()
     root = Path(a.data)
     rows, cases = load_cases(root, a.split)
@@ -161,6 +166,19 @@ def main():
     cache_dir.mkdir(parents=True, exist_ok=True)
     out_f = Path(a.out) if a.out else ROOT / "runs" / ("fivepils_%s.json" % a.split)
     print("eligible %d, with search results %d" % (len(rows), len(cases)), flush=True)
+    order = list(range(len(cases)))
+    if a.sample:
+        order = sorted(random.Random(a.seed).sample(order, min(a.sample, len(order))))
+    if a.prefetch:
+        ok = 0
+        for k in order:
+            try:
+                get_image(cases[k]["x"]["image_URL"], cache_dir, k)
+                ok += 1
+            except Exception as e:  # noqa: BLE001
+                print(k, "image unavailable:", type(e).__name__, flush=True)
+        print("images available: %d of %d" % (ok, len(order)))
+        return
     if a.wayback_cache:
         print("imported %d archive lookups" % import_wayback(a.wayback_cache), flush=True)
     spend, out, lock = Spend(a.max_usd), [], threading.Lock()
@@ -182,7 +200,7 @@ def main():
               flush=True)
 
     with cf.ThreadPoolExecutor(max_workers=a.workers) as pool:
-        list(pool.map(job, range(len(cases[:a.limit]))))
+        list(pool.map(job, order[:a.limit]))
     if spend.over():
         print("cost cap reached", flush=True)
     summary = dict(score(out), usd=round(spend.usd, 2))

@@ -28,6 +28,7 @@ AGENTS = {
     "rule": "Date rule · code",
     "judge": "Judge · Muse Spark",
     "critic": "Critic · Muse Wonder",
+    "grounds": "Proof check · code",
 }
 
 
@@ -319,15 +320,25 @@ def _run(image_bytes, caption, posted_on, matches, exclude_fact_checkers, budget
     yield step("critic", "done", "Approved: the cited evidence supports the verdict" if cr["approve"]
                else "Still not convinced: %s" % cr.get("problem"),
                critic=cr, approve=cr["approve"])
-    yield from _finish(c, useful, rule, j, cr, budget, extra)
+    g = None
+    if not rule and cr["approve"] and j["verdict"] == "inconsistent":
+        # 7. The code checks that the approved "does not fit" rests on proof it can verify in the table.
+        g = verdict.grounds(c, useful, j)
+        yield step("grounds", "done", ("Proof verified: %s" % g["text"]) if g["ok"]
+                   else "Not enough proof: %s" % g["text"], grounds=g)
+    yield from _finish(c, useful, rule, j, cr, budget, extra, grounds=g)
 
 
-def _finish(c, evidence, rule, judged, crit, budget, extra, empty_reason=None):
+def _finish(c, evidence, rule, judged, crit, budget, extra, empty_reason=None, grounds=None):
     if rule:
         final, basis = "inconsistent", "date rule"
         summary = (judged or {}).get("summary") if (judged or {}).get("verdict") == "inconsistent" else None
         summary = summary or ("An archived copy of this image file is dated %s, %d days before the earliest date "
                               "the caption allows." % (rule["image_first"], rule["days_before"]))
+    elif grounds and not grounds["ok"]:
+        final, basis = "cannot_tell", "proof too weak"
+        summary = ("There are signs against the caption, but not enough proof: %s. %s"
+                   % (grounds["text"], judged.get("summary") or "")).strip()
     elif judged and crit and crit["approve"]:
         final, basis, summary = judged["verdict"], "judge, approved by critic", judged.get("summary")
     elif judged:
@@ -359,4 +370,4 @@ def _finish(c, evidence, rule, judged, crit, budget, extra, empty_reason=None):
         cited.add(rule["evidence_id"])
     yield {"type": "result", "verdict": final, "basis": basis, "summary": summary, "claim": c,
            "actual": (judged or {}).get("actual"), "rule": rule, "cited": sorted(cited), "evidence": evidence,
-           "timeline": timeline, "critic": crit, "cost": budget.summary(), "mode": config.MODE, **extra}
+           "timeline": timeline, "critic": crit, "grounds": grounds, "cost": budget.summary(), "mode": config.MODE, **extra}

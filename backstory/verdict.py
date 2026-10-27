@@ -6,6 +6,8 @@
 2. Judge (Spark): sees the photo, the claim and the evidence table, and gives a verdict that must cite evidence.
 3. Critic (Wonder): checks that the cited evidence really supports the verdict. If not, the judge gets one more
    try with the critic's objection; if the critic still disagrees, the answer is "cannot_tell".
+4. Grounds check (code, no model): an approved "inconsistent" must rest on evidence the code can verify in the
+   table, or it becomes "cannot_tell". The models propose; the code decides what counts as proof.
 """
 import datetime as dt
 import json
@@ -33,6 +35,55 @@ def date_rule(claim, evidence):
     days = (start - dt.date.fromisoformat(best["image_first"])).days
     return {"evidence_id": best["id"], "image_first": best["image_first"], "period_start": start.isoformat(),
             "days_before": days, "snapshot": best.get("image_snapshot")}
+
+
+# Dates on the web are noisy by days (time zones, updated pages, "yesterday" in captions); a copy only a few days
+# older than the claim is not proof that the caption is wrong.
+MARGIN_DAYS = 7
+
+
+def _first_dated(e):
+    """Earliest date the table proves this exact image existed: the archived image file, or the publication date
+    of a page that shows the same image file. A page's own archive date is not used: the page may predate the photo."""
+    dates = [e.get("image_first")]
+    if e.get("match") == "full":
+        dates.append(_iso_day(e.get("page_published")))
+    dates = [d for d in dates if d]
+    return min(dates) if dates else None
+
+
+def _iso_day(value):
+    m = re.match(r"(\d{4}-\d{2}-\d{2})", str(value or ""))
+    return m.group(1) if m else None
+
+
+def grounds(claim, evidence, judged):
+    """Check an "inconsistent" verdict against the table. Returns {"ok", "kind", "ids", "text"}.
+
+    It passes if a cited copy of the same image is dated more than MARGIN_DAYS before the earliest date the caption
+    allows, or if at least two cited pages on different sites (not fact-checkers) show the same image file and
+    describe where, when or what it is (the judge has said how that differs from the caption)."""
+    by_id = {e["id"]: e for e in evidence}
+    cited = [by_id[i] for i in (judged.get("cited") or []) if i in by_id]
+    start = claim.get("period_start")
+    if start:
+        limit = (dt.date.fromisoformat(start) - dt.timedelta(days=MARGIN_DAYS)).isoformat()
+        early = [e for e in cited if e.get("match") in ("full", "confirmed look-alike")
+                 and _first_dated(e) and _first_dated(e) < limit]
+        if early:
+            e = min(early, key=_first_dated)
+            return {"ok": True, "kind": "earlier copy", "ids": [x["id"] for x in early],
+                    "text": "%s (%s) shows this image by %s, more than %d days before %s"
+                            % (e["id"], e["domain"], _first_dated(e), MARGIN_DAYS, start)}
+    origin = [e for e in cited if e.get("match") == "full" and not e.get("fact_checker")
+              and (e.get("described_place") or e.get("described_event") or e.get("described_date"))]
+    sites = sorted({e["domain"] for e in origin})
+    if len(sites) >= 2:
+        return {"ok": True, "kind": "independent descriptions", "ids": [e["id"] for e in origin],
+                "text": "%d sites describe this image differently from the caption: %s" % (len(sites), ", ".join(sites))}
+    return {"ok": False, "kind": None, "ids": [],
+            "text": "no cited copy is dated more than %d days before the claim, and fewer than two independent "
+                    "sites describe the image" % MARGIN_DAYS}
 
 
 def evidence_table(evidence):
@@ -69,6 +120,12 @@ Rules:
   if the page was published before the claimed date.
 - Pages that simply repeat the caption are not independent confirmation.
 - If the evidence does not settle it, the answer is "cannot_tell". Never guess from the picture alone.
+- What counts as proof for "inconsistent" (code checks it afterwards; cite every row it rests on):
+  a copy of the same image dated more than a week before the earliest possible date (a few days earlier is not
+  proof: web dates are noisy), or at least two pages on different sites that show the same image and describe a
+  different place, date or event. One page with a different description is a sign, not proof: say "cannot_tell".
+- A caption about several images, or a date given only as "published"/"found" rather than when the photo was taken,
+  is vague; do not treat an older copy as proof against a date that only says when the image was found.
 {critic_note}
 Reply with one JSON object:
 {{"verdict": "consistent" | "inconsistent" | "cannot_tell",
