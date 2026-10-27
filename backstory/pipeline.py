@@ -189,11 +189,15 @@ def _run(image_bytes, caption, posted_on, matches, exclude_fact_checkers, budget
             for u in r["similar"]:
                 seen[u] = seen.get(u, 0) + 1
         similar = sorted(seen, key=lambda u: -seen[u])
+        if exclude_fact_checkers:
+            similar = [u for u in similar if not search.looks_like_debunk(u)]
     pages, by_url = [], {}
     for p in found_pages:
         fc = search.is_fact_checker(p["url"])
-        if fc and exclude_fact_checkers:
+        if exclude_fact_checkers and search.looks_like_debunk(p["url"]):
             continue
+        if exclude_fact_checkers:
+            p = dict(p, image_urls=[u for u in p.get("image_urls", []) if not search.looks_like_debunk(u)])
         q = by_url.get(p["url"])
         if q is None:
             q = by_url[p["url"]] = dict(p, image_urls=list(p.get("image_urls", [])), fact_checker=fc,

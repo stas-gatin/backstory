@@ -34,6 +34,14 @@ def is_fact_checker(url):
     return any(host == d or host.endswith("." + d) for d in FACT_CHECKERS)
 
 
+# URLs that look like a fact-check or debunk of the photo itself (used when fact-checkers are excluded in tests).
+DEBUNK_URL = re.compile(r"fact-?check|fake|hoax|misleading|false|debunk|verif", re.I)
+
+
+def looks_like_debunk(url):
+    return is_fact_checker(url) or bool(DEBUNK_URL.search(url))
+
+
 LOW_VALUE = """youtube.com yelp.com pinterest.com facebook.com instagram.com x.com twitter.com tiktok.com
 reddit.com threads.net linkedin.com""".split()
 
