@@ -3,15 +3,20 @@
 Event types: "step" (an agent starts or finishes), "evidence" (one row of the evidence table is ready),
 "result" (the final answer) and "error".
 """
+import base64
 import concurrent.futures as cf
+import io
 import re
 
-from . import archive, claim, config, matcher, meta, reader, replay, search, verdict, video
+from PIL import Image
+
+from . import archive, claim, config, matcher, meta, reader, replay, sam, search, verdict, video
 
 AGENTS = {
     "frames": "Frame grabber · ffmpeg",
     "speech": "Speech reader · Muse Voice Transcribe",
     "claim": "Claim reader · Muse Spark + web search",
+    "cutout": "Photo finder · SAM 3.1",
     "search": "Image search · Google Vision",
     "match": "Match checker · Muse Spark",
     "archive": "Archivist · Internet Archive",
@@ -28,6 +33,14 @@ ISO = re.compile(r"^\d{4}(-\d\d){0,2}$")
 
 def step(agent, status, text, **data):
     return {"type": "step", "agent": agent, "label": AGENTS[agent], "status": status, "text": text, **data}
+
+
+def _thumb(jpeg, side=160):
+    im = Image.open(io.BytesIO(jpeg)).convert("RGB")
+    im.thumbnail((side, side))
+    buf = io.BytesIO()
+    im.save(buf, format="JPEG", quality=80)
+    return "data:image/jpeg;base64," + base64.b64encode(buf.getvalue()).decode()
 
 
 def _count(n, one, many):
@@ -84,6 +97,14 @@ def _run(image_bytes, caption, posted_on, matches, exclude_fact_checkers, budget
     yield step("claim", "done", "The caption claims: %s" % (said or "nothing checkable"), claim=c)
 
     # 2. Where else is this photo online?
+    # 1b. A post screenshot or collage: find the separate photos in it; each is searched as well.
+    if not video_path and matches is None:
+        yield step("cutout", "running", "Looking for separate photos inside the post")
+        regions = sam.photo_regions(image_bytes, budget=budget)
+        search_images = [image_bytes] + [r["jpeg"] for r in regions]
+        yield step("cutout", "done", ("Cut out %s; searched along with the whole image" % _count(len(regions), "photo", "separate photos"))
+                   if regions else "The image is a single photo", thumbs=[_thumb(r["jpeg"]) for r in regions])
+
     what = "these frames" if video_path else "this exact photo"
     yield step("search", "running", "Searching the web for %s" % what)
     similar = []

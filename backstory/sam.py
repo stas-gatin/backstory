@@ -37,18 +37,33 @@ def boxes(image_bytes, phrase="photo", budget=None):
     return sorted(out, key=lambda b: -b[4])
 
 
-def cut_out(image_bytes, budget=None, min_share=0.08):
-    """(photo bytes, box) for the most confident 'photo' box, or (original bytes, None) when there is none or the
-    box covers almost the whole image anyway."""
-    found = boxes(image_bytes, budget=budget)
+def _inside(a, b, share=0.9):
+    """True when at least `share` of box a lies inside box b."""
+    ix = max(0, min(a[2], b[2]) - max(a[0], b[0]))
+    iy = max(0, min(a[3], b[3]) - max(a[1], b[1]))
+    area = (a[2] - a[0]) * (a[3] - a[1])
+    return area > 0 and ix * iy / area >= share
+
+
+def photo_regions(image_bytes, budget=None, min_share=0.06, max_regions=3, min_conf=0.5):
+    """Separate photos inside a post screenshot or collage, as JPEG crops (largest first).
+
+    Keeps confident 'photo' boxes that are not tiny and not nested inside a larger kept box (a framed picture
+    inside a scene is part of that scene). Returns [] when the image is a single photo already."""
+    found = [b for b in boxes(image_bytes, budget=budget) if b[4] >= min_conf]
     im = Image.open(io.BytesIO(image_bytes)).convert("RGB")
-    for x1, y1, x2, y2, c in found:
-        share = (x2 - x1) * (y2 - y1) / (im.width * im.height)
-        if share < min_share:
+    total = im.width * im.height
+    kept = []
+    for b in sorted(found, key=lambda b: -(b[2] - b[0]) * (b[3] - b[1])):
+        share = (b[2] - b[0]) * (b[3] - b[1]) / total
+        if share < min_share or any(_inside(b, k) for k in kept):
             continue
-        if share > 0.97:
-            return image_bytes, None
+        kept.append(b)
+    if len(kept) == 1 and (kept[0][2] - kept[0][0]) * (kept[0][3] - kept[0][1]) / total > 0.9:
+        return []
+    out = []
+    for x1, y1, x2, y2, c in kept[:max_regions]:
         buf = io.BytesIO()
         im.crop((int(x1), int(y1), int(x2), int(y2))).save(buf, format="JPEG", quality=92)
-        return buf.getvalue(), (x1, y1, x2, y2, c)
-    return image_bytes, None
+        out.append({"box": (x1, y1, x2, y2), "conf": c, "jpeg": buf.getvalue()})
+    return out

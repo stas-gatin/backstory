@@ -5,6 +5,7 @@ const esc = (s) => String(s ?? "").replace(/[&<>"]/g, (c) => ({ "&": "&amp;", "<
 
 // Line icons, 24x24, drawn with the current text colour.
 const PATHS = {
+  cutout: '<path d="M4 8V5a1 1 0 0 1 1-1h3M16 4h3a1 1 0 0 1 1 1v3M20 16v3a1 1 0 0 1-1 1h-3M8 20H5a1 1 0 0 1-1-1v-3"/><rect x="8" y="8" width="8" height="8" rx="1"/>',
   match: '<rect x="3" y="3" width="12" height="12" rx="2"/><rect x="9" y="9" width="12" height="12" rx="2"/>',
   frames: '<rect x="3" y="5" width="18" height="14" rx="2"/><path d="M7 5v14M17 5v14M3 9h4M3 15h4M17 9h4M17 15h4"/>',
   speech: '<rect x="9" y="3" width="6" height="11" rx="3"/><path d="M5 11a7 7 0 0 0 14 0M12 18v3"/>',
@@ -161,7 +162,8 @@ function addStep(ev) {
   const [name, by] = ev.label.split(" · ");
   const mark = ev.status === "done" ? (sent ? "back" : "check") : ev.agent;
   li.innerHTML = `<span class="dot">${icon(mark)}</span><div><div class="head"><span class="who">${esc(name)}</span>
-    <span class="chip ${/Muse/.test(by || "") ? "" : "tool"}">${esc(by || "")}</span></div><div class="what">${esc(ev.text)}</div></div>`;
+    <span class="chip ${/Muse|SAM/.test(by || "") ? "" : "tool"}">${esc(by || "")}</span></div><div class="what">${esc(ev.text)}</div>
+    ${(ev.thumbs || []).length ? `<div class="thumbs">${ev.thumbs.map((t) => `<img src="${t}" alt="">`).join("")}</div>` : ""}</div>`;
   if (!li.parentNode) $("#steps").appendChild(li);
 }
 
