@@ -19,7 +19,7 @@ never for this photo or for fact-checks of it.
 
 Reply with one JSON object:
 {{"place": "city, region, country as claimed (English), or null",
-  "event": "what the photo supposedly shows, in English, short",
+  "event": "what the photo supposedly shows, in English, short, or null if the caption does not say",
   "claimed_date": "the date or period as claimed, in words",
   "period_start": "YYYY-MM-DD: the earliest day the claimed scene can have happened, or null if the caption gives no time at all",
   "precision": "day" | "month" | "year" | "none",

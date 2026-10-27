@@ -4,6 +4,7 @@ Event types: "step" (an agent starts or finishes), "evidence" (one row of the ev
 "result" (the final answer) and "error".
 """
 import concurrent.futures as cf
+import re
 
 from . import archive, claim, config, meta, reader, replay, search, verdict
 
@@ -18,8 +19,16 @@ AGENTS = {
 }
 
 
+WORDS = {"inconsistent": "Does not fit", "consistent": "Fits", "cannot_tell": "Cannot verify"}
+ISO = re.compile(r"^\d{4}(-\d\d){0,2}$")
+
+
 def step(agent, status, text, **data):
     return {"type": "step", "agent": agent, "label": AGENTS[agent], "status": status, "text": text, **data}
+
+
+def _count(n, one, many):
+    return "%d %s" % (n, one if n == 1 else many)
 
 
 def _min_date(*dates):
@@ -47,9 +56,8 @@ def _run(image_bytes, caption, posted_on, matches, exclude_fact_checkers, budget
     # 1. What does the caption claim?
     yield step("claim", "running", "Reading the caption")
     c = claim.read_claim(caption, posted_on, budget=budget)
-    yield step("claim", "done", "Claims: %s · %s · %s" % (c.get("event") or "?", c.get("place") or "?",
-                                                         c.get("claimed_date") or "no date"),
-               claim=c)
+    said = " · ".join(str(v) for v in (c.get("event"), c.get("place"), c.get("claimed_date")) if v)
+    yield step("claim", "done", "The caption claims: %s" % (said or "nothing checkable"), claim=c)
 
     # 2. Where else is this photo online?
     yield step("search", "running", "Searching the web for this exact photo")
@@ -79,9 +87,9 @@ def _run(image_bytes, caption, posted_on, matches, exclude_fact_checkers, budget
     ev = [{"id": "E%d" % (i + 1), "url": p["url"], "domain": p["domain"], "fact_checker": p["fact_checker"],
            "match": p.get("match"), "image_first": None, "image_snapshot": None, "page_first": None}
           for i, p in enumerate(pages)]
-    yield step("archive", "running", "Looking up first archive dates for %d image files and %d pages"
-               % (len(image_jobs), len(to_read)))
-    yield step("reader", "running", "Opening %d pages to see how they describe the photo" % len(to_read))
+    yield step("archive", "running", "Looking up first archive dates for %s and %s"
+               % (_count(len(image_jobs), "image file", "image files"), _count(len(to_read), "page", "pages")))
+    yield step("reader", "running", "Opening %s to see how they describe the photo" % _count(len(to_read), "page", "pages"))
     with cf.ThreadPoolExecutor(max_workers=5) as pool:
         futs = {}
         for i, p in enumerate(to_read):
@@ -105,8 +113,8 @@ def _run(image_bytes, caption, posted_on, matches, exclude_fact_checkers, budget
             yield {"type": "evidence", "row": e}
     useful = [e for i, e in enumerate(ev) if i < len(to_read) or e["image_first"]]
     dated = sum(1 for e in useful if e["image_first"] or e["page_first"])
-    yield step("archive", "done", "%d of %d pages have an archive date" % (dated, len(useful)))
-    yield step("reader", "done", "%d pages describe the photo" % sum(1 for e in useful if e.get("relevant")))
+    yield step("archive", "done", "%d of %d page%s dated by the Internet Archive" % (dated, len(useful), "" if len(useful) == 1 else "s"))
+    yield step("reader", "done", _count(sum(1 for e in useful if e.get("relevant")), "page describes", "pages describe") + " the photo")
 
     # 5. Fixed date rule.
     rule = verdict.date_rule(c, useful)
@@ -120,17 +128,18 @@ def _run(image_bytes, caption, posted_on, matches, exclude_fact_checkers, budget
     # 6. Judge and critic, with one send-back.
     yield step("judge", "running", "Weighing the evidence")
     j = verdict.judge(image_bytes, c, useful, budget=budget)
-    yield step("judge", "done", "%s: %s" % (j["verdict"], j.get("summary", "")), judged=j)
+    yield step("judge", "done", "%s. %s" % (WORDS[j["verdict"]], j.get("summary", "")), judged=j)
     yield step("critic", "running", "Checking the judge's reasoning against the evidence")
     cr = verdict.critic(c, useful, j, budget=budget)
     if not cr["approve"]:
         yield step("critic", "done", "Sent back: %s" % cr.get("problem"), critic=cr, approve=False)
         yield step("judge", "running", "Second attempt after the critic's objection")
         j = verdict.judge(image_bytes, c, useful, critic_note=cr.get("problem"), budget=budget)
-        yield step("judge", "done", "%s: %s" % (j["verdict"], j.get("summary", "")), judged=j)
+        yield step("judge", "done", "%s. %s" % (WORDS[j["verdict"]], j.get("summary", "")), judged=j)
         yield step("critic", "running", "Checking the second attempt")
         cr = verdict.critic(c, useful, j, budget=budget)
-    yield step("critic", "done", "Approved" if cr["approve"] else "Still rejected: %s" % cr.get("problem"),
+    yield step("critic", "done", "Approved: the cited evidence supports the verdict" if cr["approve"]
+               else "Still not convinced: %s" % cr.get("problem"),
                critic=cr, approve=cr["approve"])
     yield from _finish(c, useful, rule, j, cr, budget)
 
@@ -160,6 +169,12 @@ def _finish(c, evidence, rule, judged, crit, budget, empty_reason=None):
             timeline.append({"date": first, "kind": "evidence", "id": e["id"],
                              "text": "%s: %s" % (e["domain"], what),
                              "url": e.get("image_snapshot") if what.startswith("image") else e.get("page_snapshot")})
+        said = e.get("described_date")
+        if said and ISO.match(str(said)) and (e.get("relevant") or e["id"] in ((judged or {}).get("cited") or [])):
+            what = " · ".join(str(v) for v in (e.get("described_event"), e.get("described_place")) if v)
+            timeline.append({"date": said, "kind": "described", "id": e["id"],
+                             "text": "%s dates the photo here%s" % (e["domain"], (": " + what) if what else ""),
+                             "url": e["url"]})
     timeline.sort(key=lambda t: t["date"])
     cited = set((judged or {}).get("cited") or [])
     if rule:
