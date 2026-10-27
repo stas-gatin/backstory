@@ -159,7 +159,13 @@ const ext = (url, text) => `<a href="${esc(url)}" target="_blank" rel="noopener"
 function addEvidence(r) {
   $("#evidenceCard").hidden = false;
   let tr = document.getElementById("ev-" + r.id);
-  if (!tr) { tr = document.createElement("tr"); tr.id = "ev-" + r.id; $("#evidence tbody").appendChild(tr); }
+  if (!tr) {
+    // Rows arrive as agents finish; keep them in evidence order (E1, E2, ...).
+    tr = document.createElement("tr"); tr.id = "ev-" + r.id;
+    const n = +r.id.slice(1);
+    const next = [...$("#evidence tbody").children].find((x) => +x.id.slice(4) > n);
+    $("#evidence tbody").insertBefore(tr, next || null);
+  }
   const date = (d, url) => d ? (url ? ext(url, d) : esc(d)) : '<span class="nil">–</span>';
   const says = [r.described_place, r.described_date, r.described_event].filter(Boolean).join(" · ");
   const pub = r.page_published ? esc(String(r.page_published).slice(0, 10)) : '<span class="nil">–</span>';

@@ -69,6 +69,8 @@ def _run(image_bytes, caption, posted_on, matches, exclude_fact_checkers, budget
             continue
         if p["url"] not in [q["url"] for q in pages]:
             pages.append(dict(p, fact_checker=fc, domain=search.domain(p["url"])))
+    # Read news and archive pages first; video, review and social pages rarely say where a photo is from.
+    pages.sort(key=lambda p: (p.get("match") == "partial", search.low_value(p["url"])))
     yield step("search", "done", "Found the photo on %d page%s" % (len(pages), "" if len(pages) == 1 else "s"),
                count=len(pages))
     if not pages:

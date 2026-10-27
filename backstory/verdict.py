@@ -35,7 +35,7 @@ def date_rule(claim, evidence):
 def evidence_table(evidence):
     rows = []
     for e in evidence:
-        rows.append({k: e.get(k) for k in ("id", "domain", "image_first", "page_first", "page_published",
+        rows.append({k: e.get(k) for k in ("id", "domain", "match", "image_first", "page_first", "page_published",
                                             "described_place", "described_date", "described_event", "quote",
                                             "fact_checker")})
     return json.dumps(rows, ensure_ascii=False, indent=0)
@@ -52,6 +52,7 @@ Evidence table (one row per web page where reverse image search found this photo
   date. A late or missing capture proves nothing: the Archive often captures files years after they appear.
 - page_published: publication date from the page's own metadata (usually reliable, but a page can be updated later)
 - described_*: how that page describes the photo
+- match: "full" = the same image file; "partial" = only part of the image matches (may be a crop or a similar photo)
 - fact_checker: true if the page is a fact-checking site
 {table}
 
@@ -66,7 +67,8 @@ Reply with one JSON object:
 {{"verdict": "consistent" | "inconsistent" | "cannot_tell",
   "cited": ["evidence ids that support the verdict"],
   "summary": "one or two plain sentences for a reader, naming the decisive evidence and its date",
-  "actual": {{"place": "where the photo was really taken per the evidence, or null",
+  "actual": {{"place": "where the photo was really taken, per the earliest full-match source (the original publisher
+              rather than later reposts or partial matches), or null",
               "date": "when, or null", "event": "what it really shows, or null"}}}}"""
 
 
@@ -85,6 +87,10 @@ Approve only if all hold:
 1. Every cited evidence id exists and says what the judge claims (dates and descriptions match the table).
 2. "inconsistent" rests on at least one concrete item: an archive or publication date before the earliest possible
    date, or a page describing this photo as a different place or event. Disagreement on unimportant detail is not enough.
+   A publication date from an established news or agency page counts as evidence even when the Archive captured the
+   page later (a late capture proves nothing); be wary of it only on sites that repost or aggregate content.
+   If pages disagree about where or when the photo was really taken but every version predates the claimed date,
+   that does not weaken "inconsistent": the caption is wrong either way.
 3. "consistent" rests on independent evidence that matches place and date, not on pages repeating the caption.
 4. "cannot_tell" is acceptable whenever the evidence is thin.
 Reply with one JSON object:

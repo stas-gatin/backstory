@@ -26,6 +26,16 @@ def is_fact_checker(url):
     return any(host == d or host.endswith("." + d) for d in FACT_CHECKERS)
 
 
+LOW_VALUE = """youtube.com yelp.com pinterest.com facebook.com instagram.com x.com twitter.com tiktok.com
+reddit.com threads.net linkedin.com""".split()
+
+
+def low_value(url):
+    host = domain(url)
+    return any(host == d or host.endswith("." + d) or host.split(".")[-2:-1] == [d.split(".")[0]]
+               for d in LOW_VALUE)
+
+
 class SearchUnavailable(Exception):
     pass
 
