@@ -4,6 +4,7 @@ Event types: "step" (an agent starts or finishes), "evidence" (one row of the ev
 "result" (the final answer) and "error".
 """
 import base64
+import datetime as dt
 import concurrent.futures as cf
 import io
 import re
@@ -38,6 +39,17 @@ def step(agent, status, text, **data):
     return {"type": "step", "agent": agent, "label": AGENTS[agent], "status": status, "text": text, **data}
 
 
+def _guarded(fn, *args, **kw):
+    """Run one lookup; a failure (or a lookup missing from a recording) gives None instead of ending the check.
+    Running out of budget still stops everything."""
+    try:
+        return fn(*args, **kw)
+    except meta.BudgetExceeded:
+        raise
+    except Exception:  # noqa: BLE001 - one page or file failing must not lose the others
+        return None
+
+
 def _thumb(jpeg, side=160):
     im = Image.open(io.BytesIO(jpeg)).convert("RGB")
     im.thumbnail((side, side))
@@ -48,6 +60,19 @@ def _thumb(jpeg, side=160):
 
 def _count(n, one, many):
     return "%d %s" % (n, one if n == 1 else many)
+
+
+def _iso(value):
+    """'YYYY', 'YYYY-MM' or 'YYYY-MM-DD' as a string if it is a real date, else None."""
+    value = str(value or "").strip()
+    if not ISO.match(value):
+        return None
+    parts = [int(x) for x in value.split("-")] + [1, 1]
+    try:
+        dt.date(parts[0], parts[1], parts[2])
+    except ValueError:
+        return None
+    return value
 
 
 def _min_date(*dates):
@@ -99,6 +124,8 @@ def _run(image_bytes, caption, posted_on, matches, exclude_fact_checkers, budget
             tmp.append(f.name)
         elif post["photos"]:
             image_bytes, search_images = post["photos"][0], list(post["photos"])
+        elif post["has_media"]:
+            raise xpost.PostError("the post's photo or video could not be downloaded")
         else:
             raise xpost.PostError("the post has no photo or video")
         media = "a video" if post["video"] else _count(len(post["photos"]), "photo", "photos")
@@ -118,10 +145,12 @@ def _run(image_bytes, caption, posted_on, matches, exclude_fact_checkers, budget
                                                           ", ".join(str(f["t"]) for f in shots)),
                    thumbs=[_thumb(f["jpeg"]) for f in shots])
         yield step("speech", "running", "Transcribing what is said in the video")
-        wav = video.audio_wav(video_path)
-        spoken = video.transcribe(wav, budget=budget) if wav else ""
-        yield step("speech", "done", ('Said in the video: "%s"' % spoken[:300]) if spoken else "No speech in the video",
-                   transcript=spoken)
+        spoken = video.speech(video_path, budget=budget)
+        if spoken is None:
+            text = "Transcription failed; the check goes on without the spoken words"
+        else:
+            text = ('Said in the video: "%s"' % spoken[:300]) if spoken else "No speech in the video"
+        yield step("speech", "done", text, transcript=spoken or "")
         if spoken:
             caption = (caption.strip() + "\n" if caption.strip() else "") + 'Spoken in the video: "%s"' % spoken
 
@@ -150,7 +179,9 @@ def _run(image_bytes, caption, posted_on, matches, exclude_fact_checkers, budget
     if matches is not None:
         found_pages = search.from_list(matches)["pages"]
     else:
-        results = [search.google_vision(img) for img in search_images]
+        # The main image must be searchable; extra cut-outs and frames may fail without ending the check.
+        results = [search.google_vision(search_images[0])]
+        results += [r for r in (_guarded(search.google_vision, img) for img in search_images[1:]) if r]
         found_pages = [p for r in results for p in r["pages"]]
         # Candidates seen for several frames first.
         seen = {}
@@ -158,13 +189,23 @@ def _run(image_bytes, caption, posted_on, matches, exclude_fact_checkers, budget
             for u in r["similar"]:
                 seen[u] = seen.get(u, 0) + 1
         similar = sorted(seen, key=lambda u: -seen[u])
-    pages = []
+    pages, by_url = [], {}
     for p in found_pages:
         fc = search.is_fact_checker(p["url"])
         if fc and exclude_fact_checkers:
             continue
-        if p["url"] not in [q["url"] for q in pages]:
-            pages.append(dict(p, fact_checker=fc, domain=search.domain(p["url"])))
+        q = by_url.get(p["url"])
+        if q is None:
+            q = by_url[p["url"]] = dict(p, image_urls=list(p.get("image_urls", [])), fact_checker=fc,
+                                        domain=search.domain(p["url"]))
+            pages.append(q)
+        else:
+            # The same page found for another search image (a cut-out, another frame): keep the best match.
+            new = [u for u in p.get("image_urls", []) if u not in q["image_urls"]]
+            if p.get("match") == "full" and q.get("match") != "full":
+                q["match"], q["image_urls"] = "full", new + q["image_urls"]
+            else:
+                q["image_urls"] += new
     # Read news and archive pages first; video, review and social pages rarely say where a photo is from.
     pages.sort(key=lambda p: (p.get("match") == "partial", search.low_value(p["url"])))
     yield step("search", "done", "Found %s on %s" % ("the frames" if video_path else "the photo",
@@ -176,7 +217,8 @@ def _run(image_bytes, caption, posted_on, matches, exclude_fact_checkers, budget
         yield step("match", "running", "Comparing %s with the post, frame by frame"
                    % _count(len(cands), "look-alike image", "look-alike images"))
         with cf.ThreadPoolExecutor(max_workers=4) as pool:
-            checks = list(pool.map(lambda u: matcher.same_source(image_bytes, u, budget=budget), cands))
+            checks = list(pool.map(lambda u: _guarded(matcher.same_source, image_bytes, u, budget=budget)
+                                   or {"url": u, "same": False}, cands))
         confirmed = [m for m in checks if m["same"]]
         for m in confirmed:
             if m["url"] not in [q["url"] for q in pages]:
@@ -194,13 +236,13 @@ def _run(image_bytes, caption, posted_on, matches, exclude_fact_checkers, budget
     # 3 + 4. Archive dates and page reading, in parallel.
     read_idx = [i for i, p in enumerate(pages) if not p.get("image_only")][:config.MAX_PAGES]
     to_read = [pages[i] for i in read_idx]
-    image_jobs, n = [], 0
+    image_jobs, queued = [], set()
     # Image files only known as look-alikes are dated first: their archive date is all there is.
     for i, p in sorted(enumerate(pages), key=lambda ip: not ip[1].get("image_only")):
         for u in p.get("image_urls", [])[:3]:
-            if n < config.MAX_ARCHIVE_LOOKUPS:
+            if len(image_jobs) < config.MAX_ARCHIVE_LOOKUPS and u not in queued:
                 image_jobs.append((i, u))
-                n += 1
+                queued.add(u)
     ev = [{"id": "E%d" % (i + 1), "url": p["url"], "domain": p["domain"], "fact_checker": p["fact_checker"],
            "match": p.get("match"), "image_first": None, "image_snapshot": None, "page_first": None}
           for i, p in enumerate(pages)]
@@ -209,18 +251,23 @@ def _run(image_bytes, caption, posted_on, matches, exclude_fact_checkers, budget
     if to_read:
         yield step("reader", "running", "Opening %s to see how they describe the photo"
                    % _count(len(to_read), "page", "pages"))
-    with cf.ThreadPoolExecutor(max_workers=5) as pool:
+    pool = cf.ThreadPoolExecutor(max_workers=5)
+    try:
         futs = {}
         for i in read_idx:
             p = pages[i]
-            futs[pool.submit(reader.read_page, p["url"], p.get("image_urls", []), budget)] = ("read", i, None)
-            futs[pool.submit(archive.first_capture, p["url"])] = ("page", i, None)
+            futs[pool.submit(_guarded, reader.read_page, p["url"], p.get("image_urls", []), budget)] = ("read", i, None)
+            futs[pool.submit(_guarded, archive.first_capture, p["url"])] = ("page", i, None)
         for i, u in image_jobs:
-            futs[pool.submit(archive.first_capture, u)] = ("image", i, u)
+            futs[pool.submit(_guarded, archive.first_capture, u)] = ("image", i, u)
         for f in cf.as_completed(futs):
             kind, i, _ = futs[f]
             res = f.result()
             e = ev[i]
+            if res is None:  # this one lookup failed; the others still count
+                if kind == "read":
+                    e.update(opened=False)
+                continue
             if kind == "read":
                 e.update(opened=res.get("opened"), title=res.get("title"), page_published=res.get("page_date"),
                          described_place=res.get("place"), described_date=res.get("date"),
@@ -231,6 +278,10 @@ def _run(image_bytes, caption, posted_on, matches, exclude_fact_checkers, budget
             elif res["date"] and (not e["image_first"] or res["date"] < e["image_first"]):
                 e["image_first"], e["image_snapshot"] = res["date"], res["snapshot"]
             yield {"type": "evidence", "row": e}
+    except meta.BudgetExceeded:
+        pool.shutdown(wait=False, cancel_futures=True)
+        raise
+    pool.shutdown(wait=True)
     useful = [e for i, e in enumerate(ev) if i in read_idx or e["image_first"]]
     dated = sum(1 for e in useful if e["image_first"] or e["page_first"])
     yield step("archive", "done", "%d of %d page%s dated by the Internet Archive" % (dated, len(useful), "" if len(useful) == 1 else "s"))
@@ -243,6 +294,8 @@ def _run(image_bytes, caption, posted_on, matches, exclude_fact_checkers, budget
         yield step("rule", "done", "The image file was archived on %s, %d days before the earliest date the caption "
                                    "allows (%s)" % (rule["image_first"], rule["days_before"], rule["period_start"]),
                    fired=True, rule=rule)
+    elif not c.get("period_start"):
+        yield step("rule", "done", "Not applicable: the caption gives no date", fired=False)
     else:
         yield step("rule", "done", "No archived copy older than the claimed date", fired=False)
 
@@ -290,8 +343,8 @@ def _finish(c, evidence, rule, judged, crit, budget, extra, empty_reason=None):
             timeline.append({"date": first, "kind": "evidence", "id": e["id"],
                              "text": "%s: %s" % (e["domain"], what),
                              "url": e.get("image_snapshot") if what.startswith("image") else e.get("page_snapshot")})
-        said = e.get("described_date")
-        if said and ISO.match(str(said)) and (e.get("relevant") or e["id"] in ((judged or {}).get("cited") or [])):
+        said = _iso(e.get("described_date"))
+        if said and (e.get("relevant") or e["id"] in ((judged or {}).get("cited") or [])):
             what = " · ".join(str(v) for v in (e.get("described_event"), e.get("described_place")) if v)
             timeline.append({"date": said, "kind": "described", "id": e["id"],
                              "text": "%s dates the photo here%s" % (e["domain"], (": " + what) if what else ""),

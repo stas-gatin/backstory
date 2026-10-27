@@ -62,3 +62,16 @@ def test_post_link_goes_to_the_pipeline(client):
 
 def test_status_reports_mode(client):
     assert client.get("/api/status").json()["mode"] in ("live", "replay")
+
+
+def test_video_recognised_by_extension(client, monkeypatch):
+    r = client.post("/api/check", data={"caption": "Florida now"},
+                    files={"image": ("clip.mov", b"\x00\x00\x00\x18ftypqt  ", "application/octet-stream")})
+    assert r.status_code == 200
+    assert client.calls[0][1]["video_path"].endswith(".mov")
+
+
+def test_oversized_photo_rejected(client, monkeypatch):
+    monkeypatch.setattr(server, "MAX_UPLOAD", 1000)
+    r = client.post("/api/check", data={"caption": "x"}, files={"image": ("a.png", png(400, 400), "image/png")})
+    assert r.status_code == 413 and client.calls == []

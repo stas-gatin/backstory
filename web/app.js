@@ -1,5 +1,5 @@
 const $ = (s) => document.querySelector(s);
-let chosenFile = null, chosenExample = null;
+let chosenFile = null, chosenExample = null, captionEdited = false, running = false, finished = false;
 
 const esc = (s) => String(s ?? "").replace(/[&<>"]/g, (c) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" }[c]));
 
@@ -53,7 +53,8 @@ async function init() {
 }
 
 function pickExample(e) {
-  chosenExample = e; chosenFile = null;
+  if (running) return;
+  chosenExample = e; chosenFile = null; captionEdited = false;
   $("#postUrl").value = e.kind === "link" ? e.post_url : "";
   document.querySelectorAll(".ex").forEach((b) => b.classList.toggle("on", b.dataset.id === e.id));
   if (e.kind === "link") clearPreview();
@@ -79,8 +80,9 @@ function showVideo(src) {
 }
 
 function pickFile(f) {
-  if (!f) return;
+  if (!f || running) return;
   chosenFile = f; chosenExample = null;
+  $("#postUrl").value = "";
   document.querySelectorAll(".ex").forEach((b) => b.classList.remove("on"));
   const url = URL.createObjectURL(f);
   if (f.type.startsWith("video/")) showVideo(url); else showPreview(url);
@@ -91,6 +93,7 @@ const drop = $("#drop");
 drop.addEventListener("dragover", (e) => { e.preventDefault(); drop.classList.add("over"); });
 drop.addEventListener("dragleave", () => drop.classList.remove("over"));
 drop.addEventListener("drop", (e) => { e.preventDefault(); drop.classList.remove("over"); pickFile(e.dataTransfer.files[0]); });
+drop.addEventListener("click", (e) => { if (running) e.preventDefault(); });
 $("#postUrl").addEventListener("input", () => {
   if (chosenExample && $("#postUrl").value !== (chosenExample.post_url || "")) {
     chosenExample = null;
@@ -98,17 +101,22 @@ $("#postUrl").addEventListener("input", () => {
   }
 });
 $("#caption").addEventListener("input", () => {
-  if (chosenExample && $("#caption").value !== chosenExample.caption) {
-    chosenExample = null;
-    document.querySelectorAll(".ex").forEach((b) => b.classList.remove("on"));
-  }
+  // Editing an example's caption keeps its photo: the photo is then sent as an upload with the new caption.
+  if (chosenExample) captionEdited = $("#caption").value !== chosenExample.caption;
 });
 
 $("#form").addEventListener("submit", async (e) => {
   e.preventDefault();
   const fd = new FormData();
   const link = $("#postUrl").value.trim();
-  if (chosenExample) fd.append("example_id", chosenExample.id);
+  if (chosenExample && captionEdited && chosenExample.kind !== "link") {
+    if (!$("#caption").value.trim()) { $("#formError").textContent = "Enter the caption to check."; return; }
+    const kind = chosenExample.kind === "video" ? "video" : "image";
+    const blob = await fetch(`/api/examples/${encodeURIComponent(chosenExample.id)}/${kind}`).then((r) => r.blob());
+    fd.append("image", blob, kind === "video" ? "example.mp4" : "example.jpg");
+    fd.append("caption", $("#caption").value);
+    fd.append("posted_on", $("#posted").value);
+  } else if (chosenExample) fd.append("example_id", chosenExample.id);
   else if (link) {
     if (!/^https?:\/\/(www\.|mobile\.)?(x|twitter)\.com\/[^/]+\/status\/\d+/.test(link)) {
       $("#formError").textContent = "That is not a link to a post on X (x.com/user/status/…).";
@@ -127,11 +135,10 @@ $("#form").addEventListener("submit", async (e) => {
   }
   $("#formError").textContent = "";
   reset();
-  $("#go").disabled = true;
-  $("#go").textContent = "Checking…";
+  setRunning(true);
   try {
     const res = await fetch("/api/check", { method: "POST", body: fd });
-    if (!res.ok) throw new Error((await res.json()).detail || res.statusText);
+    if (!res.ok) throw new Error(await errorText(res));
     const reader = res.body.getReader(), dec = new TextDecoder();
     let buf = "";
     for (;;) {
@@ -141,16 +148,35 @@ $("#form").addEventListener("submit", async (e) => {
       let i;
       while ((i = buf.indexOf("\n")) >= 0) { handle(JSON.parse(buf.slice(0, i))); buf = buf.slice(i + 1); }
     }
+    if (!finished) handle({ type: "error", text: "The connection closed before the check finished. Please try again." });
   } catch (err) {
     handle({ type: "error", text: err.message });
   }
-  $("#go").disabled = false;
-  $("#go").textContent = "Check the caption";
+  clearInterval(timer);
+  setRunning(false);
 });
+
+function setRunning(on) {
+  running = on;
+  $("#go").disabled = on;
+  $("#go").textContent = on ? "Checking…" : "Check the caption";
+  document.querySelector(".input").classList.toggle("busy", on);
+  ["#postUrl", "#caption", "#posted", "#file"].forEach((s) => { $(s).disabled = on; });
+}
+
+async function errorText(res) {
+  try {
+    const j = await res.json();
+    if (typeof j.detail === "string") return j.detail;
+    if (Array.isArray(j.detail)) return j.detail.map((d) => d.msg || "").join("; ");
+  } catch (e) { /* not JSON, e.g. a proxy's error page */ }
+  return `The server answered ${res.status} ${res.statusText}`.trim();
+}
 
 let t0 = 0, timer = null;
 function tick() { $("#elapsed").textContent = ((performance.now() - t0) / 1000).toFixed(0) + " s"; }
 function reset() {
+  finished = false;
   clearInterval(timer);
   timer = setInterval(tick, 500);
   $("#steps").innerHTML = ""; $("#stepsCard").hidden = false; $("#emptyCard").hidden = true;
@@ -161,7 +187,7 @@ function reset() {
 }
 
 function handle(ev) {
-  if (ev.type === "result" || ev.type === "error") { clearInterval(timer); tick(); }
+  if (ev.type === "result" || ev.type === "error") { finished = true; clearInterval(timer); tick(); }
   if (ev.type === "step") addStep(ev);
   else if (ev.type === "evidence") addEvidence(ev.row);
   else if (ev.type === "result") showResult(ev);
@@ -194,7 +220,9 @@ function addStep(ev) {
   if (!li.parentNode) $("#steps").appendChild(li);
 }
 
-const ext = (url, text) => `<a href="${esc(url)}" target="_blank" rel="noopener">${esc(text)}</a>`;
+// Only web links become clickable; anything else (javascript:, data:) is shown as plain text.
+const ext = (url, text) => /^https?:\/\//i.test(url || "")
+  ? `<a href="${esc(url)}" target="_blank" rel="noopener noreferrer">${esc(text)}</a>` : esc(text);
 
 function addEvidence(r) {
   $("#evidenceCard").hidden = false;

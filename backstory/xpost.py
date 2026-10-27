@@ -64,7 +64,7 @@ def _download(url, limit):
 
 def read(url):
     """{'id', 'url', 'author', 'text', 'posted_on', 'photos': [bytes], 'video': bytes or None,
-        'community_note': str or None}"""
+        'has_media': bool, 'community_note': str or None}"""
     pid = post_id(url)
     # A "missing" answer is not recorded: it may be a passing error, and a deleted post costs nothing to ask again.
     j = replay.cached("xpost", {"id": pid}, lambda: _fetch_json(pid), note="x post " + pid,
@@ -88,4 +88,4 @@ def read(url):
     return {"id": pid, "url": "https://x.com/%s/status/%s" % ((j.get("user") or {}).get("screen_name", "i"), pid),
             "author": (j.get("user") or {}).get("screen_name"), "text": text,
             "posted_on": (j.get("created_at") or "")[:10] or None,
-            "photos": photos, "video": video, "community_note": note}
+            "photos": photos, "video": video, "has_media": bool(j.get("mediaDetails")), "community_note": note}

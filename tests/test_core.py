@@ -209,3 +209,106 @@ def test_events_are_json_serialisable(offline):
         "best_guess": [], "similar": []})
     for e in run_events():
         json.dumps(e)
+
+
+# Fixes from the code review ----------------------------------------------------------------------------------------
+
+def test_judge_output_is_normalised():
+    out = verdict._clean_judgement({"verdict": "maybe", "cited": [1, "E2", {"x": 1}, "E9"], "summary": None,
+                                    "actual": "Lahaina"}, {"E1", "E2"})
+    assert out["verdict"] == "cannot_tell" and out["cited"] == ["E2"] and out["summary"] == ""
+    assert out["actual"] == {"place": None, "date": None, "event": None}
+    assert verdict._clean_judgement({"verdict": "inconsistent", "cited": "E1, E2"}, {"E1", "E2"})["cited"] == ["E1", "E2"]
+
+
+def test_model_booleans():
+    assert meta.truthy(True) and meta.truthy("true") and not meta.truthy("false") and not meta.truthy(None)
+
+
+@pytest.mark.parametrize("value,expected", [(2023, "2023"), ("2023-08", "2023-08"), ("2023-13-45", None),
+                                            ("August 2023", None), (None, None)])
+def test_described_dates_are_validated(value, expected):
+    assert pipeline._iso(value) == expected
+
+
+def search_one_page(monkeypatch, extra=None):
+    pages = [{"url": "https://www.cbsnews.com/a", "title": "", "image_urls": ["https://cbs.com/a.jpg"],
+              "match": "full"}] + (extra or [])
+    monkeypatch.setattr(pipeline.search, "google_vision", lambda b: {"pages": pages, "best_guess": [], "similar": []})
+
+
+def test_numeric_described_date_does_not_break_timeline(offline):
+    search_one_page(offline)
+    offline.setattr(pipeline.reader, "read_page", lambda url, imgs, budget=None: {
+        "url": url, "opened": True, "relevant": True, "place": "Lahaina", "date": 2023, "event": "fire"})
+    result = run_events()[-1]
+    assert result["type"] == "result"
+    assert any(t["kind"] == "described" and t["date"] == "2023" for t in result["timeline"])
+
+
+def test_one_failing_page_does_not_end_the_check(offline):
+    search_one_page(offline)
+
+    def broken(url, imgs, budget=None):
+        raise RuntimeError("Meta API call failed")
+    offline.setattr(pipeline.reader, "read_page", broken)
+    result = run_events()[-1]
+    assert result["type"] == "result" and result["verdict"] == "inconsistent"  # the archive date still decides
+
+
+def test_lookup_missing_from_recording_counts_as_no_data(offline):
+    search_one_page(offline)
+
+    def not_recorded(url):
+        raise replay.NotInReplay("wayback")
+    offline.setattr(pipeline.archive, "first_capture", not_recorded)
+    result = run_events()[-1]
+    assert result["type"] == "result" and result["rule"] is None
+
+
+def test_same_page_from_two_search_images_keeps_the_full_match(offline):
+    regions = [{"box": (0, 0, 10, 10), "conf": 0.9, "jpeg": jpeg()}]
+    offline.setattr(pipeline.sam, "photo_regions", lambda b, budget=None: regions)
+    answers = iter([
+        {"pages": [{"url": "https://site.org/p", "title": "", "image_urls": ["https://site.org/crop.jpg"],
+                    "match": "partial"}], "similar": []},
+        {"pages": [{"url": "https://site.org/p", "title": "", "image_urls": ["https://site.org/full.jpg"],
+                    "match": "full"}], "similar": []},
+    ])
+    offline.setattr(pipeline.search, "google_vision", lambda b: next(answers))
+    result = run_events()[-1]
+    (row,) = [e for e in result["evidence"] if e["url"] == "https://site.org/p"]
+    assert row["match"] == "full"
+
+
+def test_vision_error_is_not_turned_into_no_copies(replay_dir, monkeypatch):
+    monkeypatch.setattr(config, "MODE", "live")
+    monkeypatch.setattr(config, "GOOGLE_VISION_API_KEY", "test")
+
+    class Answer:
+        status_code = 200
+
+        def json(self):
+            return {"responses": [{"error": {"message": "Bad image data."}}]}
+    monkeypatch.setattr(search.requests, "post", lambda *a, **k: Answer())
+    with pytest.raises(search.SearchUnavailable):
+        search.google_vision(jpeg())
+    assert not any(replay_dir.rglob("*.json"))
+
+
+def test_budget_cap_is_not_applied_to_replays(monkeypatch):
+    monkeypatch.setattr(config, "MODE", "replay")
+    b = meta.Budget(cap=0.0)
+    b.check()
+
+
+def test_claim_never_uses_todays_date(monkeypatch):
+    seen = {}
+
+    def fake(model, prompt, **k):
+        seen["prompt"] = prompt
+        return {"place": None, "period_start": 2024}, []
+    monkeypatch.setattr(pipeline.claim.meta, "ask_json", fake)
+    c = pipeline.claim.read_claim("Valencia yesterday", None)
+    assert "The post was published on: unknown" in seen["prompt"]
+    assert c["period_start"] is None

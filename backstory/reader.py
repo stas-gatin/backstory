@@ -42,8 +42,10 @@ def _extract(url, image_urls):
         r = requests.get(url, headers=UA, timeout=20)
     except requests.RequestException as e:
         return {"ok": False, "error": type(e).__name__}
-    if r.status_code != 200 or "html" not in r.headers.get("content-type", ""):
+    if r.status_code != 200:
         return {"ok": False, "error": "HTTP %s" % r.status_code}
+    if "html" not in r.headers.get("content-type", ""):
+        return {"ok": False, "error": "not a web page"}
     soup = BeautifulSoup(r.content[:3_000_000], "html.parser")
     title = (soup.title.string or "").strip() if soup.title else ""
     published = _published(soup)
@@ -63,8 +65,11 @@ def _extract(url, image_urls):
 
 
 def fetch_page(url, image_urls):
-    return replay.cached("page", {"url": url}, lambda: _extract(url, image_urls), note=url[:200],
-                         keep=lambda r: r.get("ok") or r.get("error", "").startswith("HTTP 4"))
+    # The image list is part of the key: it decides which captions next to the photo are picked up.
+    key = {"url": url, "images": sorted(image_urls)[:10]}
+    return replay.cached("page", key, lambda: _extract(url, image_urls), note=url[:200],
+                         keep=lambda r: r.get("ok") or r.get("error", "").startswith("HTTP 4")
+                         or r.get("error") == "not a web page")
 
 
 PROMPT = """A reverse image search found a photo on this web page. Report how this page describes that photo.
@@ -98,5 +103,6 @@ def read_page(url, image_urls, budget=None):
         data, _ = meta.ask_json(config.SPARK, prompt, budget=budget, note="read " + url[:150])
     except ValueError:
         data = {"relevant": False}
+    data["relevant"] = meta.truthy(data.get("relevant"))
     data.update({"url": url, "opened": True, "title": page["title"]})
     return data

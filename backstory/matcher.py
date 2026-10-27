@@ -53,6 +53,6 @@ def same_source(post_image, url, budget=None):
                                note="match " + url[:150])
     except ValueError:
         return {"url": url, "same": False, "reason": "no answer"}
-    out["same"] = bool(out.get("same")) and out.get("confidence") == "high"
+    out["same"] = meta.truthy(out.get("same")) and out.get("confidence") == "high"
     out["url"] = url
     return out

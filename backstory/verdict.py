@@ -9,6 +9,7 @@
 """
 import datetime as dt
 import json
+import re
 
 from . import config, matcher, meta
 
@@ -115,10 +116,27 @@ def _fmt(claim):
 
 def judge(image_bytes, claim, evidence, critic_note=None, budget=None):
     note = ("\nA critic rejected your previous answer: %s\nTake this into account." % critic_note) if critic_note else ""
-    out, _ = meta.ask_json(config.SPARK, JUDGE.format(table=evidence_table(evidence), critic_note=note, **_fmt(claim)),
-                           image_bytes=image_bytes, budget=budget, note="judge")
+    try:
+        out, _ = meta.ask_json(config.SPARK, JUDGE.format(table=evidence_table(evidence), critic_note=note,
+                                                          **_fmt(claim)),
+                               image_bytes=image_bytes, budget=budget, note="judge")
+    except ValueError:
+        out = {"verdict": "cannot_tell", "summary": "The judge gave no usable answer, so there is no verdict."}
+    return _clean_judgement(out, {e["id"] for e in evidence})
+
+
+def _clean_judgement(out, ids):
+    """Model output in the shape the rest of the code expects, whatever the model returned."""
     if out.get("verdict") not in VERDICTS:
         out["verdict"] = "cannot_tell"
+    cited = out.get("cited")
+    if isinstance(cited, str):
+        cited = re.findall(r"E\d+", cited)
+    out["cited"] = [str(x) for x in (cited if isinstance(cited, list) else []) if str(x) in ids]
+    out["summary"] = str(out.get("summary") or "").strip()
+    actual = out.get("actual") if isinstance(out.get("actual"), dict) else {}
+    out["actual"] = {k: (str(actual[k]) if actual.get(k) not in (None, "", "null") else None)
+                     for k in ("place", "date", "event")}
     return out
 
 
@@ -138,8 +156,11 @@ def critic(claim, evidence, judged, post_image=None, budget=None):
         images = [post_image] + images
         look = ("Image 1 is the post's image. " + " ".join("Image %d is evidence %s." % (i + 2, eid)
                                                         for i, eid in enumerate(shown)) + "\n")
-    out, _ = meta.ask_json(config.WONDER, CRITIC.format(table=evidence_table(evidence), look_alikes=look,
-                                                        judge=json.dumps(j, ensure_ascii=False), **_fmt(claim)),
-                           images=images or None, effort="medium", budget=budget, note="critic")
-    out["approve"] = bool(out.get("approve"))
+    try:
+        out, _ = meta.ask_json(config.WONDER, CRITIC.format(table=evidence_table(evidence), look_alikes=look,
+                                                            judge=json.dumps(j, ensure_ascii=False), **_fmt(claim)),
+                               images=images or None, effort="medium", budget=budget, note="critic")
+    except ValueError:
+        out = {"approve": False, "problem": "the critic gave no usable answer"}
+    out["approve"] = meta.truthy(out.get("approve"))
     return out

@@ -33,6 +33,8 @@ class Budget:
             self.calls[model] = self.calls.get(model, 0) + 1
 
     def check(self):
+        if config.MODE == "replay":
+            return  # recorded answers cost nothing, and the cap must not make replays differ
         if self.usd >= self.cap:
             raise BudgetExceeded("cost cap of $%.2f reached" % self.cap)
 
@@ -110,6 +112,11 @@ def web_sources(j):
                     if a.get("type") == "url_citation":
                         out.append({"title": a.get("title"), "url": a.get("url"), "cited": True})
     return out
+
+
+def truthy(value):
+    """A model's yes/no field: true only for JSON true or the word "true" (a string "false" is not true)."""
+    return value is True or str(value).strip().lower() == "true"
 
 
 def parse_json(text):

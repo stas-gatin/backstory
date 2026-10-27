@@ -6,6 +6,7 @@ same results that were recorded.
 """
 import hashlib
 import json
+import os
 import threading
 
 from . import config
@@ -38,7 +39,9 @@ def store(kind, payload, response, note=None):
     p = _path(kind, request_hash(payload))
     with _lock:
         p.parent.mkdir(parents=True, exist_ok=True)
-        p.write_text(json.dumps({"note": note, "response": response}, ensure_ascii=False, indent=1))
+        tmp = p.with_suffix(".tmp%d" % threading.get_ident())
+        tmp.write_text(json.dumps({"note": note, "response": response}, ensure_ascii=False, indent=1))
+        os.replace(tmp, p)  # readers never see a half-written file
 
 
 def cached_bytes(kind, payload, fetch):
@@ -52,7 +55,9 @@ def cached_bytes(kind, payload, fetch):
     if data:
         with _lock:
             p.parent.mkdir(parents=True, exist_ok=True)
-            p.write_bytes(data)
+            tmp = p.with_suffix(".tmp%d" % threading.get_ident())
+            tmp.write_bytes(data)
+            os.replace(tmp, p)
     return data
 
 

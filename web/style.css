@@ -184,3 +184,4 @@ td:last-child { min-width: 220px; }
 .compare-note { margin-top: 16px; border: 1px dashed var(--line); border-radius: 12px; padding: 12px 14px; font-size: 14px; }
 .compare-note .k { font-size: 12px; font-weight: 600; color: var(--muted); text-transform: uppercase; letter-spacing: .05em; margin-bottom: 4px; }
 .compare-note p { margin: 0; white-space: pre-line; color: var(--muted); }
+.input.busy .examples, .input.busy .drop { opacity: .55; pointer-events: none; }

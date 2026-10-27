@@ -91,6 +91,13 @@ docker compose up --build
 Then open http://localhost:8000. Without keys it runs in **replay mode**: recorded answers, no network, same results.
 With keys (copy `.env.example` to `.env`) it runs live and records every new answer into `replay/`.
 
+Tests (offline, no keys, no network; every external call is replaced by a stand-in):
+
+```bash
+pip install -r requirements.txt -r requirements-dev.txt
+python -m pytest -q tests
+```
+
 Evaluation on 5Pils:
 
 ```bash

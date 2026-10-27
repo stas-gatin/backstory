@@ -5,10 +5,12 @@ plus the URLs of the matching image files on it.
 """
 import base64
 import hashlib
+import io
 import re
 from urllib.parse import urlparse
 
 import requests
+from PIL import Image
 
 from . import config, replay
 
@@ -46,6 +48,17 @@ class SearchUnavailable(Exception):
     pass
 
 
+def _fit(image_bytes, limit=4_000_000):
+    """Re-encode images too large for one Vision request (10 MB including base64)."""
+    if len(image_bytes) <= limit:
+        return image_bytes
+    im = Image.open(io.BytesIO(image_bytes)).convert("RGB")
+    im.thumbnail((2048, 2048))
+    buf = io.BytesIO()
+    im.save(buf, format="JPEG", quality=90)
+    return buf.getvalue()
+
+
 def google_vision(image_bytes):
     """Pages with a full or partial match of the image, best matches first."""
     sha = hashlib.sha256(image_bytes).hexdigest()
@@ -53,12 +66,19 @@ def google_vision(image_bytes):
     def fetch():
         if not config.GOOGLE_VISION_API_KEY:
             raise SearchUnavailable("reverse image search needs GOOGLE_VISION_API_KEY")
-        body = {"requests": [{"image": {"content": base64.b64encode(image_bytes).decode()},
+        body = {"requests": [{"image": {"content": base64.b64encode(_fit(image_bytes)).decode()},
                               "features": [{"type": "WEB_DETECTION", "maxResults": 50}]}]}
-        r = requests.post("https://vision.googleapis.com/v1/images:annotate",
-                          params={"key": config.GOOGLE_VISION_API_KEY}, json=body, timeout=60)
-        r.raise_for_status()
-        return r.json()["responses"][0].get("webDetection", {})
+        try:
+            r = requests.post("https://vision.googleapis.com/v1/images:annotate",
+                              params={"key": config.GOOGLE_VISION_API_KEY}, json=body, timeout=60)
+        except requests.RequestException as e:
+            raise SearchUnavailable("image search did not answer (%s)" % type(e).__name__)
+        if r.status_code != 200:
+            raise SearchUnavailable("image search failed (HTTP %d)" % r.status_code)
+        answer = r.json()["responses"][0]
+        if "error" in answer:  # never recorded: it would turn into a false "no copies online"
+            raise SearchUnavailable("image search failed: %s" % answer["error"].get("message", "unknown error"))
+        return answer.get("webDetection", {})
 
     web = replay.cached("vision", {"image_sha256": sha}, fetch, note="web detection")
     pages = []

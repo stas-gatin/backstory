@@ -28,14 +28,20 @@ Reply with one JSON object:
 
 
 def read_claim(caption, posted_on=None, budget=None):
-    posted_on = posted_on or dt.date.today().isoformat()
-    data, sources = meta.ask_json(config.SPARK, PROMPT.format(caption=caption.strip(), posted_on=posted_on),
-                                  web_search=True, budget=budget, note="claim")
+    # Never today's date: it would change the request every day and break recorded checks.
+    posted_on = posted_on or "unknown"
+    try:
+        data, sources = meta.ask_json(config.SPARK, PROMPT.format(caption=caption.strip(), posted_on=posted_on),
+                                      web_search=True, budget=budget, note="claim")
+    except ValueError:
+        data, sources = {}, []
     start = data.get("period_start")
     try:
-        data["period_start"] = dt.date.fromisoformat(start).isoformat() if start else None
+        data["period_start"] = dt.date.fromisoformat(str(start)).isoformat() if start else None
     except ValueError:
         data["period_start"] = None
+    for k in ("place", "event", "claimed_date"):
+        data[k] = str(data[k]) if data.get(k) not in (None, "", "null") else None
     data["sources"] = [s for s in sources if s.get("cited")][:5]
     data["caption"] = caption.strip()
     data["posted_on"] = posted_on
