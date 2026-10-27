@@ -27,6 +27,11 @@ class Budget:
             self.usd += cost
             self.calls[model] = self.calls.get(model, 0) + 1
 
+    def add_usd(self, model, usd):
+        with self._lock:
+            self.usd += usd
+            self.calls[model] = self.calls.get(model, 0) + 1
+
     def check(self):
         if self.usd >= self.cap:
             raise BudgetExceeded("cost cap of $%.2f reached" % self.cap)
