@@ -69,11 +69,12 @@ def _post(body):
     raise RuntimeError("Meta API call failed: %s" % last)
 
 
-def respond(model, text, image_bytes=None, effort="low", web_search=False, budget=None, note=None):
-    """One model call. Returns (output_text, sources), where sources are web_search results if any."""
+def respond(model, text, image_bytes=None, effort="low", web_search=False, budget=None, note=None, images=None):
+    """One model call. Returns (output_text, sources), where sources are web_search results if any.
+    image_bytes: one image; images: several, in order."""
     content = [{"type": "input_text", "text": text}]
-    if image_bytes is not None:
-        content.append({"type": "input_image", "image_url": image_data_url(image_bytes)})
+    for im in ([image_bytes] if image_bytes is not None else []) + list(images or []):
+        content.append({"type": "input_image", "image_url": image_data_url(im)})
     body = {"model": model, "stream": False, "reasoning": {"effort": effort},
             "input": [{"type": "message", "role": "user", "content": content}]}
     if web_search:

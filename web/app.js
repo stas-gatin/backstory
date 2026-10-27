@@ -5,6 +5,9 @@ const esc = (s) => String(s ?? "").replace(/[&<>"]/g, (c) => ({ "&": "&amp;", "<
 
 // Line icons, 24x24, drawn with the current text colour.
 const PATHS = {
+  match: '<rect x="3" y="3" width="12" height="12" rx="2"/><rect x="9" y="9" width="12" height="12" rx="2"/>',
+  frames: '<rect x="3" y="5" width="18" height="14" rx="2"/><path d="M7 5v14M17 5v14M3 9h4M3 15h4M17 9h4M17 15h4"/>',
+  speech: '<rect x="9" y="3" width="6" height="11" rx="3"/><path d="M5 11a7 7 0 0 0 14 0M12 18v3"/>',
   claim: '<path d="M4 6h16M4 12h12M4 18h8"/>',
   search: '<rect x="3" y="4" width="18" height="16" rx="2"/><circle cx="9" cy="10" r="2"/><path d="m21 16-5-5-9 9"/>',
   archive: '<rect x="3" y="4" width="18" height="5" rx="1"/><path d="M5 9v10a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1V9M10 13h4"/>',
@@ -51,20 +54,28 @@ async function init() {
 function pickExample(e) {
   chosenExample = e; chosenFile = null;
   document.querySelectorAll(".ex").forEach((b) => b.classList.toggle("on", b.dataset.id === e.id));
-  showPreview(`/api/examples/${encodeURIComponent(e.id)}/image`);
+  if (e.kind === "video") showVideo(`/api/examples/${encodeURIComponent(e.id)}/video`);
+  else showPreview(`/api/examples/${encodeURIComponent(e.id)}/image`);
   $("#caption").value = e.caption;
   $("#posted").value = /^\d{4}-\d\d-\d\d$/.test(e.posted_on || "") ? e.posted_on : "";
 }
 
 function showPreview(src) {
   $("#preview").src = src; $("#preview").hidden = false; $("#dropText").hidden = true;
+  $("#previewVideo").hidden = true; $("#previewVideo").removeAttribute("src");
+}
+
+function showVideo(src) {
+  $("#previewVideo").src = src; $("#previewVideo").hidden = false; $("#dropText").hidden = true;
+  $("#preview").hidden = true;
 }
 
 function pickFile(f) {
   if (!f) return;
   chosenFile = f; chosenExample = null;
   document.querySelectorAll(".ex").forEach((b) => b.classList.remove("on"));
-  showPreview(URL.createObjectURL(f));
+  const url = URL.createObjectURL(f);
+  if (f.type.startsWith("video/")) showVideo(url); else showPreview(url);
 }
 
 $("#file").addEventListener("change", (e) => pickFile(e.target.files[0]));
@@ -85,7 +96,7 @@ $("#form").addEventListener("submit", async (e) => {
   if (chosenExample) fd.append("example_id", chosenExample.id);
   else {
     if (!chosenFile || !$("#caption").value.trim()) {
-      $("#formError").textContent = "Choose a photo and enter the caption it was shared with.";
+      $("#formError").textContent = "Choose a photo or video and enter the caption it was shared with.";
       return;
     }
     fd.append("image", chosenFile);
@@ -189,7 +200,8 @@ function showResult(r) {
   box.className = "card result " + r.verdict;
   const c = r.claim || {}, a = r.actual || {};
   const calls = Object.values(r.cost?.calls || {}).reduce((x, y) => x + y, 0);
-  const img = $("#preview").hidden ? "" : `<img class="thumb" src="${esc($("#preview").src)}" alt="Checked photo">`;
+  const img = !$("#preview").hidden ? `<img class="thumb" src="${esc($("#preview").src)}" alt="Checked photo">`
+    : !$("#previewVideo").hidden ? `<video class="thumb" src="${esc($("#previewVideo").src)}" muted></video>` : "";
   const compare = r.verdict === "inconsistent" && (a.place || a.date || a.event)
     ? `<div class="compare">${fact("The caption says", [c.place, c.claimed_date, c.event])}
          <div class="vs">${icon("inconsistent")}</div>

@@ -10,7 +10,7 @@
 import datetime as dt
 import json
 
-from . import config, meta
+from . import config, matcher, meta
 
 VERDICTS = ("consistent", "inconsistent", "cannot_tell")
 
@@ -22,6 +22,8 @@ def date_rule(claim, evidence):
     start = dt.date.fromisoformat(start)
     best = None
     for e in evidence:
+        if e.get("match") not in ("full", "partial"):
+            continue  # the rule was tested on exact search matches only; look-alikes go to the judge
         if e.get("image_first") and dt.date.fromisoformat(e["image_first"]) < start - dt.timedelta(days=1):
             if best is None or e["image_first"] < best["image_first"]:
                 best = e
@@ -35,7 +37,8 @@ def date_rule(claim, evidence):
 def evidence_table(evidence):
     rows = []
     for e in evidence:
-        rows.append({k: e.get(k) for k in ("id", "domain", "match", "image_first", "page_first", "page_published",
+        rows.append({k: e.get(k) for k in ("id", "domain", "match", "match_reason", "image_first", "page_first",
+                                            "page_published",
                                             "described_place", "described_date", "described_event", "quote",
                                             "fact_checker")})
     return json.dumps(rows, ensure_ascii=False, indent=0)
@@ -52,7 +55,10 @@ Evidence table (one row per web page where reverse image search found this photo
   date. A late or missing capture proves nothing: the Archive often captures files years after they appear.
 - page_published: publication date from the page's own metadata (usually reliable, but a page can be updated later)
 - described_*: how that page describes the photo
-- match: "full" = the same image file; "partial" = only part of the image matches (may be a crop or a similar photo)
+- match: "full" = the same image file; "partial" = only part of the image matches (may be a crop or a similar photo);
+  "confirmed look-alike" = found as visually similar, then a separate checker compared it with the post's image and
+  confirmed with high confidence that both come from the same photo or video footage (match_reason says why).
+  Treat a confirmed look-alike as the same source, so its archive date counts like any other copy.
 - fact_checker: true if the page is a fact-checking site
 {table}
 
@@ -79,7 +85,9 @@ Claim: place: {place}; event: {event}; date: {claimed_date}; earliest possible d
 Evidence table (image_first / page_first = first Internet Archive capture, which proves the file or page existed BY
 that date; a late or missing capture proves nothing; page_published = date from the page's own metadata):
 {table}
-
+match: "full" / "partial" = exact search matches; "confirmed look-alike" = an image the search called visually
+similar and a separate checker judged to come from the same photo or footage.
+{look_alikes}
 Judge's answer:
 {judge}
 
@@ -93,8 +101,11 @@ Approve only if all hold:
    that does not weaken "inconsistent": the caption is wrong either way.
 3. "consistent" rests on independent evidence that matches place and date, not on pages repeating the caption.
 4. "cannot_tell" is acceptable whenever the evidence is thin.
+5. If the verdict rests on a confirmed look-alike, you must check the images yourself: they must show the same
+   moment from the same photo or footage, not just a similar scene. If they do, its archive date counts like any copy.
 Reply with one JSON object:
-{{"approve": true | false, "problem": "what is wrong, one sentence, or null"}}"""
+{{"approve": true | false, "same_source_checked": "for each cited look-alike: id and same / different, or null",
+  "problem": "what is wrong, one sentence, or null"}}"""
 
 
 def _fmt(claim):
@@ -111,10 +122,24 @@ def judge(image_bytes, claim, evidence, critic_note=None, budget=None):
     return out
 
 
-def critic(claim, evidence, judged, budget=None):
+def critic(claim, evidence, judged, post_image=None, budget=None):
     j = {k: judged.get(k) for k in ("verdict", "cited", "summary", "actual")}
-    out, _ = meta.ask_json(config.WONDER, CRITIC.format(table=evidence_table(evidence),
+    # Cited look-alikes are shown to the critic next to the post's image, so it checks the match itself.
+    cited = set(judged.get("cited") or [])
+    shown, images = [], []
+    for e in evidence:
+        if e["id"] in cited and e.get("match") == "confirmed look-alike" and post_image is not None and len(shown) < 2:
+            cand = matcher.download(e["url"])
+            if cand is not None:
+                shown.append(e["id"])
+                images.append(cand)
+    look = ""
+    if shown:
+        images = [post_image] + images
+        look = ("Image 1 is the post's image. " + " ".join("Image %d is evidence %s." % (i + 2, eid)
+                                                        for i, eid in enumerate(shown)) + "\n")
+    out, _ = meta.ask_json(config.WONDER, CRITIC.format(table=evidence_table(evidence), look_alikes=look,
                                                         judge=json.dumps(j, ensure_ascii=False), **_fmt(claim)),
-                           effort="medium", budget=budget, note="critic")
+                           images=images or None, effort="medium", budget=budget, note="critic")
     out["approve"] = bool(out.get("approve"))
     return out

@@ -4,6 +4,7 @@ Run: uvicorn backstory.server:app --port 8000
 """
 import json
 import os
+import tempfile
 from pathlib import Path
 
 from fastapi import FastAPI, File, Form, HTTPException, UploadFile
@@ -15,6 +16,7 @@ from . import config, pipeline
 WEB = config.ROOT / "web"
 EXAMPLES = Path(os.environ.get("BACKSTORY_EXAMPLES_DIR", config.ROOT / "examples"))
 MAX_UPLOAD = 8 * 1024 * 1024
+MAX_VIDEO = 60 * 1024 * 1024
 
 app = FastAPI(title="Backstory")
 
@@ -32,7 +34,7 @@ def status():
 
 @app.get("/api/examples")
 def examples():
-    return [{k: e[k] for k in ("id", "title", "caption", "posted_on", "credit") if k in e} for e in _examples()]
+    return [{k: e[k] for k in ("id", "title", "caption", "posted_on", "credit", "kind") if k in e} for e in _examples()]
 
 
 @app.get("/api/examples/{ex_id}/image")
@@ -43,30 +45,53 @@ def example_image(ex_id: str):
     raise HTTPException(404)
 
 
-def _ndjson(events):
-    for ev in events:
-        yield json.dumps(ev, ensure_ascii=False) + "\n"
+def _ndjson(events, cleanup=None):
+    try:
+        for ev in events:
+            yield json.dumps(ev, ensure_ascii=False) + "\n"
+    finally:
+        if cleanup:
+            Path(cleanup).unlink(missing_ok=True)
 
 
 @app.post("/api/check")
 async def check(caption: str = Form(""), posted_on: str = Form(""), example_id: str = Form(""),
                 image: UploadFile | None = File(None)):
+    video_path, cleanup = None, None
     if example_id:
         ex = next((e for e in _examples() if e["id"] == example_id), None)
         if not ex:
             raise HTTPException(404, "unknown example")
-        data = (EXAMPLES / ex["image"]).read_bytes()
         caption, posted_on = ex["caption"], ex.get("posted_on") or ""
         # Dataset cases carry their recorded search results instead of a live image search.
         matches = ex.get("matches")
+        if ex.get("kind") == "video":
+            data, video_path = None, str(EXAMPLES / ex["video"])
+        else:
+            data = (EXAMPLES / ex["image"]).read_bytes()
     else:
         if image is None or not caption.strip():
-            raise HTTPException(400, "send a photo and its caption")
+            raise HTTPException(400, "send a photo or video and its caption")
         data, matches = await image.read(), None
-        if len(data) > MAX_UPLOAD:
+        if (image.content_type or "").startswith("video/"):
+            if len(data) > MAX_VIDEO:
+                raise HTTPException(413, "video larger than 60 MB")
+            with tempfile.NamedTemporaryFile(suffix=Path(image.filename or "v.mp4").suffix, delete=False) as f:
+                f.write(data)
+            data, video_path = None, f.name
+            cleanup = f.name
+        elif len(data) > MAX_UPLOAD:
             raise HTTPException(413, "photo larger than 8 MB")
-    return StreamingResponse(_ndjson(pipeline.run(data, caption, posted_on or None, matches=matches)),
-                             media_type="application/x-ndjson")
+    events = pipeline.run(data, caption, posted_on or None, matches=matches, video_path=video_path)
+    return StreamingResponse(_ndjson(events, cleanup), media_type="application/x-ndjson")
+
+
+@app.get("/api/examples/{ex_id}/video")
+def example_video(ex_id: str):
+    for e in _examples():
+        if e["id"] == ex_id and e.get("kind") == "video":
+            return FileResponse(EXAMPLES / e["video"])
+    raise HTTPException(404)
 
 
 @app.get("/")

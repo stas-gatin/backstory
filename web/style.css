@@ -44,7 +44,7 @@ h2 { font-size: 17px; margin: 0 0 14px; font-weight: 700; }
 .drop { display: grid; place-items: center; min-height: 150px; border: 2px dashed var(--blue-line); border-radius: 12px;
   cursor: pointer; color: var(--blue); background: #F7FAFF; overflow: hidden; font-weight: 500; text-align: center; padding: 8px; }
 .drop.over { border-color: var(--blue); background: var(--blue-soft); }
-.drop img { max-width: 100%; max-height: 260px; border-radius: 8px; }
+.drop img, .drop video { max-width: 100%; max-height: 260px; border-radius: 8px; }
 .droptext { display: grid; justify-items: center; gap: 4px; }
 .droptext .ic { width: 28px; height: 28px; margin-bottom: 4px; }
 .droptext small { color: var(--muted); font-weight: 400; font-size: 12px; }

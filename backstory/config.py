@@ -32,8 +32,9 @@ SPARK = "muse-spark-1.3"
 WONDER = "muse-wonder-1.0"
 
 # USD per million tokens (input, output). Used only to report and cap spending.
-PRICES = {SPARK: (1.25, 4.25), WONDER: (5.0, 20.0)}
+PRICES = {SPARK: (1.25, 4.25), WONDER: (4.0, 20.0)}  # dev.meta.ai pricing page, 2026-10-27
 COST_CAP_PER_CHECK = float(os.environ.get("BACKSTORY_COST_CAP", "0.30"))
 
 MAX_PAGES = 6          # pages the reader agent opens per photo
 MAX_ARCHIVE_LOOKUPS = 12
+MAX_SIMILAR = 8        # look-alike images the match checker compares when exact matches are scarce

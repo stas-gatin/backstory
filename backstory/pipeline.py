@@ -6,11 +6,14 @@ Event types: "step" (an agent starts or finishes), "evidence" (one row of the ev
 import concurrent.futures as cf
 import re
 
-from . import archive, claim, config, meta, reader, replay, search, verdict
+from . import archive, claim, config, matcher, meta, reader, replay, search, verdict, video
 
 AGENTS = {
+    "frames": "Frame grabber · ffmpeg",
+    "speech": "Speech reader · Muse Voice Transcribe",
     "claim": "Claim reader · Muse Spark + web search",
     "search": "Image search · Google Vision",
+    "match": "Match checker · Muse Spark",
     "archive": "Archivist · Internet Archive",
     "reader": "Page reader · Muse Spark",
     "rule": "Date rule · code",
@@ -36,23 +39,44 @@ def _min_date(*dates):
     return min(dates) if dates else None
 
 
-def run(image_bytes, caption, posted_on=None, matches=None, exclude_fact_checkers=False):
-    """matches: a fixed search result (evaluation); None means live reverse image search."""
+def run(image_bytes, caption, posted_on=None, matches=None, exclude_fact_checkers=False, video_path=None):
+    """matches: a fixed search result (evaluation); None means live reverse image search.
+    video_path: a video post instead of a photo; its frames are searched and its speech joins the caption."""
     budget = meta.Budget()
     try:
-        yield from _run(image_bytes, caption, posted_on, matches, exclude_fact_checkers, budget)
+        yield from _run(image_bytes, caption, posted_on, matches, exclude_fact_checkers, budget, video_path)
     except replay.NotInReplay as e:
         yield {"type": "error", "text": "This check was not recorded, and the demo runs without keys (replay mode). "
                                         "Pick one of the examples, or run Backstory locally with keys. (%s)" % e}
     except search.SearchUnavailable as e:
         yield {"type": "error", "text": str(e)}
+    except video.VideoError as e:
+        yield {"type": "error", "text": "Could not read the video: %s" % e}
     except meta.BudgetExceeded as e:
         yield {"type": "error", "text": "Stopped: %s." % e}
     except Exception as e:  # noqa: BLE001 - reported to the page, never swallowed silently
         yield {"type": "error", "text": "%s: %s" % (type(e).__name__, e)}
 
 
-def _run(image_bytes, caption, posted_on, matches, exclude_fact_checkers, budget):
+def _run(image_bytes, caption, posted_on, matches, exclude_fact_checkers, budget, video_path=None):
+    search_images = [image_bytes]
+    if video_path:
+        # 0. A video: still frames to search for, and the words spoken in it.
+        yield step("frames", "running", "Taking still frames from the video")
+        shots = video.frames(video_path)
+        if not shots:
+            raise video.VideoError("no frames could be read")
+        image_bytes, search_images = shots[0]["jpeg"], [f["jpeg"] for f in shots]
+        yield step("frames", "done", "%s taken at %s s" % (_count(len(shots), "frame", "frames"),
+                                                          ", ".join(str(f["t"]) for f in shots)))
+        yield step("speech", "running", "Transcribing what is said in the video")
+        wav = video.audio_wav(video_path)
+        spoken = video.transcribe(wav, budget=budget) if wav else ""
+        yield step("speech", "done", ('Said in the video: "%s"' % spoken[:300]) if spoken else "No speech in the video",
+                   transcript=spoken)
+        if spoken:
+            caption = (caption.strip() + "\n" if caption.strip() else "") + 'Spoken in the video: "%s"' % spoken
+
     # 1. What does the caption claim?
     yield step("claim", "running", "Reading the caption")
     c = claim.read_claim(caption, posted_on, budget=budget)
@@ -60,10 +84,22 @@ def _run(image_bytes, caption, posted_on, matches, exclude_fact_checkers, budget
     yield step("claim", "done", "The caption claims: %s" % (said or "nothing checkable"), claim=c)
 
     # 2. Where else is this photo online?
-    yield step("search", "running", "Searching the web for this exact photo")
-    found = search.from_list(matches) if matches is not None else search.google_vision(image_bytes)
+    what = "these frames" if video_path else "this exact photo"
+    yield step("search", "running", "Searching the web for %s" % what)
+    similar = []
+    if matches is not None:
+        found_pages = search.from_list(matches)["pages"]
+    else:
+        results = [search.google_vision(img) for img in search_images]
+        found_pages = [p for r in results for p in r["pages"]]
+        # Candidates seen for several frames first.
+        seen = {}
+        for r in results:
+            for u in r["similar"]:
+                seen[u] = seen.get(u, 0) + 1
+        similar = sorted(seen, key=lambda u: -seen[u])
     pages = []
-    for p in found["pages"]:
+    for p in found_pages:
         fc = search.is_fact_checker(p["url"])
         if fc and exclude_fact_checkers:
             continue
@@ -71,17 +107,36 @@ def _run(image_bytes, caption, posted_on, matches, exclude_fact_checkers, budget
             pages.append(dict(p, fact_checker=fc, domain=search.domain(p["url"])))
     # Read news and archive pages first; video, review and social pages rarely say where a photo is from.
     pages.sort(key=lambda p: (p.get("match") == "partial", search.low_value(p["url"])))
-    yield step("search", "done", "Found the photo on %d page%s" % (len(pages), "" if len(pages) == 1 else "s"),
-               count=len(pages))
+    yield step("search", "done", "Found %s on %s" % ("the frames" if video_path else "the photo",
+                                                      _count(len(pages), "page", "pages")), count=len(pages))
+
+    # 2b. Few exact matches (typical for video frames and re-encoded copies): check look-alikes one by one.
+    if sum(1 for p in pages if p.get("match") == "full") < 2 and similar:
+        cands = similar[:config.MAX_SIMILAR]
+        yield step("match", "running", "Comparing %s with the post, frame by frame"
+                   % _count(len(cands), "look-alike image", "look-alike images"))
+        with cf.ThreadPoolExecutor(max_workers=4) as pool:
+            checks = list(pool.map(lambda u: matcher.same_source(image_bytes, u, budget=budget), cands))
+        confirmed = [m for m in checks if m["same"]]
+        for m in confirmed:
+            if m["url"] not in [q["url"] for q in pages]:
+                pages.append({"url": m["url"], "title": "", "image_urls": [m["url"]], "match": "confirmed look-alike",
+                              "image_only": True, "fact_checker": search.is_fact_checker(m["url"]),
+                              "domain": search.domain(m["url"]), "match_reason": m.get("reason")})
+        yield step("match", "done", ("%s the same source: %s" % (
+            _count(len(confirmed), "image is", "images are"), "; ".join(search.domain(m["url"]) for m in confirmed)))
+            if confirmed else "None of them is the same photo or footage", checked=len(cands))
     if not pages:
         yield from _finish(c, [], None, None, None, budget, "No earlier copy of this photo was found online, "
                                                             "so there is nothing to check the caption against.")
         return
 
     # 3 + 4. Archive dates and page reading, in parallel.
-    to_read = pages[:config.MAX_PAGES]
+    read_idx = [i for i, p in enumerate(pages) if not p.get("image_only")][:config.MAX_PAGES]
+    to_read = [pages[i] for i in read_idx]
     image_jobs, n = [], 0
-    for i, p in enumerate(pages):
+    # Image files only known as look-alikes are dated first: their archive date is all there is.
+    for i, p in sorted(enumerate(pages), key=lambda ip: not ip[1].get("image_only")):
         for u in p.get("image_urls", [])[:3]:
             if n < config.MAX_ARCHIVE_LOOKUPS:
                 image_jobs.append((i, u))
@@ -94,7 +149,8 @@ def _run(image_bytes, caption, posted_on, matches, exclude_fact_checkers, budget
     yield step("reader", "running", "Opening %s to see how they describe the photo" % _count(len(to_read), "page", "pages"))
     with cf.ThreadPoolExecutor(max_workers=5) as pool:
         futs = {}
-        for i, p in enumerate(to_read):
+        for i in read_idx:
+            p = pages[i]
             futs[pool.submit(reader.read_page, p["url"], p.get("image_urls", []), budget)] = ("read", i, None)
             futs[pool.submit(archive.first_capture, p["url"])] = ("page", i, None)
         for i, u in image_jobs:
@@ -113,7 +169,7 @@ def _run(image_bytes, caption, posted_on, matches, exclude_fact_checkers, budget
             elif res["date"] and (not e["image_first"] or res["date"] < e["image_first"]):
                 e["image_first"], e["image_snapshot"] = res["date"], res["snapshot"]
             yield {"type": "evidence", "row": e}
-    useful = [e for i, e in enumerate(ev) if i < len(to_read) or e["image_first"]]
+    useful = [e for i, e in enumerate(ev) if i in read_idx or e["image_first"]]
     dated = sum(1 for e in useful if e["image_first"] or e["page_first"])
     yield step("archive", "done", "%d of %d page%s dated by the Internet Archive" % (dated, len(useful), "" if len(useful) == 1 else "s"))
     yield step("reader", "done", _count(sum(1 for e in useful if e.get("relevant")), "page describes", "pages describe") + " the photo")
@@ -132,14 +188,14 @@ def _run(image_bytes, caption, posted_on, matches, exclude_fact_checkers, budget
     j = verdict.judge(image_bytes, c, useful, budget=budget)
     yield step("judge", "done", "%s. %s" % (WORDS[j["verdict"]], j.get("summary", "")), judged=j)
     yield step("critic", "running", "Checking the judge's reasoning against the evidence")
-    cr = verdict.critic(c, useful, j, budget=budget)
+    cr = verdict.critic(c, useful, j, post_image=image_bytes, budget=budget)
     if not cr["approve"]:
         yield step("critic", "done", "Sent back: %s" % cr.get("problem"), critic=cr, approve=False)
         yield step("judge", "running", "Second attempt after the critic's objection")
         j = verdict.judge(image_bytes, c, useful, critic_note=cr.get("problem"), budget=budget)
         yield step("judge", "done", "%s. %s" % (WORDS[j["verdict"]], j.get("summary", "")), judged=j)
         yield step("critic", "running", "Checking the second attempt")
-        cr = verdict.critic(c, useful, j, budget=budget)
+        cr = verdict.critic(c, useful, j, post_image=image_bytes, budget=budget)
     yield step("critic", "done", "Approved: the cited evidence supports the verdict" if cr["approve"]
                else "Still not convinced: %s" % cr.get("problem"),
                critic=cr, approve=cr["approve"])

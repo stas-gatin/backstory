@@ -5,6 +5,7 @@ plus the URLs of the matching image files on it.
 """
 import base64
 import hashlib
+import re
 from urllib.parse import urlparse
 
 import requests
@@ -17,7 +18,12 @@ politifact.com fullfact.org logicallyfacts.com misbar.com dubawa.org faktisk.no 
 
 
 def domain(url):
-    host = urlparse(url).netloc.lower()
+    u = urlparse(url)
+    host = u.netloc.lower()
+    first = u.path.split("/")[1] if u.path.count("/") > 1 else ""
+    # Image CDNs that put the real site in the path (i0.wp.com/example.org/...).
+    if re.fullmatch(r"i\d\.wp\.com", host) and "." in first:
+        host = first.lower()
     return host[4:] if host.startswith("www.") else host
 
 
@@ -62,9 +68,10 @@ def google_vision(image_bytes):
         pages.append({"url": p["url"], "title": p.get("pageTitle", ""), "image_urls": full + partial,
                       "match": "full" if full else "partial"})
     pages.sort(key=lambda p: p["match"] != "full")
-    return {"pages": pages, "best_guess": [l.get("label") for l in web.get("bestGuessLabels", [])]}
+    return {"pages": pages, "best_guess": [l.get("label") for l in web.get("bestGuessLabels", [])],
+            "similar": [i["url"] for i in web.get("visuallySimilarImages", [])]}
 
 
 def from_list(pages):
     """Use a fixed list of matches (evaluation on a dataset whose search results were recorded earlier)."""
-    return {"pages": pages, "best_guess": []}
+    return {"pages": pages, "best_guess": [], "similar": []}

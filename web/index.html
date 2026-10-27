@@ -6,7 +6,7 @@
 <title>Backstory</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="/static/style.css?v=6">
+<link rel="stylesheet" href="/static/style.css?v=8">
 </head>
 <body>
 <header class="top">
@@ -22,7 +22,7 @@
 
 <main>
   <section class="input card">
-    <h2>Check a photo</h2>
+    <h2>Check a post</h2>
     <div id="examplesWrap" hidden>
       <div class="label">Examples</div>
       <div id="examples" class="examples"></div>
@@ -30,9 +30,10 @@
     </div>
     <form id="form">
       <label class="drop" id="drop">
-        <input type="file" id="file" accept="image/*" hidden>
+        <input type="file" id="file" accept="image/*,video/*" hidden>
         <img id="preview" alt="" hidden>
-        <span id="dropText" class="droptext"><span data-icon="search"></span><b>Drop a photo here</b><small>or click to choose a file · JPG, PNG, WebP up to 8 MB</small></span>
+        <video id="previewVideo" controls muted playsinline hidden></video>
+        <span id="dropText" class="droptext"><span data-icon="search"></span><b>Drop a photo or video here</b><small>or click to choose a file · photos up to 8 MB, videos up to 60 MB</small></span>
       </label>
       <label class="field">Caption, as it was shared
         <textarea id="caption" rows="3" placeholder="e.g. Valencia yesterday after the DANA. Nobody is talking about this."></textarea>
@@ -51,8 +52,10 @@
     <div class="card empty" id="emptyCard">
       <h2>How a check works</h2>
       <ol class="how">
+        <li><span data-icon="speech"></span><div><b>Hear the video</b><small>For video posts: still frames, and what is said · Muse Voice Transcribe</small></div></li>
         <li><span data-icon="claim"></span><div><b>Read the caption</b><small>Place, event and date it claims · Muse Spark with web search</small></div></li>
         <li><span data-icon="search"></span><div><b>Find the photo online</b><small>Pages that show this exact image · reverse image search</small></div></li>
+        <li><span data-icon="match"></span><div><b>Check look-alikes</b><small>When exact copies are scarce, compares similar images with the post · Muse Spark</small></div></li>
         <li><span data-icon="archive"></span><div><b>Date every copy</b><small>First Internet Archive capture of each page and image file</small></div></li>
         <li><span data-icon="reader"></span><div><b>Read each page</b><small>How it describes the photo · Muse Spark</small></div></li>
         <li><span data-icon="rule"></span><div><b>Apply the date rule</b><small>A copy older than the claimed date rules the caption out</small></div></li>
@@ -75,6 +78,6 @@
   </section>
 </main>
 <footer>Backstory · built on Muse Spark and Muse Wonder · <a href="https://github.com/stas-gatin/backstory">Source code</a></footer>
-<script src="/static/app.js?v=6"></script>
+<script src="/static/app.js?v=8"></script>
 </body>
 </html>
