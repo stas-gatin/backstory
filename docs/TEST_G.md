@@ -43,3 +43,23 @@ So IoU is reported but removed from the decision (it was: NO-GO if IoU >= 0.9 in
 
 **Limits.** Screenshots are synthetic: real ones vary more (dark mode, stickers, several photos). The banner covers
 part of the photo, so even a perfect crop keeps it. Matching by exact URL undercounts hits (same page, other URL).
+
+## Result (2026-10-27, 17 cases, SAM 0.04 USD)
+
+Only 17 of the 105 images were eligible: most no longer have a full match online (pages and files removed since
+2023), so n is small.
+
+| Arm | Finds the photo's real copies (hit) | Full-match pages, mean |
+|---|---|---|
+| S: screenshot as is | 0.824 | 0.00 |
+| M: SAM cut-out ("photo") | 0.647 | 3.65 |
+| O: original image | 1.000 | 2.76 |
+
+Plain screenshots: S 0.875, M 0.875. With banner: S 0.778, M 0.444. SAM returned no box for 2 of 17; no box reached
+IoU 0.9 with the recorded photo position (many 5Pils images are themselves screenshots, see the amendment).
+
+**Decision: NO-GO** (hit(M) <= hit(S) + 0.05). SAM does not go in front of the search.
+
+Observation, not part of the rule: searching the screenshot never returns full matches but Google's partial
+matching still finds the right pages; SAM's crop brings back full matches when the cut is right, and loses the
+photo when it cuts the wrong region (most often with the banner). Searching both and merging was not tested.
