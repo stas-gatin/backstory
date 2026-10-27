@@ -55,3 +55,12 @@ Budget: hard cap 6 USD for H2.
 - 5Pils pages and images changed since 2023; H1 may come out lower than Test E for that reason alone.
 - H2 is small; "true" posts come from news organisations, which are easier than ordinary users' posts.
 - Both use Google Vision for search (Meta's API has no image search).
+
+## H2 set, frozen 2026-10-27 before any H2 run
+Collected by search in about one hour (Full Fact, Lead Stories and Newschecker debunks that name the X post; news and
+official accounts for "true"). 54 posts passed the availability check. One is dropped before the run because the
+fact-checker says shared copies of the clip were mirrored or cropped (edited media is outside the test): 53 posts,
+`eval/realset.json` (25 fake, 28 true; 24 + 1 and 22 + 6 video + photo). Known weak points, kept as they are:
+two fakes without an exact true origin, one parody account, one fake whose place is partly in on-screen text, two
+true captions with a small error (a weekday; a region instead of the island), and five true posts that are the
+originals of footage used in fakes in the set (pairs on the same media, so not independent).
