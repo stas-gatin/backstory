@@ -253,3 +253,23 @@ Claims allowed afterwards:
 - a detection rate for fake videos only if version 6's detection >= 0.35 and false alarm <= 0.10;
 - if version 6's false alarm > 0.10, the README says the scene witness is not ready.
 Budget: hard cap 8 USD for version 6 and 5 USD for version 5.
+
+## H6 result (2026-10-28; version 6 at d67e9e8, 4.67 USD; version 5, same code with the witness off, 3.51 USD)
+All 45 posts checked by both versions, no errors.
+
+| | version 5 | version 6 (scene witness) |
+|---|---|---|
+| fake videos called "inconsistent" (23) | 1 (0.043) | 1 (0.043) |
+| true videos called "inconsistent" (22) | 0 | 0 |
+| true videos called "consistent" | 2 | 4 |
+
+Both versions caught the same single fake (a clip posted on X in April 2020, shown as Kabul airport in August 2021).
+The witness added distinctive moments to the search for 36 of 45 videos, but they found no earlier copy; it
+confirmed a place-naming sign in the scene for 2 posts, both true and both in the claimed country.
+
+Decision under the rule above: version 6 does not catch more fakes than version 5, so **the claim "the scene witness
+catches more fake videos" is not supported**; detection 0.043 < 0.35, so **no detection rate for fake videos is
+claimed**. No false alarm in either version. This set was much harder than the development posts (1 of 23 fakes for
+both versions, against 20–26 of 67 on development posts): 7 fakes had no reverse-search result at all and 12 had
+pages that gave the judge nothing usable. The scene witness stays in the pipeline (it raised no false alarm and it
+gives the reader the signs it can read), but it is not presented as an improvement in detection.

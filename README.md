@@ -90,6 +90,7 @@ failures. A test is only run once; the next version is measured on new data.
 | H3 | + match checker for look-alikes | 39 fresh X posts | 22% (5/23) | 0% (0/16) | failed: caught < 35% |
 | H4 | + implied date for news posts | 14 X posts no version had seen | 3 of 6 (all photos) | 0 of 8 | counts only (too small for a rate) |
 | H5 | + post clock (dates of copies on X, TikTok, YouTube), A/B against H4's version | 56 fresh X video posts | 16% (5/31) vs 19% (6/31) | 0% (0/25) both | failed: no gain; no video rate claimed |
+| H6 | + scene witness (Spark watches the video, Wonder checks signs), A/B against H5's version | 45 fresh X video posts | 4% (1/23) both | 0% (0/22) both | failed: no gain; no video rate claimed |
 
 What the failures taught, one change each: H1's false alarms came from copies only days older than the claim and
 from single pages, so the proof check was added (false alarms roughly halved in Test I). H3's misses were news posts
@@ -99,7 +100,9 @@ posting date is now the implied claimed date. On posts already seen, that change
 (H4) it caught 3 of 6 fakes, all photos, with no false alarm; fake videos remain the weak spot. H5 tested a fix for
 video on 56 fresh posts against the previous version: it did not help (5 vs 6 of 31 fakes, no false alarms either
 way). Reverse image search on video frames finds nothing for a third of fake videos and nothing usable for most of
-the rest, so Backstory catches fake videos only occasionally; it says "cannot verify" rather than guess.
+the rest, so Backstory catches fake videos only occasionally; it says "cannot verify" rather than guess. H6 tried a second
+idea, a scene witness (Muse Spark watches the whole video for readable signs and the most distinctive moments to
+search; Muse Wonder confirms each sign on its frame): it raised no false alarm and did not catch more fakes either.
 
 Limits: the method needs earlier copies of the photo online. Counting the Test E cases where reverse image search
 found nothing, 41% of all false captions were caught. Fully fabricated or AI-generated photos have no past and get
