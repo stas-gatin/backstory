@@ -123,7 +123,7 @@ def evidence_table(evidence):
     rows = []
     for e in evidence:
         rows.append({k: e.get(k) for k in ("id", "domain", "match", "match_reason", "image_first", "page_first",
-                                            "page_published",
+                                            "page_published", "date_source",
                                             "described_place", "described_date", "described_event", "quote",
                                             "fact_checker")})
     return json.dumps(rows, ensure_ascii=False, indent=0)
@@ -138,7 +138,9 @@ Original caption: "{caption}"
 Evidence table (one row per web page where reverse image search found this photo):
 - image_first / page_first: first Internet Archive capture of the image file / page. This proves it existed BY that
   date. A late or missing capture proves nothing: the Archive often captures files years after they appear.
-- page_published: publication date from the page's own metadata (usually reliable, but a page can be updated later)
+- page_published: publication date from the page's own metadata (usually reliable, but a page can be updated later).
+  When date_source is "X post id", "TikTok post id" or "YouTube upload date", it is the exact day that copy was
+  posted (read by code from the post id or the video's metadata): a copy posted then existed by then.
 - described_*: how that page describes the photo
 - match: "full" = the same image file; "partial" = only part of the image matches (may be a crop or a similar photo);
   "confirmed look-alike" = found as visually similar, then a separate checker compared it with the post's image and

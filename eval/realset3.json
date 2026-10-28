@@ -1,0 +1,506 @@
+[
+ {
+  "group": "fake",
+  "post_url": "https://x.com/SaveukChurches/status/2056712215852425588",
+  "claimed": "Masked protesters set fire to the entrance of a Yorkshire church (19 May 2026)",
+  "truth": "Damage to the doors of the Church of San Francisco, Santiago de Queretaro, Mexico, after International Women's Day demonstrations, March 2026",
+  "media": "video",
+  "source_url": "https://fullfact.org/world/video-church-attack-mexico-not-yorkshire/",
+  "notes": "Full Fact links this post; also kingkapoor72/2056948176431751205."
+ },
+ {
+  "group": "fake",
+  "post_url": "https://x.com/SilentlySirs/status/1934890075755581626",
+  "claimed": "An Iranian attack like Tel Aviv has never seen (17 Jun 2025)",
+  "truth": "Fire in a motorcycle parking lot in Chongqing, China",
+  "media": "video",
+  "source_url": "https://leadstories.com/hoax-alert/2025/06/fact-check-video-fire-tel-aviv-iranian-attack.html",
+  "notes": "Lead Stories links this post. Different SilentlySirs post ids are already in the old sets."
+ },
+ {
+  "group": "fake",
+  "post_url": "https://x.com/RajShar41438261/status/1239419048284139520",
+  "claimed": "Police in China struggling with coronavirus patients (16 Mar 2020)",
+  "truth": "Hong Kong riot police storming Prince Edward / Mong Kok MTR stations during protests, 31 Aug 2019",
+  "media": "video",
+  "source_url": "https://www.boomlive.in/fake-news/false-video-shows-police-crackdown-on-suspected-covid-19-patients-in-china-7236",
+  "notes": "BOOM embeds this post. Hindi caption. Claim is about a COVID-era scene, not health advice."
+ },
+ {
+  "group": "fake",
+  "post_url": "https://x.com/MonitorX99800/status/1933112998719312001",
+  "claimed": "Footage from inside the Air India plane that crashed (Ahmedabad, 12 Jun 2025)",
+  "truth": "Passenger video from the Yeti Airlines plane that crashed near Pokhara, Nepal, 15 Jan 2023",
+  "media": "video",
+  "source_url": "https://leadstories.com/hoax-alert/2025/06/fact-check-air-india-crash-footage-video-nepal.html",
+  "notes": "Lead Stories embeds this post. Distressing content (crash)."
+ },
+ {
+  "group": "true",
+  "post_url": "https://x.com/ITBP_official/status/2050592178272108847",
+  "claimed": "ITBP troops respond to a forest fire near the Indus river front, Choglamsar, Leh (2 May 2026)",
+  "truth": "Same: forest fire at Choglamsar, Leh, Ladakh, 2 May 2026",
+  "media": "video",
+  "source_url": "https://www.boomlive.in/fact-check/unrelated-video-falsely-peddled-as-assam-rifles-camp-set-on-fire-in-manipur-31656",
+  "notes": "Indo-Tibetan Border Police (official). Original of a fake by javedeqbalpk1/2059549796483182811 (Manipur attack claim). ANI also posted it (2050516797594775568)."
+ },
+ {
+  "group": "fake",
+  "post_url": "https://x.com/Scrobbs/status/2093076704084500511",
+  "claimed": "Hero in Nepal rescues people trapped in mud during floods (27 Aug 2026)",
+  "truth": "Workers escaping a collapsed mine in the Democratic Republic of Congo, 2023 (Reuters video)",
+  "media": "video",
+  "source_url": "https://leadstories.com/hoax-alert/2026/08/fact-check-video-does-not-show-nepal-flood-rescue-people-trapped-mud-congo-2023.html",
+  "notes": "Lead Stories links this post. Japanese caption."
+ },
+ {
+  "group": "fake",
+  "post_url": "https://x.com/RatanSharda55/status/2092998101305016578",
+  "claimed": "Chinese helicopter films the broken glacier that caused the Nepal/Tibet flash flood (27 Aug 2026)",
+  "truth": "Glacial lake outburst flood at Columbia Glacier, Alaska, USA; filmed by pilot Leigh Coates, posted 22 Aug 2026",
+  "media": "video",
+  "source_url": "https://www.boomlive.in/fact-check/viral-nepal-flash-flood-videos-claim-fact-check-old-unrelated-videos-32124",
+  "notes": "BOOM embeds this post. Footage only days older than the claim; place is the false part."
+ },
+ {
+  "group": "true",
+  "post_url": "https://x.com/myclearwaterPD/status/1669858138684530691",
+  "claimed": "Small waterspout moved ashore this afternoon on Clearwater Beach, Florida; two people hospitalised (16 Jun 2023)",
+  "truth": "Same: waterspout at Clearwater Beach, Florida, 16 Jun 2023",
+  "media": "video",
+  "source_url": "https://leadstories.com/hoax-alert/2023/09/fact-check-video-does-not-show-hurricane-idalia-making-landfall-on-clearwater-beach-florida.html",
+  "notes": "Clearwater Police Department (official). Lead Stories cites it as the origin of a later Hurricane Idalia fake."
+ },
+ {
+  "group": "true",
+  "post_url": "https://x.com/YWNReporter/status/1818021977514287353",
+  "claimed": "Posters of President Maduro being torn down across Venezuela (29 Jul 2024)",
+  "truth": "Same: post-election protests in Venezuela, 29 Jul 2024",
+  "media": "video",
+  "source_url": "https://fullfact.org/world/viral-video-maduro-billboard-2024-not-2026/",
+  "notes": "Yeshiva World News (news site). Full Fact traces the clip to 29 Jul 2024 posts. Exact city not stated in the caption."
+ },
+ {
+  "group": "fake",
+  "post_url": "https://x.com/BGatesIsaPyscho/status/1879060311694831655",
+  "claimed": "Tsunami after the M6.9 earthquake in Japan (14 Jan 2025)",
+  "truth": "Tsunami in Japan, March 2011",
+  "media": "video",
+  "source_url": "https://fullfact.org/online/miscaptioned-footage-japan-tsunami/",
+  "notes": "Full Fact links this post. Same country, false date. Account also has other fakes in this set."
+ },
+ {
+  "group": "true",
+  "post_url": "https://x.com/TheCradleMedia/status/1725606779596185741",
+  "claimed": "Palestinian flag flown from the Tower of Pisa, Italy (17 Nov 2023)",
+  "truth": "Same: flag unfurled from the Leaning Tower of Pisa, 17 Nov 2023 (covered by ANSA)",
+  "media": "video",
+  "source_url": "https://leadstories.com/hoax-alert/2026/10/fact-check-video-of-palestinian-flag-at-tower-of-pisa-does-not-show-october-2026-italian-protests-its-from-2023.html",
+  "notes": "The Cradle (news outlet, partisan). Original of footage used in a 2026 fake (theseed59788459/2111893141972513167)."
+ },
+ {
+  "group": "fake",
+  "post_url": "https://x.com/factwatchORG/status/1100225448729104385",
+  "claimed": "Pakistan Air Force in action over Muzaffarabad and the LoC after a failed Indian intrusion (26 Feb 2019)",
+  "truth": "Old Pakistan Air Force fly-past video, on YouTube since Sept 2016",
+  "media": "video",
+  "source_url": "https://www.altnews.in/old-video-viral-as-indian-air-forces-strike-on-jem-terror-camps/",
+  "notes": "Alt News embeds this post under its old handle khalid_pk (account renamed to factwatchORG). Same video as AjayKushwaha_/1100250483183181825, opposite narrative."
+ },
+ {
+  "group": "fake",
+  "post_url": "https://x.com/QTHESTORMM/status/1919854851724607999",
+  "claimed": "Pakistan retaliates against India just now with a missile attack (6-7 May 2025, Operation Sindoor)",
+  "truth": "Beirut port explosion, Lebanon, 4 Aug 2020",
+  "media": "video",
+  "source_url": "https://www.newschecker.in/fact-check/video-from-2020-beirut-explosion-shared-as-pakistan-missile-attack-against-india",
+  "notes": "Newschecker names this handle (archived post, 360K views). 6-second excerpt of a longer Beirut video."
+ },
+ {
+  "group": "fake",
+  "post_url": "https://x.com/PalestineCultu1/status/1718656776352973169",
+  "claimed": "Pro-Palestinian protest in France despite the ban (29 Oct 2023)",
+  "truth": "Palmeiras soccer fans marching to Allianz Parque, Sao Paulo, Brazil, 5 Oct 2023",
+  "media": "video",
+  "source_url": "https://leadstories.com/hoax-alert/2023/11/fact-check-video-does-not-show-pro-palestinian-protest-in-france.html",
+  "notes": "Lead Stories links this post; the claim is implied by the caption. Original futebol_info/1710066932727079128."
+ },
+ {
+  "group": "true",
+  "post_url": "https://x.com/timesofindia/status/1862078838634885124",
+  "claimed": "Wedding car catches fire in Saharanpur, Uttar Pradesh after guest bursts firecrackers through sunroof (28 Nov 2024)",
+  "truth": "Same: Saharanpur, Uttar Pradesh, late Nov 2024",
+  "media": "video",
+  "source_url": "https://www.boomlive.in/fact-check/car-burning-fire-crackers-through-sunroof-uttar-pradesh-diwali-false-claim-old-video-viral-fact-check-29801",
+  "notes": "Times of India. BOOM found multiple news reports dated 28 Nov 2024; exact incident day not stated."
+ },
+ {
+  "group": "true",
+  "post_url": "https://x.com/WRADIOMexico/status/1275507727842848769",
+  "claimed": "Images from Colonia Roma, Mexico City, during this morning's earthquake (23 Jun 2020)",
+  "truth": "Same: M7.4 Oaxaca earthquake felt in Mexico City, 23 Jun 2020",
+  "media": "video",
+  "source_url": "https://www.aap.com.au/factcheck/old-disaster-videos-falsely-shared-as-breaking-us-earthquake-footage/",
+  "notes": "W Radio Mexico. AAP FactCheck cites it as the origin of a clip later reused in a fake US-quake compilation."
+ },
+ {
+  "group": "fake",
+  "post_url": "https://x.com/TheHarrisSultan/status/1788654982633590791",
+  "claimed": "Muslim migrants in Sweden (Malmo) rioting over Israel taking part in Eurovision (9 May 2024)",
+  "truth": "Riot in Malmo, Sweden, during the Sweden-Israel Davis Cup tennis match, March 2009",
+  "media": "video",
+  "source_url": "https://fullfact.org/online/eurovision-malmo-protests-israel-old-video-2009/",
+  "notes": "Full Fact links this post; also MeghUpdates/1788753707456508151. Same city, false date and event."
+ },
+ {
+  "group": "true",
+  "post_url": "https://x.com/DailySabah/status/1224201897487282177",
+  "claimed": "Turkish forces retaliate against the Assad regime attack in Idlib, Syria (3 Feb 2020)",
+  "truth": "Same: Turkish artillery retaliation in Idlib, night of 2-3 Feb 2020",
+  "media": "video",
+  "source_url": "https://fullfact.org/online/misleading-iran-missile-launch-video/",
+  "notes": "Daily Sabah (Turkish, pro-government). Full Fact cites it as the origin of a clip later shared as an Iranian missile launch."
+ },
+ {
+  "group": "true",
+  "post_url": "https://x.com/globaltimesnews/status/1685894692658085888",
+  "claimed": "Clips show flash floods in the western Beijing suburbs after days of heavy rain (31 Jul 2023)",
+  "truth": "Same: Beijing floods, 31 Jul 2023",
+  "media": "video",
+  "source_url": "https://www.thequint.com/news/webqoof/unrelated-clips-falsely-linked-to-nairobi-kenya-floods-heavy-rains-fact-check",
+  "notes": "Global Times (state media). Same event as IFENG__official item; kept to reach the target."
+ },
+ {
+  "group": "true",
+  "post_url": "https://x.com/IFENG__official/status/1685895070602715136",
+  "claimed": "Heavy rain triggers flash floods in Mentougou District, western Beijing, sweeping away vehicles (31 Jul 2023)",
+  "truth": "Same: Beijing floods from Typhoon Doksuri remnants, 31 Jul 2023",
+  "media": "video",
+  "source_url": "https://www.thequint.com/news/webqoof/unrelated-clips-falsely-linked-to-nairobi-kenya-floods-heavy-rains-fact-check",
+  "notes": "Phoenix TV (ifeng) English account. The Quint cites it as origin of a clip later shared as Kenya floods. State-linked media."
+ },
+ {
+  "group": "fake",
+  "post_url": "https://x.com/expordia/status/1818559475722105120",
+  "claimed": "Things getting serious in Venezuela (post-election protests, 31 Jul 2024)",
+  "truth": "Argentina fans in Buenos Aires celebrating the 2022 World Cup win, 20 Dec 2022",
+  "media": "video",
+  "source_url": "https://leadstories.com/hoax-alert/2024/07/fact-check-video-does-not-show-2024-post-election-protests-in-venezuela-its-argentinas-2022-world-cup-celebration.html",
+  "notes": "Lead Stories links this post."
+ },
+ {
+  "group": "true",
+  "post_url": "https://x.com/PTI_News/status/1760178448486789535",
+  "claimed": "Security forces fire tear gas as farmers try to march to Delhi at Shambhu border (21 Feb 2024)",
+  "truth": "Same: farmers' Delhi Chalo protest, Shambhu border (Punjab-Haryana), 21 Feb 2024",
+  "media": "video",
+  "source_url": "https://www.boomlive.in/fact-check/old-farmers-protest-video-falsely-shared-as-fatalities-from-october-10-protest-32352",
+  "notes": "PTI news agency. BOOM cites it as origin of a 2026 fake."
+ },
+ {
+  "group": "true",
+  "post_url": "https://x.com/Dailymirror_SL/status/1397064339199307779",
+  "claimed": "X-Press Pearl, which caught fire off Colombo Port on 20 May, still in flames (25 May 2021)",
+  "truth": "Same: X-Press Pearl fire off Colombo, Sri Lanka, 25 May 2021",
+  "media": "video",
+  "source_url": "https://fullfact.org/online/cargo-ship-fire-sri-lanka-old-clip-not-houthi-attack/",
+  "notes": "Daily Mirror Sri Lanka. Fire started 20 May but was ongoing when filmed/posted. Full Fact cites it as origin of a later Houthi-attack fake."
+ },
+ {
+  "group": "true",
+  "post_url": "https://x.com/DDNewslive/status/1933155070104785023",
+  "claimed": "Civil Aviation Minister inspects the Air India crash site in Ahmedabad (12 Jun 2025)",
+  "truth": "Same: AI171 crash site, Ahmedabad, 12 Jun 2025",
+  "media": "video",
+  "source_url": "https://www.boomlive.in/fact-check/viral-video-people-jumping-from-building-fire-air-india-ahmedabad-plane-crash-claim-fact-check-28788",
+  "notes": "DD News (public broadcaster). Shows crash-site aftermath and an official visit."
+ },
+ {
+  "group": "fake",
+  "post_url": "https://x.com/phanijournalist/status/1430904498914926597",
+  "claimed": "Bomb blast outside Kabul airport (26 Aug 2021)",
+  "truth": "Israeli airstrike on a Hamas site in central Gaza, posted days earlier (21 Aug 2021)",
+  "media": "video",
+  "source_url": "https://leadstories.com/hoax-alert/2021/08/fact-check-twitter-video-does-not-show-footage-of-bombings-outside-of-kabul-airport.html",
+  "notes": "Lead Stories links this post. Same footage also shared by prageru/1430981697558904833."
+ },
+ {
+  "group": "true",
+  "post_url": "https://x.com/ANI/status/1921956089274224737",
+  "claimed": "Red streaks and explosions as Indian air defence intercepts Pakistani drones amid blackout in Samba, J&K (12 May 2025)",
+  "truth": "Same: drone interceptions over Samba, Jammu and Kashmir, 12 May 2025",
+  "media": "video",
+  "source_url": "https://www.thequint.com/news/webqoof/old-video-linked-to-2026-drone-sightings-along-loc-jammu-kashmir-fact-check",
+  "notes": "ANI news agency. Night footage. The Quint cites it as origin of a later fake. A different ANI post id is already in the old sets."
+ },
+ {
+  "group": "fake",
+  "post_url": "https://x.com/MOSSADil/status/2051419948942033366",
+  "claimed": "Russian nuclear submarine arrives in Havana, Cuba today (4 May 2026)",
+  "truth": "Russian submarine Kazan and warships arriving in Havana, June 2024",
+  "media": "video",
+  "source_url": "https://leadstories.com/hoax-alert/2026/05/fact-check-old-video-of-russian-submarine-arriving-in-havana-cuba-is-from-2024.html",
+  "notes": "Lead Stories links this post. Same place, false date. Account name imitates Mossad (likely unofficial / possible parody)."
+ },
+ {
+  "group": "fake",
+  "post_url": "https://x.com/surajit_ghosh2/status/2092633696939733473",
+  "claimed": "Man from China films flash flood striking Tibet and Nepal (26 Aug 2026)",
+  "truth": "Flash flood in Tamak drain, Niti Valley, Chamoli district, Uttarakhand, India, 10 Aug 2026",
+  "media": "video",
+  "source_url": "https://www.boomlive.in/fact-check/viral-nepal-flash-flood-videos-claim-fact-check-old-unrelated-videos-32124",
+  "notes": "BOOM embeds this post; the original is ANINewsUP/2086817688001871924 (in the true group)."
+ },
+ {
+  "group": "fake",
+  "post_url": "https://x.com/LithiumClips/status/1864779239825744086",
+  "claimed": "Inside a California home during the M7.0 earthquake (5 Dec 2024)",
+  "truth": "Home in Anchorage, Alaska, during the M7.0 earthquake of 30 Nov 2018",
+  "media": "video",
+  "source_url": "https://leadstories.com/hoax-alert/2024/12/fact-check-videos-do-not-show-december-2024-magnitude-7-earthquake-in-california-past-quakes-around-world.html",
+  "notes": "Lead Stories links this post; original JamesEastonCFO/1068601606109687808."
+ },
+ {
+  "group": "fake",
+  "post_url": "https://x.com/mog_russEN/status/2007349611162394704",
+  "claimed": "US strike on the port of Caracas and Margarita Island, Venezuela (3 Jan 2026)",
+  "truth": "Explosions filmed in Israel, October 2024",
+  "media": "video",
+  "source_url": "https://fullfact.org/world/old-video-us-strikes-venezuela/",
+  "notes": "Full Fact links this post; also GhorbaniiNiyak/2007351765826695240."
+ },
+ {
+  "group": "true",
+  "post_url": "https://x.com/Claudiashein/status/1665210167598915587",
+  "claimed": "Record crowd of 300,000 at the concert in the Zocalo, Mexico City (3-4 Jun 2023)",
+  "truth": "Same: Los Fabulosos Cadillacs free concert, Zocalo, Mexico City, 3 Jun 2023",
+  "media": "video",
+  "source_url": "https://leadstories.com/hoax-alert/2023/07/fact-check-video-does-not-show-protesters-in-france-its-a-concert-in-mexico.html",
+  "notes": "Official account of Claudia Sheinbaum (then Mexico City head of government). A concert, not a disaster; footage later reused as French riots."
+ },
+ {
+  "group": "fake",
+  "post_url": "https://x.com/drigli_/status/1665936169547317249",
+  "claimed": "The moment the Nova Kakhovka dam was blown up (6 Jun 2023)",
+  "truth": "Blast damaging the road bridge at the Nova Kakhovka dam, Nov 2022",
+  "media": "video",
+  "source_url": "https://leadstories.com/hoax-alert/2023/06/fact-check-video-does-not-show-june-2023-explosion-at-kakhovka-dam-in-ukraine-its-november-2022-footage.html",
+  "notes": "Lead Stories links this post. Black-and-white night footage; same place, different (earlier) event."
+ },
+ {
+  "group": "fake",
+  "post_url": "https://x.com/manishBJPUP/status/2107756379372990575",
+  "claimed": "Situation in France worsening day by day because of illegal immigrants (7 Oct 2026)",
+  "truth": "Violent protest in Paris against police violence and the security bill, 28 Nov 2020",
+  "media": "video",
+  "source_url": "https://cyberpeace.org/resources/blogs/factcheck-2020-paris-protest-video-falsely-linked-to-recent-demonstrations-in-france",
+  "notes": "CyberPeace Foundation fact-check links this post. Caption in Hindi. Same city, false date."
+ },
+ {
+  "group": "true",
+  "post_url": "https://x.com/ABC/status/1422251993213591559",
+  "claimed": "Firefighter films elk fleeing a blaze in Big Horn County, Montana (2 Aug 2021)",
+  "truth": "Same: wildfire in Big Horn County, Montana, early Aug 2021",
+  "media": "video",
+  "source_url": "https://fullfact.org/online/clip-elk-wildfire-wyoming-old-footage-montana/",
+  "notes": "ABC News. Exact filming day not stated; fire was active at posting. Original of BrendanFMiller fake."
+ },
+ {
+  "group": "true",
+  "post_url": "https://x.com/bbcpersian/status/2018869437898604623",
+  "claimed": "Fire at Jannatabad market, north-west Tehran, on Tuesday (posted 4 Feb 2026)",
+  "truth": "Same: Jannatabad market fire, Tehran, 3 Feb 2026",
+  "media": "video",
+  "source_url": "https://leadstories.com/hoax-alert/2026/03/fact-check-video-does-not-show-airstrike-on-tehrans-downtism-cafe-staffed-by-autistic-down-syndrome-workers.html",
+  "notes": "BBC Persian; Persian caption. Lead Stories cites it as the earlier source of footage later sold as an airstrike (QudsNen fake)."
+ },
+ {
+  "group": "true",
+  "post_url": "https://x.com/kann_news/status/1841163863833600220",
+  "claimed": "Missile impacts documented from Ar'ara, Israel (1 Oct 2024)",
+  "truth": "Same: Iranian missile strike on Israel, 1 Oct 2024",
+  "media": "video",
+  "source_url": "https://www.boomlive.in/fact-check/fake-news-viral-videos-iran-strikes-israel-old-videos-october-2024-fact-check-28811",
+  "notes": "Kan News. BOOM cites Kan's 1 Oct 2024 videos as the origin of footage later reused as June 2025 strikes. Hebrew caption."
+ },
+ {
+  "group": "true",
+  "post_url": "https://x.com/odatv/status/2031840181473435753",
+  "claimed": "Fire continues at oil storage facilities in Oman's Salalah port after drone attack (11 Mar 2026)",
+  "truth": "Same: Salalah port fuel-tank fire after drone strike, 11 Mar 2026 (Reuters)",
+  "media": "video",
+  "source_url": "https://www.boomlive.in/fact-check/viral-videos-qatar-ras-laffan-lng-hub-iran-missile-attack-fire-fact-check-30880",
+  "notes": "Odatv (Turkish news site); Turkish caption."
+ },
+ {
+  "group": "fake",
+  "post_url": "https://x.com/KizyUzoma/status/1721192796436955394",
+  "claimed": "British policeman set on fire at a Hamas demonstration (5 Nov 2023)",
+  "truth": "Clashes between protesters and police in Mexico (Guadalajara), 2020; Mexican flag patch visible on the officer",
+  "media": "video",
+  "source_url": "https://leadstories.com/hoax-alert/2023/11/fact-check-video-does-not-show-british-policeman-set-on-fire-at-hamas-demonstration-in-2023.html",
+  "notes": "Lead Stories links this post; original AndresLanderos/1268763048652623874 (5 Jun 2020, caption Guadalajara)."
+ },
+ {
+  "group": "true",
+  "post_url": "https://x.com/ndtvindia/status/1932410839828762858",
+  "claimed": "Fire in a flat in Dwarka, Delhi; father throws two children down (10 Jun 2025)",
+  "truth": "Same: Shabad Apartments fire, Dwarka, Delhi, 10 Jun 2025",
+  "media": "video",
+  "source_url": "https://www.boomlive.in/fact-check/viral-video-people-jumping-from-building-fire-air-india-ahmedabad-plane-crash-claim-fact-check-28788",
+  "notes": "NDTV India (Hindi). Distressing. Original of footage later shared as Air India crash."
+ },
+ {
+  "group": "fake",
+  "post_url": "https://x.com/QudsNen/status/2032452287566626991",
+  "claimed": "US-Israeli airstrike destroys Cafe Downtism in Tehran (13 Mar 2026)",
+  "truth": "Aftermath of a fire (Jannatabad market fire, NW Tehran), video online since early Feb 2026, before the war",
+  "media": "video",
+  "source_url": "https://leadstories.com/hoax-alert/2026/03/fact-check-video-does-not-show-airstrike-on-tehrans-downtism-cafe-staffed-by-autistic-down-syndrome-workers.html",
+  "notes": "Lead Stories links this post (Quds News Network, a news outlet, spreading the PressTV claim). bbcpersian/2018869437898604623 (true group) shows the fire. Lead Stories says fire not strike; the exact match of the cafe location is per Lead Stories."
+ },
+ {
+  "group": "fake",
+  "post_url": "https://x.com/rkmtimes/status/2028786209175261504",
+  "claimed": "Nuclear test carried out by Iran IRGC; M4.3 quake in Gerash (3 Mar 2026)",
+  "truth": "US atomic test in the Nevada desert, 1957 (atomcentral watermark)",
+  "media": "video",
+  "source_url": "https://leadstories.com/hoax-alert/2026/03/fact-check-video-shows-1957-nuclear-test-in-us-not-in-iran.html",
+  "notes": "Lead Stories links this post. Archival black-and-white footage. Other rkmtimes posts are in the old sets."
+ },
+ {
+  "group": "fake",
+  "post_url": "https://x.com/BGatesIsaPyscho/status/1844150003281035527",
+  "claimed": "Two tornadoes in Florida today during Hurricane Milton (9 Oct 2024)",
+  "truth": "Twin tornadoes near Pilger, Nebraska, USA, June 2014",
+  "media": "video",
+  "source_url": "https://fullfact.org/online/clip-twin-tornadoes-nebraska-not-florida-hurricane-milton/",
+  "notes": "Full Fact links this post."
+ },
+ {
+  "group": "true",
+  "post_url": "https://x.com/ANINewsUP/status/2086817688001871924",
+  "claimed": "Flash flood in Tamak drain, Niti Valley, Chamoli, Uttarakhand, today (10 Aug 2026)",
+  "truth": "Same: Tamak drain flash flood, Chamoli, Uttarakhand, India, 10 Aug 2026 (video credited to Chamoli Police)",
+  "media": "video",
+  "source_url": "https://www.boomlive.in/fact-check/viral-nepal-flash-flood-videos-claim-fact-check-old-unrelated-videos-32124",
+  "notes": "ANI regional news agency account. Original of the footage used in the surajit_ghosh2 fake. The post also quotes another video post."
+ },
+ {
+  "group": "fake",
+  "post_url": "https://x.com/PiQMarkets/status/1580452934013587457",
+  "claimed": "Armoured vehicle runs over a conscript during a recent Russian parade (13 Oct 2022, mobilisation context)",
+  "truth": "Accident at the swearing-in of Russia's 83rd airborne brigade, Ussuriysk, Primorsky Krai, 12 Jun 2014",
+  "media": "video",
+  "source_url": "https://leadstories.com/hoax-alert/2022/10/fact-check-accident-at-russian-military-parade-did-not-happen-recently-video-dates-from-2014.html",
+  "notes": "Lead Stories links this post (handle was PriapusIQ at the time). Same country, false date."
+ },
+ {
+  "group": "true",
+  "post_url": "https://x.com/ndtv/status/2074432336008278050",
+  "claimed": "Major landslide strikes Wayanad (Kerala, India) after heavy rain (7 Jul 2026)",
+  "truth": "Same: landslide near the Anakkampoyil-Kalladi tunnel road site, Wayanad, 7 Jul 2026",
+  "media": "video",
+  "source_url": "https://www.thequint.com/news/webqoof/video-of-wayanad-landslide-falsely-linked-to-nepal-flash-floods-fact-check",
+  "notes": "NDTV. The Quint cites this post as the original of a later Nepal-flood fake."
+ },
+ {
+  "group": "true",
+  "post_url": "https://x.com/anadoluagency/status/2034340392787747010",
+  "claimed": "Missile attack hits Riyadh, Saudi Arabia as Iranian strikes continue (18 Mar 2026)",
+  "truth": "Same: Iranian missile/drone attack on Riyadh area, 18 Mar 2026",
+  "media": "video",
+  "source_url": "https://www.boomlive.in/fact-check/viral-videos-qatar-ras-laffan-lng-hub-iran-missile-attack-fire-fact-check-30880",
+  "notes": "Anadolu Agency English. BOOM cites it as origin of a clip later shared as a strike on Qatar."
+ },
+ {
+  "group": "true",
+  "post_url": "https://x.com/idfonline/status/1711386733047062987",
+  "claimed": "Israeli Air Force carrying out extensive strikes across the Gaza Strip over the past day (9 Oct 2023)",
+  "truth": "Same: Israeli airstrikes on Gaza, 8-9 Oct 2023",
+  "media": "video",
+  "source_url": "https://leadstories.com/hoax-alert/2023/11/fact-check-israeli-defense-force-footage-does-not-show-aerial-gunners-firing-on-fleeing-festival-goers.html",
+  "notes": "IDF official Hebrew account; party to the conflict (official, not independent). Lead Stories cites this video as IDF footage of Gaza strikes later misused."
+ },
+ {
+  "group": "fake",
+  "post_url": "https://x.com/JimFergusonUK/status/1929303391542575104",
+  "claimed": "Massive explosions rock Moscow (1-2 Jun 2025)",
+  "truth": "Explosion in Crimea in 2023 related to an attack on a ship",
+  "media": "video",
+  "source_url": "https://leadstories.com/hoax-alert/2025/06/fact-check-moscow-explosion-video.html",
+  "notes": "Lead Stories links this post."
+ },
+ {
+  "group": "fake",
+  "post_url": "https://x.com/HinduNation__/status/2084682309333336168",
+  "claimed": "Hindus in Nepal chasing out illegal Muslim infiltrators (4 Aug 2026)",
+  "truth": "Attack on a Jamaat-e-Islami protest march in Gulistan, Dhaka, Bangladesh, 4 Jul 2026",
+  "media": "video",
+  "source_url": "https://www.boomlive.in/fact-check/old-videos-from-bangladesh-falsely-linked-to-nepal-communal-clash-32037",
+  "notes": "BOOM embeds this post. Caption in Hindi; communal framing."
+ },
+ {
+  "group": "true",
+  "post_url": "https://x.com/AJEnglish/status/1841185515569041433",
+  "claimed": "Dozens of missiles flying over Tel Aviv, some landing; Israel says fired by Iran (1 Oct 2024)",
+  "truth": "Same: Iranian missile attack on Israel, 1 Oct 2024",
+  "media": "video",
+  "source_url": "https://leadstories.com/hoax-alert/2025/05/fact-check-video-pakistan-missile-attack-delhi.html",
+  "notes": "Al Jazeera English, posted the same evening. Lead Stories cites this non-cropped version as the origin of a May 2025 India-Pakistan fake."
+ },
+ {
+  "group": "fake",
+  "post_url": "https://x.com/mateenyaqoob/status/1562472920152059908",
+  "claimed": "Flood situation in Balochistan, Pakistan getting worse (24 Aug 2022)",
+  "truth": "Bus swept by a torrent on the Karakoram Highway, Pakistan, during floods in April 2016",
+  "media": "video",
+  "source_url": "https://newschecker.in/fact-check/video-of-floods-in-pakistan-shared",
+  "notes": "Newschecker links this post. Same country, false date (and province). Rated Partly False."
+ },
+ {
+  "group": "fake",
+  "post_url": "https://x.com/_33Dj/status/2025321222486327470",
+  "claimed": "Pakistani strikes destroy terrorist camps in Afghanistan (21-22 Feb 2026)",
+  "truth": "Israeli airstrikes on reconstruction sites in southern Lebanon, 16 Oct 2025",
+  "media": "video",
+  "source_url": "https://www.sochfactcheck.com/video-does-not-show-pakistan-conducting-airstrikes-inside-afghanistan-on-21-february-2026/",
+  "notes": "Soch Fact Check (Pakistan) cites this as the first post; ~35 more posts listed (e.g. MamoonButtPMLN/2025343864467255477, WENewsEnglish/2025460742334328866). Caption in Urdu. Earliest X original cited: Osint613/1978895643214074326."
+ },
+ {
+  "group": "true",
+  "post_url": "https://x.com/N12News/status/2030990476405260548",
+  "claimed": "Chaos at Ben Gurion airport check-in as El Al cuts passengers per flight (9 Mar 2026)",
+  "truth": "Same: Ben Gurion airport, 9 Mar 2026",
+  "media": "video",
+  "source_url": "https://leadstories.com/hoax-alert/2026/03/fact-check-video-does-not-show-angry-people-at-ben-gurion-airport-throwing-things-at-staff-demanding-tickets-to-leave-israel.html",
+  "notes": "Israeli broadcaster N12; Hebrew caption. Not a disaster/war scene itself (wartime travel disruption)."
+ },
+ {
+  "group": "fake",
+  "post_url": "https://x.com/iamyesyouareno/status/1897350067935437107",
+  "claimed": "This is Durban, South Africa now (5 Mar 2025)",
+  "truth": "Durban after the July 2021 unrest; same clip posted by TwitTok8 on 15 Jul 2021",
+  "media": "video",
+  "source_url": "https://leadstories.com/hoax-alert/2025/03/fact-check-video-does-not-show-durban-south-africa-in-march-2025-it-is-from-2021-after-protests.html",
+  "notes": "Lead Stories links this post. Same city, false date."
+ },
+ {
+  "group": "fake",
+  "post_url": "https://x.com/AjayKushwaha_/status/1100250483183181825",
+  "claimed": "Indian Air Force destroys terrorist camps in Pakistan (Balakot strike, 26 Feb 2019)",
+  "truth": "Pakistan Air Force jets with flares in an old fly-past video (Islamabad area), on YouTube since Sept 2016",
+  "media": "video",
+  "source_url": "https://www.altnews.in/old-video-viral-as-indian-air-forces-strike-on-jem-terror-camps/",
+  "notes": "Alt News embeds this post. Same clip was shared with the opposite claim by factwatchORG/1100225448729104385 (also in this set)."
+ },
+ {
+  "group": "fake",
+  "post_url": "https://x.com/BrendanFMiller/status/1843845755049787500",
+  "claimed": "Wyoming on fire with 73,000 acres burning; elk fleeing (9 Oct 2024)",
+  "truth": "Elk fleeing a wildfire in Big Horn County, Montana, Aug 2021",
+  "media": "video",
+  "source_url": "https://fullfact.org/online/clip-elk-wildfire-wyoming-old-footage-montana/",
+  "notes": "Full Fact links this post under its earlier handle redpillgoku. Original ABC/1422251993213591559 (in the true group)."
+ }
+]

@@ -13,7 +13,7 @@ from pathlib import Path
 
 from PIL import Image
 
-from . import archive, claim, config, matcher, meta, reader, replay, sam, search, verdict, video, xpost
+from . import archive, claim, clock, config, matcher, meta, reader, replay, sam, search, verdict, video, xpost
 
 AGENTS = {
     "post": "Post reader · X",
@@ -22,6 +22,7 @@ AGENTS = {
     "claim": "Claim reader · Muse Spark + web search",
     "cutout": "Photo finder · SAM 3.1",
     "search": "Image search · Google Vision",
+    "clock": "Post clock · code",
     "match": "Match checker · Muse Spark",
     "archive": "Archivist · Internet Archive",
     "reader": "Page reader · Muse Spark",
@@ -221,6 +222,30 @@ def _run(image_bytes, caption, posted_on, matches, exclude_fact_checkers, budget
     yield step("search", "done", "Found %s on %s" % ("the frames" if video_path else "the photo",
                                                       _count(len(pages), "page", "pages")), count=len(pages))
 
+    # 2a. Copies on X, TikTok and YouTube: their exact posting dates, from the post id or the page metadata.
+    own = clock.X_STATUS.match(post_url or "")
+    if own:  # the post being checked is not evidence about itself
+        pages = [p for p in pages if not (clock.X_STATUS.match(p["url"]) or [None, None])[1] == own.group(1)]
+    posts = [p for p in pages if clock.is_post(p["url"])][:config.MAX_CLOCK]
+    if posts:
+        yield step("clock", "running", "Reading the posting dates of %s" % _count(len(posts), "copy on X, TikTok or YouTube",
+                                                                                 "copies on X, TikTok or YouTube"))
+        with cf.ThreadPoolExecutor(max_workers=4) as pool:
+            for p, t in zip(posts, pool.map(lambda p: _guarded(clock.posted, p["url"]), posts)):
+                if t:
+                    p["posted"], p["posted_how"] = t["date"], t["how"]
+            # A copy posted before the claimed date can decide the verdict: get its picture for the match checker.
+            early = [p for p in posts if p.get("posted") and c.get("period_start") and p["posted"] < c["period_start"]
+                     and not p.get("image_urls")]
+            # Kept apart from image_urls: a cover image is for comparing only. It is not the file that matched,
+            # so its archive date must never date the page.
+            for p, u in zip(early, pool.map(lambda p: _guarded(clock.thumbnail, p["url"]), early)):
+                if u:
+                    p["thumb"] = u
+        dated = sorted(p["posted"] for p in posts if p.get("posted"))
+        yield step("clock", "done", ("%d of %d dated; earliest %s" % (len(dated), len(posts), dated[0])) if dated
+                   else "No posting date found", dated=len(dated))
+
     # 2b. Few exact matches (typical for video frames and re-encoded copies): check look-alikes one by one.
     if sum(1 for p in pages if p.get("match") == "full") < 2 and similar:
         cands = similar[:config.MAX_SIMILAR]
@@ -240,14 +265,26 @@ def _run(image_bytes, caption, posted_on, matches, exclude_fact_checkers, budget
             if confirmed else "None of them is the same photo or footage", checked=len(cands))
     # 2c. Partial matches (crops, re-encoded video frames): the match checker compares each page's image with the
     # frame or photo it was found for. Confirmed ones count as the same source; the rest stay "partial".
-    partial = [p for p in pages if p.get("match") == "partial" and p.get("image_urls") and not p.get("image_only")]
-    if matches is None and sum(1 for p in pages if p.get("match") == "full") < 2 and partial:
-        partial = partial[:config.MAX_PARTIAL]
+    partial = [p for p in pages if p.get("match") == "partial" and (p.get("image_urls") or p.get("thumb"))
+               and not p.get("image_only")]
+    # Copies posted before the claimed date are checked first: they are the ones that can decide the verdict.
+    start = c.get("period_start")
+    # They get their own places, so they never push out the partial matches on news pages.
+    decisive = [p for p in partial if start and p.get("posted") and p["posted"] < start][:config.MAX_EARLY]
+    rest = [p for p in partial if p not in decisive]
+    if matches is not None:
+        partial = []
+    elif sum(1 for p in pages if p.get("match") == "full") >= 2:
+        partial = decisive
+    else:
+        partial = rest[:config.MAX_PARTIAL] + decisive
+    if partial:
         yield step("match", "running", "Comparing %s with the post"
                    % _count(len(partial), "partly matching image", "partly matching images"))
         with cf.ThreadPoolExecutor(max_workers=4) as pool:
             checks = list(pool.map(lambda p: _guarded(matcher.same_source, search_images[p.get("found_by", 0)],
-                                                      p["image_urls"][0], budget=budget) or {"same": False}, partial))
+                                                      (p.get("image_urls") or [p.get("thumb")])[0], budget=budget)
+                                     or {"same": False}, partial))
         for p, m in zip(partial, checks):
             if m["same"]:
                 p["match"], p["match_reason"] = "confirmed look-alike", m.get("reason")
@@ -272,7 +309,8 @@ def _run(image_bytes, caption, posted_on, matches, exclude_fact_checkers, budget
                 image_jobs.append((i, u))
                 queued.add(u)
     ev = [{"id": "E%d" % (i + 1), "url": p["url"], "domain": p["domain"], "fact_checker": p["fact_checker"],
-           "match": p.get("match"), "image_first": None, "image_snapshot": None, "page_first": None}
+           "match": p.get("match"), "image_first": None, "image_snapshot": None, "page_first": None,
+           "page_published": p.get("posted"), "date_source": p.get("posted_how")}
           for i, p in enumerate(pages)]
     yield step("archive", "running", "Looking up first archive dates for %s and %s"
                % (_count(len(image_jobs), "image file", "image files"), _count(len(to_read), "page", "pages")))
@@ -297,7 +335,8 @@ def _run(image_bytes, caption, posted_on, matches, exclude_fact_checkers, budget
                     e.update(opened=False)
                 continue
             if kind == "read":
-                e.update(opened=res.get("opened"), title=res.get("title"), page_published=res.get("page_date"),
+                e.update(opened=res.get("opened"), title=res.get("title"),
+                         page_published=e.get("page_published") if e.get("date_source") else res.get("page_date"),
                          described_place=res.get("place"), described_date=res.get("date"),
                          described_event=res.get("event"), quote=res.get("quote"), relevant=res.get("relevant"))
             elif kind == "page":
@@ -310,7 +349,10 @@ def _run(image_bytes, caption, posted_on, matches, exclude_fact_checkers, budget
         pool.shutdown(wait=False, cancel_futures=True)
         raise
     pool.shutdown(wait=True)
-    useful = [e for i, e in enumerate(ev) if i in read_idx or e["image_first"]]
+    # A dated copy on X, TikTok or YouTube joins the table only when it is the same footage; unconfirmed partial
+    # matches with dates only distract the judge.
+    useful = [e for i, e in enumerate(ev) if i in read_idx or e["image_first"]
+              or (e.get("date_source") and e["match"] in ("full", "confirmed look-alike"))]
     dated = sum(1 for e in useful if e["image_first"] or e["page_first"])
     yield step("archive", "done", "%d of %d page%s dated by the Internet Archive" % (dated, len(useful), "" if len(useful) == 1 else "s"))
     if to_read:

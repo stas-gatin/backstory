@@ -404,3 +404,46 @@ def test_partial_matches_are_checked_against_the_image_they_were_found_for(offli
 def test_grounds_does_not_count_social_sites_as_descriptions():
     ev = [row(1, "telegraf.com.ua", described_place="Ukraine"), row(2, "youtu.be", described_place="Ukraine")]
     assert not verdict.grounds({"place": "Lebanon"}, ev, {"cited": ["E1", "E2"]})["ok"]
+
+
+# Post clock ----------------------------------------------------------------------------------------------------------
+
+def test_clock_reads_dates_from_post_ids():
+    from backstory import clock
+    assert clock.from_id("https://x.com/AP/status/1950499162388090961")["date"] == "2025-07-30"
+    assert clock.from_id("https://twitter.com/a/status/1839114088284066111")["date"] == "2024-09-26"
+    assert clock.from_id("https://www.tiktok.com/@a/video/7232023145343683866")["date"] == "2023-05-11"
+    assert clock.from_id("https://x.com/a/status/20") is None  # early sequential ids carry no time
+    assert clock.from_id("https://youtube.com/watch?v=dQw4w9WgXcQ") is None and clock.is_post("https://youtu.be/dQw4w9WgXcQ")
+    assert not clock.is_post("https://example.com/status/1950499162388090961")
+
+
+def test_clock_youtube_date_from_page_metadata(monkeypatch):
+    from backstory import clock
+    monkeypatch.setattr(clock.replay, "cached", lambda kind, payload, fetch, **k: {"ok": True, "date": "2017-06-18"})
+    assert clock.posted("https://www.youtube.com/shorts/abcdefghijk") == {"date": "2017-06-18",
+                                                                          "how": "YouTube upload date"}
+
+
+def test_grounds_accepts_a_confirmed_copy_posted_on_x_earlier():
+    ev = [row(1, "x.com", match="confirmed look-alike", page_published="2023-01-02", date_source="X post id")]
+    g = verdict.grounds(CLAIM, ev, {"cited": ["E1"]})
+    assert g["ok"] and g["kind"] == "earlier copy"
+    # Only a partial match: not proof until the match checker confirms it is the same footage.
+    ev[0]["match"] = "partial"
+    assert not verdict.grounds(CLAIM, ev, {"cited": ["E1"]})["ok"]
+
+
+def test_cover_image_of_an_early_copy_is_compared_but_never_archive_dated(offline):
+    yt = "https://www.youtube.com/watch?v=abcdefghijk"
+    offline.setattr(pipeline.search, "google_vision", lambda b: {"pages": [
+        {"url": yt, "title": "", "image_urls": [], "match": "partial"}], "best_guess": [], "similar": []})
+    offline.setattr(pipeline.clock, "posted", lambda url: {"date": "2016-01-01", "how": "YouTube upload date"})
+    compared, archived = [], []
+    offline.setattr(pipeline.matcher, "same_source", lambda a, u, budget=None: compared.append(u) or {"same": False})
+    offline.setattr(pipeline.archive, "first_capture", lambda url: archived.append(url) or {"date": "2015-01-01",
+                                                                                       "snapshot": "s", "ok": True})
+    result = run_events()[-1]
+    assert compared == ["https://i.ytimg.com/vi/abcdefghijk/hqdefault.jpg"]
+    assert not any("ytimg" in u for u in archived)
+    assert result["basis"] != "date rule"

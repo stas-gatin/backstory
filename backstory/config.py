@@ -38,4 +38,6 @@ COST_CAP_PER_CHECK = float(os.environ.get("BACKSTORY_COST_CAP", "0.30"))
 MAX_PAGES = 6          # pages the reader agent opens per photo
 MAX_ARCHIVE_LOOKUPS = 12
 MAX_PARTIAL = 6        # partial-match pages whose image the match checker compares with the post
+MAX_CLOCK = 15         # copies on X, TikTok and YouTube whose posting date is looked up
+MAX_EARLY = 4          # of those, copies posted before the claimed date that the match checker compares
 MAX_SIMILAR = 8        # look-alike images the match checker compares when exact matches are scarce

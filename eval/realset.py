@@ -55,12 +55,13 @@ def main():
     ap.add_argument("--set", default=str(ROOT / "eval" / "realset.json"))
     ap.add_argument("--start", type=int, default=0, help="first position in the set (positions keep their numbers)")
     ap.add_argument("--limit", type=int)
+    ap.add_argument("--media", choices=("photo", "video"), help="check only posts with this media")
     ap.add_argument("--max-usd", type=float, default=6.0)
     ap.add_argument("--workers", type=int, default=2)
     ap.add_argument("--out", default=str(ROOT / "runs" / "test_h2.json"))
     a = ap.parse_args()
     items = json.load(open(a.set))[:a.limit]
-    todo = range(a.start, len(items))
+    todo = [i for i in range(a.start, len(items)) if not a.media or items[i]["media"] == a.media]
     lock, rows, spent = threading.Lock(), [], [0.0]
 
     def job(i):
