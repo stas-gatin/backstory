@@ -129,24 +129,6 @@
   "image_url": "https://pbs.twimg.com/amplify_video_thumb/1914240689417617408/img/x5b26UxdaR2VE93a.jpg"
  },
  {
-  "id": "embassy",
-  "kind": "recorded",
-  "title": "\"Raid on an embassy in Tehran\"",
-  "blurb": "Special forces said to be raiding the Indian embassy in Tehran, May 2024.",
-  "post_url": "https://x.com/NavCom24/status/1792246481249833460",
-  "caption": "x.com/NavCom24/status/1792246481249833460",
-  "preview": {
-   "verdict": "inconsistent",
-   "first_date": "2019-12-02",
-   "first_domain": "in.gr",
-   "claim_date": "2024-05-19",
-   "claimed": "Tehran, Tehran Province, Iran · breaking now on 19 May 2024",
-   "record": "Germany"
-  },
-  "recording": "recorded/embassy.ndjson",
-  "image_url": "https://pbs.twimg.com/media/GN9WrO3XMAEqs1F.jpg"
- },
- {
   "id": "jakarta",
   "kind": "recorded",
   "title": "Jakarta floods (genuine)",
@@ -198,24 +180,6 @@
    "claim_date": "2024-10-30",
    "claimed": "Valencia, Valencian Community, Spain · today, 30 October 2024, after the DANA",
    "record": "I-10/I-610 interchange and surrounding area of northwest New Orleans and Metairie, Louisiana, USA · 2005-08-29"
-  }
- },
- {
-  "id": "katrina_true",
-  "kind": "photo",
-  "title": "The same photo, true caption",
-  "blurb": "The caption that matches the photo's history: what \"Fits\" looks like.",
-  "caption": "New Orleans under water after Hurricane Katrina, 29 August 2005.",
-  "posted_on": "2005-08-30",
-  "credit": "U.S. Coast Guard, Petty Officer 2nd Class Kyle Niemi, 29 Aug 2005, public domain (Wikimedia Commons)",
-  "image": "katrina.jpg",
-  "preview": {
-   "verdict": "consistent",
-   "first_date": "2005-09-01",
-   "first_domain": "shelterforce.org",
-   "claim_date": "2005-08-29",
-   "claimed": "New Orleans, Louisiana, United States · 29 August 2005",
-   "record": "I-10/I-610 interchange and surrounding area of northwest New Orleans and Metairie, Louisiana"
   }
  },
  {

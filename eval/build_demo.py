@@ -42,9 +42,6 @@ DEMOS = [
     {"id": "pope", "kind": "link", "title": "The Pope's \"last address\"",
      "blurb": "Shared as Pope Francis's last public words, about Gaza, at Easter 2025.",
      "post_url": "https://x.com/AyshaSusmaz/status/1914305735871115479"},
-    {"id": "embassy", "kind": "link", "title": "\"Raid on an embassy in Tehran\"",
-     "blurb": "Special forces said to be raiding the Indian embassy in Tehran, May 2024.",
-     "post_url": "https://x.com/NavCom24/status/1792246481249833460"},
     {"id": "jakarta", "kind": "link", "title": "Jakarta floods (genuine)",
      "blurb": "A real news post: what Backstory says when the caption is right.",
      "post_url": "https://x.com/jokowi/status/1212554859372670976"},
@@ -55,10 +52,6 @@ DEMOS = [
      "blurb": "An uploaded photo with its caption, January 2025.",
      "caption": "This house survived the Los Angeles wildfires while every home around it burned. Unbelievable. #PalisadesFire",
      "posted_on": "2025-01-12", "local_image": "lahaina.jpg"},
-    {"id": "morgue", "kind": "photo", "title": "Screenshot: \"hidden flood victims\"",
-     "blurb": "A screenshot of a Spanish post; SAM 3.1 cuts the photos out of it.",
-     "caption": "Las fotos que no quieren que veas: la morgue con todos los conductores que se llevó el agua por delante en la DANA de Valencia.",
-     "posted_on": "2024-12-30", "local_image": "morgue_raw.jpg"},
 ]
 
 
@@ -69,11 +62,6 @@ PUBLIC = [
      "blurb": "A staged example: a famous flood photo with a Spanish caption about Valencia, October 2024.",
      "caption": "Así está Valencia hoy después de la DANA. Barrios enteros bajo el agua y nadie dice nada.",
      "posted_on": "2024-10-30", "local_image": "katrina.jpg",
-     "credit": "U.S. Coast Guard, Petty Officer 2nd Class Kyle Niemi, 29 Aug 2005, public domain (Wikimedia Commons)"},
-    {"id": "katrina_true", "kind": "photo", "title": "The same photo, true caption",
-     "blurb": "The caption that matches the photo's history: what \"Fits\" looks like.",
-     "caption": "New Orleans under water after Hurricane Katrina, 29 August 2005.",
-     "posted_on": "2005-08-30", "local_image": "katrina.jpg",
      "credit": "U.S. Coast Guard, Petty Officer 2nd Class Kyle Niemi, 29 Aug 2005, public domain (Wikimedia Commons)"},
     {"id": "kamchatka", "kind": "photo", "title": "\"Tsunami in Kamchatka this morning\"",
      "blurb": "A staged example: a 2011 photo with a caption about the July 2025 Kamchatka earthquake.",

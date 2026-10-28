@@ -494,3 +494,13 @@ th { color: var(--muted); font-weight: 600; border-top: 0; font-size: 12px; }
 .ps.sr:nth-child(4), .kpi.sr:nth-child(4) { transition-delay: .24s; }
 @media (prefers-reduced-motion: reduce) { .sr { opacity: 1; transform: none; } }
 .ex .fresh { font-style: normal; background: var(--red-soft); color: var(--red); padding: 1px 6px; border-radius: 99px; margin-left: 4px; letter-spacing: .04em; }
+/* Home: a bigger headline, and the text centred against the input card so no empty band opens under it */
+#homeView .hero { align-items: center; }
+#homeView .hero h1 { font-size: 54px; line-height: 1.05; }
+#homeView .hero p { font-size: 18.5px; margin-top: 18px; }
+#homeView .promises { margin-top: 22px; }
+@media (max-width: 760px) { #homeView .hero h1 { font-size: 34px; } #homeView .hero p { font-size: 16.5px; } }
+.hero.single p { max-width: 900px; }
+.preview-wrap .hero-preview { max-width: none; grid-template-columns: minmax(380px, 46%) 1fr; }
+.preview-wrap .hp-img img { max-height: 300px; }
+.preview-wrap .hp-body { padding: 22px 32px; }

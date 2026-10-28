@@ -89,15 +89,16 @@ async function init() {
   await updateStatus();
   const ex = await fetch("/api/examples").then((r) => r.json()).catch(() => []);
   EXAMPLES = ex;
-  $("#examplesWrap").hidden = !ex.length;
+  // One finished case is shown first, so the page shows what an answer looks like; the gallery leaves it out.
+  const pv = ex.find((e) => e.preview?.verdict === "inconsistent" && e.preview.first_date);
+  const gallery = ex.filter((e) => e !== pv);
+  $("#examplesWrap").hidden = !gallery.length;
   const KIND = { link: "X post", recorded: "X post", video: "Video", photo: "Photo" };
-  $("#examples").innerHTML = ex.map((e) => `
+  $("#examples").innerHTML = gallery.map((e) => `
     <button type="button" class="ex" data-id="${esc(e.id)}">
       <img src="/api/examples/${encodeURIComponent(e.id)}/image" alt="" loading="lazy">
       <div class="exbody"><span class="kind">${KIND[e.kind || "photo"] || "Photo"}${e.fresh ? ' <i class="fresh">October 2026</i>' : ""}</span><b>${esc(e.title)}</b><span>${esc(e.blurb || e.caption)}</span></div>
     </button>`).join("");
-  // Before any click: one finished case, so the page shows what an answer looks like.
-  const pv = ex.find((e) => e.preview?.verdict === "inconsistent" && e.preview.first_date);
   if (pv) {
     const p = pv.preview, gap = span(p.first_date, p.claim_date);
     $("#previewWrap").hidden = false;
