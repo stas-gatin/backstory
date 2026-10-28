@@ -25,10 +25,10 @@ and checks the caption against that record. Every verdict cites its evidence. Wi
 | Match checker for look-alike images (Muse Spark, two images) | [`backstory/matcher.py`](backstory/matcher.py) |
 | Archivist (Internet Archive first captures) | [`backstory/archive.py`](backstory/archive.py) |
 | Page reader (Muse Spark) | [`backstory/reader.py`](backstory/reader.py) |
-| Date rule, judge (Muse Spark), critic (Muse Wonder) | [`backstory/verdict.py`](backstory/verdict.py) |
+| Date rule, judge (Muse Spark), critic (Muse Wonder), proof check | [`backstory/verdict.py`](backstory/verdict.py) |
 | Record / replay of every external call | [`backstory/replay.py`](backstory/replay.py) |
 | Evaluation on real fact-checked cases (5Pils) | [`eval/fivepils.py`](eval/fivepils.py) |
-| The tests that decided the design, rules written first | [`docs/TESTS.md`](docs/TESTS.md), [`docs/TEST_G.md`](docs/TEST_G.md) |
+| The tests that decided the design, rules written first | [`docs/TESTS.md`](docs/TESTS.md), [`docs/TEST_G.md`](docs/TEST_G.md), [`docs/TEST_H.md`](docs/TEST_H.md), [`docs/TEST_I.md`](docs/TEST_I.md) |
 
 ## How it works
 
@@ -36,7 +36,7 @@ and checks the caption against that record. Every verdict cites its evidence. Wi
 |---|---|---|---|
 | 0 | Post reader | X embed data (no account) | From a link to a post on X: its text, date, photos or video. The post's Community Note, if any, is shown next to the verdict for comparison and never given to the agents |
 | 0 | Frame grabber, speech reader | ffmpeg, **Muse Voice Transcribe** | Video posts only: four still frames to search for, and the words spoken in the clip |
-| 1 | Claim reader | **Muse Spark** + web search | Extracts place, event and date from the caption, in any language; resolves "yesterday" or a named event to a real date |
+| 1 | Claim reader | **Muse Spark** + web search | Extracts place, event and date from the caption, in any language; resolves "yesterday" or a named event to a real date. A post that presents media as news with no date ("first picture of…") is taken as no older than 30 days before the post |
 | 2 | Photo finder | **SAM 3.1** | Cuts the separate photos out of a post screenshot or collage; each is searched along with the whole image |
 | 3 | Image search | Google Cloud Vision Web Detection | Pages that show this photo (Meta's API has no image search) |
 | 4 | Match checker | **Muse Spark** (two images) | When exact matches are scarce (video frames, re-encodes), compares look-alike images with the post and keeps only the same photo or footage |
@@ -45,6 +45,7 @@ and checks the caption against that record. Every verdict cites its evidence. Wi
 | 7 | Date rule | code | If an exactly matching image file was archived before the claimed date, the caption cannot be right |
 | 8 | Judge | **Muse Spark** (sees the photo) | Weighs all evidence, must cite evidence ids |
 | 9 | Critic | **Muse Wonder** | Checks the judge's citations, and looks at cited look-alike images itself; sends the judge back once; if still unconvinced, the answer is "cannot verify" |
+| 10 | Proof check | code | An approved "does not fit" must rest on proof the code can verify in the evidence table: a copy of the same image dated more than 7 days before the claim, or two different non-social sites describing it differently. Otherwise the answer becomes "cannot verify". The models propose; the code decides what counts as proof |
 
 Three possible answers: **fits**, **does not fit**, **cannot verify**. A typical check makes 5–12 Muse Spark calls,
 1–2 Muse Wonder calls and one SAM call, and costs about $0.05–0.10.
@@ -75,8 +76,25 @@ confirmed on new data), adding SAM's cut-outs kept the hit rate (82%) and found 
 | Morgue photo as hidden victims of the Valencia floods (Dec 2024) | Does not fit: in a San Diego Union-Tribune article from 2014 | Maldita: San Diego 2014 and Los Angeles 2016 |
 | X video "hurricane Helene right now, storm surge 15-20ft" (Sep 2024) | Does not fit: same footage online by May 2024 (match confirmed by Spark and Wonder) | Lead Stories: Hurricane Ian, 2022 |
 
-The prompts were adjusted while running these three, so they show that it works, not how often. A fresh
-pre-registered evaluation of the full pipeline is still to come.
+The prompts were adjusted while running these three, so they show that it works, not how often.
+
+**The full pipeline on data it had not seen** ([docs/TEST_H.md](docs/TEST_H.md), [docs/TEST_I.md](docs/TEST_I.md)).
+Each test's pass rule was committed before its run; each result is reported against that rule, including the
+failures. A test is only run once; the next version is measured on new data.
+
+| Test | Version | Data | Caught false captions | False alarms | Pre-registered rule |
+|---|---|---|---|---|---|
+| H1 | first full pipeline | 105 5Pils cases (Test E's) | 79% | **22.9%** | failed: false alarms > 10% |
+| I | + proof check | 75 new 5Pils cases (train split) | 78.7% | **10.7%** | failed, narrowly: false alarms > 10% |
+| H2 | + proof check | 53 real X posts, link only (mostly video) | 24% (6/25) | 3.6% (1/28) | no pass bar (sanity check) |
+| H3 | + match checker for look-alikes | 39 fresh X posts | 22% (5/23) | 0% (0/16) | failed: caught < 35% |
+
+What the failures taught, one change each: H1's false alarms came from copies only days older than the claim and
+from single pages, so the proof check was added (false alarms roughly halved in Test I). H3's misses were news posts
+that give no date ("first picture of a chemical attack in Kursk", while the same photo was online in 2016): the
+posting date is now the implied claimed date. On posts already seen, that change doubled the fakes caught on X
+(H3: 5 → 12 of 23; H2: 6 → 12 of 25) with no false alarm; these are development numbers, and the test on posts it
+has not seen is H4 (pre-registered, small).
 
 Limits: the method needs earlier copies of the photo online. Counting the Test E cases where reverse image search
 found nothing, 41% of all false captions were caught. Fully fabricated or AI-generated photos have no past and get
