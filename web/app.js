@@ -108,6 +108,7 @@ async function init() {
         <button type="button" class="hp-go" id="hpGo">Watch the agents check it</button></div>`;
     $("#hpGo").addEventListener("click", () => openExample(pv));
   }
+  document.querySelectorAll(".ex").forEach((b, i) => { b.style.animationDelay = (0.15 + i * 0.05) + "s"; });
   document.querySelectorAll(".ex").forEach((b) => b.addEventListener("click", () => openExample(ex.find((e) => e.id === b.dataset.id))));
   route();
 }
@@ -328,7 +329,7 @@ function addEvidence(r) {
   $("#evidenceCard").hidden = false;
   let card = document.getElementById("ev-" + r.id);
   if (!card) {
-    card = document.createElement("article"); card.className = "ev"; card.id = "ev-" + r.id;
+    card = document.createElement("article"); card.className = "ev reveal"; card.id = "ev-" + r.id;
     const n = (r.id[0] === "S" ? -100 : 0) + +r.id.slice(1);
     const key = (x) => (x.id[3] === "S" ? -100 : 0) + +x.id.slice(4);
     const next = [...$("#evidence").children].find((x) => key(x) > n);
@@ -447,7 +448,7 @@ function showResult(r) {
   $("#mapCard").classList.add("wide");
   $(".pair").after($("#mapCard"));
   box.hidden = false;
-  box.className = "card result " + r.verdict;
+  box.className = "card result anim " + r.verdict;
   document.querySelectorAll(".node:not(.done):not(.sent):not(.fail)").forEach((n) => n.classList.add("skipped"));
   const c = r.claim || {}, a = r.actual || {}, f = r.first_seen;
   const tl = r.timeline || [];
@@ -504,6 +505,8 @@ function showResult(r) {
         <span class="models">${models}</span><span>$${(r.cost?.usd ?? 0).toFixed(3)}${r.mode === "replay" ? " · recorded run" : ""}</span></div>
     </div>`;
   box.querySelectorAll(".xembed").forEach(xEmbed);
+  box.querySelectorAll(".axis .pin").forEach((el, i) => { el.style.animationDelay = (1.2 + i * 0.12) + "s"; });
+  box.querySelectorAll(".tl li").forEach((el, i) => { el.style.animationDelay = (1.3 + i * 0.06) + "s"; });
   box.querySelectorAll(".copy").forEach((b) => b.addEventListener("click", () => {
     navigator.clipboard?.writeText(b.dataset.copy).then(() => { b.textContent = "Copied"; setTimeout(() => { b.textContent = "Copy"; }, 1500); });
   }));
@@ -609,6 +612,8 @@ function drawGraph(r) {
     <div class="gnode verdict ${ok}" id="g-verdict">${icon(ok)}<b>${LABEL[ok] || ok}</b></div></div>`;
   card.hidden = false;
   $("#graph").innerHTML = `<svg class="glines" id="glines"></svg>${col1}${col2}${col3}${col4}`;
+  $("#graph").classList.remove("anim"); void $("#graph").offsetWidth; $("#graph").classList.add("anim");
+  G.drawn = false;
   const links = [["g-post", "g-claim", ""]];
   G.inputs.forEach((_, i) => links.push(["g-post", "g-in-" + i, ""]));
   shown.forEach((x) => links.push([x.found_by != null && document.getElementById("g-in-" + x.found_by) ? "g-in-" + x.found_by : "g-in-0", "g-" + x.id, cited.has(x.id) ? "hot" : ""]));
@@ -639,6 +644,17 @@ function drawLines() {
       : `M${x1},${y1} C${(x1 + x2) / 2},${y1} ${(x1 + x2) / 2},${y2} ${x2},${y2}`;
     return `<path class="${cls}" d="${m}"/>`;
   }).join("");
+  // The first time, each line draws itself, from the post to the verdict; on resize they just appear.
+  if (!G.drawn && !matchMedia("(prefers-reduced-motion: reduce)").matches) {
+    G.drawn = true;
+    [...svg.querySelectorAll("path")].forEach((p, i) => {
+      const len = p.getTotalLength();
+      p.style.strokeDasharray = len; p.style.strokeDashoffset = len;
+      p.style.animationDelay = (0.4 + i * 0.07) + "s"; p.classList.add("drawing");
+    });
+    const v = document.getElementById("g-verdict");
+    if (v) setTimeout(() => v.classList.add("landed"), 600 + svg.querySelectorAll("path").length * 70);
+  }
 }
 addEventListener("resize", () => requestAnimationFrame(drawLines));
 

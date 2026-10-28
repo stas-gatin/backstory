@@ -6,7 +6,7 @@
 <title>Backstory track record</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@500&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="/static/style.css?v=37">
+<link rel="stylesheet" href="/static/style.css?v=45">
 </head>
 <body>
 <header class="top">
@@ -107,5 +107,6 @@ document.querySelectorAll(".seg").forEach((seg) => seg.addEventListener("click",
 $("q").addEventListener("input", (e) => { f.q = e.target.value; draw(); });
 fetch("/api/record").then((r) => r.json()).then((d) => { data = d; summary(); draw(); });
 </script>
+<script src="/static/motion.js?v=1"></script>
 </body>
 </html>
