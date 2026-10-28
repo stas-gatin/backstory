@@ -141,3 +141,20 @@ copy published long before the post (rainews.it, May 2024, for a post of Feb 202
 of Aug 2024), but the caption gave no date ("Iran launching missiles from beneath the sea"; "First picture of a
 chemical attack in Kursk"), so there was no claimed date for an earlier copy to beat. A post that presents media as
 news implies "now"; the pipeline did not use the posting date as that implied date.
+
+## H4: the 14 posts of the H3 set that the cost cap left unchecked (written 2026-10-28, before any run on them)
+After H3 the claim reader was changed (commit 3bf7dfe), looking at H3's misses: when a caption presents the media as news
+("breaking", "first picture of", "just landed") and gives no date, the posting date minus 30 days is taken as the
+earliest date of the claimed scene, so a copy shown to exist earlier than that counts against the caption (with
+the usual 7-day margin in the proof check). On the posts already seen (development numbers, not a result): H3's 39
+posts went from 5 of 23 fakes caught to 12 of 23, with 0 of 16 false alarms; H2's 53 posts from 6 of 25 to 12 of 25,
+with 0 of 28 false alarms.
+
+Data: the posts of `eval/realset2.json` at positions 39–52 (the shuffled order fixed before H3), which no pipeline
+version has been run on: 14 posts, 6 fake (3 photo, 3 video), 8 true (4 photo, 4 video). Same input rules as H2 and H3.
+
+Claims allowed afterwards: with 6 fakes and 8 true posts, no rate is reliable; the counts are reported as they are,
+and also pooled with H3 for the version at c79bf8e (39 posts) and 3bf7dfe (14 posts) separately, never merged into one
+number for one version. If any true post is called "inconsistent", the README says so.
+
+Budget: hard cap 2 USD.
