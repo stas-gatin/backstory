@@ -174,3 +174,12 @@ def record_data():
 
 
 app.mount("/static", StaticFiles(directory=WEB), name="static")
+
+
+@app.middleware("http")
+async def _revalidate(request, call_next):
+    # The page's own files change between versions: the browser asks again each time instead of keeping a stale copy.
+    response = await call_next(request)
+    if request.url.path.startswith("/static/") or request.url.path in ("/", "/check", "/tested", "/record"):
+        response.headers["Cache-Control"] = "no-cache"
+    return response
