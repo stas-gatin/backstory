@@ -34,3 +34,25 @@ Budget: hard cap 13 USD.
 
 Limits: one dataset (5Pils, fact-checks from 2020–2023, many from Africa and South Asia); pages changed since 2023;
 the true dates are the fact-checkers' and can themselves be wrong.
+
+## Result (2026-10-28, pipeline at commit ebc0c03, 11.61 USD)
+All 100 cases checked (200 checks), no errors.
+
+| | main set (75) | all 100 |
+|---|---|---|
+| detection (false captions called "inconsistent") | 59 (0.787) | 75 (0.750) |
+| false alarm (true captions called "inconsistent") | 8 (0.107) | 10 (0.100) |
+| false captions: "cannot_tell" / "consistent" | 16 / 0 | 25 / 0 |
+| true captions: "cannot_tell" / "consistent" | 41 / 26 | 59 / 31 |
+| date rule alone: detection / false alarm | 0.347 / 0.040 | 0.360 / 0.030 |
+
+Decision under the rule above: false alarm on the main set is 0.107 > 0.10, so **the pipeline still raises too many
+false alarms on new data**, and the README says so. Detection (0.787) is above both bars, and above Test E's simple
+version (0.667), but the false-alarm condition fails, so neither "the fix works" nor "better than Test E" may be
+claimed. Compared with H1 on the old version (0.790 / 0.229, a different split), false alarms are about half.
+
+Reading (after the result, not part of the rule): of the 8 false alarms on the main set, 3 come from the date rule
+alone (an archived copy of the image file dated before the fact-checker's "true" date, so either the true date or
+the archive match is wrong), 2 from an earlier copy found by the judge (2014 for a 2015 caption; 2019 for a 2020
+caption), and 3 from two sites describing the image differently (one of them a case whose "true" date lists four
+images).
