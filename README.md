@@ -99,8 +99,8 @@ test (`/record`, data in [`eval/track_record.json`](eval/track_record.json), tex
 ![The track record page: 20 of 21 "Does not fit" verdicts right, 20 of 108 fakes caught, 1 of 99 genuine posts flagged, 12 of 90 fake videos caught, and the list of posts with filters](docs/images/record.png)
 
 The examples in the repository are staged on public-domain photos (U.S. Coast Guard and U.S. Navy, see
-[`examples/CREDITS.md`](examples/CREDITS.md)): the same photo with a false caption and with its true caption, so you
-can see "Does not fit" and "Fits" side by side, and a 2011 tsunami photo shared as the 2025 Kamchatka tsunami.
+[`examples/CREDITS.md`](examples/CREDITS.md)): a 2005 New Orleans flood photo shared as the 2024 Valencia floods, and a
+2011 tsunami photo shared as the 2025 Kamchatka tsunami. "Fits" is shown by a genuine post (Jakarta floods).
 
 ---
 
