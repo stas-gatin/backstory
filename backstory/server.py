@@ -69,23 +69,25 @@ def example_image(ex_id: str):
 
 
 # A recorded run replays in a blink; a short pause per step lets a viewer follow the agents. The result says
-# "recorded run", and the pause is off in live mode, where the agents' own time is shown.
+# "recorded run". The pause is off for live checks, where the agents' own time is shown; a recorded check of a post
+# on X is always paced, in live mode too.
 PACE = float(os.environ.get("BACKSTORY_PACE", "1" if config.MODE == "replay" else "0"))
+RECORDED_PACE = float(os.environ.get("BACKSTORY_RECORDED_PACE", "1"))
 
 
-def _ndjson(events):
+def _ndjson(events, pace):
     for ev in events:
         yield json.dumps(ev, ensure_ascii=False) + "\n"
-        if PACE and ev.get("type") == "step":
-            time.sleep(PACE * (0.25 if ev["status"] == "running" else 0.55))
-        elif PACE and ev.get("type") == "evidence":
-            time.sleep(PACE * 0.06)
+        if pace and ev.get("type") == "step":
+            time.sleep(pace * (0.25 if ev["status"] == "running" else 0.55))
+        elif pace and ev.get("type") == "evidence":
+            time.sleep(pace * 0.06)
 
 
-def _stream(events, cleanup=None):
+def _stream(events, cleanup=None, pace=None):
     # The temporary video is removed after the response, even if the client leaves early.
     task = BackgroundTask(lambda: Path(cleanup).unlink(missing_ok=True)) if cleanup else None
-    return StreamingResponse(_ndjson(events), media_type="application/x-ndjson", background=task)
+    return StreamingResponse(_ndjson(events, PACE if pace is None else pace), media_type="application/x-ndjson", background=task)
 
 
 @app.post("/api/check")
@@ -101,7 +103,7 @@ async def check(request: Request, caption: str = Form(""), posted_on: str = Form
         if ex.get("recording"):
             # A recorded check of a post on X: its events as they were, without the post's media.
             lines = (EXAMPLES / ex["recording"]).read_text().splitlines()
-            return _stream(json.loads(l) for l in lines if l.strip())
+            return _stream((json.loads(l) for l in lines if l.strip()), pace=RECORDED_PACE)
         caption, posted_on = ex["caption"], ex.get("posted_on") or ""
         # Dataset cases carry their recorded search results instead of a live image search.
         matches = ex.get("matches")

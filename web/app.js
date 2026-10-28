@@ -246,6 +246,10 @@ async function errorText(res) {
 
 let t0 = 0, timer = null, modelCalls = 0;
 let G = {};  // what the check graph needs, collected from the agents' messages
+// What each agent said in this check, shown when the pointer rests on it in the map; model answers join at the end.
+let NOTES = {}, CALLS = {};
+const ROLE_AGENT = { "Claim reader": "claim", "Match checker": "match", "Page reader": "reader", "Judge": "judge", "Critic": "critic",
+  "Scene witness": "witness", "Scene witness check": "witness", "Speech reader": "speech", "Photo finder": "cutout" };
 function tick() { $("#elapsed").textContent = ((performance.now() - t0) / 1000).toFixed(0) + " s"; }
 
 function showPost(p) {
@@ -256,7 +260,7 @@ function showPost(p) {
 }
 
 function reset(post) {
-  finished = false; modelCalls = 0;
+  finished = false; modelCalls = 0; NOTES = {}; CALLS = {}; hideTip();
   G = { post: post, inputs: [], rows: {}, judge: 0, sent: 0, speech: "", found: 0, checked: 0, kept: 0 };
   $("#graphCard").hidden = true;
   clearInterval(timer);
@@ -306,7 +310,8 @@ function addStep(ev) {
     return;
   }
   const sent = ev.approve === false;
-  if (node) { node.classList.remove("running"); node.classList.add(sent ? "sent" : "done"); node.title = ev.text; }
+  if (node) { node.classList.remove("running"); node.classList.add(sent ? "sent" : "done"); }
+  (NOTES[ev.agent] = NOTES[ev.agent] || []).push({ text: ev.text, sent, thumbs: ev.agent === "post" ? [] : (ev.thumbs || []).slice(0, 3) });
   if (ev.agent === "post" && ev.post) {
     // A recorded post carries no copy of its media: the picture is the post's own, served by X.
     showPost({ media: (ev.thumbs || [])[0] || (ev.post.media_urls || [])[0] || null, text: ev.post.text,
@@ -441,6 +446,7 @@ function claimFact(c) {
 }
 
 function showResult(r) {
+  (r.cost?.log || []).forEach((x) => { const a = ROLE_AGENT[x.role]; if (a) (CALLS[a] = CALLS[a] || []).push(x); });
   (r.evidence || []).forEach(addEvidence);
   const box = $("#result");
   // Verdict first, next to the post; the agent map moves below, full width, and its log folds into one line.
@@ -467,11 +473,13 @@ function showResult(r) {
         <span>${esc(f.how)}${f.described ? " · " + esc(short(f.described, 80)) : ""}</span></div></div>` : "";
   const scene = (r.evidence || []).find((e) => e.match === "scene" && e.other_country && (r.cited || []).includes(e.id));
   const sceneThen = r.verdict === "inconsistent" && !f && scene ? `<div class="thennow">
-      <div class="tn"><div class="tnk">Shared as</div>${postImg}<b>${esc(short(c.place || "", 60))}</b><span>${esc(r.post ? "@" + r.post.author + ", " + r.post.posted_on : "")}</span></div>
-      <div class="tngap"><b>${icon("witness")}</b><span>the footage says</span></div>
-      <div class="tn first"><div class="tnk">Sign in the scene, at ${esc(scene.scene_t)} s</div>${scene.image_url ? `<img src="${esc(scene.image_url)}" alt="">`
-        : r.post?.url ? `<div class="xembed" data-url="${esc(r.post.url)}"></div><span>Play the post: the sign is on screen at 0:0${Math.round(scene.scene_t || 0)}.</span>` : ""}<b>“${esc(scene.quote)}” → ${esc(scene.described_place)}</b>
-        <span>read by Muse Spark, confirmed on the frame by Muse Wonder</span></div></div>` : "";
+      <div class="tn"><div class="tnk">The post: shared as</div>${postImg}<b>${esc(short(c.place || "", 60))}</b><span>${esc(r.post ? "@" + r.post.author + ", " + r.post.posted_on : "")}</span>
+        ${(G.post?.text || c.caption) ? `<q>${esc(short(G.post?.text || c.caption, 200))}</q>` : ""}</div>
+      <div class="tngap"><b>${icon("witness")}</b><span>the same video, ${Math.round(scene.scene_t || 0)} s in</span></div>
+      <div class="tn first"><div class="tnk">What the footage shows</div>${scene.image_url ? `<img src="${esc(scene.image_url)}" alt="The frame with the sign">`
+        : `<div class="signcard"><small>a sign on screen at 0:${String(Math.round(scene.scene_t || 0)).padStart(2, "0")}</small><blockquote>${esc(scene.quote)}</blockquote></div>`}
+        <b>“${esc(scene.quote)}” → ${esc(scene.described_place)}</b>
+        <span>read by Muse Spark, confirmed on the frame by Muse Wonder${!scene.image_url && r.post?.url ? ` · ${ext(r.post.url, "play the post on X")} to see it` : ""}</span></div></div>` : "";
   const compare = r.verdict === "inconsistent" && (a.place || a.date || a.event)
     ? `<div class="compare">${claimFact(c)}<div class="vs">${icon("inconsistent")}</div>${fact("The record says", [a.place, a.date, a.event], "record")}</div>`
     : `<div class="compare single">${claimFact(c)}</div>`;
@@ -665,3 +673,37 @@ function xEmbed(el) {
   if (window.twttr?.widgets) return window.twttr.widgets.load(el);
   if (!document.getElementById("xw")) { const sc = document.createElement("script"); sc.id = "xw"; sc.async = true; sc.src = "https://platform.twitter.com/widgets.js"; document.body.appendChild(sc); }
 }
+
+// The agent map: rest the pointer on an agent (or tap it) to read what it did in this check.
+function tipHtml(node) {
+  const id = node.id.replace("node-", ""), name = node.querySelector("b").textContent, by = node.querySelector("small").textContent;
+  const notes = NOTES[id] || [], calls = CALLS[id] || [];
+  const head = `<div class="tip-h"><b>${esc(name)}</b><span class="chip ${IS_META(by) ? "" : "tool"}">${esc(by)}</span></div>`;
+  if (!notes.length && !calls.length) {
+    return head + `<p class="tip-nil">${node.classList.contains("running") ? "Working on it…" : "Not needed in this check."}</p>`;
+  }
+  const said = notes.slice(-4).map((n) => `<li class="${n.sent ? "sent" : ""}">${esc(short(n.text || "", 260))}</li>`).join("");
+  const thumbs = notes.flatMap((n) => n.thumbs).slice(0, 3);
+  const tok = calls.reduce((t, x) => t + (x.in || 0) + (x.out || 0), 0), usd = calls.reduce((t, x) => t + (x.usd || 0), 0);
+  const answers = calls.filter((x) => x.says).slice(0, 3).map((x) => `<li><span class="mono">${esc(MODEL_NAMES[x.model] || x.model)}</span> ${esc(short(String(x.says).replace(/\s+/g, " "), 180))}</li>`).join("");
+  return head + (said ? `<ul class="tip-said">${said}</ul>` : "")
+    + (thumbs.length ? `<div class="tip-thumbs">${thumbs.map((t) => `<img src="${t}" alt="">`).join("")}</div>` : "")
+    + (answers ? `<div class="tip-k">What the model answered${calls.length > 3 ? ` (3 of ${calls.length})` : ""}</div><ul class="tip-ans">${answers}</ul>` : "")
+    + (calls.length ? `<div class="tip-foot mono">${calls.length} call${calls.length > 1 ? "s" : ""} · ${tok.toLocaleString("en")} tokens · $${usd.toFixed(4)}</div>` : "");
+}
+function showTip(node) {
+  let tip = $("#nodeTip");
+  if (!tip) { tip = document.createElement("div"); tip.id = "nodeTip"; tip.setAttribute("role", "tooltip"); document.body.appendChild(tip); }
+  tip.innerHTML = tipHtml(node);
+  tip.classList.add("on");
+  const r = node.getBoundingClientRect(), w = tip.offsetWidth, h = tip.offsetHeight;
+  let left = Math.min(Math.max(8, r.left + r.width / 2 - w / 2), innerWidth - w - 8);
+  let top = r.bottom + 8;
+  if (top + h > innerHeight - 8 && r.top - h - 8 > 8) top = r.top - h - 8;
+  tip.style.left = left + scrollX + "px"; tip.style.top = top + scrollY + "px";
+}
+function hideTip() { $("#nodeTip")?.classList.remove("on"); }
+document.addEventListener("mouseover", (e) => { const n = e.target.closest?.(".node"); if (n) showTip(n); });
+document.addEventListener("mouseout", (e) => { const n = e.target.closest?.(".node"); if (n && !n.contains(e.relatedTarget)) hideTip(); });
+document.addEventListener("click", (e) => { const n = e.target.closest?.(".node"); if (n) showTip(n); else if (!e.target.closest?.("#nodeTip")) hideTip(); });
+addEventListener("scroll", hideTip, { passive: true });
