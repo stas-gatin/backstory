@@ -1,0 +1,479 @@
+[
+ {
+  "group": "fake",
+  "post_url": "https://x.com/HustleBitch_/status/1877770103229485090",
+  "claimed": "Los Angeles wildfires, January 2025",
+  "truth": "Skirball Fire beside Interstate 405, Los Angeles, December 2017",
+  "media": "video",
+  "source_url": "https://fullfact.org/online/2017-fire-los-angeles-highighway/",
+  "notes": "Same city, wrong year"
+ },
+ {
+  "group": "fake",
+  "post_url": "https://x.com/RpsAgainstTrump/status/1919851751206723960",
+  "claimed": "India's missile strikes on Pakistan, 6 May 2025",
+  "truth": "Night air raid on Gaza, October 2023",
+  "media": "video",
+  "source_url": "https://leadstories.com/hoax-alert/2025/05/fact-check-video-does--not-show-2025-indian-air-strike-on-pakistan.html",
+  "notes": ""
+ },
+ {
+  "group": "fake",
+  "post_url": "https://x.com/khanadan99/status/2035914135783829924",
+  "claimed": "Tel Aviv, now (March 2026, Iran-Israel war)",
+  "truth": "Fire at a petroleum distribution station in Jeddah, Saudi Arabia, after Houthi attack, 2022",
+  "media": "video",
+  "source_url": "https://fullfact.org/conflict/2022-saudi-arabia-fire-falsely-shared-as-tel-aviv/",
+  "notes": ""
+ },
+ {
+  "group": "fake",
+  "post_url": "https://x.com/jackprandelli/status/2033698413733154852",
+  "claimed": "Drone strike on Dubai International Airport fuel tank, March 2026",
+  "truth": "Market fire in Ajman, UAE, August 2020",
+  "media": "video",
+  "source_url": "https://fullfact.org/conflict/dubai-airport-fire-miscaptioned-old-footage/",
+  "notes": ""
+ },
+ {
+  "group": "fake",
+  "post_url": "https://x.com/AAliBaltistani/status/2038502736031834519",
+  "claimed": "Iranian missile destroys Haifa power plant, Israel, March 2026",
+  "truth": "Chemical fire response drill at a fire brigade training base in Chengdu, China; on YouTube since November 2015",
+  "media": "video",
+  "source_url": "https://fullfact.org/conflict/miscaptioned-footage-haifa-power-plant-israel-iran-china/",
+  "notes": ""
+ },
+ {
+  "group": "fake",
+  "post_url": "https://x.com/Glenn_Diesen/status/2028723725965697087",
+  "claimed": "Drone attack on US embassy in Riyadh, Saudi Arabia, March 2026",
+  "truth": "Fire on a major road, online since at least 6 Feb 2026, before the conflict; not the embassy",
+  "media": "video",
+  "source_url": "https://fullfact.org/conflict/us-embassy-saudi-arabia-riyadh-fire-video-false/",
+  "notes": "Real origin place not pinned down by Full Fact"
+ },
+ {
+  "group": "fake",
+  "post_url": "https://x.com/MrImranPk/status/2063994386589815014",
+  "claimed": "Iranian attack on energy infrastructure in Tel Aviv, 8 June 2026",
+  "truth": "Market fire in Ajman, UAE, August 2020",
+  "media": "video",
+  "source_url": "https://fullfact.org/conflict/video-market-fire-uae-not-iran-attack-tel-aviv/",
+  "notes": "Same footage as jackprandelli item, different claim"
+ },
+ {
+  "group": "fake",
+  "post_url": "https://x.com/irishpatriot91/status/2064409656999489922",
+  "claimed": "Belfast right now, unrest of 9 June 2026",
+  "truth": "Attack on PSNI vehicles after a car meet, Stewartstown Road, west Belfast, 4 May 2026",
+  "media": "video",
+  "source_url": "https://fullfact.org/crime/belfast-disorder-video-old-footage/",
+  "notes": "Same place, date one month off"
+ },
+ {
+  "group": "fake",
+  "post_url": "https://x.com/BROKENBRITAIN0/status/2062186876874711104",
+  "claimed": "Southampton police arresting a wheelie bin, June 2026 protests",
+  "truth": "Belfast, 2022, after a parade incident",
+  "media": "video",
+  "source_url": "https://fullfact.org/crime/old-video-northern-ireland-shared-southampton-bin/",
+  "notes": ""
+ },
+ {
+  "group": "fake",
+  "post_url": "https://x.com/AmericanMama/status/2064459690373775668",
+  "claimed": "Belfast burning during unrest, June 2026",
+  "truth": "Gas pipeline explosions near Kizilyurt, Dagestan, Russia, 9 June 2026",
+  "media": "video",
+  "source_url": "https://fullfact.org/crime/belfast-disorder-fire-video-russia-misleading/",
+  "notes": "Same date, wrong country"
+ },
+ {
+  "group": "true",
+  "post_url": "https://x.com/nexta_tv/status/2064406445093802198",
+  "claimed": "Gas pipeline explosions, Kizilyurt, Dagestan, Russia, 9 June 2026",
+  "truth": "Same as claimed",
+  "media": "video",
+  "source_url": "https://fullfact.org/crime/belfast-disorder-fire-video-russia-misleading/",
+  "notes": "News outlet; Full Fact cites it as genuine footage of the Dagestan fire"
+ },
+ {
+  "group": "fake",
+  "post_url": "https://x.com/HustleBitch_/status/1844142003631817025",
+  "claimed": "House walls collapse on homeowner during hurricane (Hurricane Milton, Florida, 9 Oct 2024)",
+  "truth": "Basement wall collapse in Cranford, New Jersey, during Hurricane Ida flooding, September 2021",
+  "media": "video",
+  "source_url": "https://fullfact.org/online/house-wall-collapse-flooding-new-jersey-not-florida/",
+  "notes": "Also debunked by Newschecker"
+ },
+ {
+  "group": "fake",
+  "post_url": "https://x.com/imotivate4life/status/1844123108615258546",
+  "claimed": "Hurricane Milton (Category 5), Florida, October 2024",
+  "truth": "Tornado in Benghazi, Libya, during Storm Daniel, September 2023",
+  "media": "video",
+  "source_url": "https://newschecker.in/fact-check/old-unrelated-videos-falsely-shared-as-hurricane-milton/",
+  "notes": "Newschecker lists this post first in ClaimReview appearances; matched to its Claim 1 (tornado clip)"
+ },
+ {
+  "group": "true",
+  "post_url": "https://x.com/TRTWorldNow/status/1701185063172362292",
+  "claimed": "Tornado in Benghazi, Libya, from Storm Daniel, posted 11 Sep 2023",
+  "truth": "Same as claimed",
+  "media": "video",
+  "source_url": "https://newschecker.in/fact-check/old-unrelated-videos-falsely-shared-as-hurricane-milton/",
+  "notes": "News outlet; Newschecker uses it as the genuine origin of the clip"
+ },
+ {
+  "group": "fake",
+  "post_url": "https://x.com/TheDailyCPEC/status/2063867776381403328",
+  "claimed": "Iran fires fresh wave of missiles at US and Israeli assets, June 2026",
+  "truth": "Explosion at Ta' Lourdes fireworks factory, Malta, 1 June 2026",
+  "media": "video",
+  "source_url": "https://leadstories.com/hoax-alert/2026/06/fact-check-video-does-not-show-explosion-of-israeli-or-us-assets-caused-by-iranian-missiles-it-shows-fireworks-factory-in-malta.html",
+  "notes": ""
+ },
+ {
+  "group": "fake",
+  "post_url": "https://x.com/wstgoat7/status/2064926935424078145",
+  "claimed": "New York, after Knicks NBA Finals win, 10 June 2026",
+  "truth": "Protest in Tbilisi, Georgia, 2024 (watermark of Georgian outlet)",
+  "media": "video",
+  "source_url": "https://leadstories.com/hoax-alert/2026/06/fact-check-video-does-not-show-people-new-york-shooting-fireworks-along-the-ground-during-2026-nba-finals-2024-protest-georgia.html",
+  "notes": "Visible watermark of a Georgian outlet in the video"
+ },
+ {
+  "group": "fake",
+  "post_url": "https://x.com/IsraelArmyX/status/2064931263212032194",
+  "claimed": "US airstrikes on Iranian military bases, June 2026",
+  "truth": "Gas station explosion in Chechnya, Russia, October 2024",
+  "media": "video",
+  "source_url": "https://leadstories.com/hoax-alert/2026/06/fact-check-video-of-burning-fuel-tank-rolling-away-after-explosion-is-not-from-iran.html",
+  "notes": "Account labeled as parody per Lead Stories"
+ },
+ {
+  "group": "fake",
+  "post_url": "https://x.com/TonyGunk123/status/2092742427798896813",
+  "claimed": "Elephant rescuing a man in Nepal floods, 26 Aug 2026",
+  "truth": "Same clip published with an India locator in early August 2026, weeks before Nepal floods",
+  "media": "video",
+  "source_url": "https://leadstories.com/hoax-alert/2026/08/fact-check-real-video-does-not-show-elephant-rescuing-man-in-nepal-floods-on-august-26-2026.html",
+  "notes": "Exact origin place only 'India locator'"
+ },
+ {
+  "group": "fake",
+  "post_url": "https://x.com/rkmtimes/status/2029414852935204875",
+  "claimed": "US destroyer hit by 4 Iranian missiles near Cyprus, March 2026",
+  "truth": "Damage to USS Fitzgerald after collision with a container ship off Japan, June 2017",
+  "media": "video",
+  "source_url": "https://leadstories.com/hoax-alert/2026/03/fact-check-video-does-not-show-us-destroyer-attacked-by-iranian-missiles-near-cyprus-its-2017-damage.html",
+  "notes": ""
+ },
+ {
+  "group": "fake",
+  "post_url": "https://x.com/hippyygoat/status/2029754345575555376",
+  "claimed": "American oil tanker struck by Iran, burning in Strait of Hormuz, March 2026",
+  "truth": "Collision of two (non-US) oil tankers in the Gulf of Oman, summer 2025",
+  "media": "video",
+  "source_url": "https://leadstories.com/hoax-alert/2026/03/fact-check-video-does-not-show-american-oil-tanker-struck-by-iran-burning-in-strait-of-hormuz.html",
+  "notes": ""
+ },
+ {
+  "group": "fake",
+  "post_url": "https://x.com/AFRICANDEMOC/status/2030898481011769458",
+  "claimed": "Iranian missile burns home of Iddo Netanyahu, Israel, March 2026",
+  "truth": "House fire in New Jersey, USA, uploaded weeks before 28 Feb 2026",
+  "media": "video",
+  "source_url": "https://leadstories.com/hoax-alert/2026/03/fact-check-video-of-house-fire-predates-2026-war-between-us-israel-and-iran.html",
+  "notes": "Post has a video plus a photo; the debunk concerns the video"
+ },
+ {
+  "group": "fake",
+  "post_url": "https://x.com/ImMeme0/status/1838336528369508512",
+  "claimed": "Springfield, Ohio, September 2024 (on-screen text 'Meanwhile in Springfield OHIO')",
+  "truth": "Carnival (likely Jab Jab masquerade) in Grenada, posted earlier on TikTok",
+  "media": "video",
+  "source_url": "https://leadstories.com/hoax-alert/2024/09/fact-check-video-does-not-show-black-man-in-springfield-ohio-with-suitcase-full-of-frogs-its-in-grenada.html",
+  "notes": "False place is partly in an on-screen text overlay"
+ },
+ {
+  "group": "fake",
+  "post_url": "https://x.com/HustleBitch_/status/1843655102487286226",
+  "claimed": "Elk fleeing the Elk Fire in Bighorn National Forest, Wyoming, October 2024",
+  "truth": "Elk fleeing a wildfire in Big Horn County, Montana, 2021",
+  "media": "video",
+  "source_url": "https://leadstories.com/hoax-alert/2024/10/fact-check-video-does-not-show-elk-escaping-wyoming-wildfire-in-2024.html",
+  "notes": ""
+ },
+ {
+  "group": "fake",
+  "post_url": "https://x.com/saragaza94/status/1841574880841761219",
+  "claimed": "Israeli tank destroyed in Lebanon, October 2024",
+  "truth": "Russian T-90 tank destroyed in Ukraine, footage posted 8 Oct 2023",
+  "media": "video",
+  "source_url": "https://leadstories.com/hoax-alert/2024/10/fact-check-video-does-not-show-israeli-tank-exploding-in-lebanon-in-2024.html",
+  "notes": "Handle in Lead Stories link is sarabahaa94; account now named saragaza94 (same ID)"
+ },
+ {
+  "group": "fake",
+  "post_url": "https://x.com/Sassafrass_84/status/1884350134466548063",
+  "claimed": "ICE deportation operation on Miami Beach, January 2025",
+  "truth": "Hyundai Air and Sea Show on Miami Beach, 2024 (military demo)",
+  "media": "video",
+  "source_url": "https://leadstories.com/hoax-alert/2025/01/fact-check-video-does-not-show-immigration-officers-carrying-out-deportations-on-miami-beach-in-january-2025-it-was-air-and-sea-show.html",
+  "notes": "Same place, wrong event/date; claim implicit ('now we got ice')"
+ },
+ {
+  "group": "true",
+  "post_url": "https://x.com/accuweather/status/1810380885679812685",
+  "claimed": "Drone video of homes destroyed by Hurricane Beryl in Surfside Beach, Texas, Monday 8 July 2024",
+  "truth": "Same as claimed",
+  "media": "video",
+  "source_url": "https://en.wikipedia.org/wiki/Hurricane_Beryl",
+  "notes": "Posted same day as landfall; cited in Wikipedia Hurricane Beryl article"
+ },
+ {
+  "group": "true",
+  "post_url": "https://x.com/GCNNow/status/1839439283825860610",
+  "claimed": "Storm surge from Hurricane Helene in Fort Myers Beach, Florida, 26 Sep 2024",
+  "truth": "Same as claimed",
+  "media": "video",
+  "source_url": "https://leadstories.com/hoax-alert/2024/09/fact-check-storm-video-compilation-does-not-show-hurricane-helene-in-fort-myers-florida-mislabeled-old-footage.html",
+  "notes": "Gulf Coast News outlet; Lead Stories links this post (as NBC2 URL) as genuine Helene footage"
+ },
+ {
+  "group": "true",
+  "post_url": "https://x.com/cgtnamerica/status/1291085506730758145",
+  "claimed": "Massive fire at the public market in the new industrial area of Ajman, UAE, 5 Aug 2020",
+  "truth": "Same as claimed",
+  "media": "video",
+  "source_url": "https://fullfact.org/conflict/dubai-airport-fire-miscaptioned-old-footage/",
+  "notes": "News outlet, posted same day; Full Fact uses it as the original of the clip reused in two fake items"
+ },
+ {
+  "group": "true",
+  "post_url": "https://x.com/News247gr/status/1895405206755750004",
+  "claimed": "Tempi rail-crash anniversary protest in Thessaloniki, Greece, 28 Feb 2025",
+  "truth": "Same as claimed",
+  "media": "video",
+  "source_url": "https://fullfact.org/world/old-video-protests-greece/",
+  "notes": "Greek news outlet, caption in Greek; posted on the day"
+ },
+ {
+  "group": "true",
+  "post_url": "https://x.com/kabulnewstv/status/1716312107271049253",
+  "claimed": "Israeli night bombing of Gaza, night of 22 Oct 2023",
+  "truth": "Same as claimed",
+  "media": "video",
+  "source_url": "https://leadstories.com/hoax-alert/2025/05/fact-check-video-does--not-show-2025-indian-air-strike-on-pakistan.html",
+  "notes": "Afghan TV, caption in Pashto; Lead Stories cites it as the genuine Oct 2023 source of the clip reused in the RpsAgainstTrump fake"
+ },
+ {
+  "group": "true",
+  "post_url": "https://x.com/accuweather/status/1682178677965217793",
+  "claimed": "Tornado rips roof off a North Carolina home (Nash County EF-3 tornado, 19 July 2023)",
+  "truth": "Same as claimed",
+  "media": "video",
+  "source_url": "https://abc11.com/tornado-warning-nc-rocky-mount-watch/13522664/",
+  "notes": "Posted ~1.5 days after the tornado; PolitiFact (2024/sep/28 Helene check) cites it as the original 2023 NC clip; caption names state, not county"
+ },
+ {
+  "group": "true",
+  "post_url": "https://x.com/NASASpaceflight/status/1816965411876876757",
+  "claimed": "Starship Ship 30 static fire at Massey's test site (Starbase, Texas) ahead of Flight 5, 26 July 2024",
+  "truth": "Same as claimed",
+  "media": "video",
+  "source_url": "https://en.wikipedia.org/wiki/Starship_flight_test_5",
+  "notes": "Space news outlet; cited in Wikipedia"
+ },
+ {
+  "group": "true",
+  "post_url": "https://x.com/Sup_Policia/status/1394607777457315841",
+  "claimed": "Mass migrant crossing at the Morocco-Ceuta border, 18 May 2021",
+  "truth": "Same as claimed",
+  "media": "video",
+  "source_url": "https://fullfact.org/immigration/morocco-ceuta-migrants-video-old-footage/",
+  "notes": "Spanish police union account (not a government body); caption is polemical but place/event correct"
+ },
+ {
+  "group": "true",
+  "post_url": "https://x.com/FarsNews_Agency/status/1152593044220325888",
+  "claimed": "Moment IRGC naval commandos seize the British tanker (Stena Impero, Strait of Hormuz), 19 July 2019",
+  "truth": "Same as claimed",
+  "media": "video",
+  "source_url": "https://fullfact.org/conflict/us-tanker-iran-seizure-hormuz-old-footage/",
+  "notes": "Iranian state-linked news agency, caption in Persian, does not name the strait; older than 2022"
+ },
+ {
+  "group": "true",
+  "post_url": "https://x.com/News4SA/status/1941109813686960149",
+  "claimed": "Time-lapse of rapid flooding of the Guadalupe River in Kerrville, Texas, 4 July 2025",
+  "truth": "Same as claimed",
+  "media": "video",
+  "source_url": "https://en.wikipedia.org/wiki/July_2025_Central_Texas_floods",
+  "notes": "Local TV (WOAI), posted the morning of the flood"
+ },
+ {
+  "group": "true",
+  "post_url": "https://x.com/KHOU/status/1941184881360355731",
+  "claimed": "Flooding in the Texas Hill Country (Kerrville), 4 July 2025, video from City of Kerrville",
+  "truth": "Same as claimed",
+  "media": "video",
+  "source_url": "https://en.wikipedia.org/wiki/July_2025_Central_Texas_floods",
+  "notes": "Houston TV station; footage credited to City of Kerrville"
+ },
+ {
+  "group": "true",
+  "post_url": "https://x.com/ABC7/status/1931109683412005353",
+  "claimed": "Protesters clash with authorities after ICE raids in Los Angeles, 6 June 2025",
+  "truth": "Same as claimed",
+  "media": "video",
+  "source_url": "https://en.wikipedia.org/wiki/June_2025_Los_Angeles_protests",
+  "notes": "LA TV station; posted the day of the raids (caption says Thursday, raids were Friday 6 June per most reports)"
+ },
+ {
+  "group": "true",
+  "post_url": "https://x.com/cgtnamerica/status/1933275811391422497",
+  "claimed": "Anti-ICE protests in Los Angeles, seventh day, 12 June 2025",
+  "truth": "Same as claimed",
+  "media": "video",
+  "source_url": "https://en.wikipedia.org/wiki/June_2025_Los_Angeles_protests",
+  "notes": "News outlet; posted same day"
+ },
+ {
+  "group": "true",
+  "post_url": "https://x.com/LAmag/status/1876723860852392248",
+  "claimed": "Wildfire in Pacific Palisades, Los Angeles, grows to 200 acres, 7 Jan 2025",
+  "truth": "Same as claimed",
+  "media": "video",
+  "source_url": "https://en.wikipedia.org/wiki/Palisades_Fire",
+  "notes": "Magazine/news account; posted ~2.5 h after ignition"
+ },
+ {
+  "group": "true",
+  "post_url": "https://x.com/TheInsiderPaper/status/1877309168815636762",
+  "claimed": "Raging wildfire amid powerful winds in Los Angeles, California, 9 Jan 2025",
+  "truth": "Same as claimed",
+  "media": "video",
+  "source_url": "https://en.wikipedia.org/wiki/January_2025_Southern_California_wildfires",
+  "notes": "News aggregator; caption names city only, not which fire"
+ },
+ {
+  "group": "true",
+  "post_url": "https://x.com/weatherchannel/status/1882173038898143572",
+  "claimed": "New rapidly growing wildfire in Los Angeles County (Hughes Fire, Castaic), 22 Jan 2025",
+  "truth": "Same as claimed",
+  "media": "photo",
+  "source_url": "https://en.wikipedia.org/wiki/Hughes_Fire",
+  "notes": "Caption does not name the fire; posted on the day it started"
+ },
+ {
+  "group": "true",
+  "post_url": "https://x.com/FDNY/status/1889648302016094232",
+  "claimed": "3-alarm fire in the Bronx, New York, 12 Feb 2025 (Anthony Avenue, hydrant blocked by parked car)",
+  "truth": "Same as claimed",
+  "media": "photo",
+  "source_url": "https://www.nyc.gov/site/fdny/news/Y21225/fdny-officials-provide-on-3-alarm-fire-the-bronx",
+  "notes": "Official fire department account"
+ },
+ {
+  "group": "true",
+  "post_url": "https://x.com/FDNY/status/1900181254445617305",
+  "claimed": "Fire at 2037 Jerome Avenue, Bronx, New York, 13 Mar 2025",
+  "truth": "Same as claimed",
+  "media": "video",
+  "source_url": "https://www.fox5ny.com/news/5-alarm-fire-destroys-several-businesses-bronx",
+  "notes": "Official fire department account; 5-alarm fire destroying businesses"
+ },
+ {
+  "group": "true",
+  "post_url": "https://x.com/AFP/status/1983767944380162549",
+  "claimed": "Hurricane Melissa destruction; aerial images of damage in St. Elizabeth, Jamaica, 29-30 Oct 2025",
+  "truth": "Same as claimed",
+  "media": "video",
+  "source_url": "https://en.wikipedia.org/wiki/Hurricane_Melissa",
+  "notes": "News agency; caption mixes Caribbean-wide context with the Jamaica footage line"
+ },
+ {
+  "group": "true",
+  "post_url": "https://x.com/accuweather/status/1983573999071154528",
+  "claimed": "Drone footage of flood damage and debris in Santa Cruz, Jamaica, after Hurricane Melissa, 29 Oct 2025",
+  "truth": "Same as claimed",
+  "media": "video",
+  "source_url": "https://en.wikipedia.org/wiki/Hurricane_Melissa",
+  "notes": "Posted the day after landfall (28 Oct)"
+ },
+ {
+  "group": "true",
+  "post_url": "https://x.com/NASAKennedy/status/1970488620612980966",
+  "claimed": "SpaceX Falcon 9 with IMAP, SWFO-L1 and Carruthers on Launch Complex 39A, Kennedy Space Center, ahead of 24 Sep 2025 launch",
+  "truth": "Same as claimed",
+  "media": "photo",
+  "source_url": "https://en.wikipedia.org/wiki/Interstellar_Mapping_and_Acceleration_Probe",
+  "notes": "Official NASA account; posted the day before launch"
+ },
+ {
+  "group": "true",
+  "post_url": "https://x.com/nasahqphoto/status/2104959095518167523",
+  "claimed": "NASA SpaceX Crew-13 final dress rehearsal ahead of 1 Oct 2026 launch from Florida, 29 Sep 2026",
+  "truth": "Same as claimed",
+  "media": "photo",
+  "source_url": "https://x.com/NASA/status/2105698284354367897",
+  "notes": "Official NASA photo account; 4 photos; confirmation source is NASA's own launch post (no independent news article checked)"
+ },
+ {
+  "group": "true",
+  "post_url": "https://x.com/ChinaDaily/status/1905584403310313571",
+  "claimed": "Mosque collapsed in Mandalay after the Myanmar earthquake, 28 Mar 2025",
+  "truth": "Same as claimed",
+  "media": "photo",
+  "source_url": "https://en.wikipedia.org/wiki/2025_Myanmar_earthquake",
+  "notes": "Chinese state newspaper; posted same day; 3 photos"
+ },
+ {
+  "group": "true",
+  "post_url": "https://x.com/CALFIRE_CHIEF/status/1816851417287762394",
+  "claimed": "Park Fire in Butte County, California, surpassing 164,000 acres, 26 July 2024",
+  "truth": "Same as claimed",
+  "media": "video",
+  "source_url": "https://en.wikipedia.org/wiki/Park_Fire",
+  "notes": "Official CAL FIRE chief account; fire started 24 July"
+ },
+ {
+  "group": "fake",
+  "post_url": "https://x.com/DerrickEvans4WV/status/1881886256764015015",
+  "claimed": "Over 1,000 migrants break through a Mexican blockade toward the US southern border, January 2025 (after Trump inauguration)",
+  "truth": "Venezuelan migrants forcing their way across an international bridge between Ciudad Juarez and El Paso, Texas, 12-13 March 2023",
+  "media": "video",
+  "source_url": "https://leadstories.com/hoax-alert/2025/01/fact-check-video-does-not-show-migrants-at-blockade-on-southern-border-in-january-2025-it-was-march-2023.html",
+  "notes": "Original 2023 post is the AlbertoRodNews item in the true group"
+ },
+ {
+  "group": "fake",
+  "post_url": "https://x.com/israelititan/status/2032852109931196699",
+  "claimed": "Netanyahu alive, meeting IDF officers at a secret place, March 2026",
+  "truth": "Netanyahu touring the IDF Gaza Division command center, 17 Oct 2018 (photo from his official account)",
+  "media": "photo",
+  "source_url": "https://leadstories.com/hoax-alert/2026/03/fact-check-image-of-netanyahu-shaking-hands-with-idf-soldiers-is-not-from-march-2026.html",
+  "notes": "Original is the IsraeliPM item in the true group"
+ },
+ {
+  "group": "true",
+  "post_url": "https://x.com/IsraeliPM/status/1052544129161416704",
+  "claimed": "Netanyahu tours the IDF Gaza Division command center, 17 Oct 2018",
+  "truth": "Same as claimed",
+  "media": "photo",
+  "source_url": "https://leadstories.com/hoax-alert/2026/03/fact-check-image-of-netanyahu-shaking-hands-with-idf-soldiers-is-not-from-march-2026.html",
+  "notes": "Official PM account, posted same day; older than 2022; Lead Stories identifies it as the photo's origin"
+ },
+ {
+  "group": "true",
+  "post_url": "https://x.com/AlbertoRodNews/status/1635296555975557120",
+  "claimed": "Hundreds of Venezuelan migrants force their way across an international bridge between Ciudad Juarez and El Paso, Texas, March 2023",
+  "truth": "Same as claimed",
+  "media": "video",
+  "source_url": "https://leadstories.com/hoax-alert/2025/01/fact-check-video-does-not-show-migrants-at-blockade-on-southern-border-in-january-2025-it-was-march-2023.html",
+  "notes": "Individual journalist account, not an organisation; Spanish caption; posted ~1 day after the 12 March 2023 event"
+ }
+]

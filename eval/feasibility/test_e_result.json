@@ -1,0 +1,4488 @@
+{
+ "spent": {
+  "usd": 0.979086,
+  "calls": 210,
+  "in": 169188,
+  "out": 180612
+ },
+ "rows": [
+  {
+   "k": 0,
+   "url": "https://pesacheck.org/false-this-image-doesnt-show-ethiopian-soldiers-controlling-kola-tembien-desert-in-september-2022-47bf5b904dc4",
+   "evidence": [
+    {
+     "url": "https://www.nbcnews.com/news/world/ethiopia-passes-law-start-national-dialogue-commission-amid-pressure-end-n1286740",
+     "domain": "www.nbcnews.com",
+     "page_first": "2021-12-29",
+     "img_first": "2021-12-29"
+    },
+    {
+     "url": "https://www.aljazeera.com/news/2022/1/20/un-boss-cites-demonstrable-effort-for-ethiopia-peace-after-call",
+     "domain": "www.aljazeera.com",
+     "page_first": "2022-01-20",
+     "img_first": "2022-01-20"
+    },
+    {
+     "url": "https://www.aljazeera.com/news/2022/2/5/un-hastens-aid-for-20000-refugees-fleeing-violence-in-ethiopia",
+     "domain": "www.aljazeera.com",
+     "page_first": "2022-02-05",
+     "img_first": null
+    },
+    {
+     "url": "https://www.arabnews.pk/node/1988006/world",
+     "domain": "www.arabnews.pk",
+     "page_first": null,
+     "img_first": null
+    },
+    {
+     "url": "https://www.monitor.co.ug/uganda/news/sudan-accuses-ethiopia-of-killing-7-soldiers-one-civilian-3861050",
+     "domain": "www.monitor.co.ug",
+     "page_first": "2022-06-27",
+     "img_first": null
+    }
+   ],
+   "earliest_img": "2021-12-29",
+   "false": {
+    "start": "2022-09-01",
+    "P": "inconsistent",
+    "S": "inconsistent",
+    "AL": "inconsistent"
+   },
+   "true": {
+    "start": "2021-12-06",
+    "P": "cannot_tell",
+    "S": "consistent",
+    "AL": "consistent"
+   }
+  },
+  {
+   "k": 1,
+   "url": "https://pesacheck.org/false-these-images-dont-show-tplf-tanks-destroyed-by-ethiopian-air-force-in-september-2022-e9c607643b91",
+   "evidence": [
+    {
+     "url": "https://www.micoope.com.gt/?o=us-likely-to-arm-italian-mq-9-reaper-drones-nn-Y1WagqH1",
+     "domain": "www.micoope.com.gt",
+     "page_first": null,
+     "img_first": null
+    },
+    {
+     "url": "https://www.militaryaerospace.com/commercial-aerospace/article/14231443/why-the-air-force-needs-a-cheaper-reaper",
+     "domain": "www.militaryaerospace.com",
+     "page_first": "2022-03-17",
+     "img_first": null
+    },
+    {
+     "url": "https://www.micoope.com.gt/?o=to-equip-mq-9-reaper-drones-with-artificial-intelligence-nn-Mw7NmRcW",
+     "domain": "www.micoope.com.gt",
+     "page_first": null,
+     "img_first": null
+    },
+    {
+     "url": "https://www.micoope.com.gt/?o=the-mq-9-reaper-drone-incident-explained-popular-science-nn-03jmd1C2",
+     "domain": "www.micoope.com.gt",
+     "page_first": null,
+     "img_first": "2023-03-15"
+    },
+    {
+     "url": "https://www.militaryaerospace.com/computers/article/16726542/air-force-asks-general-atomics-to-upgrade-mq9-reaper-uavs-with-new-data-multiplexers-and-control",
+     "domain": "www.militaryaerospace.com",
+     "page_first": "2019-09-22",
+     "img_first": null
+    }
+   ],
+   "earliest_img": "2023-03-15",
+   "false": {
+    "start": "2022-09-01",
+    "P": "cannot_tell",
+    "S": "inconsistent",
+    "AL": "inconsistent"
+   },
+   "true": {
+    "start": "2017-01-30",
+    "P": "cannot_tell",
+    "S": "consistent",
+    "AL": "consistent"
+   }
+  },
+  {
+   "k": 2,
+   "url": "https://pesacheck.org/false-this-isnt-an-image-of-tplf-troops-surrendering-to-afar-popular-forces-abbfb14f6c0",
+   "evidence": [
+    {
+     "url": "https://www.bbc.com/news/world-africa-47773812",
+     "domain": "www.bbc.com",
+     "page_first": "2019-04-01",
+     "img_first": "2019-04-01"
+    },
+    {
+     "url": "https://www.bbc.com/afaanoromoo/articles/cgrd19v7e0mo",
+     "domain": "www.bbc.com",
+     "page_first": "2022-09-16",
+     "img_first": "2022-09-16"
+    },
+    {
+     "url": "https://www.bbc.com/afaanoromoo/articles/cmlnxrgzrlxo",
+     "domain": "www.bbc.com",
+     "page_first": "2022-09-23",
+     "img_first": "2022-10-25"
+    },
+    {
+     "url": "https://www.bbc.com/afaanoromoo/oduu-59263501",
+     "domain": "www.bbc.com",
+     "page_first": "2021-11-13",
+     "img_first": "2021-11-13"
+    },
+    {
+     "url": "https://www.bbc.com/afaanoromoo/oduu-59272703",
+     "domain": "www.bbc.com",
+     "page_first": "2021-11-13",
+     "img_first": "2021-11-13"
+    },
+    {
+     "url": "https://citinewsroom.com/2018/07/eritreas-isaias-afwerki-visits-ethiopia/",
+     "domain": "citinewsroom.com",
+     "page_first": null,
+     "img_first": "2019-04-02"
+    },
+    {
+     "url": "https://citinewsroom.com/2019/04/eu-accused-of-funding-project-in-eritrea-using-forced-labour/eritrea-2/",
+     "domain": "citinewsroom.com",
+     "page_first": null,
+     "img_first": "2019-04-02"
+    },
+    {
+     "url": "https://citinewsroom.com/2019/04/eu-accused-of-funding-project-in-eritrea-using-forced-labour/",
+     "domain": "citinewsroom.com",
+     "page_first": null,
+     "img_first": "2019-04-02"
+    }
+   ],
+   "earliest_img": "2019-04-01",
+   "false": {
+    "start": "2022-09-19",
+    "P": "inconsistent",
+    "S": "inconsistent",
+    "AL": "inconsistent"
+   },
+   "true": {
+    "start": "2018-09-11",
+    "P": "cannot_tell",
+    "S": "consistent",
+    "AL": "consistent"
+   }
+  },
+  {
+   "k": 3,
+   "url": "https://211check.org/fact-check-these-photos-allegedly-of-a-bride-running-out-of-a-church-are-not-taken-in-juba",
+   "evidence": [
+    {
+     "url": "https://www.naijanews.com/2019/05/07/photos-bride-runs-away-from-wedding-ceremony-after-discovering-the-groom-lied-to-her/",
+     "domain": "www.naijanews.com",
+     "page_first": "2019-06-20",
+     "img_first": null
+    },
+    {
+     "url": "https://www.ghafla.com/ke/aki-matiangi-nairobi-couple-cries-out-after-lavish-wedding-plans-ruined-following-matiangis-order/",
+     "domain": "www.ghafla.com",
+     "page_first": "2019-08-23",
+     "img_first": "2019-08-23"
+    },
+    {
+     "url": "https://www.naijanews.com/2019/09/09/17-year-old-bride-sets-self-ablaze/",
+     "domain": "www.naijanews.com",
+     "page_first": "2019-09-15",
+     "img_first": "2019-09-21"
+    },
+    {
+     "url": "https://radiojambo.co.ke/michezo/2016-08-17-shocking-as-bride-runs-away-from-church-find-out-why/",
+     "domain": "radiojambo.co.ke",
+     "page_first": "2021-10-17",
+     "img_first": null
+    },
+    {
+     "url": "https://beautifulnara.com/wanita-lari-enggan-kahwin-setelah-pengantin-lelaki-kantoi-tipu-bekerja-di-syarikat-minyak/",
+     "domain": "beautifulnara.com",
+     "page_first": "2022-01-19",
+     "img_first": null
+    }
+   ],
+   "earliest_img": "2019-08-23",
+   "false": {
+    "start": "2022-09-26",
+    "P": "inconsistent",
+    "S": "inconsistent",
+    "AL": "inconsistent"
+   },
+   "true": {
+    "start": "2016-08-15",
+    "P": "cannot_tell",
+    "S": "consistent",
+    "AL": "consistent"
+   }
+  },
+  {
+   "k": 4,
+   "url": "https://pesacheck.org/false-these-arent-images-of-the-ethiopian-military-destroying-an-operation-led-by-a-sudanese-344045447781",
+   "evidence": [
+    {
+     "url": "https://thaidefense-news.blogspot.com/2014/02/rta-m60a1-in-cobra-gold-2014.html",
+     "domain": "thaidefense-news.blogspot.com",
+     "page_first": "2014-03-10",
+     "img_first": "2015-08-05"
+    },
+    {
+     "url": "https://mgronline.com/indochina/detail/9570000021314",
+     "domain": "mgronline.com",
+     "page_first": null,
+     "img_first": null
+    }
+   ],
+   "earliest_img": "2015-08-05",
+   "false": {
+    "start": "2022-09-19",
+    "P": "inconsistent",
+    "S": "inconsistent",
+    "AL": "inconsistent"
+   },
+   "true": {
+    "start": "2014-02-21",
+    "P": "cannot_tell",
+    "S": "consistent",
+    "AL": "consistent"
+   }
+  },
+  {
+   "k": 5,
+   "url": "https://pesacheck.org/false-this-image-does-not-show-ex-kenyan-president-uhuru-kenyatta-attending-queen-elizabeths-fc158694bfc7",
+   "evidence": [
+    {
+     "url": "https://businesstoday.co.ke/retired-president-uhuru-kenyatta-did-not-attend-queens-funeral-in-london/",
+     "domain": "businesstoday.co.ke",
+     "page_first": "2022-09-29",
+     "img_first": "2022-09-29"
+    }
+   ],
+   "earliest_img": "2022-09-29",
+   "false": {
+    "start": "2022-09-19",
+    "P": "cannot_tell",
+    "S": "consistent",
+    "AL": "consistent"
+   },
+   "true": {
+    "start": "2020-01-21",
+    "P": "cannot_tell",
+    "S": "consistent",
+    "AL": "consistent"
+   }
+  },
+  {
+   "k": 6,
+   "url": "https://pesacheck.org/false-these-photos-dont-show-the-ethiopian-national-defense-force-destroying-tplf-trucks-in-27d9d95af7",
+   "evidence": [
+    {
+     "url": "https://www.milliyet.com.tr/galeri/son-dakika-abd-basini-sirrini-yazdi-guc-aliyor-6367729",
+     "domain": "www.milliyet.com.tr",
+     "page_first": "2020-11-30",
+     "img_first": null
+    },
+    {
+     "url": "https://www.milliyet.com.tr/galeri/dunya-turk-sihalarini-konusuyor-almak-icin-siraya-girdiler-6365016/6",
+     "domain": "www.milliyet.com.tr",
+     "page_first": null,
+     "img_first": null
+    },
+    {
+     "url": "https://www.milliyet.com.tr/galeri/son-dakika-turk-sihalarina-ihtiyacimiz-var-siraya-girdiler-6382912",
+     "domain": "www.milliyet.com.tr",
+     "page_first": "2020-12-19",
+     "img_first": null
+    },
+    {
+     "url": "https://www.milliyet.com.tr/galeri/son-dakika-turkiye-harekete-gecti-bir-ulke-daha-istedi-6388384",
+     "domain": "www.milliyet.com.tr",
+     "page_first": "2020-12-24",
+     "img_first": null
+    },
+    {
+     "url": "https://www.milliyet.com.tr/galeri/dunya-turk-sihalarini-konusuyor-almak-icin-siraya-girdiler-6365016",
+     "domain": "www.milliyet.com.tr",
+     "page_first": "2020-11-26",
+     "img_first": null
+    }
+   ],
+   "earliest_img": null,
+   "false": {
+    "start": "2022-09-01",
+    "P": "cannot_tell",
+    "S": "cannot_tell",
+    "AL": "cannot_tell"
+   },
+   "true": {
+    "start": "2022-06-07",
+    "P": "cannot_tell",
+    "S": "inconsistent",
+    "AL": "inconsistent"
+   }
+  },
+  {
+   "k": 7,
+   "url": "https://pesacheck.org/false-this-image-doesnt-show-an-ethiopian-air-force-attack-on-a-tplf-military-base-in-mekelle-in-1881077bbe5e",
+   "evidence": [
+    {
+     "url": "https://frontierspr.wordpress.com/2022/08/27/did-ethiopia-shot-down-a-plane-to-tigray-from-what-do-we-know-so-far/",
+     "domain": "frontierspr.wordpress.com",
+     "page_first": "2022-08-27",
+     "img_first": "2022-08-27"
+    },
+    {
+     "url": "https://www.instagram.com/p/CVzwbzYvG4v/",
+     "domain": "www.instagram.com",
+     "page_first": null,
+     "img_first": null
+    },
+    {
+     "url": "https://www.micoope.com.gt/?o=microsoft-flight-simulator-airbus-a330neo-available-now-su-27-nn-AqxrVYF2",
+     "domain": "www.micoope.com.gt",
+     "page_first": null,
+     "img_first": "2022-12-06"
+    },
+    {
+     "url": "https://www.stsrlservizi.it/?e=su-27-cobra-by-weasel102-on-deviantart-qq-Y0WAD3Iy",
+     "domain": "www.stsrlservizi.it",
+     "page_first": null,
+     "img_first": "2022-12-06"
+    },
+    {
+     "url": "https://www.essecom.it/?u=russian-air-power-key-publishing-ltd-rr-YWKMl7uj",
+     "domain": "www.essecom.it",
+     "page_first": null,
+     "img_first": null
+    }
+   ],
+   "earliest_img": "2022-08-27",
+   "false": {
+    "start": "2022-08-17",
+    "P": "cannot_tell",
+    "S": "inconsistent",
+    "AL": "inconsistent"
+   },
+   "true": {
+    "start": "2019-04-16",
+    "P": "cannot_tell",
+    "S": "consistent",
+    "AL": "consistent"
+   }
+  },
+  {
+   "k": 8,
+   "url": "https://211check.org/fact-check-photo-showing-an-incident-involving-south-sudanese-in-kenya-no",
+   "evidence": [
+    {
+     "url": "https://www.businessdailyafrica.com/bd/economy/tycoon-s-sons-in-vicious-fight-for-control-of-nairobi-ambassadeur-hotel-2136886",
+     "domain": "www.businessdailyafrica.com",
+     "page_first": "2022-10-03",
+     "img_first": null
+    }
+   ],
+   "earliest_img": null,
+   "false": {
+    "start": "2022-10-03",
+    "P": "cannot_tell",
+    "S": "cannot_tell",
+    "AL": "cannot_tell"
+   },
+   "true": {
+    "start": "2017-01-18",
+    "P": "cannot_tell",
+    "S": "consistent",
+    "AL": "consistent"
+   }
+  },
+  {
+   "k": 9,
+   "url": "https://pesacheck.org/false-this-image-doesnt-show-ethiopian-commandos-entering-tigrayan-towns-in-september-2022-8d44bdd30be9",
+   "evidence": [
+    {
+     "url": "https://www.arabnews.pk/node/1989276/world",
+     "domain": "www.arabnews.pk",
+     "page_first": null,
+     "img_first": null
+    },
+    {
+     "url": "https://www.arabnews.pk/node/2002121/world",
+     "domain": "www.arabnews.pk",
+     "page_first": "2022-08-10",
+     "img_first": null
+    },
+    {
+     "url": "https://www.arabnews.pk/node/1995726/world",
+     "domain": "www.arabnews.pk",
+     "page_first": null,
+     "img_first": null
+    },
+    {
+     "url": "https://www.arabnews.pk/node/1999871/world",
+     "domain": "www.arabnews.pk",
+     "page_first": "2024-04-15",
+     "img_first": null
+    },
+    {
+     "url": "https://yemenwatch.com/ethiopia-claims-retaking-towns-from-tigray-rebels/",
+     "domain": "yemenwatch.com",
+     "page_first": null,
+     "img_first": null
+    }
+   ],
+   "earliest_img": null,
+   "false": {
+    "start": "2022-09-01",
+    "P": "cannot_tell",
+    "S": "cannot_tell",
+    "AL": "cannot_tell"
+   },
+   "true": {
+    "start": "2021-12-11",
+    "P": "cannot_tell",
+    "S": "cannot_tell",
+    "AL": "cannot_tell"
+   }
+  },
+  {
+   "k": 10,
+   "url": "https://pesacheck.org/partly-false-this-image-does-not-show-flooding-in-which-134-people-have-died-in-sudan-since-may-67e95ba71200",
+   "evidence": [
+    {
+     "url": "https://halbeeg.com/2020/09/05/fatahaado-maasheeyay-suudaan/",
+     "domain": "halbeeg.com",
+     "page_first": "2021-01-16",
+     "img_first": null
+    },
+    {
+     "url": "https://alakhbar.info/?q=node/42430",
+     "domain": "alakhbar.info",
+     "page_first": "2022-08-22",
+     "img_first": "2022-08-22"
+    },
+    {
+     "url": "https://www.elmogaz.com/624484",
+     "domain": "www.elmogaz.com",
+     "page_first": "2020-08-09",
+     "img_first": null
+    },
+    {
+     "url": "https://halbeeg.com/author/halbeeg/page/84/",
+     "domain": "halbeeg.com",
+     "page_first": null,
+     "img_first": null
+    },
+    {
+     "url": "https://radiobeerlula.so/fatahaado-ku-dhuftay-wadanka-suudaan/",
+     "domain": "radiobeerlula.so",
+     "page_first": null,
+     "img_first": null
+    }
+   ],
+   "earliest_img": "2022-08-22",
+   "false": {
+    "start": "2022-05-01",
+    "P": "cannot_tell",
+    "S": "inconsistent",
+    "AL": "inconsistent"
+   },
+   "true": {
+    "start": "2019-01-01",
+    "P": "cannot_tell",
+    "S": "consistent",
+    "AL": "consistent"
+   }
+  },
+  {
+   "k": 11,
+   "url": "https://pesacheck.org/false-this-image-is-not-of-eritreas-air-force-attacking-people-at-adi-daero-tigray-region-in-1caa2b82d2c4",
+   "evidence": [
+    {
+     "url": "https://www.belvpo.com/polski-rosja-opracuje-nowy-lekki-samolot-mysliwski/",
+     "domain": "www.belvpo.com",
+     "page_first": null,
+     "img_first": null
+    },
+    {
+     "url": "https://vnexpress.net/5-vu-khi-nga-duoc-the-gioi-ua-chuong-nhat-3461979.html",
+     "domain": "vnexpress.net",
+     "page_first": "2024-09-08",
+     "img_first": "2022-03-30"
+    },
+    {
+     "url": "https://soha.vn/quan-su/an-do-se-mua-cac-chien-dau-co-da-nang-mig35-cua-nga-20130422140731526.htm",
+     "domain": "soha.vn",
+     "page_first": "2013-04-24",
+     "img_first": null
+    },
+    {
+     "url": "https://www.mycity-military.com/Avioni/MIG-35_29.html",
+     "domain": "www.mycity-military.com",
+     "page_first": "2012-07-02",
+     "img_first": null
+    }
+   ],
+   "earliest_img": "2022-03-30",
+   "false": {
+    "start": "2022-09-01",
+    "P": "inconsistent",
+    "S": "inconsistent",
+    "AL": "inconsistent"
+   },
+   "true": {
+    "start": "2016-09-05",
+    "P": "cannot_tell",
+    "S": "cannot_tell",
+    "AL": "cannot_tell"
+   }
+  },
+  {
+   "k": 12,
+   "url": "https://pesacheck.org/false-this-is-not-an-image-of-a-military-drone-shot-down-by-the-ethiopian-air-force-as-it-entered-fb68019e3dcb",
+   "evidence": [
+    {
+     "url": "https://www.military.africa/2019/08/libya-wing-loong-ii-ucav-shot-by-gna/",
+     "domain": "www.military.africa",
+     "page_first": "2022-10-02",
+     "img_first": null
+    },
+    {
+     "url": "https://libyaobserver.ly/news/libyan-army-shoots-down-wing-loong-drone-provided-uae-haftar",
+     "domain": "libyaobserver.ly",
+     "page_first": "2019-08-24",
+     "img_first": null
+    },
+    {
+     "url": "https://fighterjetsworld.com/latest-news/aircraft-crash/uae-purchased-chinese-with-akd-10-atg-missile-shoot-down-in-libya-by-gna/16373/",
+     "domain": "fighterjetsworld.com",
+     "page_first": "2019-08-18",
+     "img_first": "2021-07-27"
+    },
+    {
+     "url": "https://www.airuniversity.af.edu/JEMEAA/",
+     "domain": "www.airuniversity.af.edu",
+     "page_first": "2019-05-02",
+     "img_first": "2022-01-19"
+    },
+    {
+     "url": "https://idealtourist.life/goroda/?a=industry-insights-drone-services-with-jonathan-gruber-motion-source-zz-ZP1jMbso",
+     "domain": "idealtourist.life",
+     "page_first": null,
+     "img_first": "2022-10-23"
+    }
+   ],
+   "earliest_img": "2021-07-27",
+   "false": {
+    "start": "2022-08-01",
+    "P": "inconsistent",
+    "S": "inconsistent",
+    "AL": "inconsistent"
+   },
+   "true": {
+    "start": "2019-08-12",
+    "P": "cannot_tell",
+    "S": "consistent",
+    "AL": "consistent"
+   }
+  },
+  {
+   "k": 13,
+   "url": "https://factly.in/unrelated-old-photos-shared-as-pictures-of-indian-army-vehicles-that-were-hit-by-a-massive-landslide-in-ladakh",
+   "evidence": [
+    {
+     "url": "https://www.news18.com/photogallery/india/iaf-87th-anniversary-all-time-great-helicopters-that-have-served-the-country-2337029.html",
+     "domain": "www.news18.com",
+     "page_first": "2019-10-09",
+     "img_first": null
+    },
+    {
+     "url": "https://www.upi.com/Defense-News/2020/07/10/Boeing-completes-delivery-of-37-helicopters-to-Indias-air-force/9691594399456/",
+     "domain": "www.upi.com",
+     "page_first": "2020-07-11",
+     "img_first": "2020-07-11"
+    }
+   ],
+   "earliest_img": "2020-07-11",
+   "false": {
+    "start": "2022-10-21",
+    "P": "inconsistent",
+    "S": "inconsistent",
+    "AL": "inconsistent"
+   },
+   "true": {
+    "start": "2019-08-12",
+    "P": "cannot_tell",
+    "S": "inconsistent",
+    "AL": "inconsistent"
+   }
+  },
+  {
+   "k": 14,
+   "url": "https://pesacheck.org/false-these-images-do-not-show-the-war-in-ethiopia-893131952a25",
+   "evidence": [
+    {
+     "url": "https://far-maroc.forumpro.fr/t2387p425-armee-thailandaise-royal-thai-armed-forces",
+     "domain": "far-maroc.forumpro.fr",
+     "page_first": "2019-02-26",
+     "img_first": null
+    },
+    {
+     "url": "https://pdf.defence.pk/threads/chinese-tanks-roles-and-capabilities-of-all-five-models-in-production-today.715316/",
+     "domain": "pdf.defence.pk",
+     "page_first": "2023-12-06",
+     "img_first": "2023-12-14"
+    },
+    {
+     "url": "https://www.sohu.com/a/444530780_120508047",
+     "domain": "www.sohu.com",
+     "page_first": null,
+     "img_first": null
+    },
+    {
+     "url": "https://www.sohu.com/a/420994741_120256540",
+     "domain": "www.sohu.com",
+     "page_first": null,
+     "img_first": null
+    },
+    {
+     "url": "https://mil.sina.cn/sd/2018-12-30/detail-ihqhqcis1655807.d.html",
+     "domain": "mil.sina.cn",
+     "page_first": null,
+     "img_first": null
+    }
+   ],
+   "earliest_img": "2023-12-14",
+   "false": {
+    "start": "2022-08-01",
+    "P": "cannot_tell",
+    "S": "inconsistent",
+    "AL": "inconsistent"
+   },
+   "true": {
+    "start": "2021-09-06",
+    "P": "cannot_tell",
+    "S": "inconsistent",
+    "AL": "inconsistent"
+   }
+  },
+  {
+   "k": 15,
+   "url": "https://pesacheck.org/false-these-images-do-not-show-a-tplf-weapons-depot-destroyed-by-the-ethiopian-air-force-in-shire-fe13bd3303c6",
+   "evidence": [
+    {
+     "url": "https://ostannipodii.com/ru/a/202204/unichtozhennaya-rossiyskaya-tehnika-na-yuge-harkovschiny-(46-foto)-110024779/",
+     "domain": "ostannipodii.com",
+     "page_first": "2024-10-10",
+     "img_first": "2022-04-04"
+    },
+    {
+     "url": "https://ostannipodii.com/a/202204/znischena-rosiyska-tehnika-na-pivdni-harkivschini-(46-foto)-100024779/",
+     "domain": "ostannipodii.com",
+     "page_first": "2022-04-04",
+     "img_first": "2022-04-04"
+    }
+   ],
+   "earliest_img": "2022-04-04",
+   "false": {
+    "start": "2022-09-28",
+    "P": "inconsistent",
+    "S": "inconsistent",
+    "AL": "inconsistent"
+   },
+   "true": {
+    "start": "2022-04-04",
+    "P": "cannot_tell",
+    "S": "consistent",
+    "AL": "consistent"
+   }
+  },
+  {
+   "k": 16,
+   "url": "https://pesacheck.org/false-image-doesnt-show-an-ethiopian-air-force-attack-on-tplf-fighters-d277cb0b27ea",
+   "evidence": [
+    {
+     "url": "https://doanhnghiepvn.vn/quoc-te/my-va-nato-bi-mat-tim-kiem-xac-chien-than-su-27sm3-cua-nga-vua-bi-roi/20200414082222347",
+     "domain": "doanhnghiepvn.vn",
+     "page_first": "2020-10-01",
+     "img_first": null
+    }
+   ],
+   "earliest_img": null,
+   "false": {
+    "start": "2022-10-03",
+    "P": "cannot_tell",
+    "S": "cannot_tell",
+    "AL": "cannot_tell"
+   },
+   "true": {
+    "start": "2020-04-14",
+    "P": "cannot_tell",
+    "S": "cannot_tell",
+    "AL": "cannot_tell"
+   }
+  },
+  {
+   "k": 17,
+   "url": "https://pesacheck.org/false-claim-that-this-photo-shows-ethiopian-air-force-destroying-tplf-training-camps-is-untrue-ca1d2fb51f62",
+   "evidence": [
+    {
+     "url": "https://haqcheck.org/no-the-images-dont-show-a-plane-shot-down-by-ethiopian-forces/",
+     "domain": "haqcheck.org",
+     "page_first": "2022-08-30",
+     "img_first": null
+    }
+   ],
+   "earliest_img": null,
+   "false": {
+    "start": "2022-08-24",
+    "P": "cannot_tell",
+    "S": "consistent",
+    "AL": "consistent"
+   },
+   "true": {
+    "start": "2020-01-01",
+    "P": "cannot_tell",
+    "S": "cannot_tell",
+    "AL": "cannot_tell"
+   }
+  },
+  {
+   "k": 18,
+   "url": "https://pesacheck.org/false-images-do-not-show-tplf-tanks-destroyed-in-raya-in-2022-f16249b7c513",
+   "evidence": [
+    {
+     "url": "https://www.aljazeera.com/news/2021/12/20/tplf-rebels-announce-retreat-to-ethiopias-tigray-region",
+     "domain": "www.aljazeera.com",
+     "page_first": "2021-12-20",
+     "img_first": "2021-12-20"
+    },
+    {
+     "url": "https://www.washingtonpost.com/politics/2021/12/18/ethiopias-civil-war-violence-against-civilians-is-eroding-support-government/",
+     "domain": "www.washingtonpost.com",
+     "page_first": "2021-12-18",
+     "img_first": null
+    },
+    {
+     "url": "https://www.bbc.com/afaanoromoo/oduu-59654908",
+     "domain": "www.bbc.com",
+     "page_first": "2022-10-23",
+     "img_first": null
+    },
+    {
+     "url": "https://www.radiyoyacuvoa.com/a/onu-igiye-gusuzuma-byihutirwa-ikibazo-cy-intambara-ibera-muri-etiyopiya/6354342.html",
+     "domain": "www.radiyoyacuvoa.com",
+     "page_first": "2021-12-14",
+     "img_first": "2025-03-25"
+    },
+    {
+     "url": "https://www.bbc.com/afaanoromoo/oduu-59654909",
+     "domain": "www.bbc.com",
+     "page_first": "2021-12-18",
+     "img_first": null
+    }
+   ],
+   "earliest_img": "2021-12-20",
+   "false": {
+    "start": "2022-09-26",
+    "P": "inconsistent",
+    "S": "inconsistent",
+    "AL": "inconsistent"
+   },
+   "true": {
+    "start": "2021-12-07",
+    "P": "cannot_tell",
+    "S": "inconsistent",
+    "AL": "inconsistent"
+   }
+  },
+  {
+   "k": 19,
+   "url": "https://pesacheck.org/false-image-doesnt-depict-ethiopian-national-defense-forces-in-selekleka-town-tigray-region-in-9d980eee616c",
+   "evidence": [
+    {
+     "url": "https://www.cbc.ca/news/world/ethiopia-tigray-1.6292335",
+     "domain": "www.cbc.ca",
+     "page_first": "2021-12-20",
+     "img_first": "2021-12-20"
+    },
+    {
+     "url": "https://african.business/2022/10/trade-investment/ethiopian-government-has-a-special-responsibility-to-de-escalate-tigray-war",
+     "domain": "african.business",
+     "page_first": "2022-10-24",
+     "img_first": null
+    },
+    {
+     "url": "https://www.lemonde.fr/en/le-monde-africa/article/2022/08/25/fighting-resumes-in-tigray-after-the-end-of-the-five-month-truce_5994684_124.html",
+     "domain": "www.lemonde.fr",
+     "page_first": "2022-08-25",
+     "img_first": "2022-08-24"
+    },
+    {
+     "url": "https://foreignpolicy.com/2022/04/12/envoy-horn-of-africa-ethiopia-sudan-david-satterfield/",
+     "domain": "foreignpolicy.com",
+     "page_first": "2022-04-13",
+     "img_first": "2024-01-16"
+    },
+    {
+     "url": "https://foreignpolicy.com/2021/12/28/ethiopia-tigray-abiy-tplf-war-biden-needs-to-correct-course/",
+     "domain": "foreignpolicy.com",
+     "page_first": "2021-12-28",
+     "img_first": "2021-12-28"
+    }
+   ],
+   "earliest_img": "2021-12-20",
+   "false": {
+    "start": "2022-10-01",
+    "P": "inconsistent",
+    "S": "inconsistent",
+    "AL": "inconsistent"
+   },
+   "true": {
+    "start": "2021-12-01",
+    "P": "cannot_tell",
+    "S": "consistent",
+    "AL": "consistent"
+   }
+  },
+  {
+   "k": 20,
+   "url": "https://pesacheck.org/false-image-is-not-of-ethiopian-soldiers-marching-toward-alamata-in-october-2022-d336f71c89d1",
+   "evidence": [
+    {
+     "url": "https://www.bbc.com/afaanoromoo/oduu-57925126",
+     "domain": "www.bbc.com",
+     "page_first": "2022-10-23",
+     "img_first": "2025-07-22"
+    }
+   ],
+   "earliest_img": "2025-07-22",
+   "false": {
+    "start": "2022-10-01",
+    "P": "cannot_tell",
+    "S": "cannot_tell",
+    "AL": "cannot_tell"
+   },
+   "true": {
+    "start": "2021-07-01",
+    "P": "cannot_tell",
+    "S": "consistent",
+    "AL": "consistent"
+   }
+  },
+  {
+   "k": 21,
+   "url": "https://pesacheck.org/false-these-images-are-not-of-iranian-missiles-given-to-russia-in-october-2022-52efc654ec43",
+   "evidence": [
+    {
+     "url": "https://www.aljazeera.com/news/2019/8/22/iran-unveils-new-missile-defence-system-calls-us-talks-useless",
+     "domain": "www.aljazeera.com",
+     "page_first": "2020-10-15",
+     "img_first": "2022-10-01"
+    },
+    {
+     "url": "https://www.thedefensepost.com/2019/08/22/iran-bavar-373-air-defense-system/",
+     "domain": "www.thedefensepost.com",
+     "page_first": "2019-08-22",
+     "img_first": "2019-08-23"
+    },
+    {
+     "url": "https://en.radiofarda.com/a/us-working-with-israel-to-prevent-lifting-of-iran-arms-embargo-brian-hook-says/30698530.html",
+     "domain": "en.radiofarda.com",
+     "page_first": "2020-10-29",
+     "img_first": "2025-06-27"
+    },
+    {
+     "url": "https://www.infobae.com/en/2022/04/12/russia-is-using-weapons-smuggled-by-iran-from-iraq-in-ukraine/",
+     "domain": "www.infobae.com",
+     "page_first": "2022-04-13",
+     "img_first": null
+    },
+    {
+     "url": "https://shafaq.com/en/Iraq-News/Russia-using-weapons-smuggled-by-Iran-from-Iraq-against-Ukraine",
+     "domain": "shafaq.com",
+     "page_first": "2022-04-12",
+     "img_first": null
+    }
+   ],
+   "earliest_img": "2019-08-23",
+   "false": {
+    "start": "2022-10-01",
+    "P": "inconsistent",
+    "S": "inconsistent",
+    "AL": "inconsistent"
+   },
+   "true": {
+    "start": "2019-08-01",
+    "P": "cannot_tell",
+    "S": "consistent",
+    "AL": "consistent"
+   }
+  },
+  {
+   "k": 22,
+   "url": "https://pesacheck.org/false-image-doesnt-show-the-ethiopian-army-controlling-shire-alamata-and-korem-towns-in-october-ad9b99245da",
+   "evidence": [
+    {
+     "url": "https://www.imlebanon.org/2021/12/05/ethiopia-army-5/",
+     "domain": "www.imlebanon.org",
+     "page_first": "2021-12-04",
+     "img_first": "2021-12-02"
+    },
+    {
+     "url": "https://www.fanabc.com/archives/100453",
+     "domain": "www.fanabc.com",
+     "page_first": "2024-08-10",
+     "img_first": "2021-12-02"
+    },
+    {
+     "url": "https://www.saba.ye/ar/news3166196.htm",
+     "domain": "www.saba.ye",
+     "page_first": "2021-12-02",
+     "img_first": null
+    },
+    {
+     "url": "https://www.imlebanon.org/2019/06/08/philippines-un/",
+     "domain": "www.imlebanon.org",
+     "page_first": null,
+     "img_first": "2021-12-02"
+    },
+    {
+     "url": "https://vpk.name/news/463082_lider_efiopskogo_regiona_tygrai_zayavil_o_raketnom_obstrele_stolicy_sosednei_eritrei.html",
+     "domain": "vpk.name",
+     "page_first": "2021-12-05",
+     "img_first": "2021-12-05"
+    }
+   ],
+   "earliest_img": "2021-12-02",
+   "false": {
+    "start": "2022-10-01",
+    "P": "inconsistent",
+    "S": "inconsistent",
+    "AL": "inconsistent"
+   },
+   "true": {
+    "start": "2021-12-01",
+    "P": "cannot_tell",
+    "S": "consistent",
+    "AL": "consistent"
+   }
+  },
+  {
+   "k": 23,
+   "url": "https://pesacheck.org/false-photo-is-not-of-ex-kenyan-president-uhuru-enjoying-village-life-after-retirement-b4b48f84ad84",
+   "evidence": [
+    {
+     "url": "https://www.pulselive.co.ke/news/president-uhuru-kenyatta-makes-eunice-wanjiku-dreams-come-true-after-unexpected/tqs4epl",
+     "domain": "www.pulselive.co.ke",
+     "page_first": "2021-07-22",
+     "img_first": null
+    },
+    {
+     "url": "https://www.pulselive.co.ke/news/exclusive-why-uhuru-visited-our-home-family-member-speaks-out/7ym5l2k",
+     "domain": "www.pulselive.co.ke",
+     "page_first": "2021-07-14",
+     "img_first": null
+    },
+    {
+     "url": "https://www.nairobileo.co.ke/news/article/3724/president-uhuru-kenyatta-gifts-eunice-wanjiru-who-appeared-in-viral-photo-with-two-cows",
+     "domain": "www.nairobileo.co.ke",
+     "page_first": null,
+     "img_first": null
+    }
+   ],
+   "earliest_img": null,
+   "false": {
+    "start": "2022-01-01",
+    "P": "cannot_tell",
+    "S": "inconsistent",
+    "AL": "inconsistent"
+   },
+   "true": {
+    "start": "2021-07-01",
+    "P": "cannot_tell",
+    "S": "consistent",
+    "AL": "consistent"
+   }
+  },
+  {
+   "k": 24,
+   "url": "https://factly.in/old-image-of-shahrukh-khan-at-kolkata-airport-shared-as-recent-one-linking-it-to-mumbai-airport-customs-incident",
+   "evidence": [
+    {
+     "url": "https://www.besthindinews.com/2017/11/padmawati-star-ranveer-singh-loosing-his-region-from-hindu.html",
+     "domain": "www.besthindinews.com",
+     "page_first": "2017-11-13",
+     "img_first": null
+    },
+    {
+     "url": "https://www.besthindinews.com/2021/11/priyanka-chopra-delete-husband-name.html",
+     "domain": "www.besthindinews.com",
+     "page_first": "2022-01-19",
+     "img_first": null
+    }
+   ],
+   "earliest_img": null,
+   "false": {
+    "start": "2022-11-12",
+    "P": "cannot_tell",
+    "S": "cannot_tell",
+    "AL": "cannot_tell"
+   },
+   "true": {
+    "start": "2019-03-27",
+    "P": "cannot_tell",
+    "S": "cannot_tell",
+    "AL": "cannot_tell"
+   }
+  },
+  {
+   "k": 25,
+   "url": "https://pesacheck.org/false-this-image-is-not-of-an-airstrike-in-the-oromia-region-in-october-2022-7e1593d017b6",
+   "evidence": [
+    {
+     "url": "https://www.plugnsell.com.ph/?a=mig-29se-sm-ub-b-myanmar-royal-malaysian-air-kk-N3AK4RT6",
+     "domain": "www.plugnsell.com.ph",
+     "page_first": null,
+     "img_first": null
+    },
+    {
+     "url": "https://www.qdnd.vn/quan-su-the-gioi/khoa-hoc-quan-su/myanmar-ky-hop-dong-mua-may-bay-mig-29-do-nga-san-xuat-366917",
+     "domain": "www.qdnd.vn",
+     "page_first": null,
+     "img_first": null
+    }
+   ],
+   "earliest_img": null,
+   "false": {
+    "start": "2022-10-01",
+    "P": "cannot_tell",
+    "S": "cannot_tell",
+    "AL": "cannot_tell"
+   },
+   "true": {
+    "start": "2018-11-15",
+    "P": "cannot_tell",
+    "S": "consistent",
+    "AL": "consistent"
+   }
+  },
+  {
+   "k": 26,
+   "url": "https://pesacheck.org/false-photo-does-not-show-the-drought-situation-in-embolioi-kajiado-county-in-october-2022-3387774a4c74",
+   "evidence": [
+    {
+     "url": "https://www.instagram.com/p/CkgFd4qOvg4/",
+     "domain": "www.instagram.com",
+     "page_first": null,
+     "img_first": null
+    }
+   ],
+   "earliest_img": null,
+   "false": {
+    "start": "2022-10-01",
+    "P": "cannot_tell",
+    "S": "consistent",
+    "AL": "consistent"
+   },
+   "true": {
+    "start": "2017-01-01",
+    "P": "cannot_tell",
+    "S": "consistent",
+    "AL": "consistent"
+   }
+  },
+  {
+   "k": 27,
+   "url": "https://pesacheck.org/false-images-claiming-to-be-of-a-drone-hit-by-tdf-are-untrue-f3aef3a568cf",
+   "evidence": [
+    {
+     "url": "https://dronewars.net/2020/04/01/military-drones-continue-to-tumble-to-earth/",
+     "domain": "dronewars.net",
+     "page_first": "2020-04-09",
+     "img_first": "2020-07-08"
+    }
+   ],
+   "earliest_img": "2020-07-08",
+   "false": {
+    "start": "2022-10-01",
+    "P": "inconsistent",
+    "S": "inconsistent",
+    "AL": "inconsistent"
+   },
+   "true": {
+    "start": "2020-01-16",
+    "P": "cannot_tell",
+    "S": "consistent",
+    "AL": "consistent"
+   }
+  },
+  {
+   "k": 28,
+   "url": "https://factly.in/these-pictures-of-dead-chinese-soldiers-are-not-related-to-the-2020-galwan-clash",
+   "evidence": [
+    {
+     "url": "https://zhuanlan.zhihu.com/p/158990909",
+     "domain": "zhuanlan.zhihu.com",
+     "page_first": null,
+     "img_first": null
+    },
+    {
+     "url": "https://zhuanlan.zhihu.com/p/159259174",
+     "domain": "zhuanlan.zhihu.com",
+     "page_first": null,
+     "img_first": null
+    }
+   ],
+   "earliest_img": null,
+   "false": {
+    "start": "2020-01-01",
+    "P": "cannot_tell",
+    "S": "cannot_tell",
+    "AL": "cannot_tell"
+   },
+   "true": {
+    "start": "2010-01-01",
+    "P": "cannot_tell",
+    "S": "consistent",
+    "AL": "consistent"
+   }
+  },
+  {
+   "k": 29,
+   "url": "https://211check.org/fact-check-was-messi-locked-up-in-saudi-arabia-no-an-old-picture-first-used-in-2012",
+   "evidence": [
+    {
+     "url": "https://tribuna.com/en/news/fcbarcelona-2021-05-23-it-was-very-scary-messi-on-the-time-he-arrived-in-saudi-arabia-and-was-pointed-by-a-gun/",
+     "domain": "tribuna.com",
+     "page_first": "2022-07-20",
+     "img_first": "2021-07-14"
+    },
+    {
+     "url": "https://www.the42.ie/lionel-messi-machine-gun-saudia-arabia-face-672482-Nov2012/",
+     "domain": "www.the42.ie",
+     "page_first": "2021-03-07",
+     "img_first": null
+    },
+    {
+     "url": "https://www.balls.ie/football/leo-messi-has-gun-pointed-in-his-face-64223",
+     "domain": "www.balls.ie",
+     "page_first": "2020-11-11",
+     "img_first": null
+    },
+    {
+     "url": "https://www.instagram.com/p/CPLBn6BAlM1/",
+     "domain": "www.instagram.com",
+     "page_first": null,
+     "img_first": null
+    },
+    {
+     "url": "https://www.instagram.com/reel/CfrIiYUApby/",
+     "domain": "www.instagram.com",
+     "page_first": null,
+     "img_first": null
+    },
+    {
+     "url": "https://www.whoateallthepies.tv/fail/146931/snapshot-lionel-messi-has-ak-47-poked-in-face-at-saudi-airport-looks-suitably-petrified.html",
+     "domain": "www.whoateallthepies.tv",
+     "page_first": null,
+     "img_first": "2013-04-02"
+    }
+   ],
+   "earliest_img": "2013-04-02",
+   "false": {
+    "start": "2022-11-01",
+    "P": "inconsistent",
+    "S": "inconsistent",
+    "AL": "inconsistent"
+   },
+   "true": {
+    "start": "2012-11-01",
+    "P": "cannot_tell",
+    "S": "consistent",
+    "AL": "consistent"
+   }
+  },
+  {
+   "k": 30,
+   "url": "https://pesacheck.org/false-image-does-not-show-an-airstrike-on-selale-town-in-november-2022-fd5269626056",
+   "evidence": [
+    {
+     "url": "https://www.rferl.org/a/ukraine-bayraktar-turkish-drones-explainer-conflict/31875225.html",
+     "domain": "www.rferl.org",
+     "page_first": "2022-05-30",
+     "img_first": "2024-06-22"
+    },
+    {
+     "url": "https://www.middleeasteye.net/news/turkey-baykar-bayraktar-drone-maker-ukraine-plant-complete-two-years",
+     "domain": "www.middleeasteye.net",
+     "page_first": "2022-10-28",
+     "img_first": "2023-10-14"
+    },
+    {
+     "url": "https://www.cbc.ca/news/politics/turkey-drone-armenian-nagorno-karabakh-1.5996570",
+     "domain": "www.cbc.ca",
+     "page_first": "2021-04-21",
+     "img_first": "2020-10-26"
+    },
+    {
+     "url": "https://www.rferl.org/a/ukraine-lithuaian-bayraktar-crowdfunding/31878797.html",
+     "domain": "www.rferl.org",
+     "page_first": "2022-06-01",
+     "img_first": "2022-06-04"
+    },
+    {
+     "url": "https://www.americanpurpose.com/blog/fukuyama/droning-on/",
+     "domain": "www.americanpurpose.com",
+     "page_first": "2021-04-05",
+     "img_first": "2021-04-07"
+    },
+    {
+     "url": "https://www.theglobeandmail.com/politics/article-canadian-air-strike-targeting-gear-appears-to-be-playing-supporting/",
+     "domain": "www.theglobeandmail.com",
+     "page_first": null,
+     "img_first": "2024-11-13"
+    }
+   ],
+   "earliest_img": "2020-10-26",
+   "false": {
+    "start": "2022-11-01",
+    "P": "inconsistent",
+    "S": "inconsistent",
+    "AL": "inconsistent"
+   },
+   "true": {
+    "start": "2019-12-16",
+    "P": "cannot_tell",
+    "S": "consistent",
+    "AL": "consistent"
+   }
+  },
+  {
+   "k": 31,
+   "url": "https://pesacheck.org/false-image-doesnt-show-beer-disguised-as-pepsi-intercepted-by-authorities-in-qatar-754179e7e1db",
+   "evidence": [
+    {
+     "url": "https://www.telegraph.co.uk/news/worldnews/middleeast/saudiarabia/11994231/Smugglers-attempt-to-enter-Saudi-Arabia-with-48000-beer-cans-disguised-as-Pepsi.html",
+     "domain": "www.telegraph.co.uk",
+     "page_first": "2015-11-14",
+     "img_first": "2022-12-04"
+    },
+    {
+     "url": "https://www.washingtonpost.com/news/worldviews/wp/2015/11/12/how-do-you-smuggle-48000-cans-of-heineken-into-saudi-arabia-disguise-it-as-pepsi/",
+     "domain": "www.washingtonpost.com",
+     "page_first": "2015-11-12",
+     "img_first": "2020-06-07"
+    },
+    {
+     "url": "https://www.bbc.com/news/newsbeat-34798998",
+     "domain": "www.bbc.com",
+     "page_first": "2022-11-20",
+     "img_first": "2022-11-20"
+    },
+    {
+     "url": "https://www.washingtonpost.com/news/worldviews/wp/2016/01/31/smugglers-keep-trying-to-get-alcohol-into-saudi-arabia-and-customs-officials-keep-tweeting-it/",
+     "domain": "www.washingtonpost.com",
+     "page_first": "2016-01-31",
+     "img_first": "2020-06-07"
+    },
+    {
+     "url": "https://www.ctvnews.ca/business/saudi-arabia-cracks-case-of-smuggled-beer-cans-disguised-as-pepsi-1.2656756",
+     "domain": "www.ctvnews.ca",
+     "page_first": "2015-11-13",
+     "img_first": "2015-11-13"
+    },
+    {
+     "url": "https://learningenglish.voanews.com/a/saudi-arabia-pepsi-labels-beer/3056680.html",
+     "domain": "learningenglish.voanews.com",
+     "page_first": null,
+     "img_first": "2025-01-04"
+    }
+   ],
+   "earliest_img": "2015-11-13",
+   "false": {
+    "start": "2022-11-20",
+    "P": "inconsistent",
+    "S": "inconsistent",
+    "AL": "inconsistent"
+   },
+   "true": {
+    "start": "2015-11-01",
+    "P": "cannot_tell",
+    "S": "consistent",
+    "AL": "consistent"
+   }
+  },
+  {
+   "k": 32,
+   "url": "https://pesacheck.org/false-this-image-isnt-of-the-ethiopian-air-force-troops-heading-to-the-tongo-kebele-b495fb714d0e",
+   "evidence": [
+    {
+     "url": "https://www.warhistoryonline.com/featured/mi-24-hind-russias-most-feared-helicopter-18-facts-and-incredible-pictures.html",
+     "domain": "www.warhistoryonline.com",
+     "page_first": "2024-03-03",
+     "img_first": null
+    },
+    {
+     "url": "https://www.micoope.com.gt/?o=not-sure-if-i-can-post-this-but-i-nn-nWRyEmUk",
+     "domain": "www.micoope.com.gt",
+     "page_first": null,
+     "img_first": null
+    },
+    {
+     "url": "https://euobserver.com/world/123319",
+     "domain": "euobserver.com",
+     "page_first": "2022-05-25",
+     "img_first": null
+    },
+    {
+     "url": "https://thediplomat.com/2016/02/why-india-transferred-attack-helicopters-to-india/",
+     "domain": "thediplomat.com",
+     "page_first": "2016-02-02",
+     "img_first": "2020-05-14"
+    },
+    {
+     "url": "https://imgur.com/gallery/YdA95",
+     "domain": "imgur.com",
+     "page_first": "2017-03-06",
+     "img_first": null
+    },
+    {
+     "url": "https://euobserver.com/opinion/123339",
+     "domain": "euobserver.com",
+     "page_first": null,
+     "img_first": "2022-01-30"
+    }
+   ],
+   "earliest_img": "2020-05-14",
+   "false": {
+    "start": "2022-11-01",
+    "P": "inconsistent",
+    "S": "inconsistent",
+    "AL": "inconsistent"
+   },
+   "true": {
+    "start": "2015-11-05",
+    "P": "cannot_tell",
+    "S": "consistent",
+    "AL": "consistent"
+   }
+  },
+  {
+   "k": 33,
+   "url": "https://factly.in/pictures-of-col-navjot-singh-bal-who-died-in-april-2020-shared-as-recent-pictures-of-a-hospitalised-indian-army-soldier",
+   "evidence": [
+    {
+     "url": "https://m.rediff.com/news/report/parents-drive-2000-km-for-army-officers-funeral-amid-lockdown-coronavirus/20200411.htm",
+     "domain": "m.rediff.com",
+     "page_first": "2020-04-14",
+     "img_first": "2020-04-14"
+    },
+    {
+     "url": "https://www.ndtv.com/video/news/news/outrage-as-parents-forced-to-drive-2-600-km-for-army-officer-s-funeral-545354",
+     "domain": "www.ndtv.com",
+     "page_first": "2020-04-11",
+     "img_first": "2020-04-11"
+    },
+    {
+     "url": "https://m.rediff.com/news/report/violence-mars-covid-19-doctors-burial-in-chennai/20200420.htm",
+     "domain": "m.rediff.com",
+     "page_first": "2020-04-20",
+     "img_first": null
+    },
+    {
+     "url": "https://m.rediff.com/news/report/coronavirus-in-india-woman-cop-cremates-unclaimed-bodies-amid-lockdown/20200522.htm",
+     "domain": "m.rediff.com",
+     "page_first": "2020-05-22",
+     "img_first": null
+    },
+    {
+     "url": "https://m.rediff.com/news/report/man-travels-3345-km-to-bring-friends-body-home-lockdown-coronavirus/20200429.htm",
+     "domain": "m.rediff.com",
+     "page_first": "2020-04-30",
+     "img_first": null
+    }
+   ],
+   "earliest_img": "2020-04-11",
+   "false": {
+    "start": "2022-11-29",
+    "P": "inconsistent",
+    "S": "inconsistent",
+    "AL": "inconsistent"
+   },
+   "true": {
+    "start": "2020-04-01",
+    "P": "cannot_tell",
+    "S": "consistent",
+    "AL": "consistent"
+   }
+  },
+  {
+   "k": 34,
+   "url": "https://pesacheck.org/false-the-pictures-are-not-of-tplf-preparing-for-war-in-november-2022-824d6d2bd202",
+   "evidence": [
+    {
+     "url": "https://www.theeastafrican.co.ke/tea/news/rest-of-africa/tigray-forces-advance-toward-amhara-region-3473668",
+     "domain": "www.theeastafrican.co.ke",
+     "page_first": "2021-07-15",
+     "img_first": "2021-07-15"
+    },
+    {
+     "url": "https://nation.africa/kenya/news/africa/abiy-vows-to-repel-enemy-as-tigray-forces-advance-toward-amhara-region-3473490",
+     "domain": "nation.africa",
+     "page_first": "2021-07-15",
+     "img_first": null
+    },
+    {
+     "url": "https://www.dw.com/en/tigray-fighters-raped-beat-women-in-ethiopia-amnesty-says/a-59773228",
+     "domain": "www.dw.com",
+     "page_first": "2021-11-10",
+     "img_first": "2021-09-30"
+    },
+    {
+     "url": "https://nation.africa/kenya/news/africa/us-calls-on-tigray-rebel-group-to-halt-its-advances-in-key-northern-cities-3602478",
+     "domain": "nation.africa",
+     "page_first": "2021-10-31",
+     "img_first": "2021-10-11"
+    },
+    {
+     "url": "https://www.spectator.co.uk/article/will-ethiopia-s-capital-fall/",
+     "domain": "www.spectator.co.uk",
+     "page_first": "2024-06-18",
+     "img_first": "2023-01-27"
+    },
+    {
+     "url": "https://nation.africa/kenya/news/africa/-ethiopia-conflict-tigrayan-rebels-seize-key-city-of-dessie-3602334",
+     "domain": "nation.africa",
+     "page_first": null,
+     "img_first": "2021-09-09"
+    }
+   ],
+   "earliest_img": "2021-07-15",
+   "false": {
+    "start": "2022-11-01",
+    "P": "inconsistent",
+    "S": "inconsistent",
+    "AL": "inconsistent"
+   },
+   "true": {
+    "start": "2021-06-29",
+    "P": "cannot_tell",
+    "S": "consistent",
+    "AL": "consistent"
+   }
+  },
+  {
+   "k": 35,
+   "url": "https://pesacheck.org/false-this-image-is-not-of-bodies-of-ethiopian-refugees-found-in-a-mass-grave-in-malawi-in-october-7c0368a24f07",
+   "evidence": [
+    {
+     "url": "https://www.upi.com/Top_News/World-News/2020/03/24/64-migrants-found-dead-in-truck-container-in-Mozambique/7131585060627/",
+     "domain": "www.upi.com",
+     "page_first": "2020-03-24",
+     "img_first": "2020-03-24"
+    },
+    {
+     "url": "https://www.elperiodico.com/es/internacional/20200324/hallados-muertos-en-un-container-mas-de-60-inmigrantes-en-mozambique-7902460",
+     "domain": "www.elperiodico.com",
+     "page_first": "2020-03-25",
+     "img_first": "2025-10-24"
+    },
+    {
+     "url": "https://www.elperiodico.cat/ca/internacional/20200324/trobats-morts-en-un-contenidor-mes-de-60-immigrants-a-mocambic-7902460",
+     "domain": "www.elperiodico.cat",
+     "page_first": "2020-03-25",
+     "img_first": "2025-10-24"
+    },
+    {
+     "url": "https://www.ohtuleht.ee/996491/mosambiigi-ametnikud-avastasid-veoautost-64-migrandi-surnukeha",
+     "domain": "www.ohtuleht.ee",
+     "page_first": "2020-03-25",
+     "img_first": null
+    }
+   ],
+   "earliest_img": "2020-03-24",
+   "false": {
+    "start": "2022-10-01",
+    "P": "inconsistent",
+    "S": "inconsistent",
+    "AL": "inconsistent"
+   },
+   "true": {
+    "start": "2020-03-24",
+    "P": "cannot_tell",
+    "S": "consistent",
+    "AL": "consistent"
+   }
+  },
+  {
+   "k": 36,
+   "url": "https://pesacheck.org/false-image-in-this-post-is-not-of-an-airstrike-on-nunu-kumba-east-wollega-in-november-2022-dc610d3c957c",
+   "evidence": [
+    {
+     "url": "https://www.engadget.com/2019-07-09-us-navy-mq-8c-fire-scout-drone.html",
+     "domain": "www.engadget.com",
+     "page_first": "2020-05-25",
+     "img_first": null
+    },
+    {
+     "url": "https://www.naval-technology.com/news/usmc-helicopters-demonstrate-manned-unmanned-teaming/",
+     "domain": "www.naval-technology.com",
+     "page_first": "2022-05-17",
+     "img_first": "2022-04-12"
+    },
+    {
+     "url": "https://www.inceptivemind.com/u-s-navys-mq-8c-fire-scout-unmanned-helicopter-ready-action/7971/",
+     "domain": "www.inceptivemind.com",
+     "page_first": "2019-07-15",
+     "img_first": null
+    },
+    {
+     "url": "https://www.eurasiantimes.com/us-navy-to-deploy-airborne-ship-and-underwater-drones-to-counter-iran-threat-watch/",
+     "domain": "www.eurasiantimes.com",
+     "page_first": "2021-09-09",
+     "img_first": "2022-07-09"
+    },
+    {
+     "url": "https://www.eurasiantimes.com/indian-navy-finally-floats-rfi-to-acquire-naval-drones/",
+     "domain": "www.eurasiantimes.com",
+     "page_first": "2022-07-07",
+     "img_first": "2022-07-09"
+    }
+   ],
+   "earliest_img": "2022-04-12",
+   "false": {
+    "start": "2022-10-22",
+    "P": "inconsistent",
+    "S": "inconsistent",
+    "AL": "inconsistent"
+   },
+   "true": {
+    "start": "2019-07-10",
+    "P": "cannot_tell",
+    "S": "consistent",
+    "AL": "consistent"
+   }
+  },
+  {
+   "k": 37,
+   "url": "https://pesacheck.org/false-this-image-is-not-of-japans-dressing-room-after-they-lost-to-costa-rica-in-the-fifa-2022-997e4c3272b4",
+   "evidence": [
+    {
+     "url": "https://www.suara.com/news/2022/11/28/093944/cek-fakta-ruang-ganti-jepang-kotor-usai-kalah-dari-kosta-rika-benarkah",
+     "domain": "www.suara.com",
+     "page_first": "2022-11-28",
+     "img_first": "2022-11-28"
+    },
+    {
+     "url": "https://sports.sina.cn/bundesliga/germany/2022-11-28/detail-imqqsmrp7806088.d.html",
+     "domain": "sports.sina.cn",
+     "page_first": null,
+     "img_first": null
+    },
+    {
+     "url": "https://dantri.com.vn/suc-manh-so/hinh-anh-che-hai-huoc-cua-dan-mang-mung-ky-tich-cua-nhat-tai-world-cup-2022-20221202160253542.htm",
+     "domain": "dantri.com.vn",
+     "page_first": "2022-12-02",
+     "img_first": null
+    },
+    {
+     "url": "https://dantri.com.vn/suc-manh-so/thuc-hu-phong-thay-do-nhu-bai-rac-cua-doi-nhat-khien-dan-mang-xon-xao-20221128154055378.htm",
+     "domain": "dantri.com.vn",
+     "page_first": "2022-11-28",
+     "img_first": null
+    },
+    {
+     "url": "https://vtc.vn/su-that-tam-hinh-tuyen-nhat-ban-khong-don-phong-sau-tran-thua-costa-rica-ar716766.html",
+     "domain": "vtc.vn",
+     "page_first": "2022-11-27",
+     "img_first": null
+    }
+   ],
+   "earliest_img": "2022-11-28",
+   "false": {
+    "start": "2022-11-27",
+    "P": "cannot_tell",
+    "S": "inconsistent",
+    "AL": "inconsistent"
+   },
+   "true": {
+    "start": "2022-03-01",
+    "P": "cannot_tell",
+    "S": "consistent",
+    "AL": "consistent"
+   }
+  },
+  {
+   "k": 38,
+   "url": "https://pesacheck.org/false-this-image-is-not-of-the-eritrean-army-leaving-the-tigray-region-in-november-2022-a8631945a6da",
+   "evidence": [
+    {
+     "url": "https://www.theguardian.com/profile/martin-plaut",
+     "domain": "www.theguardian.com",
+     "page_first": null,
+     "img_first": "2019-07-25"
+    },
+    {
+     "url": "https://www.theguardian.com/politics/2015/aug/19/inside-eritrea-political-opposition-threat-isaias-afwerki",
+     "domain": "www.theguardian.com",
+     "page_first": null,
+     "img_first": "2022-07-08"
+    },
+    {
+     "url": "https://www.europe1.fr/international/erythree-des-crimes-contre-lhumanite-depuis-1991-2766538",
+     "domain": "www.europe1.fr",
+     "page_first": "2016-06-08",
+     "img_first": null
+    }
+   ],
+   "earliest_img": "2019-07-25",
+   "false": {
+    "start": "2022-11-01",
+    "P": "inconsistent",
+    "S": "inconsistent",
+    "AL": "inconsistent"
+   },
+   "true": {
+    "start": "2000-05-01",
+    "P": "cannot_tell",
+    "S": "consistent",
+    "AL": "consistent"
+   }
+  },
+  {
+   "k": 39,
+   "url": "https://pesacheck.org/false-image-in-this-post-is-not-of-eritrean-troops-withdrawing-from-tigray-ethiopia-in-november-5ff0d86cf0",
+   "evidence": [
+    {
+     "url": "https://www.newarab.com/analysis/saudi-war-fought-eritrean-troops",
+     "domain": "www.newarab.com",
+     "page_first": "2022-12-07",
+     "img_first": "2022-12-07"
+    },
+    {
+     "url": "https://www.bbc.com/news/world-africa-33047544",
+     "domain": "www.bbc.com",
+     "page_first": "2015-06-08",
+     "img_first": "2021-12-10"
+    },
+    {
+     "url": "https://www.dw.com/en/germany-accused-of-meddling-over-eritreas-absent-civil-liberties/a-46063625",
+     "domain": "www.dw.com",
+     "page_first": "2018-10-28",
+     "img_first": "2022-08-12"
+    },
+    {
+     "url": "https://www.bbc.com/news/uk-england-northamptonshire-45837901",
+     "domain": "www.bbc.com",
+     "page_first": "2018-11-05",
+     "img_first": null
+    },
+    {
+     "url": "https://www.dw.com/en/eritrean-refugees-in-germany-struggle-to-reunite-with-family/a-53840858",
+     "domain": "www.dw.com",
+     "page_first": "2020-06-17",
+     "img_first": null
+    }
+   ],
+   "earliest_img": "2021-12-10",
+   "false": {
+    "start": "2022-11-01",
+    "P": "inconsistent",
+    "S": "inconsistent",
+    "AL": "inconsistent"
+   },
+   "true": {
+    "start": "1999-09-22",
+    "P": "cannot_tell",
+    "S": "consistent",
+    "AL": "consistent"
+   }
+  },
+  {
+   "k": 40,
+   "url": "https://pesacheck.org/false-image-is-not-of-an-airstrike-attack-on-ethiopias-bedasa-jarso-town-in-december-2022-5f7349e85421",
+   "evidence": [
+    {
+     "url": "https://www.geopoliticalmonitor.com/ethiopia-bets-on-drones-to-break-the-stalemate-in-tigray/",
+     "domain": "www.geopoliticalmonitor.com",
+     "page_first": "2021-10-13",
+     "img_first": "2021-10-13"
+    }
+   ],
+   "earliest_img": "2021-10-13",
+   "false": {
+    "start": "2022-12-01",
+    "P": "inconsistent",
+    "S": "inconsistent",
+    "AL": "inconsistent"
+   },
+   "true": {
+    "start": "2014-12-25",
+    "P": "cannot_tell",
+    "S": "consistent",
+    "AL": "consistent"
+   }
+  },
+  {
+   "k": 41,
+   "url": "https://factly.in/visually-impaired-girls-photo-is-incorrectly-shared-as-she-saw-the-nuclear-blast-in-hiroshima",
+   "evidence": [
+    {
+     "url": "https://medium.com/@xdale/rare-historical-photos-5f4ad4e6be32",
+     "domain": "medium.com",
+     "page_first": null,
+     "img_first": null
+    },
+    {
+     "url": "https://theawesomedaily.com/31-rare-and-interesting-pictures-of-the-world-history/",
+     "domain": "theawesomedaily.com",
+     "page_first": "2015-03-16",
+     "img_first": "2016-03-15"
+    },
+    {
+     "url": "https://imgur.com/gallery/jjPCO",
+     "domain": "imgur.com",
+     "page_first": "2016-01-01",
+     "img_first": null
+    },
+    {
+     "url": "https://www.ebaumsworld.com/pictures/39-fascinating-photos-collected-from-history/85527773/",
+     "domain": "www.ebaumsworld.com",
+     "page_first": "2017-12-06",
+     "img_first": "2017-12-07"
+    },
+    {
+     "url": "https://hiphoptino.bandcamp.com/album/past-due-deluxe",
+     "domain": "hiphoptino.bandcamp.com",
+     "page_first": "2020-12-30",
+     "img_first": "2019-03-22"
+    }
+   ],
+   "earliest_img": "2016-03-15",
+   "false": {
+    "start": "1945-01-01",
+    "P": "cannot_tell",
+    "S": "consistent",
+    "AL": "consistent"
+   },
+   "true": {
+    "start": "1963-01-01",
+    "P": "cannot_tell",
+    "S": "consistent",
+    "AL": "consistent"
+   }
+  },
+  {
+   "k": 42,
+   "url": "https://pesacheck.org/false-the-image-isnt-of-an-airstrike-on-begi-oromia-region-in-december-2022-b540cb70b2b8",
+   "evidence": [
+    {
+     "url": "https://haqcheck.org/om/dhuguma-hayilamaariam-dasaalenyi-paartii-badhaadhinna-oromiyaa-akeekkachiisee/",
+     "domain": "haqcheck.org",
+     "page_first": "2023-03-21",
+     "img_first": null
+    },
+    {
+     "url": "https://haqcheck.org/om/kan-qindaae-suuraan-kun-fincila-jimlaa-tibbana-tigraay-keessatti-kae-hin-agarsiisu/",
+     "domain": "haqcheck.org",
+     "page_first": "2022-06-04",
+     "img_first": null
+    }
+   ],
+   "earliest_img": null,
+   "false": {
+    "start": "2022-12-01",
+    "P": "cannot_tell",
+    "S": "cannot_tell",
+    "AL": "cannot_tell"
+   },
+   "true": {
+    "start": "2015-11-01",
+    "P": "cannot_tell",
+    "S": "cannot_tell",
+    "AL": "cannot_tell"
+   }
+  },
+  {
+   "k": 43,
+   "url": "https://pesacheck.org/false-image-is-not-of-oromia-police-officers-joining-protests-in-december-2022-6e32950d24ad",
+   "evidence": [
+    {
+     "url": "https://vocal.media/criminal/6-murders-you-haven-t-seen-in-the-media",
+     "domain": "vocal.media",
+     "page_first": "2023-02-03",
+     "img_first": null
+    },
+    {
+     "url": "https://vocal.media/criminal/5-murders-that-remain-unsolved",
+     "domain": "vocal.media",
+     "page_first": "2023-02-03",
+     "img_first": null
+    },
+    {
+     "url": "https://saharanews.co/twitter-deal-temporarily-on-hold-says-elon-musk-as-he-give-update/",
+     "domain": "saharanews.co",
+     "page_first": "2022-05-20",
+     "img_first": null
+    },
+    {
+     "url": "https://saharanews.co/breaking-another-virus-detected-in-china-boy-tests-positive/",
+     "domain": "saharanews.co",
+     "page_first": "2022-05-20",
+     "img_first": null
+    },
+    {
+     "url": "https://www.diramakini.co.tz/2021/02/katibu-tawala-mkoa-wa-arusha-afariki.html",
+     "domain": "www.diramakini.co.tz",
+     "page_first": "2021-02-28",
+     "img_first": null
+    }
+   ],
+   "earliest_img": null,
+   "false": {
+    "start": "2022-12-01",
+    "P": "cannot_tell",
+    "S": "cannot_tell",
+    "AL": "cannot_tell"
+   },
+   "true": {
+    "start": "2018-12-03",
+    "P": "cannot_tell",
+    "S": "consistent",
+    "AL": "consistent"
+   }
+  },
+  {
+   "k": 44,
+   "url": "https://factly.in/old-photo-allegedly-related-to-the-2020-galwan-clash-shared-now-in-the-context-of-the-recent-india-china-scuffle-in-the-tawang-sector",
+   "evidence": [
+    {
+     "url": "https://www.opindia.com/2021/11/chinese-media-tweets-morphed-images-to-claim-victory-in-galwan-valley/",
+     "domain": "www.opindia.com",
+     "page_first": "2021-11-07",
+     "img_first": null
+    },
+    {
+     "url": "https://www.opindia.com/tag/india-china-border/page/2/",
+     "domain": "www.opindia.com",
+     "page_first": "2021-04-10",
+     "img_first": null
+    },
+    {
+     "url": "https://www.opindia.com/category/editors-picks/page/787/",
+     "domain": "www.opindia.com",
+     "page_first": null,
+     "img_first": null
+    },
+    {
+     "url": "https://news.sina.cn/gn/2021-11-12/detail-iktzscyy5211746.d.html",
+     "domain": "news.sina.cn",
+     "page_first": null,
+     "img_first": null
+    }
+   ],
+   "earliest_img": null,
+   "false": {
+    "start": "2022-12-15",
+    "P": "cannot_tell",
+    "S": "inconsistent",
+    "AL": "inconsistent"
+   },
+   "true": {
+    "start": "2020-01-01",
+    "P": "cannot_tell",
+    "S": "consistent",
+    "AL": "consistent"
+   }
+  },
+  {
+   "k": 45,
+   "url": "https://pesacheck.org/false-this-photo-is-not-of-martha-karua-in-the-bahamas-4fe8d381bd67",
+   "evidence": [
+    {
+     "url": "https://www.instagram.com/p/CmD4GG0ITcw/",
+     "domain": "www.instagram.com",
+     "page_first": null,
+     "img_first": null
+    },
+    {
+     "url": "https://www.instagram.com/marthakaruaofficial/",
+     "domain": "www.instagram.com",
+     "page_first": "2025-01-15",
+     "img_first": null
+    },
+    {
+     "url": "https://www.tuko.co.ke/people/486781-martha-karua-flaunts-lovely-photo-beach-celebrates-jamhuri-day/",
+     "domain": "www.tuko.co.ke",
+     "page_first": "2022-12-12",
+     "img_first": "2022-12-12"
+    },
+    {
+     "url": "https://www.instagram.com/marthakaruaofficial/?next=%2Fexplore%2F&hl=es",
+     "domain": "www.instagram.com",
+     "page_first": null,
+     "img_first": null
+    }
+   ],
+   "earliest_img": "2022-12-12",
+   "false": {
+    "start": "2022-12-15",
+    "P": "inconsistent",
+    "S": "inconsistent",
+    "AL": "inconsistent"
+   },
+   "true": {
+    "start": "2022-12-12",
+    "P": "cannot_tell",
+    "S": "consistent",
+    "AL": "consistent"
+   }
+  },
+  {
+   "k": 46,
+   "url": "https://pesacheck.org/false-this-picture-does-not-show-a-person-arrested-in-wollega-in-2022-f701d0d0ad47",
+   "evidence": [
+    {
+     "url": "https://modulowatt.com/?u=social-affairs-archives-addis-standard-nn-2VAzG7Ta",
+     "domain": "modulowatt.com",
+     "page_first": null,
+     "img_first": "2020-05-04"
+    },
+    {
+     "url": "https://www.bbc.com/amharic/news-52414667",
+     "domain": "www.bbc.com",
+     "page_first": "2022-11-10",
+     "img_first": "2022-11-10"
+    },
+    {
+     "url": "https://www.aiohotzgirl.com/photos/4Yuo4Ym14YyN4Yir4YutLeGMjeGMreGJteGNoS3hiI3hjIQt4Yuo4Ymw4YyI4Yuw4YiI4Ymg4Ym14YqVLeGIteGNjeGIqy3hiIvhiIjhiJvhi6jhibUt4Ymk4Ymw4Yqt4Yit4Yi14Ym14Yur4YqVLeGImOGIhOGLtS3hibDhi43hiqnhip0t4Yqg4Ym9LeGJsOGKreGIiOGIgGLreGJhbmQYqW4Ym3XzE3BfMTQ.gif.html",
+     "domain": "www.aiohotzgirl.com",
+     "page_first": null,
+     "img_first": null
+    }
+   ],
+   "earliest_img": "2020-05-04",
+   "false": {
+    "start": "2022-01-01",
+    "P": "inconsistent",
+    "S": "inconsistent",
+    "AL": "inconsistent"
+   },
+   "true": {
+    "start": "2020-04-24",
+    "P": "cannot_tell",
+    "S": "consistent",
+    "AL": "consistent"
+   }
+  },
+  {
+   "k": 47,
+   "url": "https://factly.in/old-photo-of-ronaldo-shared-as-that-captured-during-the-2022-argentina-france-football-world-cup-final",
+   "evidence": [
+    {
+     "url": "https://znews.vn/cong-bo-video-than-mat-cua-ronaldo-va-co-gai-to-cao-hiep-dam-post881647.html",
+     "domain": "znews.vn",
+     "page_first": null,
+     "img_first": null
+    }
+   ],
+   "earliest_img": null,
+   "false": {
+    "start": "2022-01-01",
+    "P": "cannot_tell",
+    "S": "cannot_tell",
+    "AL": "cannot_tell"
+   },
+   "true": {
+    "start": "2018-10-02",
+    "P": "cannot_tell",
+    "S": "consistent",
+    "AL": "consistent"
+   }
+  },
+  {
+   "k": 48,
+   "url": "https://factly.in/2019-photo-of-deepika-padukone-linked-to-the-ongoing-row-over-her-saffron-coloured-costume-in-pathaan-film",
+   "evidence": [
+    {
+     "url": "https://indianexpress.com/article/entertainment/bollywood/deepika-padukone-cannes-film-festival-2019-day-four-looks-photos-5733387/",
+     "domain": "indianexpress.com",
+     "page_first": "2019-05-17",
+     "img_first": "2019-05-17"
+    }
+   ],
+   "earliest_img": "2019-05-17",
+   "false": {
+    "start": "2023-01-06",
+    "P": "inconsistent",
+    "S": "inconsistent",
+    "AL": "inconsistent"
+   },
+   "true": {
+    "start": "2019-05-01",
+    "P": "cannot_tell",
+    "S": "consistent",
+    "AL": "consistent"
+   }
+  },
+  {
+   "k": 49,
+   "url": "https://factly.in/the-person-standing-beside-prime-minister-narendra-modi-in-this-photo-from-1993-is-not-amit-shah",
+   "evidence": [
+    {
+     "url": "https://www.india.com/viral/prime-minister-narendra-modis-old-photo-clicked-in-germany-starts-then-and-now-trend-on-social-media-5372314/",
+     "domain": "www.india.com",
+     "page_first": "2022-05-03",
+     "img_first": null
+    },
+    {
+     "url": "https://www.news18.com/buzz/pm-narendra-modis-30-year-old-photo-resurfaces-on-internet-amid-germany-visit-5107531.html",
+     "domain": "www.news18.com",
+     "page_first": null,
+     "img_first": "2022-05-04"
+    },
+    {
+     "url": "https://www.timesnownews.com/viral/pm-modis-30-year-old-photo-in-germany-goes-viral-amid-his-europe-tour-article-91313150",
+     "domain": "www.timesnownews.com",
+     "page_first": "2022-05-04",
+     "img_first": null
+    },
+    {
+     "url": "https://www.ndtv.com/india-news/then-and-now-pms-1993-germany-trip-photo-surfaces-amid-berlin-visit-2941649",
+     "domain": "www.ndtv.com",
+     "page_first": "2022-05-03",
+     "img_first": "2022-06-01"
+    },
+    {
+     "url": "https://www.catchnews.com/international-news/pm-modi-s-30-year-old-photo-in-germany-leaves-netizens-fascinated-233377.html",
+     "domain": "www.catchnews.com",
+     "page_first": "2022-05-31",
+     "img_first": "2022-05-03"
+    }
+   ],
+   "earliest_img": "2022-05-03",
+   "false": {
+    "start": "1993-01-01",
+    "P": "cannot_tell",
+    "S": "consistent",
+    "AL": "consistent"
+   },
+   "true": {
+    "start": "1993-01-01",
+    "P": "cannot_tell",
+    "S": "consistent",
+    "AL": "consistent"
+   }
+  },
+  {
+   "k": 50,
+   "url": "https://pesacheck.org/false-image-is-not-of-a-drone-attack-on-kombolcha-town-in-the-oromia-region-in-november-2022-fb652ebf4248",
+   "evidence": [
+    {
+     "url": "https://www.newarab.com/analysis/iran-has-given-its-proxies-unprecedented-drone-capabilities",
+     "domain": "www.newarab.com",
+     "page_first": "2022-11-22",
+     "img_first": "2025-07-16"
+    },
+    {
+     "url": "https://www.newarab.com/analysis/why-russia-could-turn-iran-drones",
+     "domain": "www.newarab.com",
+     "page_first": "2022-12-03",
+     "img_first": "2022-12-03"
+    },
+    {
+     "url": "https://www.aljazeera.com/gallery/2021/1/5/in-pictures-irans-military-holds-first-ever-drone-drill",
+     "domain": "www.aljazeera.com",
+     "page_first": "2021-01-05",
+     "img_first": "2024-04-19"
+    },
+    {
+     "url": "https://zhuanlan.zhihu.com/p/345077554",
+     "domain": "zhuanlan.zhihu.com",
+     "page_first": null,
+     "img_first": null
+    },
+    {
+     "url": "https://imp-navigator.livejournal.com/981126.html",
+     "domain": "imp-navigator.livejournal.com",
+     "page_first": "2021-08-04",
+     "img_first": "2022-05-10"
+    },
+    {
+     "url": "https://imp-navigator.livejournal.com/1067704.html",
+     "domain": "imp-navigator.livejournal.com",
+     "page_first": null,
+     "img_first": "2022-05-10"
+    },
+    {
+     "url": "https://iranpress.com/ababil-3-uav-at-a-glance",
+     "domain": "iranpress.com",
+     "page_first": null,
+     "img_first": "2022-03-19"
+    }
+   ],
+   "earliest_img": "2022-03-19",
+   "false": {
+    "start": "2022-11-01",
+    "P": "inconsistent",
+    "S": "inconsistent",
+    "AL": "inconsistent"
+   },
+   "true": {
+    "start": "2021-01-01",
+    "P": "cannot_tell",
+    "S": "consistent",
+    "AL": "consistent"
+   }
+  },
+  {
+   "k": 51,
+   "url": "https://pesacheck.org/false-this-image-is-not-of-massacre-in-oromia-by-fano-and-eritrean-forces-deacf501b384",
+   "evidence": [
+    {
+     "url": "https://www.change.org/p/justin-trudeau-stop-amhara-genocide-in-ethiopia",
+     "domain": "www.change.org",
+     "page_first": "2020-12-25",
+     "img_first": null
+    },
+    {
+     "url": "https://www.change.org/p/save-our-right-to-personalise-our-loved-one-s-final-resting-place",
+     "domain": "www.change.org",
+     "page_first": "2023-01-16",
+     "img_first": "2023-10-22"
+    }
+   ],
+   "earliest_img": "2023-10-22",
+   "false": {
+    "start": "2022-12-01",
+    "P": "cannot_tell",
+    "S": "cannot_tell",
+    "AL": "cannot_tell"
+   },
+   "true": {
+    "start": "2020-12-20",
+    "P": "cannot_tell",
+    "S": "consistent",
+    "AL": "consistent"
+   }
+  },
+  {
+   "k": 52,
+   "url": "https://pesacheck.org/false-this-photo-is-not-of-raila-odinga-watching-president-rutos-media-roundtable-interview-on-4-d8679f442bd1",
+   "evidence": [
+    {
+     "url": "https://www.tuko.co.ke/politics/471099-raila-odinga-a-glimpse-living-room-supreme-court-proceedings-tv/",
+     "domain": "www.tuko.co.ke",
+     "page_first": "2022-09-02",
+     "img_first": "2022-09-02"
+    },
+    {
+     "url": "https://www.newvision.co.ug/category/amawulire/bawadde-obujulizimu-gwa-odinga-ne-ruto-122901123",
+     "domain": "www.newvision.co.ug",
+     "page_first": null,
+     "img_first": null
+    },
+    {
+     "url": "https://www.bukedde.co.ug/amawulire/122901123/bawadde-obujulizimu-gwa-odinga-ne-ruto",
+     "domain": "www.bukedde.co.ug",
+     "page_first": null,
+     "img_first": null
+    },
+    {
+     "url": "https://www.the-star.co.ke/news/realtime/2022-09-02-raila-glued-on-tv-as-he-follows-supreme-court-proceedings/",
+     "domain": "www.the-star.co.ke",
+     "page_first": "2022-09-02",
+     "img_first": "2022-09-02"
+    },
+    {
+     "url": "https://www.the-star.co.ke/news/2022-09-03-were-results-in-kenyan-elections-altered-as-raila-claims/",
+     "domain": "www.the-star.co.ke",
+     "page_first": "2022-09-03",
+     "img_first": "2022-09-02"
+    }
+   ],
+   "earliest_img": "2022-09-02",
+   "false": {
+    "start": "2023-01-04",
+    "P": "inconsistent",
+    "S": "inconsistent",
+    "AL": "inconsistent"
+   },
+   "true": {
+    "start": "2022-09-02",
+    "P": "cannot_tell",
+    "S": "consistent",
+    "AL": "consistent"
+   }
+  },
+  {
+   "k": 53,
+   "url": "https://pesacheck.org/fact-checking-president-kaguta-musevenis-tweet-of-an-image-of-rwenzori-mountains-1ee7e224ad94",
+   "evidence": [
+    {
+     "url": "https://www.gorilla-ugandasafaris.com/10-days-mountain-rwenzori-hiking-uganda.html",
+     "domain": "www.gorilla-ugandasafaris.com",
+     "page_first": "2019-04-22",
+     "img_first": null
+    },
+    {
+     "url": "https://www.rwenzoriexpeditions.com/park/",
+     "domain": "www.rwenzoriexpeditions.com",
+     "page_first": "2022-01-18",
+     "img_first": null
+    },
+    {
+     "url": "https://www.dailymotion.com/video/x5qapph",
+     "domain": "www.dailymotion.com",
+     "page_first": null,
+     "img_first": null
+    },
+    {
+     "url": "https://www.gorilla-tracking-uganda.com/faq-about-mountain-rwenzori-hiking-safaris.html",
+     "domain": "www.gorilla-tracking-uganda.com",
+     "page_first": "2020-10-21",
+     "img_first": "2022-01-04"
+    },
+    {
+     "url": "https://www.deksugandasafaris.com/uganda-news/mount-rwenzori/",
+     "domain": "www.deksugandasafaris.com",
+     "page_first": "2023-02-09",
+     "img_first": "2022-11-22"
+    }
+   ],
+   "earliest_img": "2022-01-04",
+   "false": {
+    "start": "2022-12-11",
+    "P": "inconsistent",
+    "S": "inconsistent",
+    "AL": "inconsistent"
+   },
+   "true": {
+    "start": "2014-01-01",
+    "P": "cannot_tell",
+    "S": "consistent",
+    "AL": "consistent"
+   }
+  },
+  {
+   "k": 54,
+   "url": "https://pesacheck.org/missing-context-this-picture-is-not-from-a-scene-of-a-protest-in-sudan-in-january-2023-214f4a04a854",
+   "evidence": [
+    {
+     "url": "https://www.voanews.com/a/tear-gas-fired-at-sudan-anti-coup-protest-as-un-expert-arrives/6451215.html",
+     "domain": "www.voanews.com",
+     "page_first": "2022-02-20",
+     "img_first": "2025-04-27"
+    },
+    {
+     "url": "https://www.voanews.com/a/protesters-take-to-sudan-s-streets-again-decrying-coup-arrests-/6436763.html",
+     "domain": "www.voanews.com",
+     "page_first": "2022-02-11",
+     "img_first": "2022-02-11"
+    },
+    {
+     "url": "https://www.voanews.com/a/sudan-s-burhan-dismisses-sanctions-threats-says-israel-visits-not-political/6439311.html",
+     "domain": "www.voanews.com",
+     "page_first": "2022-02-12",
+     "img_first": "2025-04-27"
+    },
+    {
+     "url": "https://www.voanews.com/a/sudan-s-military-rulers-step-up-crackdown-arrest-activists/6437108.html",
+     "domain": "www.voanews.com",
+     "page_first": "2022-02-11",
+     "img_first": "2025-04-27"
+    },
+    {
+     "url": "https://www.voabangla.com/a/6437367.html",
+     "domain": "www.voabangla.com",
+     "page_first": "2022-02-11",
+     "img_first": "2022-02-11"
+    }
+   ],
+   "earliest_img": "2022-02-11",
+   "false": {
+    "start": "2023-01-01",
+    "P": "inconsistent",
+    "S": "inconsistent",
+    "AL": "inconsistent"
+   },
+   "true": {
+    "start": "2022-02-10",
+    "P": "cannot_tell",
+    "S": "consistent",
+    "AL": "consistent"
+   }
+  },
+  {
+   "k": 55,
+   "url": "https://pesacheck.org/false-this-picture-does-not-show-chinas-military-exercise-in-taiwan-in-january-2023-501a9d0c1e0d",
+   "evidence": [
+    {
+     "url": "https://www.defencetalk.com/military/photos/j-11-su-27-chinese-airforce.14517/",
+     "domain": "www.defencetalk.com",
+     "page_first": "2025-01-25",
+     "img_first": null
+    },
+    {
+     "url": "https://www.costabravarealestate.cr/?i=difference-between-shenyang-j-11a-and-su-27-dcs-ii-arWQwIo",
+     "domain": "www.costabravarealestate.cr",
+     "page_first": null,
+     "img_first": null
+    },
+    {
+     "url": "https://www.indiatvnews.com/news/india/congress-president-mallikarjun-kharge-s-jibe-at-centre-says-red-eyes-of-modi-government-covered-with-chinese-glasses-tawang-clash-china-parliament-2022-12-15-831376",
+     "domain": "www.indiatvnews.com",
+     "page_first": "2022-12-15",
+     "img_first": null
+    }
+   ],
+   "earliest_img": null,
+   "false": {
+    "start": "2023-01-01",
+    "P": "cannot_tell",
+    "S": "inconsistent",
+    "AL": "inconsistent"
+   },
+   "true": {
+    "start": "2010-10-01",
+    "P": "cannot_tell",
+    "S": "consistent",
+    "AL": "consistent"
+   }
+  },
+  {
+   "k": 56,
+   "url": "https://pesacheck.org/false-this-is-not-a-picture-of-sea-spiders-in-south-africa-b681fd8068c3",
+   "evidence": [
+    {
+     "url": "https://www.thesouthafrican.com/news/breaking-news-sea-spiders-cape-town-social-media-panic-16-december-2022/",
+     "domain": "www.thesouthafrican.com",
+     "page_first": "2022-12-16",
+     "img_first": "2022-12-16"
+    },
+    {
+     "url": "https://www.ladbible.com/news/war-worlds-spiders-aliens-plants-259763-20221214",
+     "domain": "www.ladbible.com",
+     "page_first": "2022-12-14",
+     "img_first": "2022-12-14"
+    },
+    {
+     "url": "https://shotkit.com/news/photographer-causes-facebook-panic-with-sea-spider-photos/",
+     "domain": "shotkit.com",
+     "page_first": "2022-12-20",
+     "img_first": null
+    },
+    {
+     "url": "https://www.news18.com/buzz/man-shares-pics-of-dead-aloe-vera-plant-beachgoers-thought-they-were-aliens-6628231.html",
+     "domain": "www.news18.com",
+     "page_first": "2022-12-17",
+     "img_first": null
+    },
+    {
+     "url": "https://petapixel.com/2022/12/19/photos-of-aliens-emerging-from-the-sea-sparks-panic/",
+     "domain": "petapixel.com",
+     "page_first": "2022-12-19",
+     "img_first": "2022-12-19"
+    },
+    {
+     "url": "https://nypost.com/2022/12/14/aliens-crawling-on-coast-spark-hysteria-online/",
+     "domain": "nypost.com",
+     "page_first": null,
+     "img_first": "2022-12-15"
+    }
+   ],
+   "earliest_img": "2022-12-14",
+   "false": {
+    "start": "2022-12-04",
+    "P": "cannot_tell",
+    "S": "consistent",
+    "AL": "consistent"
+   },
+   "true": {
+    "start": "2022-11-30",
+    "P": "cannot_tell",
+    "S": "consistent",
+    "AL": "consistent"
+   }
+  },
+  {
+   "k": 57,
+   "url": "https://pesacheck.org/false-this-image-wasnt-taken-in-ataye-town-amhara-region-87e1477ab3ba",
+   "evidence": [
+    {
+     "url": "https://sagaleeqeerroo.com/hidhattoonni-benishaangul-gumuz-waraana-federaalaa-raayyaa-ittisa-biyyaa-fi-faannoo-waliin-tauun-uummata-oromoo-irratti-lola-bananii-jiraachuun-dhagaame",
+     "domain": "sagaleeqeerroo.com",
+     "page_first": "2022-12-12",
+     "img_first": null
+    },
+    {
+     "url": "https://sagaleeqeerroo.com/godina-harargee-bahaa-aanaa-dadar",
+     "domain": "sagaleeqeerroo.com",
+     "page_first": "2022-10-02",
+     "img_first": null
+    }
+   ],
+   "earliest_img": null,
+   "false": {
+    "start": "2023-01-01",
+    "P": "cannot_tell",
+    "S": "cannot_tell",
+    "AL": "cannot_tell"
+   },
+   "true": {
+    "start": "2018-01-01",
+    "P": "cannot_tell",
+    "S": "consistent",
+    "AL": "consistent"
+   }
+  },
+  {
+   "k": 58,
+   "url": "https://pesacheck.org/false-this-image-is-not-of-president-muhammadu-buharis-helicopter-following-an-attack-at-kano-eea615f24549",
+   "evidence": [
+    {
+     "url": "https://www.the-star.co.ke/news/2022-04-01-railas-chopper-stoned-window-broken-at-mzee-kibors-burial-junet/",
+     "domain": "www.the-star.co.ke",
+     "page_first": "2022-04-01",
+     "img_first": "2022-04-04"
+    },
+    {
+     "url": "https://www.standardmedia.co.ke/national/article/2001443099/fifteen-released-as-two-charged-over-raila-chopper-stoning",
+     "domain": "www.standardmedia.co.ke",
+     "page_first": "2022-04-13",
+     "img_first": "2022-04-13"
+    },
+    {
+     "url": "https://www.standardmedia.co.ke/counties/article/2001442038/railas-chopper-stoned-at-kibors-burial",
+     "domain": "www.standardmedia.co.ke",
+     "page_first": "2022-04-01",
+     "img_first": "2022-04-02"
+    },
+    {
+     "url": "https://www.standardmedia.co.ke/national/article/2001442080/14-arrested-in-connection-with-raila-chopper-stoning-in-soy",
+     "domain": "www.standardmedia.co.ke",
+     "page_first": "2022-04-02",
+     "img_first": "2022-04-02"
+    },
+    {
+     "url": "https://www.kenyans.co.ke/news/74484-railas-chopper-stoned-after-mzee-kibors-burial",
+     "domain": "www.kenyans.co.ke",
+     "page_first": "2022-04-01",
+     "img_first": "2022-04-01"
+    },
+    {
+     "url": "https://www.the-star.co.ke/news/2022-04-02-kibors-family-speaks-about-stoning-of-railas-chopper/",
+     "domain": "www.the-star.co.ke",
+     "page_first": null,
+     "img_first": "2022-04-04"
+    }
+   ],
+   "earliest_img": "2022-04-01",
+   "false": {
+    "start": "2023-01-30",
+    "P": "inconsistent",
+    "S": "inconsistent",
+    "AL": "inconsistent"
+   },
+   "true": {
+    "start": "2022-04-01",
+    "P": "cannot_tell",
+    "S": "consistent",
+    "AL": "consistent"
+   }
+  },
+  {
+   "k": 59,
+   "url": "https://pesacheck.org/false-this-photo-is-not-of-a-school-in-nigeria-f92204ef267",
+   "evidence": [
+    {
+     "url": "https://africafeeds.com/2019/05/09/outrage-over-kenyas-muddy-classrooms/",
+     "domain": "africafeeds.com",
+     "page_first": "2019-07-22",
+     "img_first": "2023-03-31"
+    },
+    {
+     "url": "https://www.tuko.co.ke/305117-kilifi-netizens-angered-by-viral-photo-pupils-sitting-bricks-flooded-classroom.html",
+     "domain": "www.tuko.co.ke",
+     "page_first": "2019-05-09",
+     "img_first": null
+    },
+    {
+     "url": "https://barakafm.org/2019/05/14/poor-state-of-public-schools-puts-coastal-mps-to-shame/",
+     "domain": "barakafm.org",
+     "page_first": "2019-05-17",
+     "img_first": "2022-01-21"
+    }
+   ],
+   "earliest_img": "2022-01-21",
+   "false": {
+    "start": "2023-01-31",
+    "P": "inconsistent",
+    "S": "inconsistent",
+    "AL": "inconsistent"
+   },
+   "true": {
+    "start": "2019-05-01",
+    "P": "cannot_tell",
+    "S": "consistent",
+    "AL": "consistent"
+   }
+  },
+  {
+   "k": 60,
+   "url": "https://factly.in/old-image-of-a-dog-lying-next-to-a-human-trapped-under-rubble-is-attributed-to-the-recent-earthquake-in-turkey",
+   "evidence": [
+    {
+     "url": "https://www.instagram.com/sarahjio/?hl=en",
+     "domain": "www.instagram.com",
+     "page_first": "2016-03-14",
+     "img_first": null
+    },
+    {
+     "url": "https://www.instagram.com/nafsikaantypas/",
+     "domain": "www.instagram.com",
+     "page_first": "2016-02-04",
+     "img_first": null
+    },
+    {
+     "url": "https://www.instagram.com/bahareslami_journal/",
+     "domain": "www.instagram.com",
+     "page_first": "2022-02-23",
+     "img_first": null
+    },
+    {
+     "url": "https://imgur.com/gallery/JfT96dL",
+     "domain": "imgur.com",
+     "page_first": "2023-02-07",
+     "img_first": "2023-02-07"
+    },
+    {
+     "url": "https://imgur.com/t/syria/AgPpfBA",
+     "domain": "imgur.com",
+     "page_first": null,
+     "img_first": "2023-02-07"
+    },
+    {
+     "url": "https://buyersask.com/structural/earthquake/how-to-tell-if-your-house-is-safe-after-an-earthquake-what-to-check/",
+     "domain": "buyersask.com",
+     "page_first": null,
+     "img_first": "2023-03-14"
+    }
+   ],
+   "earliest_img": "2023-02-07",
+   "false": {
+    "start": "2023-02-06",
+    "P": "cannot_tell",
+    "S": "consistent",
+    "AL": "consistent"
+   },
+   "true": {
+    "start": "2018-10-18",
+    "P": "cannot_tell",
+    "S": "cannot_tell",
+    "AL": "cannot_tell"
+   }
+  },
+  {
+   "k": 61,
+   "url": "https://pesacheck.org/false-this-image-is-not-of-an-airstrike-at-guji-in-ethiopias-oromia-region-in-january-2023-65763d110f1c",
+   "evidence": [
+    {
+     "url": "https://www.ilovebellbottoms.com/?a=mig-29-upg-india-s-lightweight-multi-role-fighter-2-gg-jaMKREFp",
+     "domain": "www.ilovebellbottoms.com",
+     "page_first": null,
+     "img_first": null
+    },
+    {
+     "url": "https://www.instagram.com/shrikant_storyteller/",
+     "domain": "www.instagram.com",
+     "page_first": null,
+     "img_first": null
+    }
+   ],
+   "earliest_img": null,
+   "false": {
+    "start": "2023-01-01",
+    "P": "cannot_tell",
+    "S": "cannot_tell",
+    "AL": "cannot_tell"
+   },
+   "true": {
+    "start": "2012-08-01",
+    "P": "cannot_tell",
+    "S": "cannot_tell",
+    "AL": "cannot_tell"
+   }
+  },
+  {
+   "k": 62,
+   "url": "https://pesacheck.org/false-these-photos-are-not-of-ex-nigerian-president-obasanjo-storming-electoral-agencys-offices-d47564b74972",
+   "evidence": [
+    {
+     "url": "https://punchng.com/atiku-makinde-in-closed-door-meeting-with-obasanjo/",
+     "domain": "punchng.com",
+     "page_first": "2019-03-15",
+     "img_first": "2019-03-15"
+    },
+    {
+     "url": "https://www.newdawnngr.com/2019/03/15/updated-atiku-makinde-in-closed-door-meeting-with-obasanjo/",
+     "domain": "www.newdawnngr.com",
+     "page_first": "2023-02-25",
+     "img_first": null
+    },
+    {
+     "url": "https://www.newdawnngr.com/category/featured/page/1946/",
+     "domain": "www.newdawnngr.com",
+     "page_first": null,
+     "img_first": null
+    },
+    {
+     "url": "https://dailytrust.com/possible-reasons-people-lie/",
+     "domain": "dailytrust.com",
+     "page_first": "2023-01-16",
+     "img_first": "2023-03-08"
+    }
+   ],
+   "earliest_img": "2019-03-15",
+   "false": {
+    "start": "2023-02-26",
+    "P": "inconsistent",
+    "S": "inconsistent",
+    "AL": "inconsistent"
+   },
+   "true": {
+    "start": "2023-01-21",
+    "P": "inconsistent",
+    "S": "inconsistent",
+    "AL": "inconsistent"
+   }
+  },
+  {
+   "k": 63,
+   "url": "https://pesacheck.org/false-this-photo-isnt-of-a-puddle-in-ethiopia-s-drought-hit-borana-zone-in-2023-186416a623b3",
+   "evidence": [
+    {
+     "url": "https://www.bbc.com/afaanoromoo/oduu-60876753",
+     "domain": "www.bbc.com",
+     "page_first": "2022-03-27",
+     "img_first": "2022-03-27"
+    }
+   ],
+   "earliest_img": "2022-03-27",
+   "false": {
+    "start": "2023-01-01",
+    "P": "inconsistent",
+    "S": "inconsistent",
+    "AL": "inconsistent"
+   },
+   "true": {
+    "start": "2022-01-01",
+    "P": "cannot_tell",
+    "S": "cannot_tell",
+    "AL": "cannot_tell"
+   }
+  },
+  {
+   "k": 64,
+   "url": "https://pesacheck.org/false-this-image-is-not-of-eritrean-forces-burning-forests-in-tigray-region-in-march-2023-d925485aa373",
+   "evidence": [
+    {
+     "url": "https://www.bbc.com/tigrinya/news-56547943",
+     "domain": "www.bbc.com",
+     "page_first": "2022-09-23",
+     "img_first": null
+    },
+    {
+     "url": "https://www.bbc.com/amharic/news-56530284",
+     "domain": "www.bbc.com",
+     "page_first": "2021-03-27",
+     "img_first": null
+    }
+   ],
+   "earliest_img": null,
+   "false": {
+    "start": "2023-03-01",
+    "P": "cannot_tell",
+    "S": "cannot_tell",
+    "AL": "cannot_tell"
+   },
+   "true": {
+    "start": "2021-03-27",
+    "P": "cannot_tell",
+    "S": "inconsistent",
+    "AL": "inconsistent"
+   }
+  },
+  {
+   "k": 65,
+   "url": "https://pesacheck.org/false-this-image-is-not-of-a-man-who-lost-his-real-estate-business-in-t%c3%bcrkiyes-february-2023-9496c462b994",
+   "evidence": [
+    {
+     "url": "https://www.memedroid.com/memes/detail/3040267/Novia-Gotica-Q-lona",
+     "domain": "www.memedroid.com",
+     "page_first": null,
+     "img_first": null
+    },
+    {
+     "url": "https://aminoapps.com/c/meme-amino-4/page/blog/bokita/0a3Y_DqCkuK4Y4WXrqw8v3pvoQgvNqQkWv",
+     "domain": "aminoapps.com",
+     "page_first": null,
+     "img_first": null
+    },
+    {
+     "url": "https://curiousturk.com/2019/08/18/remembering-20-years-ago-today-can-somebody-hear-me/",
+     "domain": "curiousturk.com",
+     "page_first": "2019-09-16",
+     "img_first": "2023-02-12"
+    },
+    {
+     "url": "https://curiousturk.com/tag/earthquake/",
+     "domain": "curiousturk.com",
+     "page_first": "2023-02-11",
+     "img_first": "2023-02-12"
+    },
+    {
+     "url": "https://curiousturk.com/tag/rescue/",
+     "domain": "curiousturk.com",
+     "page_first": "2023-03-27",
+     "img_first": "2023-02-12"
+    },
+    {
+     "url": "https://curiousturk.com/tag/strikeslip/",
+     "domain": "curiousturk.com",
+     "page_first": null,
+     "img_first": "2023-02-12"
+    }
+   ],
+   "earliest_img": "2023-02-12",
+   "false": {
+    "start": "2023-02-01",
+    "P": "cannot_tell",
+    "S": "inconsistent",
+    "AL": "inconsistent"
+   },
+   "true": {
+    "start": "1999-08-17",
+    "P": "cannot_tell",
+    "S": "consistent",
+    "AL": "consistent"
+   }
+  },
+  {
+   "k": 66,
+   "url": "https://pesacheck.org/false-this-photo-is-not-of-azimio-protesters-arresting-a-police-officer-in-nairobi-on-20-march-de749996ecb4",
+   "evidence": [
+    {
+     "url": "https://www.tuko.co.ke/politics/466892-kenya-decides-2-police-officers-arrested-escorting-car-ferrying-marked-ballot-papers-kilgoris/",
+     "domain": "www.tuko.co.ke",
+     "page_first": "2022-08-09",
+     "img_first": "2022-08-09"
+    },
+    {
+     "url": "https://www.instagram.com/p/ChAivj9KEzo/",
+     "domain": "www.instagram.com",
+     "page_first": null,
+     "img_first": null
+    }
+   ],
+   "earliest_img": "2022-08-09",
+   "false": {
+    "start": "2023-03-20",
+    "P": "inconsistent",
+    "S": "inconsistent",
+    "AL": "inconsistent"
+   },
+   "true": {
+    "start": "2022-08-01",
+    "P": "cannot_tell",
+    "S": "consistent",
+    "AL": "consistent"
+   }
+  },
+  {
+   "k": 67,
+   "url": "https://pesacheck.org/false-this-photo-is-not-of-a-woman-whose-eggs-were-destroyed-after-raila-odinga-boycott-call-in-136c7216f2ee",
+   "evidence": [
+    {
+     "url": "https://www.instagram.com/dario.manjate/?hl=en",
+     "domain": "www.instagram.com",
+     "page_first": null,
+     "img_first": null
+    },
+    {
+     "url": "https://www.instagram.com/p/B_eeS0ODXyP/",
+     "domain": "www.instagram.com",
+     "page_first": null,
+     "img_first": null
+    },
+    {
+     "url": "https://kenyanlist.net/index.php?threads/aob-190420202.27174/",
+     "domain": "kenyanlist.net",
+     "page_first": null,
+     "img_first": null
+    },
+    {
+     "url": "https://pawa9ja.com/see-different-matters-nigerians-have-been-trying-to-settle-photos/",
+     "domain": "pawa9ja.com",
+     "page_first": "2020-12-13",
+     "img_first": null
+    },
+    {
+     "url": "https://pawa9ja.com/regina-daniels-and-her-billionaire-husband-ned-nwoko-unfollows-each-other-on-instagram-screenshots-dtls/",
+     "domain": "pawa9ja.com",
+     "page_first": "2021-01-16",
+     "img_first": null
+    }
+   ],
+   "earliest_img": null,
+   "false": {
+    "start": "2023-03-11",
+    "P": "cannot_tell",
+    "S": "inconsistent",
+    "AL": "inconsistent"
+   },
+   "true": {
+    "start": "2021-02-11",
+    "P": "cannot_tell",
+    "S": "inconsistent",
+    "AL": "inconsistent"
+   }
+  },
+  {
+   "k": 68,
+   "url": "https://factly.in/this-photo-of-30-men-standing-on-audis-dkw-car-has-nothing-to-relate-with-china",
+   "evidence": [
+    {
+     "url": "https://fastestlaps.com/models/dkw-f7-reichsklasse",
+     "domain": "fastestlaps.com",
+     "page_first": "2017-09-22",
+     "img_first": "2025-08-23"
+    },
+    {
+     "url": "https://www.instagram.com/reel/CbQJNnuAzPL/",
+     "domain": "www.instagram.com",
+     "page_first": null,
+     "img_first": null
+    },
+    {
+     "url": "https://www.instagram.com/stockadetavern/?hl=en",
+     "domain": "www.instagram.com",
+     "page_first": null,
+     "img_first": null
+    },
+    {
+     "url": "https://www.instagram.com/classiccars/",
+     "domain": "www.instagram.com",
+     "page_first": "2014-03-05",
+     "img_first": null
+    },
+    {
+     "url": "https://reversestories.wordpress.com/2013/01/15/audi-history/",
+     "domain": "reversestories.wordpress.com",
+     "page_first": null,
+     "img_first": null
+    },
+    {
+     "url": "https://cheezburger.com/17054981/36-people-who-need-to-learn-how-to-secure-their-load",
+     "domain": "cheezburger.com",
+     "page_first": null,
+     "img_first": "2022-05-16"
+    },
+    {
+     "url": "https://www.funpic.hu/en/tag/photo",
+     "domain": "www.funpic.hu",
+     "page_first": null,
+     "img_first": "2025-06-19"
+    }
+   ],
+   "earliest_img": "2022-05-16",
+   "false": {
+    "start": "1993-01-01",
+    "P": "cannot_tell",
+    "S": "inconsistent",
+    "AL": "inconsistent"
+   },
+   "true": {
+    "start": "1937-01-01",
+    "P": "cannot_tell",
+    "S": "consistent",
+    "AL": "consistent"
+   }
+  },
+  {
+   "k": 69,
+   "url": "https://pesacheck.org/false-this-photo-is-not-of-a-gurage-zone-torture-victim-in-2023-60120b4fefc1",
+   "evidence": [
+    {
+     "url": "https://www.hope4abusedbattered.com/our-focus-areas/domestic-violence/",
+     "domain": "www.hope4abusedbattered.com",
+     "page_first": "2019-07-18",
+     "img_first": "2020-05-25"
+    },
+    {
+     "url": "https://www.tori.ng/news/115688/man-flogs-his-wife-mercilessly-for-allegedly-sleep.html",
+     "domain": "www.tori.ng",
+     "page_first": null,
+     "img_first": null
+    },
+    {
+     "url": "https://togotribune.com/news/sokode-les-populations-de-kparatao-cernees-par-les-militaires/",
+     "domain": "togotribune.com",
+     "page_first": "2022-09-23",
+     "img_first": null
+    },
+    {
+     "url": "https://224infos.org/faits-divers/7360/une-fille-de-15ans-battue-a-sang-par-son-tuteur.html",
+     "domain": "224infos.org",
+     "page_first": null,
+     "img_first": null
+    }
+   ],
+   "earliest_img": "2020-05-25",
+   "false": {
+    "start": "2023-01-01",
+    "P": "inconsistent",
+    "S": "inconsistent",
+    "AL": "inconsistent"
+   },
+   "true": {
+    "start": "2019-01-01",
+    "P": "cannot_tell",
+    "S": "consistent",
+    "AL": "consistent"
+   }
+  },
+  {
+   "k": 70,
+   "url": "https://pesacheck.org/false-this-image-is-not-of-massacre-victims-in-gobu-seyo-town-eastern-wollega-in-february-2023-e430e3060370",
+   "evidence": [],
+   "earliest_img": null,
+   "false": {
+    "start": "2023-02-01",
+    "P": "cannot_tell",
+    "S": "cannot_tell",
+    "AL": "cannot_tell"
+   },
+   "true": {
+    "start": "2021-01-12",
+    "P": "cannot_tell",
+    "S": "cannot_tell",
+    "AL": "cannot_tell"
+   }
+  },
+  {
+   "k": 71,
+   "url": "https://factly.in/the-man-posing-with-pm-modi-in-this-photo-is-not-gujarat-conman-kiran-patel",
+   "evidence": [
+    {
+     "url": "https://www.instagram.com/p/CPXgLTVNoJ_/",
+     "domain": "www.instagram.com",
+     "page_first": null,
+     "img_first": null
+    },
+    {
+     "url": "https://www.rnanews.eu/no-this-is-not-conman-kiran-patel-with-pm-modi-during-his-1994-visit-to-us-400393.html",
+     "domain": "www.rnanews.eu",
+     "page_first": null,
+     "img_first": null
+    },
+    {
+     "url": "https://www.kannadigaworld.com/news/india/103310.html",
+     "domain": "www.kannadigaworld.com",
+     "page_first": "2021-04-21",
+     "img_first": null
+    }
+   ],
+   "earliest_img": null,
+   "false": {
+    "start": "1993-01-01",
+    "P": "cannot_tell",
+    "S": "consistent",
+    "AL": "consistent"
+   },
+   "true": {
+    "start": "1994-01-01",
+    "P": "cannot_tell",
+    "S": "consistent",
+    "AL": "consistent"
+   }
+  },
+  {
+   "k": 72,
+   "url": "https://pesacheck.org/false-these-pictures-are-unrelated-to-the-drought-in-ethiopias-somali-region-in-2023-220d78b0ceda",
+   "evidence": [
+    {
+     "url": "https://wardheernews.com/kacdoonnada-shacab-ee-lagu-diidanyahay-maamulka-cagjar-oo-sii-xoogaysanaya-warbixin/",
+     "domain": "wardheernews.com",
+     "page_first": "2022-02-23",
+     "img_first": "2022-02-23"
+    }
+   ],
+   "earliest_img": "2022-02-23",
+   "false": {
+    "start": "2023-01-01",
+    "P": "inconsistent",
+    "S": "inconsistent",
+    "AL": "inconsistent"
+   },
+   "true": {
+    "start": "2022-02-01",
+    "P": "cannot_tell",
+    "S": "consistent",
+    "AL": "consistent"
+   }
+  },
+  {
+   "k": 73,
+   "url": "https://pesacheck.org/false-this-photo-is-not-of-a-nairobi-road-cleaned-by-the-countys-new-sweeping-trucks-82fba2bec3b7",
+   "evidence": [
+    {
+     "url": "https://www.tuko.co.ke/entertainment/celebrities/501208-johnson-sakaja-exposed-sharing-photo-nairobi-cbd-prove-s-clean-gavana-amepatikana/",
+     "domain": "www.tuko.co.ke",
+     "page_first": "2023-04-07",
+     "img_first": "2023-04-08"
+    }
+   ],
+   "earliest_img": "2023-04-08",
+   "false": {
+    "start": "2023-01-01",
+    "P": "cannot_tell",
+    "S": "consistent",
+    "AL": "consistent"
+   },
+   "true": {
+    "start": "2020-07-01",
+    "P": "cannot_tell",
+    "S": "consistent",
+    "AL": "consistent"
+   }
+  },
+  {
+   "k": 74,
+   "url": "https://pesacheck.org/false-these-photos-are-not-of-damaged-watermelons-at-kalonzo-musyokas-yatta-farm-47efc87785b6",
+   "evidence": [
+    {
+     "url": "https://www.pond5.com/stock-footage/tag/watermelon-explode/",
+     "domain": "www.pond5.com",
+     "page_first": null,
+     "img_first": null
+    },
+    {
+     "url": "https://wykop.pl/ludzie/cieciu",
+     "domain": "wykop.pl",
+     "page_first": "2009-03-16",
+     "img_first": null
+    },
+    {
+     "url": "https://www.myhomebook.de/service/melone-platzen",
+     "domain": "www.myhomebook.de",
+     "page_first": "2022-10-03",
+     "img_first": null
+    },
+    {
+     "url": "https://mediastart.net/wassermelone-explodiert-k.html",
+     "domain": "mediastart.net",
+     "page_first": null,
+     "img_first": null
+    }
+   ],
+   "earliest_img": null,
+   "false": {
+    "start": "2023-03-27",
+    "P": "cannot_tell",
+    "S": "inconsistent",
+    "AL": "inconsistent"
+   },
+   "true": {
+    "start": "2019-08-19",
+    "P": "cannot_tell",
+    "S": "cannot_tell",
+    "AL": "cannot_tell"
+   }
+  },
+  {
+   "k": 75,
+   "url": "https://factly.in/old-photo-of-sunny-leones-kochi-rally-shared-as-sea-of-people-gathered-at-pm-modis-kochi-roadshow",
+   "evidence": [
+    {
+     "url": "https://indianexpress.com/article/entertainment/bollywood/sunny-leone-will-never-forget-her-experience-of-visiting-kochi-this-video-is-a-proof-4800891/",
+     "domain": "indianexpress.com",
+     "page_first": "2017-08-19",
+     "img_first": "2023-04-14"
+    },
+    {
+     "url": "https://news.abplive.com/photos/sunny-leone-takes-kochi-by-storm-pictures-of-huge-crowd-go-viral-567890",
+     "domain": "news.abplive.com",
+     "page_first": "2025-04-11",
+     "img_first": null
+    },
+    {
+     "url": "https://www.ibtimes.co.in/photos/thousands-greet-sunny-leone-kochi-12915-slide-72191",
+     "domain": "www.ibtimes.co.in",
+     "page_first": "2017-08-21",
+     "img_first": null
+    },
+    {
+     "url": "https://www.buzzfeed.com/soniathomas/sunny-chechi",
+     "domain": "www.buzzfeed.com",
+     "page_first": "2019-07-18",
+     "img_first": "2017-08-22"
+    },
+    {
+     "url": "https://www.thenewsminute.com/kerala/sunny-chechi-shuts-down-kochi-and-wins-internet-check-out-howlarious-memes-67002",
+     "domain": "www.thenewsminute.com",
+     "page_first": null,
+     "img_first": null
+    }
+   ],
+   "earliest_img": "2017-08-22",
+   "false": {
+    "start": "2023-04-01",
+    "P": "inconsistent",
+    "S": "inconsistent",
+    "AL": "inconsistent"
+   },
+   "true": {
+    "start": "2017-08-01",
+    "P": "cannot_tell",
+    "S": "consistent",
+    "AL": "consistent"
+   }
+  },
+  {
+   "k": 76,
+   "url": "https://pesacheck.org/false-this-image-is-not-of-tigray-forces-who-attacked-tselemt-people-in-april-2023-90f002da2f9d",
+   "evidence": [
+    {
+     "url": "https://et.telegram-store.com/catalog/channels/ethiopialightoftheworld/5746",
+     "domain": "et.telegram-store.com",
+     "page_first": null,
+     "img_first": null
+    }
+   ],
+   "earliest_img": null,
+   "false": {
+    "start": "2023-04-01",
+    "P": "cannot_tell",
+    "S": "cannot_tell",
+    "AL": "cannot_tell"
+   },
+   "true": {
+    "start": "2020-02-14",
+    "P": "cannot_tell",
+    "S": "consistent",
+    "AL": "consistent"
+   }
+  },
+  {
+   "k": 77,
+   "url": "https://pesacheck.org/false-this-photo-is-not-of-eritrean-troops-close-to-the-border-with-sudan-59bdbabb97b1",
+   "evidence": [
+    {
+     "url": "https://www.garoweonline.com/en/news/somalia/somalia-and-eritrea-accused-of-deploying-troops-to-ethiopia",
+     "domain": "www.garoweonline.com",
+     "page_first": "2021-12-19",
+     "img_first": "2022-01-14"
+    },
+    {
+     "url": "https://zenazajel.net/6504-2/",
+     "domain": "zenazajel.net",
+     "page_first": "2021-01-18",
+     "img_first": null
+    },
+    {
+     "url": "https://et.telegram-store.com/catalog/channels/emsmereja/1173",
+     "domain": "et.telegram-store.com",
+     "page_first": null,
+     "img_first": null
+    },
+    {
+     "url": "https://et.telegram-store.com/index.php/catalog/channels/zemedkun_zemede/816",
+     "domain": "et.telegram-store.com",
+     "page_first": null,
+     "img_first": null
+    }
+   ],
+   "earliest_img": "2022-01-14",
+   "false": {
+    "start": "2023-04-01",
+    "P": "inconsistent",
+    "S": "inconsistent",
+    "AL": "inconsistent"
+   },
+   "true": {
+    "start": "2018-09-11",
+    "P": "cannot_tell",
+    "S": "consistent",
+    "AL": "consistent"
+   }
+  },
+  {
+   "k": 78,
+   "url": "https://pesacheck.org/false-this-image-is-not-of-a-drone-attack-on-ethiopias-north-shoa-amhara-region-8cf68c012705",
+   "evidence": [
+    {
+     "url": "https://www.stein-beck.dk/civilian-drones-k.html",
+     "domain": "www.stein-beck.dk",
+     "page_first": null,
+     "img_first": null
+    },
+    {
+     "url": "https://bigthink.com/politics-current-affairs/remote-controlled-morality/",
+     "domain": "bigthink.com",
+     "page_first": "2023-03-22",
+     "img_first": "2024-12-19"
+    },
+    {
+     "url": "https://www.wearethemighty.com/mighty-trending/us-built-missile-doesnt-explode/",
+     "domain": "www.wearethemighty.com",
+     "page_first": "2021-06-24",
+     "img_first": null
+    },
+    {
+     "url": "https://www.thebureauinvestigates.com/stories/2012-05-15/suspected-drone-strikes-kill-12-civilians-in-yemen",
+     "domain": "www.thebureauinvestigates.com",
+     "page_first": "2019-08-20",
+     "img_first": null
+    }
+   ],
+   "earliest_img": "2024-12-19",
+   "false": {
+    "start": "2023-05-04",
+    "P": "cannot_tell",
+    "S": "cannot_tell",
+    "AL": "cannot_tell"
+   },
+   "true": {
+    "start": "2013-03-09",
+    "P": "cannot_tell",
+    "S": "consistent",
+    "AL": "consistent"
+   }
+  },
+  {
+   "k": 79,
+   "url": "https://pesacheck.org/partly-false-one-of-these-images-is-not-related-to-the-2023-stampede-in-yemen-9f1ee3cc8edf",
+   "evidence": [
+    {
+     "url": "https://apnews.com/article/yemen-houthis-stampede-sanaa-ab3873de51fd74fc5f6f765a39a47d3d",
+     "domain": "apnews.com",
+     "page_first": "2023-04-20",
+     "img_first": "2024-03-15"
+    },
+    {
+     "url": "https://www.ynetnews.com/article/byladuafn",
+     "domain": "www.ynetnews.com",
+     "page_first": "2023-04-20",
+     "img_first": "2023-04-20"
+    },
+    {
+     "url": "https://www.nbcnews.com/news/world/stampede-yemens-capital-kills-least-78-injures-dozens-official-says-rcna80569",
+     "domain": "www.nbcnews.com",
+     "page_first": "2023-04-20",
+     "img_first": "2023-04-20"
+    },
+    {
+     "url": "https://www.telegraph.co.uk/world-news/2023/04/20/yemen-stampede-ramadan-event-crush-deaths/",
+     "domain": "www.telegraph.co.uk",
+     "page_first": "2023-04-20",
+     "img_first": "2023-04-20"
+    },
+    {
+     "url": "https://www.thenationalnews.com/mena/2023/04/19/dozens-killed-and-injured-in-stampede-at-yemen-charity-aid-event/",
+     "domain": "www.thenationalnews.com",
+     "page_first": "2023-04-20",
+     "img_first": null
+    }
+   ],
+   "earliest_img": "2023-04-20",
+   "false": {
+    "start": "2023-05-01",
+    "P": "inconsistent",
+    "S": "inconsistent",
+    "AL": "inconsistent"
+   },
+   "true": {
+    "start": "2017-04-13",
+    "P": "cannot_tell",
+    "S": "inconsistent",
+    "AL": "inconsistent"
+   }
+  },
+  {
+   "k": 80,
+   "url": "https://factly.in/unrelated-old-photo-shared-as-a-recent-picture-showing-coffins-of-us-soldiers-who-died-in-the-russia-ukraine-war",
+   "evidence": [
+    {
+     "url": "https://squatchoutdoorproducts.com/russian-missile-battery-meme-k.html",
+     "domain": "squatchoutdoorproducts.com",
+     "page_first": null,
+     "img_first": null
+    },
+    {
+     "url": "https://nara.getarchive.net/media/on-board-an-air-force-c-17-globemaster-iii-members-of-the-1st-armored-division-d653ab",
+     "domain": "nara.getarchive.net",
+     "page_first": null,
+     "img_first": null
+    },
+    {
+     "url": "https://nara.getarchive.net/media/us-air-force-usaf-squadrons-from-moody-air-force-base-afb-georgia-ga-stand-0342c1",
+     "domain": "nara.getarchive.net",
+     "page_first": null,
+     "img_first": null
+    },
+    {
+     "url": "https://nara.getarchive.net/media/at-ramstein-air-base-germany-members-of-the-1st-armored-division-2nd-brigade-080d81",
+     "domain": "nara.getarchive.net",
+     "page_first": null,
+     "img_first": null
+    },
+    {
+     "url": "https://www.dogrulukpayi.com/dogruluk-kontrolu/fotograf-kinzhal-saldirisindan-sonra-abd-askerlerini-mi-gosteriyor",
+     "domain": "www.dogrulukpayi.com",
+     "page_first": "2023-09-28",
+     "img_first": null
+    },
+    {
+     "url": "https://chequeado.com/notas/?current-page=46",
+     "domain": "chequeado.com",
+     "page_first": null,
+     "img_first": "2023-05-31"
+    },
+    {
+     "url": "https://chequeado.com/ultimas-noticias/es-falso-que-esta-foto-de-ataudes-con-la-bandera-de-estados-unidos-tiene-relacion-con-la-guerra-de-ucrania/",
+     "domain": "chequeado.com",
+     "page_first": null,
+     "img_first": "2023-05-31"
+    }
+   ],
+   "earliest_img": "2023-05-31",
+   "false": {
+    "start": "2023-01-01",
+    "P": "cannot_tell",
+    "S": "inconsistent",
+    "AL": "inconsistent"
+   },
+   "true": {
+    "start": "2005-04-01",
+    "P": "cannot_tell",
+    "S": "consistent",
+    "AL": "consistent"
+   }
+  },
+  {
+   "k": 81,
+   "url": "https://pesacheck.org/false-this-photo-is-not-of-anti-finance-bill-protests-in-kenya-on-6-june-2023-54c69ef44900",
+   "evidence": [
+    {
+     "url": "https://www.voanews.com/a/covid-19-pandemic_kenya-police-fire-tear-gas-covid-19-corruption-protesters/6194794.html",
+     "domain": "www.voanews.com",
+     "page_first": "2021-10-06",
+     "img_first": "2021-07-23"
+    },
+    {
+     "url": "https://www.voanews.com/a/covid-19-pandemic_global-coronavirus-death-toll-tops-8/6194839.html",
+     "domain": "www.voanews.com",
+     "page_first": "2025-02-02",
+     "img_first": "2025-03-24"
+    },
+    {
+     "url": "https://h3dsymposium.co.za/corona-stole-Denmark-k.html",
+     "domain": "h3dsymposium.co.za",
+     "page_first": null,
+     "img_first": null
+    },
+    {
+     "url": "https://www.voaswahili.com/a/majaji-wa-mahakama-kuu-ya-kenya-wakamatwa-kwa-tuhuma-za-ufisadi/5976257.html",
+     "domain": "www.voaswahili.com",
+     "page_first": "2021-07-23",
+     "img_first": "2021-07-23"
+    },
+    {
+     "url": "https://www.voaswahili.com/a/5554747.html",
+     "domain": "www.voaswahili.com",
+     "page_first": "2020-09-18",
+     "img_first": "2025-05-13"
+    }
+   ],
+   "earliest_img": "2021-07-23",
+   "false": {
+    "start": "2023-06-06",
+    "P": "inconsistent",
+    "S": "inconsistent",
+    "AL": "inconsistent"
+   },
+   "true": {
+    "start": "2020-08-01",
+    "P": "cannot_tell",
+    "S": "consistent",
+    "AL": "consistent"
+   }
+  },
+  {
+   "k": 82,
+   "url": "https://factly.in/actress-katie-holmess-2018-photo-for-a-fashion-magazine-shared-as-a-picture-of-an-italian-singer-auctioning-her-brassiere-in-1955",
+   "evidence": [
+    {
+     "url": "https://www.harpersbazaar.com/culture/politics/a24403202/uzo-aduba-katie-holmes-ieshia-evans-reenact-historical-political-moments/",
+     "domain": "www.harpersbazaar.com",
+     "page_first": "2018-11-20",
+     "img_first": null
+    },
+    {
+     "url": "https://sodiumplatinuhmz.medium.com/humanity-must-be-restored-6a4da4b98e11",
+     "domain": "sodiumplatinuhmz.medium.com",
+     "page_first": null,
+     "img_first": null
+    },
+    {
+     "url": "https://www.tumblr.com/stationwagon101/610940192050806784/women-protesting-against-wearing-a-bra-usa-1969",
+     "domain": "www.tumblr.com",
+     "page_first": null,
+     "img_first": null
+    },
+    {
+     "url": "https://pt.memedroid.com/memes/detail/3385426/Pain",
+     "domain": "pt.memedroid.com",
+     "page_first": null,
+     "img_first": null
+    },
+    {
+     "url": "https://pt.memedroid.com/memes/detail/3385434/Gato",
+     "domain": "pt.memedroid.com",
+     "page_first": null,
+     "img_first": null
+    },
+    {
+     "url": "https://karapuzow.livejournal.com/23353.html",
+     "domain": "karapuzow.livejournal.com",
+     "page_first": null,
+     "img_first": "2019-08-03"
+    },
+    {
+     "url": "https://foto-history.livejournal.com/12748601.html",
+     "domain": "foto-history.livejournal.com",
+     "page_first": null,
+     "img_first": "2019-08-03"
+    }
+   ],
+   "earliest_img": "2019-08-03",
+   "false": {
+    "start": "1955-01-01",
+    "P": "cannot_tell",
+    "S": "inconsistent",
+    "AL": "inconsistent"
+   },
+   "true": {
+    "start": "2018-01-01",
+    "P": "cannot_tell",
+    "S": "consistent",
+    "AL": "consistent"
+   }
+  },
+  {
+   "k": 83,
+   "url": "https://pesacheck.org/false-this-photo-isnt-of-ethnic-amhara-evicted-from-guraferda-in-june-2023-1f24975c6bae",
+   "evidence": [
+    {
+     "url": "https://peacerep.org/2023/01/16/how-to-end-wars-lawyering-peace-in-a-changing-world/",
+     "domain": "peacerep.org",
+     "page_first": "2023-01-17",
+     "img_first": "2021-06-17"
+    },
+    {
+     "url": "https://www.lawfaremedia.org/article/how-end-wars-lawyering-peace-changing-world",
+     "domain": "www.lawfaremedia.org",
+     "page_first": "2023-09-27",
+     "img_first": "2021-06-17"
+    },
+    {
+     "url": "https://www.micoope.com.gt/?o=uwar-alkhairi-itace-damuna-ta-zama-mai-alkhairi-ce-nn-l161n9Fb",
+     "domain": "www.micoope.com.gt",
+     "page_first": null,
+     "img_first": null
+    },
+    {
+     "url": "https://www.globalgiving.org/projects/water-hygiene-and-sanitation-for-congolese-refugees/share/",
+     "domain": "www.globalgiving.org",
+     "page_first": null,
+     "img_first": null
+    },
+    {
+     "url": "https://kingdomnewtestament.wordpress.com/2012/02/02/acts-8-a-scattered-people/",
+     "domain": "kingdomnewtestament.wordpress.com",
+     "page_first": "2019-09-17",
+     "img_first": null
+    }
+   ],
+   "earliest_img": "2021-06-17",
+   "false": {
+    "start": "2023-06-01",
+    "P": "inconsistent",
+    "S": "inconsistent",
+    "AL": "inconsistent"
+   },
+   "true": {
+    "start": "2008-01-01",
+    "P": "cannot_tell",
+    "S": "consistent",
+    "AL": "consistent"
+   }
+  },
+  {
+   "k": 84,
+   "url": "https://pesacheck.org/missing-context-this-image-is-not-of-the-current-state-of-roads-in-taiwan-dfc3f46bb3c3",
+   "evidence": [
+    {
+     "url": "https://www.reversed.eco/gallery",
+     "domain": "www.reversed.eco",
+     "page_first": "2023-06-10",
+     "img_first": null
+    },
+    {
+     "url": "https://imgur.com/t/cropping/YW7kEoE",
+     "domain": "imgur.com",
+     "page_first": null,
+     "img_first": null
+    },
+    {
+     "url": "https://www.instagram.com/civilengineeringdiscoveries/p/B_mekG_j9Vy/",
+     "domain": "www.instagram.com",
+     "page_first": null,
+     "img_first": null
+    },
+    {
+     "url": "https://engineeringdiscoveries.com/30-photos-of-road-failure-that-will-make-you-question-the-engineer/",
+     "domain": "engineeringdiscoveries.com",
+     "page_first": "2023-03-19",
+     "img_first": null
+    },
+    {
+     "url": "https://www.theepochtimes.com/article/taiwan-earthquake-unrelated-landslide-causing-difficulties-1514408",
+     "domain": "www.theepochtimes.com",
+     "page_first": null,
+     "img_first": "2021-01-13"
+    }
+   ],
+   "earliest_img": "2021-01-13",
+   "false": {
+    "start": "2023-06-04",
+    "P": "inconsistent",
+    "S": "inconsistent",
+    "AL": "inconsistent"
+   },
+   "true": {
+    "start": "2010-04-25",
+    "P": "cannot_tell",
+    "S": "consistent",
+    "AL": "consistent"
+   }
+  },
+  {
+   "k": 85,
+   "url": "https://pesacheck.org/false-this-image-of-melting-traffic-lights-was-not-taken-in-kitengela-kenya-9a5fea494ace",
+   "evidence": [
+    {
+     "url": "https://mauiinsight.town.news/g/kahului-hi/n/166165/maui-officials-look-heatwave-resistant-traffic-signals",
+     "domain": "mauiinsight.town.news",
+     "page_first": "2023-10-11",
+     "img_first": "2023-10-11"
+    },
+    {
+     "url": "https://www.thehansindia.com/andhra-pradesh/picture-of-traffic-signal-melted-in-vijayawada-seems-to-be-untrue-802198",
+     "domain": "www.thehansindia.com",
+     "page_first": "2023-06-11",
+     "img_first": "2023-06-14"
+    },
+    {
+     "url": "https://www.instagram.com/aliciahavens/",
+     "domain": "www.instagram.com",
+     "page_first": null,
+     "img_first": null
+    },
+    {
+     "url": "https://www.instagram.com/targetfinancial/?hl=en",
+     "domain": "www.instagram.com",
+     "page_first": null,
+     "img_first": null
+    },
+    {
+     "url": "https://www.instagram.com/texasislife1/",
+     "domain": "www.instagram.com",
+     "page_first": "2020-08-19",
+     "img_first": null
+    },
+    {
+     "url": "https://www.thehansindia.com/tags/Traffic-Signal-Lights",
+     "domain": "www.thehansindia.com",
+     "page_first": null,
+     "img_first": "2024-05-02"
+    }
+   ],
+   "earliest_img": "2023-06-14",
+   "false": {
+    "start": "2023-06-14",
+    "P": "cannot_tell",
+    "S": "inconsistent",
+    "AL": "inconsistent"
+   },
+   "true": {
+    "start": "2022-01-01",
+    "P": "cannot_tell",
+    "S": "consistent",
+    "AL": "consistent"
+   }
+  },
+  {
+   "k": 86,
+   "url": "https://pesacheck.org/false-this-image-is-not-of-ivan-khurs-a-russian-intelligence-ship-after-an-attack-e27e890ba30a",
+   "evidence": [
+    {
+     "url": "https://www.nbcnews.com/id/wbna39622062",
+     "domain": "www.nbcnews.com",
+     "page_first": "2021-01-01",
+     "img_first": "2021-09-12"
+    },
+    {
+     "url": "https://www.nbcnews.com/id/wbna24449741",
+     "domain": "www.nbcnews.com",
+     "page_first": "2026-02-28",
+     "img_first": null
+    },
+    {
+     "url": "https://www.cbsnews.com/news/48-hours-ncis-agents-on-national-security-protecting-the-u-s-from-terrorists-spies-and-cybercriminals/",
+     "domain": "www.cbsnews.com",
+     "page_first": "2017-05-31",
+     "img_first": null
+    },
+    {
+     "url": "https://www.militarytimes.com/opinion/commentary/2020/10/12/the-uss-cole-attack-more-than-911-predicted-americas-challenges-in-the-21st-century/",
+     "domain": "www.militarytimes.com",
+     "page_first": "2023-05-26",
+     "img_first": "2026-02-25"
+    },
+    {
+     "url": "https://www.nbcnews.com/news/mideast/al-qaeda-militant-tied-deadly-uss-cole-bombing-believed-killed-n954916",
+     "domain": "www.nbcnews.com",
+     "page_first": "2019-01-05",
+     "img_first": "2023-05-26"
+    }
+   ],
+   "earliest_img": "2021-09-12",
+   "false": {
+    "start": "2023-05-25",
+    "P": "inconsistent",
+    "S": "inconsistent",
+    "AL": "inconsistent"
+   },
+   "true": {
+    "start": "2000-10-12",
+    "P": "cannot_tell",
+    "S": "consistent",
+    "AL": "consistent"
+   }
+  },
+  {
+   "k": 87,
+   "url": "https://pesacheck.org/false-this-image-is-not-of-protesters-in-france-aboard-a-police-vehicle-f55aafdcf222",
+   "evidence": [
+    {
+     "url": "https://www.forbes.com/sites/mattnovak/2023/07/02/viral-photo-of-stolen-police-van-in-france-actually-from-netflix-movie/",
+     "domain": "www.forbes.com",
+     "page_first": "2023-07-02",
+     "img_first": "2023-07-05"
+    },
+    {
+     "url": "https://www.bbc.com/news/world-europe-66081671",
+     "domain": "www.bbc.com",
+     "page_first": "2023-07-02",
+     "img_first": null
+    },
+    {
+     "url": "https://www.oceanproperty.co.th/?q=athena-[2022]-rabbit-reviews-ee-Xlxqy7hZ",
+     "domain": "www.oceanproperty.co.th",
+     "page_first": null,
+     "img_first": null
+    },
+    {
+     "url": "https://www.todorfid.com/police-vans-k.html",
+     "domain": "www.todorfid.com",
+     "page_first": null,
+     "img_first": "2023-07-05"
+    },
+    {
+     "url": "https://threadreaderapp.com/thread/1710141037329465356.html",
+     "domain": "threadreaderapp.com",
+     "page_first": "2023-10-09",
+     "img_first": "2023-10-10"
+    },
+    {
+     "url": "https://threadreaderapp.com/thread/1711907779269537813.html",
+     "domain": "threadreaderapp.com",
+     "page_first": null,
+     "img_first": "2023-10-10"
+    }
+   ],
+   "earliest_img": "2023-07-05",
+   "false": {
+    "start": "2023-07-01",
+    "P": "cannot_tell",
+    "S": "inconsistent",
+    "AL": "inconsistent"
+   },
+   "true": {
+    "start": "2022-01-01",
+    "P": "cannot_tell",
+    "S": "consistent",
+    "AL": "consistent"
+   }
+  },
+  {
+   "k": 88,
+   "url": "https://pesacheck.org/partly-false-this-image-is-not-of-a-pro-refugee-protest-in-france-in-2016-c346f34912d4",
+   "evidence": [
+    {
+     "url": "https://www.cnn.com/europe/live-news/france-protests-thursday-intl/index.html",
+     "domain": "www.cnn.com",
+     "page_first": "2023-06-29",
+     "img_first": "2024-11-09"
+    },
+    {
+     "url": "https://www.cnn.com/2023/06/30/europe/nanterre-france-police-protests-explainer-intl/index.html",
+     "domain": "www.cnn.com",
+     "page_first": "2023-06-30",
+     "img_first": "2023-06-30"
+    },
+    {
+     "url": "https://www.theguardian.com/world/gallery/2023/jun/29/clashes-over-french-police-shooting-in-pictures",
+     "domain": "www.theguardian.com",
+     "page_first": null,
+     "img_first": "2023-06-29"
+    },
+    {
+     "url": "https://jingdaily.com/how-much-damage-are-french-riots-causing-brand-france",
+     "domain": "jingdaily.com",
+     "page_first": "2023-07-17",
+     "img_first": null
+    },
+    {
+     "url": "https://www.theglobeandmail.com/world/article-france-protests-nanterre-shooting-police/",
+     "domain": "www.theglobeandmail.com",
+     "page_first": "2023-06-29",
+     "img_first": null
+    },
+    {
+     "url": "https://www.tbsnews.net/worldbiz/europe/france-unrest-macron-calls-crisis-meeting-after-second-night-rioting-657922",
+     "domain": "www.tbsnews.net",
+     "page_first": null,
+     "img_first": "2023-06-29"
+    }
+   ],
+   "earliest_img": "2023-06-29",
+   "false": {
+    "start": "2016-01-01",
+    "P": "cannot_tell",
+    "S": "consistent",
+    "AL": "consistent"
+   },
+   "true": {
+    "start": "2015-01-01",
+    "P": "cannot_tell",
+    "S": "cannot_tell",
+    "AL": "cannot_tell"
+   }
+  },
+  {
+   "k": 89,
+   "url": "https://factly.in/a-2015-photo-of-a-flooded-chennai-airport-is-passed-off-as-that-of-ahmedabad-airport",
+   "evidence": [
+    {
+     "url": "https://www.knocksense.com/ahmedabad/knocksense-shorts-heavy-rain-disrupts-flight-schedules-at-ahmedabad-airport",
+     "domain": "www.knocksense.com",
+     "page_first": "2023-06-30",
+     "img_first": null
+    },
+    {
+     "url": "https://www.poluzzi-track.it/en/company-poluzzi.html/?w=watch-delhi-airport-flooded-after-record-rain-city-on-rr-3Rj4OxC4",
+     "domain": "www.poluzzi-track.it",
+     "page_first": null,
+     "img_first": null
+    },
+    {
+     "url": "https://www.timesnownews.com/kolkata/article/kolkata-airport-grants-limited-flights-as-west-bengal-lockdown-stretches-till-september/644403",
+     "domain": "www.timesnownews.com",
+     "page_first": "2020-08-29",
+     "img_first": "2020-08-29"
+    },
+    {
+     "url": "https://www.zeebiz.com/india/news-delhi-airport-eleven-flights-diverted-due-to-bad-weather-99290",
+     "domain": "www.zeebiz.com",
+     "page_first": "2021-05-07",
+     "img_first": null
+    },
+    {
+     "url": "https://www.timesnownews.com/bengaluru/article/bengaluru-airport-to-be-partially-closed-for-aero-india-show-bial-working-with-airlines/714053",
+     "domain": "www.timesnownews.com",
+     "page_first": "2021-01-31",
+     "img_first": "2021-01-31"
+    },
+    {
+     "url": "https://www.timesnownews.com/bengaluru/article/bengaluru-airport-to-now-connect-61-domestic-destinations-jorhat-one-among-the-new/723033",
+     "domain": "www.timesnownews.com",
+     "page_first": null,
+     "img_first": "2021-02-21"
+    },
+    {
+     "url": "https://www.timesnownews.com/kolkata/article/road-close-to-kolkata-airport-finally-gets-repaired/652013",
+     "domain": "www.timesnownews.com",
+     "page_first": null,
+     "img_first": "2020-09-14"
+    }
+   ],
+   "earliest_img": "2020-08-29",
+   "false": {
+    "start": "2023-07-22",
+    "P": "inconsistent",
+    "S": "inconsistent",
+    "AL": "inconsistent"
+   },
+   "true": {
+    "start": "2015-01-01",
+    "P": "cannot_tell",
+    "S": "consistent",
+    "AL": "consistent"
+   }
+  },
+  {
+   "k": 90,
+   "url": "https://pesacheck.org/false-this-photo-isnt-of-a-zimbabwean-at-a-polling-booth-in-the-23-august-2023-elections-6f1a7e2246de",
+   "evidence": [
+    {
+     "url": "https://www.instagram.com/tinashemurigo/?hl=en",
+     "domain": "www.instagram.com",
+     "page_first": null,
+     "img_first": null
+    },
+    {
+     "url": "https://mpasho.co.ke/politics/2022-08-09-kisumu-man-goes-to-vote-in-nothing-else-but-towel/",
+     "domain": "mpasho.co.ke",
+     "page_first": "2022-08-10",
+     "img_first": "2022-08-11"
+    },
+    {
+     "url": "https://udakunews.co.ke/2022/08/09/tabia-za-wakenya-kisumu-man-goes-to-vote-in-towel-and-other-stories-making-headlines/",
+     "domain": "udakunews.co.ke",
+     "page_first": null,
+     "img_first": "2022-08-11"
+    },
+    {
+     "url": "https://udakunews.co.ke/tag/2022election/",
+     "domain": "udakunews.co.ke",
+     "page_first": null,
+     "img_first": "2022-08-11"
+    },
+    {
+     "url": "https://www.instagram.com/tinashemurigo/?ref=PRHF3F90ADEAE9B&hl=af",
+     "domain": "www.instagram.com",
+     "page_first": null,
+     "img_first": null
+    }
+   ],
+   "earliest_img": "2022-08-11",
+   "false": {
+    "start": "2023-08-23",
+    "P": "inconsistent",
+    "S": "inconsistent",
+    "AL": "inconsistent"
+   },
+   "true": {
+    "start": "2022-08-09",
+    "P": "cannot_tell",
+    "S": "consistent",
+    "AL": "consistent"
+   }
+  },
+  {
+   "k": 91,
+   "url": "https://211check.org/fact-check-this-picture-is-not-of-two-police-officers-kissing-taken-in-juba",
+   "evidence": [
+    {
+     "url": "https://www.independent.co.uk/news/weird-news/kissing-tanzanian-police-officers-fired-after-photograph-goes-viral-9793466.html",
+     "domain": "www.independent.co.uk",
+     "page_first": "2014-10-14",
+     "img_first": null
+    },
+    {
+     "url": "https://www.bbc.com/news/blogs-trending-29599723",
+     "domain": "www.bbc.com",
+     "page_first": "2014-10-14",
+     "img_first": "2024-08-12"
+    },
+    {
+     "url": "https://www.9news.com.au/world/tanzania-police-officers-sacked-after-kissing-photo-goes-viral/b9010eed-3243-41af-a433-021d76eb6d7e",
+     "domain": "www.9news.com.au",
+     "page_first": "2025-09-27",
+     "img_first": "2025-09-27"
+    },
+    {
+     "url": "https://www.bellanaija.com/2014/10/3-tanzanian-police-officers-fired-after-kissing-photo-goes-viral/",
+     "domain": "www.bellanaija.com",
+     "page_first": "2021-08-04",
+     "img_first": null
+    },
+    {
+     "url": "https://www.gistmania.com/talk/topic,222247.0.html",
+     "domain": "www.gistmania.com",
+     "page_first": "2014-10-16",
+     "img_first": null
+    }
+   ],
+   "earliest_img": "2024-08-12",
+   "false": {
+    "start": "2023-08-22",
+    "P": "cannot_tell",
+    "S": "inconsistent",
+    "AL": "inconsistent"
+   },
+   "true": {
+    "start": "2014-10-14",
+    "P": "cannot_tell",
+    "S": "consistent",
+    "AL": "consistent"
+   }
+  },
+  {
+   "k": 92,
+   "url": "https://211check.org/fact-check-this-picture-is-not-of-a-house-found-in-jinja-eastern-uganda",
+   "evidence": [
+    {
+     "url": "https://www.tuko.co.ke/kenya/447761-village-mansion-car-netizens-divided-which-investments-should-come-first-life/",
+     "domain": "www.tuko.co.ke",
+     "page_first": "2022-03-22",
+     "img_first": "2022-03-22"
+    },
+    {
+     "url": "https://www.ghanamma.com/ke/2023/02/19/kenyas-most-photographed-house-and-why-nobody-lives-there/",
+     "domain": "www.ghanamma.com",
+     "page_first": null,
+     "img_first": null
+    }
+   ],
+   "earliest_img": "2022-03-22",
+   "false": {
+    "start": "2023-09-07",
+    "P": "inconsistent",
+    "S": "inconsistent",
+    "AL": "inconsistent"
+   },
+   "true": {
+    "start": "2020-01-01",
+    "P": "cannot_tell",
+    "S": "consistent",
+    "AL": "consistent"
+   }
+  },
+  {
+   "k": 93,
+   "url": "https://pesacheck.org/false-this-image-isnt-of-kenyan-opposition-leader-raila-odinga-meeting-uk-minister-james-heappey-97d34b7e0b4",
+   "evidence": [
+    {
+     "url": "https://www.standardmedia.co.ke/politics/article/2001440409/raila-meets-uk-officials-popularises-candidature",
+     "domain": "www.standardmedia.co.ke",
+     "page_first": "2022-03-15",
+     "img_first": "2022-03-16"
+    },
+    {
+     "url": "https://www.standardmedia.co.ke/counties/article/2001440409/raila-meets-uk-officials-popularises-candidature",
+     "domain": "www.standardmedia.co.ke",
+     "page_first": null,
+     "img_first": "2022-03-16"
+    },
+    {
+     "url": "https://www.mwakilishi.com/article/kenya-news/2022-03-15/raila-holds-talks-with-uks-armed-forces-minister-james-heappey",
+     "domain": "www.mwakilishi.com",
+     "page_first": "2025-08-06",
+     "img_first": "2024-02-16"
+    },
+    {
+     "url": "https://www.standardmedia.co.ke/business/politics/article/2001440409/raila-meets-uk-officials-popularises-candidature",
+     "domain": "www.standardmedia.co.ke",
+     "page_first": "2022-03-30",
+     "img_first": "2022-03-16"
+    },
+    {
+     "url": "https://www.africaintelligence.com/eastern-africa-and-the-horn/2022/03/23/raila-odinga-aiming-to-become-horn-of-africa-s-peace-champion,109762639-eve",
+     "domain": "www.africaintelligence.com",
+     "page_first": "2022-06-24",
+     "img_first": "2022-03-23"
+    },
+    {
+     "url": "https://www.standardmedia.co.ke/sports/politics/2001440409/www.digger.co.ke",
+     "domain": "www.standardmedia.co.ke",
+     "page_first": null,
+     "img_first": "2022-03-16"
+    },
+    {
+     "url": "https://www.africaintelligence.com/tags/kalonzo-musyoka",
+     "domain": "www.africaintelligence.com",
+     "page_first": null,
+     "img_first": "2022-03-23"
+    },
+    {
+     "url": "https://www.businessdailyafrica.com/bd/economy/raila-eyes-talks-to-cut-kenya-s-short-term-loans-cost-3750568",
+     "domain": "www.businessdailyafrica.com",
+     "page_first": null,
+     "img_first": "2022-03-16"
+    },
+    {
+     "url": "https://www.africaintelligence.fr/afrique-est-et-corne/2022/05/05/entre-deficit-d-image-et-nouvelles-missions-la-british-army-entame-sa-difficile-mutation,109781649-eve",
+     "domain": "www.africaintelligence.fr",
+     "page_first": null,
+     "img_first": "2025-11-10"
+    }
+   ],
+   "earliest_img": "2022-03-16",
+   "false": {
+    "start": "2023-08-01",
+    "P": "inconsistent",
+    "S": "inconsistent",
+    "AL": "inconsistent"
+   },
+   "true": {
+    "start": "2022-03-15",
+    "P": "cannot_tell",
+    "S": "consistent",
+    "AL": "consistent"
+   }
+  },
+  {
+   "k": 94,
+   "url": "https://211check.org/fact-check-this-photo-is-not-of-ncp-defector-anthony-feremato",
+   "evidence": [
+    {
+     "url": "https://onecitizendaily.com/index.php/2023/09/04/senior-ncp-member-joins-splm/",
+     "domain": "onecitizendaily.com",
+     "page_first": "2023-09-04",
+     "img_first": null
+    }
+   ],
+   "earliest_img": null,
+   "false": {
+    "start": "2023-09-04",
+    "P": "cannot_tell",
+    "S": "consistent",
+    "AL": "consistent"
+   },
+   "true": {
+    "start": "2018-08-09",
+    "P": "cannot_tell",
+    "S": "consistent",
+    "AL": "consistent"
+   }
+  },
+  {
+   "k": 95,
+   "url": "https://factly.in/a-2022-photo-is-falsely-portrayed-as-the-recent-image-of-aap-mp-sanjay-singhs-arrest",
+   "evidence": [],
+   "earliest_img": null,
+   "false": {
+    "start": "2023-10-04",
+    "P": "cannot_tell",
+    "S": "cannot_tell",
+    "AL": "cannot_tell"
+   },
+   "true": {
+    "start": "2022-10-17",
+    "P": "cannot_tell",
+    "S": "cannot_tell",
+    "AL": "cannot_tell"
+   }
+  },
+  {
+   "k": 96,
+   "url": "https://factly.in/unrelated-old-photos-of-jaivardhan-singh-shared-now-in-the-context-of-kamal-naths-recent-remarks",
+   "evidence": [
+    {
+     "url": "https://www.bhaskar.com/local/mp/bhopal/news/youth-congress-to-gherao-cm-house-against-rising-inflation-and-unemployment-128803704.html",
+     "domain": "www.bhaskar.com",
+     "page_first": "2021-08-11",
+     "img_first": "2021-08-11"
+    },
+    {
+     "url": "https://hindi.news18.com/news/madhya-pradesh/bhopal-congress-leader-digvijay-singh-praised-his-son-jaivardhan-singh-for-youth-congress-demonstration-nodark-3690419.html",
+     "domain": "hindi.news18.com",
+     "page_first": "2023-10-24",
+     "img_first": null
+    }
+   ],
+   "earliest_img": "2021-08-11",
+   "false": {
+    "start": "2023-10-20",
+    "P": "inconsistent",
+    "S": "inconsistent",
+    "AL": "inconsistent"
+   },
+   "true": {
+    "start": "2021-08-11",
+    "P": "cannot_tell",
+    "S": "consistent",
+    "AL": "consistent"
+   }
+  },
+  {
+   "k": 97,
+   "url": "https://211check.org/fact-check-picture-of-man-with-burning-candles-on-head-wasnt-taken-in-juba",
+   "evidence": [
+    {
+     "url": "https://www.instagram.com/cursedshit_backup/",
+     "domain": "www.instagram.com",
+     "page_first": null,
+     "img_first": null
+    },
+    {
+     "url": "https://knowyourmeme.com/photos/2086082-cursed-images--2",
+     "domain": "knowyourmeme.com",
+     "page_first": null,
+     "img_first": null
+    },
+    {
+     "url": "https://www.instagram.com/cmeronsprtley/",
+     "domain": "www.instagram.com",
+     "page_first": "2015-05-06",
+     "img_first": null
+    },
+    {
+     "url": "https://www.instagram.com/p/CjgEVs6Ntyn/",
+     "domain": "www.instagram.com",
+     "page_first": null,
+     "img_first": null
+    },
+    {
+     "url": "https://cheezburger.com/17911045/a-decent-selection-of-memes-and-other-funny-things",
+     "domain": "cheezburger.com",
+     "page_first": "2023-06-21",
+     "img_first": "2022-09-15"
+    },
+    {
+     "url": "https://www.dumpaday.com/funny-pictures/morning-funny-meme-dump-37-pics-115/",
+     "domain": "www.dumpaday.com",
+     "page_first": null,
+     "img_first": "2021-09-02"
+    },
+    {
+     "url": "https://www.dumpaday.com/funny-pictures/morning-funny-meme-dump-34-pics-111/",
+     "domain": "www.dumpaday.com",
+     "page_first": null,
+     "img_first": "2021-04-13"
+    }
+   ],
+   "earliest_img": "2021-04-13",
+   "false": {
+    "start": "2023-10-27",
+    "P": "inconsistent",
+    "S": "inconsistent",
+    "AL": "inconsistent"
+   },
+   "true": {
+    "start": "2019-05-01",
+    "P": "cannot_tell",
+    "S": "consistent",
+    "AL": "consistent"
+   }
+  },
+  {
+   "k": 98,
+   "url": "https://factly.in/this-photo-shows-congress-mps-protesting-in-black-attire-against-gst-price-rise-and-unemployment-not-ayodhya-ram-temple",
+   "evidence": [
+    {
+     "url": "https://thewire.in/politics/delhi-police-denies-permission-to-congress-for-protest-in-new-delhi",
+     "domain": "thewire.in",
+     "page_first": "2022-08-05",
+     "img_first": "2022-08-05"
+    },
+    {
+     "url": "https://indianexpress.com/article/india/bjp-rahul-gandhi-indian-democracy-8072298/",
+     "domain": "indianexpress.com",
+     "page_first": "2022-08-05",
+     "img_first": "2022-08-05"
+    },
+    {
+     "url": "https://m.rediff.com/news/report/sporting-black-cong-leaders-led-by-sonia-protest-against-inflation/20220805.htm",
+     "domain": "m.rediff.com",
+     "page_first": "2022-08-05",
+     "img_first": "2022-08-05"
+    },
+    {
+     "url": "https://www.telegraphindia.com/india/wearing-black-congress-leaders-stage-massive-protest-rahul-others-detained/cid/1878384",
+     "domain": "www.telegraphindia.com",
+     "page_first": "2022-08-05",
+     "img_first": "2022-08-05"
+    },
+    {
+     "url": "https://www.telegraphindia.com/india/priyanka-gandhi-stages-sit-in-over-price-rise-outside-congress-hq-detained-by-police/cid/1878392",
+     "domain": "www.telegraphindia.com",
+     "page_first": "2022-08-05",
+     "img_first": null
+    }
+   ],
+   "earliest_img": "2022-08-05",
+   "false": {
+    "start": "2020-08-05",
+    "P": "cannot_tell",
+    "S": "consistent",
+    "AL": "consistent"
+   },
+   "true": {
+    "start": "2022-08-05",
+    "P": "cannot_tell",
+    "S": "consistent",
+    "AL": "consistent"
+   }
+  },
+  {
+   "k": 99,
+   "url": "https://211check.org/fact-check-is-this-picture-related-to-the-situation-in-congo-in-2023",
+   "evidence": [
+    {
+     "url": "https://www.instagram.com/brodaharrison/reels/",
+     "domain": "www.instagram.com",
+     "page_first": null,
+     "img_first": null
+    },
+    {
+     "url": "https://www.instagram.com/p/CzmcE2-LC5U/",
+     "domain": "www.instagram.com",
+     "page_first": null,
+     "img_first": null
+    },
+    {
+     "url": "https://www.instagram.com/sikaofficial1/",
+     "domain": "www.instagram.com",
+     "page_first": "2025-01-30",
+     "img_first": null
+    }
+   ],
+   "earliest_img": null,
+   "false": {
+    "start": "2023-01-01",
+    "P": "cannot_tell",
+    "S": "consistent",
+    "AL": "consistent"
+   },
+   "true": {
+    "start": "1994-01-01",
+    "P": "cannot_tell",
+    "S": "consistent",
+    "AL": "consistent"
+   }
+  },
+  {
+   "k": 100,
+   "url": "https://pesacheck.org/missing-context-this-image-of-a-woman-walking-down-the-staircase-of-a-destroyed-building-is-old-412ad1ba1077",
+   "evidence": [
+    {
+     "url": "https://www.demilked.com/siena-international-photo-awards-2020-winners/",
+     "domain": "www.demilked.com",
+     "page_first": "2020-11-01",
+     "img_first": "2023-11-18"
+    }
+   ],
+   "earliest_img": "2023-11-18",
+   "false": {
+    "start": "2023-11-12",
+    "P": "cannot_tell",
+    "S": "cannot_tell",
+    "AL": "cannot_tell"
+   },
+   "true": {
+    "start": "2016-06-01",
+    "P": "cannot_tell",
+    "S": "consistent",
+    "AL": "consistent"
+   }
+  },
+  {
+   "k": 101,
+   "url": "https://pesacheck.org/false-this-image-was-not-captured-at-jkia-62d91397ac6c",
+   "evidence": [
+    {
+     "url": "https://www.citizen.digital/news/photo-showing-passenger-luggage-at-jkia-awaiting-kra-inspection-is-ai-generated-not-true-n331214",
+     "domain": "www.citizen.digital",
+     "page_first": "2023-11-15",
+     "img_first": "2023-11-15"
+    },
+    {
+     "url": "https://www.instagram.com/p/CzllZ99uR8-/",
+     "domain": "www.instagram.com",
+     "page_first": null,
+     "img_first": null
+    },
+    {
+     "url": "https://telegram.me/s/citizentvke?before=55778",
+     "domain": "telegram.me",
+     "page_first": null,
+     "img_first": null
+    },
+    {
+     "url": "https://slikouronlife.co.za/song/302341/emakhaya-23(1)",
+     "domain": "slikouronlife.co.za",
+     "page_first": null,
+     "img_first": null
+    }
+   ],
+   "earliest_img": "2023-11-15",
+   "false": {
+    "start": "2023-11-09",
+    "P": "cannot_tell",
+    "S": "inconsistent",
+    "AL": "inconsistent"
+   },
+   "true": {
+    "start": "2023-08-28",
+    "P": "cannot_tell",
+    "S": "cannot_tell",
+    "AL": "cannot_tell"
+   }
+  },
+  {
+   "k": 102,
+   "url": "https://pesacheck.org/partly-false-this-image-of-damaged-kenyas-sgr-corridor-is-not-from-2023-b383ceb2915b",
+   "evidence": [
+    {
+     "url": "https://thekenyatimes.com/latest-kenya-times-news/kenya-railways-issues-update-on-resumption-of-cargo-services-at-mombasa-port/",
+     "domain": "thekenyatimes.com",
+     "page_first": "2025-01-20",
+     "img_first": null
+    },
+    {
+     "url": "https://faithkalondu.wordpress.com/2016/11/20/ngwata-makueni-cries/",
+     "domain": "faithkalondu.wordpress.com",
+     "page_first": null,
+     "img_first": null
+    }
+   ],
+   "earliest_img": null,
+   "false": {
+    "start": "2023-11-18",
+    "P": "cannot_tell",
+    "S": "consistent",
+    "AL": "consistent"
+   },
+   "true": {
+    "start": "2016-11-21",
+    "P": "cannot_tell",
+    "S": "inconsistent",
+    "AL": "inconsistent"
+   }
+  },
+  {
+   "k": 103,
+   "url": "https://pesacheck.org/missing-context-this-image-of-a-journalist-wounded-by-an-israeli-grenade-is-not-from-2023-0c4ec931dd6c",
+   "evidence": [
+    {
+     "url": "https://www.instagram.com/p/CzTCf_1uW5n/",
+     "domain": "www.instagram.com",
+     "page_first": null,
+     "img_first": null
+    },
+    {
+     "url": "https://vista.ir/n/ta73lri",
+     "domain": "vista.ir",
+     "page_first": null,
+     "img_first": "2023-11-06"
+    },
+    {
+     "url": "https://vista.ir/n/kow0zgw",
+     "domain": "vista.ir",
+     "page_first": null,
+     "img_first": "2023-11-10"
+    },
+    {
+     "url": "https://vista.ir/n/jm77ua6",
+     "domain": "vista.ir",
+     "page_first": null,
+     "img_first": null
+    },
+    {
+     "url": "https://eghtesaad24.ir/fa/amp/news/215860",
+     "domain": "eghtesaad24.ir",
+     "page_first": null,
+     "img_first": null
+    }
+   ],
+   "earliest_img": "2023-11-06",
+   "false": {
+    "start": "2023-01-01",
+    "P": "cannot_tell",
+    "S": "consistent",
+    "AL": "consistent"
+   },
+   "true": {
+    "start": "2015-10-05",
+    "P": "cannot_tell",
+    "S": "consistent",
+    "AL": "consistent"
+   }
+  },
+  {
+   "k": 104,
+   "url": "https://211check.org/fact-check-this-picture-isnt-of-an-olympic-stadium-design-to-be-built-in-south-sudan",
+   "evidence": [
+    {
+     "url": "https://www.instagram.com/p/Cx3VmmOr6Bq/",
+     "domain": "www.instagram.com",
+     "page_first": null,
+     "img_first": null
+    },
+    {
+     "url": "https://www.instagram.com/p/Ct9NBOLIy2S/",
+     "domain": "www.instagram.com",
+     "page_first": null,
+     "img_first": null
+    },
+    {
+     "url": "https://www.albawabhnews.com/4914210",
+     "domain": "www.albawabhnews.com",
+     "page_first": "2023-11-28",
+     "img_first": "2023-12-04"
+    },
+    {
+     "url": "https://egy24.com/249613",
+     "domain": "egy24.com",
+     "page_first": "2024-07-19",
+     "img_first": null
+    }
+   ],
+   "earliest_img": "2023-12-04",
+   "false": {
+    "start": "2023-09-29",
+    "P": "cannot_tell",
+    "S": "inconsistent",
+    "AL": "inconsistent"
+   },
+   "true": {
+    "start": "2023-06-28",
+    "P": "cannot_tell",
+    "S": "consistent",
+    "AL": "consistent"
+   }
+  }
+ ],
+ "result": {
+  "n": 105,
+  "eligible_all": 172,
+  "spent_usd": 0.979,
+  "calls": 210,
+  "P_detect": 0.486,
+  "P_false_alarm": 0.01,
+  "S_detect": 0.667,
+  "S_false_alarm": 0.086,
+  "AL_detect": 0.667,
+  "AL_false_alarm": 0.086,
+  "S_missing": 0
+ }
+}

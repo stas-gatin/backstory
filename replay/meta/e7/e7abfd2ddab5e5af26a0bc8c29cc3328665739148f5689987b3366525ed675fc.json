@@ -1,0 +1,60 @@
+{
+ "note": "read https://shelterforce.org/2005/09/01/it-didnt-begin-with-katrina/",
+ "response": {
+  "top_logprobs": 0,
+  "temperature": 1.0,
+  "top_p": 1.0,
+  "service_tier": "auto",
+  "model": "muse-spark-1.3",
+  "reasoning": {
+   "effort": "low"
+  },
+  "background": false,
+  "tools": [],
+  "tool_choice": "auto",
+  "truncation": "disabled",
+  "id": "resp_6ae21568528c3afa05254fb0",
+  "object": "response",
+  "status": "completed",
+  "created_at": 1793201512.0,
+  "completed_at": 1793201512.0,
+  "error": null,
+  "incomplete_details": null,
+  "output": [
+   {
+    "type": "reasoning",
+    "id": "rs_6ae21568528c3afa05254fb0:rs_32e97dcd-4aed-4bcb-bbf7-f692e521fe59",
+    "summary": [],
+    "status": "completed"
+   },
+   {
+    "type": "message",
+    "id": "msg_70b2edb9-a92d-41a1-931f-19cfbe65558b",
+    "role": "assistant",
+    "content": [
+     {
+      "type": "output_text",
+      "text": "{\"relevant\": true, \"place\": \"New Orleans\", \"date\": null, \"event\": \"Hurricane Katrina\", \"page_date\": \"2005-09-01\", \"quote\": \"A flooded New Orleans after Hurricane Katrina.\"}",
+      "annotations": [],
+      "logprobs": []
+     }
+    ],
+    "status": "completed"
+   }
+  ],
+  "instructions": null,
+  "usage": {
+   "input_tokens": 816,
+   "input_tokens_details": {
+    "cached_tokens": 0
+   },
+   "output_tokens": 785,
+   "output_tokens_details": {
+    "reasoning_tokens": 726
+   },
+   "total_tokens": 1601
+  },
+  "parallel_tool_calls": true,
+  "store": true
+ }
+}
