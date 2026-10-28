@@ -21,6 +21,15 @@ from PIL import Image
 from backstory import pipeline, video, xpost
 
 DEMOS = [
+    {"id": "pisa", "kind": "link", "title": "Flag on the Tower of Pisa, \"now\"", "fresh": True,
+     "blurb": "October 2026: a giant Palestinian flag on the Leaning Tower, shared as today's protests.",
+     "post_url": "https://x.com/theseed59788459/status/2111893141972513167"},
+    {"id": "greece", "kind": "link", "title": "\"Greece at a standstill\"", "fresh": True,
+     "blurb": "October 2026: a huge crowd shared as a protest erupting right now.",
+     "post_url": "https://x.com/realgerhardtvdm/status/2107635699138568213"},
+    {"id": "greta", "kind": "link", "title": "\"Greta Thunberg arrested again\"", "fresh": True,
+     "blurb": "October 2026: it finds the 2023 original, but the caption claims no place or date to test.",
+     "post_url": "https://x.com/TodayUpdates0/status/2114156879962054742"},
     {"id": "la_fires", "kind": "link", "title": "\"LA fires\" freeway video",
      "blurb": "A freeway lined with flames, shared during the January 2025 Los Angeles fires.",
      "post_url": "https://x.com/HustleBitch_/status/1877770103229485090"},

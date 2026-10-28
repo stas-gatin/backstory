@@ -94,7 +94,7 @@ async function init() {
   $("#examples").innerHTML = ex.map((e) => `
     <button type="button" class="ex" data-id="${esc(e.id)}">
       <img src="/api/examples/${encodeURIComponent(e.id)}/image" alt="" loading="lazy">
-      <div class="exbody"><span class="kind">${KIND[e.kind || "photo"] || "Photo"}</span><b>${esc(e.title)}</b><span>${esc(e.blurb || e.caption)}</span></div>
+      <div class="exbody"><span class="kind">${KIND[e.kind || "photo"] || "Photo"}${e.fresh ? ' <i class="fresh">October 2026</i>' : ""}</span><b>${esc(e.title)}</b><span>${esc(e.blurb || e.caption)}</span></div>
     </button>`).join("");
   // Before any click: one finished case, so the page shows what an answer looks like.
   const pv = ex.find((e) => e.preview?.verdict === "inconsistent" && e.preview.first_date);

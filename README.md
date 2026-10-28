@@ -211,6 +211,10 @@ reverse search finds nothing usable, which happens for most fake videos, it says
 - **H5, H6: video stays hard.** Two ideas, each tested A/B on fresh posts, gave no gain. For a third of the fake videos, reverse search finds nothing for any frame.
 - One fix came after all tests: the creation date of a wiki article no longer counts as a date for the photo in it. No verdict in any test rested on such a date alone.
 
+**Fresh posts, October 2026** ([`docs/FRESH.md`](docs/FRESH.md)): after the freeze, ten viral fakes from this month,
+debunked by fact-checkers, were checked live from the link alone. Backstory caught 4 of 10 and said "Cannot verify" on
+the other 6. Not pre-registered; a look at current posts, not a measurement.
+
 The same numbers, with the comparison against plain code, are on the app's **Accuracy** page (`/tested`).
 
 ---
