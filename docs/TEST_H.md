@@ -84,3 +84,37 @@ Reading (after the result, not part of the rule): in the false alarms the judge 
 days before the claimed date, or a single page describing the image differently, as proof. Several "true" dates in
 5Pils are when the image was first found or published, not when it was taken, so an older copy is not always an
 error of the pipeline; that is a property of the data and is not used to excuse the number.
+
+## H2 result (2026-10-28, pipeline at commit ebc0c03 with the proof check, 3.39 USD)
+H2 was first started on 73ce957 and stopped after 17 posts when the proof check was added; it was rerun in full on
+ebc0c03 (recorded searches and video frames reused). Results of the full rerun, 53 posts:
+
+| | fake (25: 24 video, 1 photo) | true (28: 22 video, 6 photo) |
+|---|---|---|
+| "inconsistent" | 6 (0.24) | 1 (0.036) |
+| "cannot_tell" | 19 | 26 |
+| "consistent" | 0 | 1 |
+
+Reading: on real X posts, nearly all video, the pipeline rarely catches the fake (0.24) but almost never raises a
+false alarm. Misses: 4 posts with no search result at all; most others had only "partial" matches from video
+frames, which the judge rightly does not trust; three caught by the judge were stopped by the proof check because
+the evidence was a single page or only partial matches. The one false alarm disagreed with the caption only on a
+detail of the event in the same city on the same day.
+
+## H3: a fresh set of real X posts for the next version (written 2026-10-28, before any run on these posts)
+After H2, the pipeline was changed (commit c79bf8e), looking at H2's misses: partial matches are compared with the
+frame or photo they were found for by the match checker (Muse Spark) and count as the same source only when
+confirmed; pages that place the image in the claimed place and do not date it earlier no longer count as proof;
+social and video sites no longer count as independent descriptions; more fact-checking sites are excluded.
+H2 can no longer measure this fairly, so a new set was collected the same way (about one hour of search, another
+agent run, all earlier posts excluded): 55 posts available without login. Two are dropped before the run because
+the false part is who is pictured, not the place, date or event: 53 posts, `eval/realset2.json` (29 fake: 17 photo,
+12 video; 24 true: 14 photo, 10 video), shuffled with a fixed seed so that a run stopped by the cost cap is still a
+random subset. Same input rules as H2 (link only, fact-checkers and debunk-looking URLs removed, Community Note
+never given to the agents).
+
+Claims allowed afterwards (on the posts checked):
+- "the new version catches more fakes on real posts" only if detection >= 0.35 and false alarm <= 0.10
+  (H2 on the earlier version: 0.24 and 0.036);
+- if false alarm > 0.10: the new version is not ready for real posts, and the README says so.
+Budget: hard cap 3 USD (the total for all tests stays at about 40 USD).
