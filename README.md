@@ -88,13 +88,15 @@ failures. A test is only run once; the next version is measured on new data.
 | I | + proof check | 75 new 5Pils cases (train split) | 78.7% | **10.7%** | failed, narrowly: false alarms > 10% |
 | H2 | + proof check | 53 real X posts, link only (mostly video) | 24% (6/25) | 3.6% (1/28) | no pass bar (sanity check) |
 | H3 | + match checker for look-alikes | 39 fresh X posts | 22% (5/23) | 0% (0/16) | failed: caught < 35% |
+| H4 | + implied date for news posts | 14 X posts no version had seen | 3 of 6 (all photos) | 0 of 8 | counts only (too small for a rate) |
 
 What the failures taught, one change each: H1's false alarms came from copies only days older than the claim and
 from single pages, so the proof check was added (false alarms roughly halved in Test I). H3's misses were news posts
 that give no date ("first picture of a chemical attack in Kursk", while the same photo was online in 2016): the
 posting date is now the implied claimed date. On posts already seen, that change doubled the fakes caught on X
-(H3: 5 → 12 of 23; H2: 6 → 12 of 25) with no false alarm; these are development numbers, and the test on posts it
-has not seen is H4 (pre-registered, small).
+(H3: 5 → 12 of 23; H2: 6 → 12 of 25) with no false alarm; these are development numbers. On 14 posts it had not seen
+(H4) it caught 3 of 6 fakes, all photos, with no false alarm; fake videos remain the weak spot (two of three had no
+search result at all).
 
 Limits: the method needs earlier copies of the photo online. Counting the Test E cases where reverse image search
 found nothing, 41% of all false captions were caught. Fully fabricated or AI-generated photos have no past and get
