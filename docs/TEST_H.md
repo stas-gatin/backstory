@@ -177,3 +177,29 @@ Speech was transcribed in 3 of 7 videos; it did not change any verdict.
 
 Pooled with H3 by version, as pre-registered: c79bf8e on 39 posts caught 5 of 23 fakes with 0 of 16 false alarms;
 3bf7dfe on 14 posts caught 3 of 6 fakes with 0 of 8 false alarms. The samples are too small for a rate.
+
+## H5: fresh video posts, version 4 against version 5 (written 2026-10-28, before any run on these posts)
+After H4, fake videos were the weak spot. Reverse search finds most copies of a video on YouTube, X and TikTok, and
+the pipeline did not date them. Version 5 (commit ef47d1e) adds a post clock (code, no model): the posting date of a
+copy on X or TikTok is read from its post id, on YouTube from the page's metadata; copies posted before the claimed
+date are compared with the post's frames by the match checker using their cover image (in their own places, so they
+never push out other partial matches), and a confirmed one counts as an earlier copy. Cover images are never dated by
+the Internet Archive (a first attempt did that and produced 8 false alarms on development posts; fixed, with a test).
+On the video posts already seen (H2, H3, H4: 36 fake, 32 true) version 5 caught 16 fakes against version 4's 15,
+with 0 false alarms for both: development numbers, not a result.
+
+Data: `eval/realset3.json`, collected for this test by an agent the same way as before (about 75 minutes; all
+earlier posts excluded; every post available without login with a video): 57 posts, one dropped before the run
+because the fact-checker's dates for it do not agree: 56 posts, 31 fake and 25 true, all video, shuffled with a fixed
+seed. Unlike earlier sets, the true posts were found through fact-check articles that cite them as the original of
+footage later misused, and three true posts are the originals of fakes in the set.
+
+Both versions run on all 56 posts with the same input rules as H2–H4 and share one record store, so they see the same
+search results, frames and pages; only the post clock differs. Version 5 runs first.
+
+Claims allowed afterwards:
+- "the post clock catches more fake videos" only if version 5 catches more fakes than version 4 and calls no more
+  true posts "inconsistent";
+- "Backstory catches fake videos on X" with a rate only if version 5's detection >= 0.35 and false alarm <= 0.10;
+- if version 5's false alarm > 0.10, the README says the post clock is not ready.
+Budget: hard cap 8 USD for version 5 and 6 USD for version 4.
