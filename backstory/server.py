@@ -125,6 +125,11 @@ def index():
     return FileResponse(WEB / "index.html")
 
 
+@app.get("/check")
+def check_page():
+    return FileResponse(WEB / "index.html")
+
+
 @app.get("/tested")
 def tested():
     return FileResponse(WEB / "tested.html")

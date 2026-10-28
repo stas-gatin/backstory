@@ -211,7 +211,7 @@ reverse search finds nothing usable, which happens for most fake videos, it says
 - **H5, H6: video stays hard.** Two ideas, each tested A/B on fresh posts, gave no gain. For a third of the fake videos, reverse search finds nothing for any frame.
 - One fix came after all tests: the creation date of a wiki article no longer counts as a date for the photo in it. No verdict in any test rested on such a date alone.
 
-The same numbers, with the comparison against plain code, are on the app's **How it was tested** page (`/tested`).
+The same numbers, with the comparison against plain code, are on the app's **Accuracy** page (`/tested`).
 
 ---
 

@@ -69,8 +69,11 @@ async function init() {
   drawMap();
   const st = await fetch("/api/status").then((r) => r.json()).catch(() => ({}));
   $("#mode").innerHTML = st.mode === "replay"
-    ? '<i class="live off"></i>Replay · recorded runs' : '<i class="live"></i>Live';
+    ? '<i class="live off"></i>Demo: recorded checks' : '<i class="live"></i>Live checks';
+  $("#mode").title = st.mode === "replay" ? "This copy replays checks recorded earlier, step by step, with no keys and no network." : "Checks run live on Meta's models.";
+  $("#demoNote").hidden = st.mode !== "replay";
   const ex = await fetch("/api/examples").then((r) => r.json()).catch(() => []);
+  EXAMPLES = ex;
   $("#examplesWrap").hidden = !ex.length;
   const KIND = { link: "X post", video: "Video", photo: "Photo" };
   $("#examples").innerHTML = ex.map((e) => `
@@ -82,20 +85,16 @@ async function init() {
   const pv = ex.find((e) => e.preview?.verdict === "inconsistent" && e.preview.first_date);
   if (pv) {
     const p = pv.preview, gap = span(p.first_date, p.claim_date);
-    $("#heroPreview").hidden = false;
+    $("#previewWrap").hidden = false;
     $("#heroPreview").innerHTML = `<div class="hp-img"><img src="/api/examples/${encodeURIComponent(pv.id)}/image" alt=""><span class="hp-badge">${icon("inconsistent")}Does not fit</span></div>
       <div class="hp-body"><div class="hp-k">Shared as</div><b>${esc(short(p.claimed, 70))}</b>
         <div class="hp-gap">${esc(gap || "")}<span> earlier</span></div>
         <div class="hp-k">First seen</div><b>${esc(p.first_date)} · ${esc(p.first_domain || "")}</b>${p.record ? `<span>${esc(short(p.record, 70))}</span>` : ""}
         <button type="button" class="hp-go" id="hpGo">Watch the agents check it</button></div>`;
-    $("#hpGo").addEventListener("click", () => document.querySelector(`.ex[data-id="${pv.id}"]`)?.click());
+    $("#hpGo").addEventListener("click", () => openExample(pv));
   }
-  document.querySelectorAll(".ex").forEach((b) => b.addEventListener("click", () => {
-    if (running) return;
-    chosenExample = ex.find((e) => e.id === b.dataset.id);
-    document.querySelectorAll(".ex").forEach((x) => x.classList.toggle("on", x === b));
-    $("#form").requestSubmit();
-  }));
+  document.querySelectorAll(".ex").forEach((b) => b.addEventListener("click", () => openExample(ex.find((e) => e.id === b.dataset.id))));
+  route();
 }
 
 function setTab(name) {
@@ -122,12 +121,43 @@ drop.addEventListener("dragleave", () => drop.classList.remove("over"));
 drop.addEventListener("drop", (e) => { e.preventDefault(); drop.classList.remove("over"); pickFile(e.dataTransfer.files[0]); });
 $("#postUrl").addEventListener("input", () => { chosenExample = null; document.querySelectorAll(".ex").forEach((b) => b.classList.remove("on")); });
 
+let EXAMPLES = [], runId = 0;
+
+// Two views: the home page, where you choose what to check, and the check page, where the agents work.
+function showView(name, url, title) {
+  $("#homeView").hidden = name !== "home";
+  $("#checkView").hidden = name !== "check";
+  if (url && location.pathname + location.search !== url) history.pushState({ view: name }, "", url);
+  $("#checkTitle").textContent = title || "";
+  document.title = name === "check" && title ? title + " · Backstory" : "Backstory";
+  window.scrollTo(0, 0);
+}
+
+function openExample(e) {
+  if (!e) return;
+  chosenExample = e;
+  $("#form").requestSubmit();
+}
+
+function route() {
+  const q = new URLSearchParams(location.search);
+  if (location.pathname === "/check") {
+    const ex = EXAMPLES.find((e) => e.id === q.get("case"));
+    if (ex) return openExample(ex);
+    if (q.get("post")) { $("#postUrl").value = q.get("post"); setTab("link"); chosenExample = null; return $("#form").requestSubmit(); }
+    history.replaceState({}, "", "/");
+  }
+  showView("home");
+}
+addEventListener("popstate", () => { runId += 1; running = false; setRunning(false); route(); });
+
 $("#form").addEventListener("submit", async (e) => {
   e.preventDefault();
   if (running) return;
   const fd = new FormData();
-  let post = null;
+  let post = null, url = "/check", title = "";
   if (chosenExample) {
+    url = "/check?case=" + encodeURIComponent(chosenExample.id); title = chosenExample.title;
     fd.append("example_id", chosenExample.id);
     post = { media: chosenExample.kind === "video" ? `/api/examples/${encodeURIComponent(chosenExample.id)}/video` : `/api/examples/${encodeURIComponent(chosenExample.id)}/image`,
              video: chosenExample.kind === "video", text: chosenExample.kind === "link" ? "" : chosenExample.caption,
@@ -140,6 +170,7 @@ $("#form").addEventListener("submit", async (e) => {
     }
     fd.append("post_url", link);
     post = { media: null, text: "", meta: link };
+    url = "/check?post=" + encodeURIComponent(link); title = "Post on X";
   } else {
     if (!chosenFile || !$("#caption").value.trim()) {
       $("#formError").textContent = "Choose a photo or video and enter the caption it was shared with.";
@@ -150,7 +181,11 @@ $("#form").addEventListener("submit", async (e) => {
     fd.append("posted_on", $("#posted").value);
     post = { media: URL.createObjectURL(chosenFile), video: chosenFile.type.startsWith("video/"), text: $("#caption").value,
              meta: $("#posted").value ? "Posted " + $("#posted").value : "" };
+    title = "Uploaded " + (post.video ? "video" : "photo");
   }
+  chosenExample = null;
+  showView("check", url, title);
+  const mine = ++runId;
   $("#formError").textContent = "";
   reset(post);
   setRunning(true);
@@ -164,9 +199,10 @@ $("#form").addEventListener("submit", async (e) => {
       if (done) break;
       buf += dec.decode(value, { stream: true });
       let i;
-      while ((i = buf.indexOf("\n")) >= 0) { handle(JSON.parse(buf.slice(0, i))); buf = buf.slice(i + 1); }
+      while ((i = buf.indexOf("\n")) >= 0) { if (mine === runId) handle(JSON.parse(buf.slice(0, i))); buf = buf.slice(i + 1); }
+      if (mine !== runId) { reader.cancel(); break; }
     }
-    if (!finished) handle({ type: "error", text: "The connection closed before the check finished. Please try again." });
+    if (!finished && mine === runId) handle({ type: "error", text: "The connection closed before the check finished. Please try again." });
   } catch (err) {
     handle({ type: "error", text: err.message });
   }
@@ -215,7 +251,6 @@ function reset(post) {
   $("#logToggle")?.remove(); $("#evMore")?.remove();
   $("#result").hidden = true; $("#evidenceCard").hidden = true; $("#evidence").innerHTML = "";
   showPost(post);
-  $("#mapCard").scrollIntoView({ behavior: "smooth", block: "start" });
 }
 
 function handle(ev) {

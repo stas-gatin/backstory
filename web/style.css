@@ -410,3 +410,29 @@ th { color: var(--muted); font-weight: 600; border-top: 0; font-size: 12px; }
 .debate li.critic { background: var(--violet-soft); margin-left: auto; }
 .debate li.critic.no { background: var(--amber-soft); }
 .debate .who { font-size: 11px; font-weight: 800; letter-spacing: .05em; text-transform: uppercase; color: var(--muted); }
+
+/* Navigation: plain text links, the current page underlined */
+.nav { display: flex; gap: 22px; margin-left: 28px; align-items: center; }
+.nav a { color: var(--muted); font-weight: 600; font-size: 14.5px; padding: 6px 0; border-bottom: 2px solid transparent; }
+.nav a:hover { color: var(--ink); text-decoration: none; }
+.nav a.on { color: var(--ink); border-bottom-color: var(--blue); }
+.top .mode { margin-left: auto; cursor: help; }
+.top .tag { display: none; }
+/* Home: the input is the first thing to use */
+.hero { grid-template-columns: minmax(0, 1fr) 460px; align-items: start; padding-top: 48px; }
+.hero .input { margin: 0; box-shadow: 0 10px 40px rgba(16, 24, 40, .10); }
+.input-title { font-size: 18px; font-weight: 800; margin-bottom: 12px; }
+.demo-note { display: block; margin-top: 10px; background: var(--violet-soft); color: var(--violet); border-radius: 10px; padding: 8px 10px; }
+.preview-wrap { max-width: 1360px; margin: 0 auto; padding: 24px 28px 0; }
+.preview-wrap .hero-preview { display: grid; grid-template-columns: 380px 1fr; max-width: 980px; align-items: stretch; }
+.preview-wrap .hp-img img { height: 100%; max-height: 270px; min-height: 230px; }
+.preview-wrap .hp-body { padding: 18px 22px; align-content: center; }
+.preview-wrap .hp-go { justify-self: start; padding: 10px 18px; }
+.proofstrip { margin-bottom: 30px; }
+/* Check page */
+.checkbar { max-width: 1360px; margin: 0 auto; padding: 18px 28px 0; display: flex; gap: 16px; align-items: baseline; }
+.checkbar a { font-weight: 700; font-size: 14.5px; }
+.checkbar span { font-size: 18px; font-weight: 800; }
+@media (max-width: 1100px) { .hero { grid-template-columns: 1fr; } .preview-wrap .hero-preview { grid-template-columns: 1fr; } }
+@media (max-width: 760px) { .nav { gap: 14px; margin-left: 10px; overflow-x: auto; } .nav a { font-size: 13.5px; white-space: nowrap; } .top .mode { display: none; } .checkbar, .preview-wrap { padding-left: 16px; padding-right: 16px; } }
+@media (max-width: 600px) { .brand { font-size: 0; gap: 0; } .nav { margin-left: 6px; } }
