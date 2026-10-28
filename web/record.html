@@ -6,7 +6,7 @@
 <title>Backstory track record</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@500&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="/static/style.css?v=36">
+<link rel="stylesheet" href="/static/style.css?v=37">
 </head>
 <body>
 <header class="top">
@@ -76,15 +76,28 @@ function draw() {
     return `<article class="rrow ${oc}">
       <div class="rhead"><span class="rout ${oc}">${ol}</span><span class="rv ${x.verdict}">${LABEL[x.verdict] || esc(x.verdict)}</span>
         <span class="rmeta">${esc(x.test)} · version ${esc(x.version)} · ${esc(x.media)}${x.community_note ? " · has a Community Note" : ""}</span>
-        <span class="rlinks">${link(x.post_url, "Post on X")}${x.fact_check ? " · " + link(x.fact_check, x.group === "fake" ? "Fact-check" : "Source") : ""}</span></div>
+        <span class="rlinks"><button type="button" class="showpost" data-url="${esc(x.post_url)}">Show the post</button> · ${link(x.post_url, "Open on X")}${x.fact_check ? " · " + link(x.fact_check, x.group === "fake" ? "Fact-check" : "Source") : ""}</span></div>
       <div class="rgrid"><div><div class="rk">The post claimed</div>${esc(x.claimed)}</div>
         <div><div class="rk">${x.group === "fake" ? "The fact-checker found" : "What it really shows"}</div>${esc(x.truth)}</div></div>
       <div class="rsay"><div class="rk">Backstory said</div>${esc(x.summary || "")}</div>
       ${fc ? `<div class="rfc"><div class="rk">Earliest copy it cited</div>${esc(fc.date)} · ${link(fc.url, fc.domain)} (${esc(fc.how)})</div>` : ""}
       ${x.proof ? `<div class="rfc"><div class="rk">Proof check</div>${esc(x.proof)}</div>` : ""}
+      <div class="embed" hidden></div>
     </article>`;
   }).join("");
 }
+
+// The post itself, shown with X's own embed: the photo or video comes from X, not from this site, and appears only
+// while the post is still online.
+$("rows").addEventListener("click", (e) => {
+  const b = e.target.closest(".showpost"); if (!b) return;
+  const box = b.closest(".rrow").querySelector(".embed");
+  if (!box.hidden) { box.hidden = true; box.innerHTML = ""; b.textContent = "Show the post"; return; }
+  box.hidden = false; b.textContent = "Hide the post";
+  box.innerHTML = `<blockquote class="twitter-tweet" data-dnt="true" data-conversation="none"><a href="${esc(b.dataset.url.replace("x.com", "twitter.com"))}"></a></blockquote>`;
+  if (window.twttr?.widgets) window.twttr.widgets.load(box);
+  else if (!document.getElementById("xw")) { const sc = document.createElement("script"); sc.id = "xw"; sc.async = true; sc.src = "https://platform.twitter.com/widgets.js"; document.body.appendChild(sc); }
+});
 
 document.querySelectorAll(".seg").forEach((seg) => seg.addEventListener("click", (e) => {
   const b = e.target.closest("button"); if (!b) return;
