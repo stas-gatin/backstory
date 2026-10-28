@@ -314,6 +314,18 @@ def test_claim_never_uses_todays_date(monkeypatch):
     assert c["period_start"] is None
 
 
+def test_news_post_without_date_implies_recent(monkeypatch):
+    monkeypatch.setattr(pipeline.claim.meta, "ask_json",
+                        lambda *a, **k: ({"place": "Kursk", "period_start": None, "presented_as_new": True}, []))
+    c = pipeline.claim.read_claim("First picture of the attack in Kursk", "2024-08-10")
+    assert c["implied"] and c["period_start"] == "2024-07-11"
+    # Without a posting date, or when not presented as news, nothing is implied.
+    assert pipeline.claim.read_claim("First picture of the attack in Kursk", None)["period_start"] is None
+    monkeypatch.setattr(pipeline.claim.meta, "ask_json",
+                        lambda *a, **k: ({"place": "Kursk", "period_start": None, "presented_as_new": False}, []))
+    assert pipeline.claim.read_claim("Kursk, archive photo", "2024-08-10")["period_start"] is None
+
+
 # Proof check ---------------------------------------------------------------------------------------------------------
 
 CLAIM = {"period_start": "2025-01-07"}

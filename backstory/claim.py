@@ -8,6 +8,11 @@ import datetime as dt
 
 from . import config, meta
 
+# A post that presents media as news ("breaking", "just landed", "first picture of") and gives no other date
+# implies the scene is recent. It is taken as no older than this many days before the post: anything shown to
+# exist earlier than that (plus the usual margin) cannot be the news the post presents.
+IMPLIED_DAYS = 30
+
 PROMPT = """You read the caption of a photo shared online and extract what it claims. Do not judge whether it is true.
 
 Caption: "{caption}"
@@ -24,6 +29,9 @@ Reply with one JSON object:
   "period_start": "YYYY-MM-DD: the earliest day the claimed scene can have happened, or null if the caption gives no time at all",
   "precision": "day" | "month" | "year" | "none",
   "date_basis": "how you got period_start, one short sentence (e.g. 'caption says yesterday; post published 2024-10-30')",
+  "presented_as_new": true if the caption presents the photo as showing something that is happening now or just
+    happened (news, "breaking", "just", "now", "tonight", "first picture of", an ongoing event told in the present
+    tense), false if it is presented as old, as an illustration, or the caption does not say,
   "language": "language of the caption"}}"""
 
 
@@ -40,6 +48,20 @@ def read_claim(caption, posted_on=None, budget=None):
         data["period_start"] = dt.date.fromisoformat(str(start)).isoformat() if start else None
     except ValueError:
         data["period_start"] = None
+    data["implied"] = False
+    if not data["period_start"] and data.get("presented_as_new") is True and posted_on != "unknown":
+        try:
+            posted = dt.date.fromisoformat(posted_on[:10])
+        except ValueError:
+            posted = None
+        if posted:
+            data["period_start"] = (posted - dt.timedelta(days=IMPLIED_DAYS)).isoformat()
+            data["precision"] = "implied"
+            data["implied"] = True
+            data["date_basis"] = ("no date in the caption, but it presents the media as news on %s, so the scene is "
+                                  "taken as no older than %d days before" % (posted.isoformat(), IMPLIED_DAYS))
+            if not data.get("claimed_date"):
+                data["claimed_date"] = "recent, as of the post on %s" % posted.isoformat()
     for k in ("place", "event", "claimed_date"):
         data[k] = str(data[k]) if data.get(k) not in (None, "", "null") else None
     data["sources"] = [s for s in sources if s.get("cited")][:5]

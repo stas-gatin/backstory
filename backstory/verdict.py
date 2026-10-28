@@ -201,7 +201,9 @@ Reply with one JSON object:
 
 def _fmt(claim):
     return {"place": claim.get("place"), "event": claim.get("event"), "claimed_date": claim.get("claimed_date"),
-            "start": claim.get("period_start") or "unknown", "caption": claim.get("caption", "")}
+            "start": (("%s (implied: %s)" % (claim["period_start"], claim.get("date_basis")))
+                      if claim.get("implied") else claim.get("period_start") or "unknown"),
+            "caption": claim.get("caption", "")}
 
 
 def judge(image_bytes, claim, evidence, critic_note=None, budget=None):

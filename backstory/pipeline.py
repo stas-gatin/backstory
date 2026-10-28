@@ -163,6 +163,8 @@ def _run(image_bytes, caption, posted_on, matches, exclude_fact_checkers, budget
         text = "The caption names no place or date to check; the record will still show where the photo comes from"
     else:
         text = "The caption claims: %s" % said
+        if c.get("implied"):
+            text += " (no date given; presented as news, so taken as no older than %s)" % c["period_start"]
     yield step("claim", "done", text, claim=c)
 
     # 1b. A post screenshot or collage: find the separate photos in it; each is searched as well.
