@@ -225,3 +225,31 @@ X, TikTok and YouTube and never raised a false alarm), but it is not presented a
 Why fake videos are missed (version 5, 26 misses): 10 had no reverse-search result for any frame; 13 had pages, but
 nothing the judge could use (copies with no date earlier than the claim, or only unconfirmed partial matches); 3 had
 a sign against the caption that did not meet the proof check.
+
+## H6: scene witness on fresh video posts, version 6 against version 5 (written 2026-10-28, before any run on them)
+After H5, a new agent (commit d67e9e8): Muse Spark watches the whole video (first 60 s, 720p, 2 frames per second; or the
+photo) and lists text readable in the filmed scene, with the second it appears, landmarks, and up to three moments
+that best identify the footage. Those moments are searched as extra frames. Each scene text that names a place is
+checked by Muse Wonder on its own frame: visible word for word, part of the scene (not an overlay), naming another
+country than the caption, and impossible at the claimed place (flags, placards, adverts, chain stores, departure
+boards and places inside or bordering the claimed one do not count). Only such a confirmed text is accepted by the
+proof check as "the scene itself" contradicting the caption. The switch `BACKSTORY_WITNESS=0` turns the agent off,
+which gives version 5.
+
+Development (posts already seen, H2–H5: 85 fake, 77 true): video fakes caught 26 of 67 against 20; photo fakes 11
+of 18 against 12; 0 false alarms in both. A first version raised one false alarm (a Vatican inscription in a Rome
+video read as "another country"); the check was made stricter (question 5 above) before this pre-registration.
+
+Data: `eval/realset4.json`, collected for this test by an agent (about 75 minutes, all earlier posts excluded,
+every post available without login with a video). 47 found; two dropped before the run because they are compilations
+of several unrelated clips: 45 posts, 23 fake and 22 true, all video, shuffled with a fixed seed. Most true posts
+come from news, agency and official accounts embedded in live blogs; 6 are originals cited by fact-checks, and four
+pairs share footage.
+
+Both versions run on all 45 posts with the same input rules and one shared record store; version 6 runs first.
+Claims allowed afterwards:
+- "the scene witness catches more fake videos" only if version 6 catches more fakes than version 5 and calls no
+  more true posts "inconsistent";
+- a detection rate for fake videos only if version 6's detection >= 0.35 and false alarm <= 0.10;
+- if version 6's false alarm > 0.10, the README says the scene witness is not ready.
+Budget: hard cap 8 USD for version 6 and 5 USD for version 5.
