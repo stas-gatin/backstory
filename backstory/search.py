@@ -16,7 +16,12 @@ from . import config, replay
 
 FACT_CHECKERS = """maldita.es newtral.es efe.com verificat.cat factly.in pesacheck.org africacheck.org afp.com
 boomlive.in altnews.in newschecker.in thequint.com vishvasnews.com snopes.com reuters.com factcheck.org
-politifact.com fullfact.org leadstories.com checkyourfact.com logicallyfacts.com misbar.com dubawa.org faktisk.no haqcheck.org ethiopiacheck.org""".split()
+politifact.com fullfact.org leadstories.com checkyourfact.com logicallyfacts.com misbar.com dubawa.org faktisk.no haqcheck.org ethiopiacheck.org
+factcrescendo.com dogrulukpayi.com teyit.org malumatfurus.org aosfatos.org lupa.uol.com.br chequeado.com colombiacheck.com
+facta.news pagellapolitica.it correctiv.org mimikama.org mimikama.at stopfake.org demagog.org.pl lakmusz.hu
+fatabyyano.net verify-sy.com tfc-taiwan.org.tw mygopen.com annielab.org verafiles.org digiteye.in youturn.in
+factcheck.ge mythdetector.ge newsmeter.in newsmobile.in thelogicalindian.com 211check.org africacheck.org
+factcheck.afp.com apnews.com/hub/ap-fact-check truthorfiction.com hoax-slayer.net""".split()
 
 
 def domain(url):
@@ -42,7 +47,7 @@ def looks_like_debunk(url):
     return is_fact_checker(url) or bool(DEBUNK_URL.search(url))
 
 
-LOW_VALUE = """youtube.com yelp.com pinterest.com facebook.com instagram.com x.com twitter.com tiktok.com
+LOW_VALUE = """youtube.com youtu.be yelp.com pinterest.com facebook.com instagram.com x.com twitter.com tiktok.com
 reddit.com threads.net linkedin.com""".split()
 
 

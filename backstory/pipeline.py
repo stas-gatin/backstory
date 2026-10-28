@@ -181,9 +181,12 @@ def _run(image_bytes, caption, posted_on, matches, exclude_fact_checkers, budget
         found_pages = search.from_list(matches)["pages"]
     else:
         # The main image must be searchable; extra cut-outs and frames may fail without ending the check.
-        results = [search.google_vision(search_images[0])]
-        results += [r for r in (_guarded(search.google_vision, img) for img in search_images[1:]) if r]
-        found_pages = [p for r in results for p in r["pages"]]
+        results = [(0, search.google_vision(search_images[0]))]
+        results += [(i, r) for i, r in ((i, _guarded(search.google_vision, img))
+                                        for i, img in enumerate(search_images) if i) if r]
+        # found_by: which search image (frame, cut-out) the page was found for, to compare like with like later.
+        found_pages = [dict(p, found_by=i) for i, r in results for p in r["pages"]]
+        results = [r for _, r in results]
         # Candidates seen for several frames first.
         seen = {}
         for r in results:
@@ -233,6 +236,24 @@ def _run(image_bytes, caption, posted_on, matches, exclude_fact_checkers, budget
         yield step("match", "done", ("%s the same source: %s" % (
             _count(len(confirmed), "image is", "images are"), "; ".join(search.domain(m["url"]) for m in confirmed)))
             if confirmed else "None of them is the same photo or footage", checked=len(cands))
+    # 2c. Partial matches (crops, re-encoded video frames): the match checker compares each page's image with the
+    # frame or photo it was found for. Confirmed ones count as the same source; the rest stay "partial".
+    partial = [p for p in pages if p.get("match") == "partial" and p.get("image_urls") and not p.get("image_only")]
+    if matches is None and sum(1 for p in pages if p.get("match") == "full") < 2 and partial:
+        partial = partial[:config.MAX_PARTIAL]
+        yield step("match", "running", "Comparing %s with the post"
+                   % _count(len(partial), "partly matching image", "partly matching images"))
+        with cf.ThreadPoolExecutor(max_workers=4) as pool:
+            checks = list(pool.map(lambda p: _guarded(matcher.same_source, search_images[p.get("found_by", 0)],
+                                                      p["image_urls"][0], budget=budget) or {"same": False}, partial))
+        for p, m in zip(partial, checks):
+            if m["same"]:
+                p["match"], p["match_reason"] = "confirmed look-alike", m.get("reason")
+        ok = [p for p, m in zip(partial, checks) if m["same"]]
+        yield step("match", "done", ("%s the same source: %s" % (
+            _count(len(ok), "partial match is", "partial matches are"), "; ".join(p["domain"] for p in ok)))
+            if ok else "None of the partial matches is the same photo or footage", checked=len(partial))
+        pages.sort(key=lambda p: (p.get("match") == "partial", search.low_value(p["url"])))
     if not pages:
         yield from _finish(c, [], None, None, None, budget, extra, "No earlier copy of this photo was found online, "
                                                             "so there is nothing to check the caption against.")

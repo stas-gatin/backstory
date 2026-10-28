@@ -355,3 +355,40 @@ def test_weak_proof_turns_into_cannot_tell(offline):
     search_one_page(offline)
     result = run_events()[-1]
     assert result["verdict"] == "cannot_tell" and result["basis"] == "proof too weak"
+
+
+def test_grounds_same_place_only_other_event_is_not_proof():
+    claim = {"place": "Mandalay, Myanmar", "period_start": "2025-03-28"}
+    ev = [row(1, "a.cn", described_place="Mandalay Palace", described_event="fort wall"),
+          row(2, "b.cn", described_place="Mandalay", described_event="palace damage")]
+    assert not verdict.grounds(claim, ev, {"cited": ["E1", "E2"]})["ok"]
+    ev[1]["described_place"] = "Ajman, UAE"
+    ev[0]["described_place"] = "Ajman"
+    assert verdict.grounds(claim, ev, {"cited": ["E1", "E2"]})["ok"]
+
+
+def test_grounds_counts_confirmed_partial_pages():
+    ev = [row(1, "cnn.com", match="confirmed look-alike", described_place="Malta", page_published="2026-06-01"),
+          row(2, "cna.sg", match="confirmed look-alike", described_place="Malta")]
+    g = verdict.grounds({"period_start": "2026-06-07"}, ev, {"cited": ["E1", "E2"]})
+    assert g["ok"] and g["kind"] == "independent descriptions"
+
+
+def test_partial_matches_are_checked_against_the_image_they_were_found_for(offline):
+    offline.setattr(pipeline.search, "google_vision", lambda b: {"pages": [
+        {"url": "https://news.org/a", "title": "", "image_urls": ["https://news.org/a.jpg"], "match": "partial"}],
+        "best_guess": [], "similar": []})
+    seen = []
+
+    def same(post, url, budget=None):
+        seen.append(url)
+        return {"url": url, "same": True, "confidence": "high", "reason": "same frame"}
+    offline.setattr(pipeline.matcher, "same_source", same)
+    result = run_events()[-1]
+    assert seen == ["https://news.org/a.jpg"]
+    assert result["evidence"][0]["match"] == "confirmed look-alike"
+
+
+def test_grounds_does_not_count_social_sites_as_descriptions():
+    ev = [row(1, "telegraf.com.ua", described_place="Ukraine"), row(2, "youtu.be", described_place="Ukraine")]
+    assert not verdict.grounds({"place": "Lebanon"}, ev, {"cited": ["E1", "E2"]})["ok"]

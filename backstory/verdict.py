@@ -13,7 +13,7 @@ import datetime as dt
 import json
 import re
 
-from . import config, matcher, meta
+from . import config, matcher, meta, search
 
 VERDICTS = ("consistent", "inconsistent", "cannot_tell")
 
@@ -46,7 +46,7 @@ def _first_dated(e):
     """Earliest date the table proves this exact image existed: the archived image file, or the publication date
     of a page that shows the same image file. A page's own archive date is not used: the page may predate the photo."""
     dates = [e.get("image_first")]
-    if e.get("match") == "full":
+    if e.get("match") == "full" or (e.get("match") == "confirmed look-alike" and e.get("page_published")):
         dates.append(_iso_day(e.get("page_published")))
     dates = [d for d in dates if d]
     return min(dates) if dates else None
@@ -55,6 +55,31 @@ def _first_dated(e):
 def _iso_day(value):
     m = re.match(r"(\d{4}-\d{2}-\d{2})", str(value or ""))
     return m.group(1) if m else None
+
+
+GENERIC = set("city town region state county district province united states kingdom republic near north south east "
+              "west central island islands area".split())
+
+
+def _place_words(text):
+    return {w for w in re.findall(r"[a-z]{4,}", str(text or "").lower())} - GENERIC
+
+
+def _same_place(a, b):
+    return bool(_place_words(a) & _place_words(b))
+
+
+def _dated_before(described, start):
+    if not described or not start:
+        return False
+    m = re.match(r"(\d{4})(?:-(\d{2}))?(?:-(\d{2}))?", str(described))
+    if not m:
+        return False
+    y, mo, d = int(m.group(1)), int(m.group(2) or 12), int(m.group(3) or 28)
+    try:
+        return dt.date(y, mo, d) < dt.date.fromisoformat(start) - dt.timedelta(days=MARGIN_DAYS)
+    except ValueError:
+        return False
 
 
 def grounds(claim, evidence, judged):
@@ -75,9 +100,17 @@ def grounds(claim, evidence, judged):
             return {"ok": True, "kind": "earlier copy", "ids": [x["id"] for x in early],
                     "text": "%s (%s) shows this image by %s, more than %d days before %s"
                             % (e["id"], e["domain"], _first_dated(e), MARGIN_DAYS, start)}
-    origin = [e for e in cited if e.get("match") == "full" and not e.get("fact_checker")
+    # Social and video sites carry what users wrote, not an editor's description, so they do not count here.
+    origin = [e for e in cited if e.get("match") in ("full", "confirmed look-alike") and not e.get("fact_checker")
+              and not search.low_value("https://" + e["domain"])
               and (e.get("described_place") or e.get("described_event") or e.get("described_date"))]
-    sites = sorted({e["domain"] for e in origin})
+    # Pages that put the image in the claimed place and do not date it earlier only disagree on details of the
+    # event ("a mosque" vs "the palace" in the same city on the same day): that is not proof.
+    claimed_place = claim.get("place")
+    differ = [e for e in origin if not (claimed_place and _same_place(e.get("described_place"), claimed_place)
+                                        and not _dated_before(e.get("described_date"), start))]
+    sites = sorted({e["domain"] for e in differ})
+    origin = differ
     if len(sites) >= 2:
         return {"ok": True, "kind": "independent descriptions", "ids": [e["id"] for e in origin],
                 "text": "%d sites describe this image differently from the caption: %s" % (len(sites), ", ".join(sites))}
