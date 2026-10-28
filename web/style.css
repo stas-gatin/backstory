@@ -529,3 +529,56 @@ th { color: var(--muted); font-weight: 600; border-top: 0; font-size: 12px; }
 .signcard small { font-size: 11px; font-weight: 800; letter-spacing: .08em; text-transform: uppercase; color: #9cc3ff; }
 .signcard blockquote { margin: 0; font-size: 40px; font-weight: 800; letter-spacing: -.02em; line-height: 1.1; }
 @media (max-width: 900px) { .signcard { height: 180px; } .signcard blockquote { font-size: 30px; } }
+img.broken { display: none !important; }
+
+/* ---- Round 1 polish: nothing wider than the screen, mobile layouts that collapse, honest greys ---- */
+html, body { overflow-x: clip; }
+.pair > *, .checkmain > *, .right > *, .rbody > *, .thennow > *, .compare > *, .graph > *, .hero > *, .kpis > *, .evidence > * { min-width: 0; }
+.summary, .note, .proof, .tn, .ev .body, .fact, .tl li { overflow-wrap: anywhere; }
+@media (max-width: 1100px) {
+  .preview-wrap .hero-preview { grid-template-columns: 1fr; }
+  .preview-wrap .hp-img img { height: 240px; min-height: 0; max-height: none; }
+  .preview-wrap .hp-body { padding: 16px 18px; }
+}
+@media (max-width: 900px) { .glines { display: none; } .graph .gcol { border-left: 2px solid var(--line); padding-left: 12px; } }
+.tablewrap { overflow-x: auto; -webkit-overflow-scrolling: touch; }
+.tests th { white-space: nowrap; }
+.tests td.none { color: var(--muted); font-weight: 600; }
+@media (max-width: 760px) { .tests { min-width: 720px; } }
+/* Copies that appeared after the claimed date really are grey */
+.tl li.late, .tl li.late a, .tl li.late time { color: var(--faint); }
+.tl li.late .tag { background: var(--bg); color: var(--faint); }
+/* Dates are data, not links: ink mono with a quiet underline where they open the archive */
+.dates dd a { color: var(--ink); text-decoration: underline dotted var(--faint); text-underline-offset: 3px; }
+.stages { align-items: start; }
+.node.notneeded { opacity: .8; } .node.notneeded small { color: var(--muted); font-weight: 600; }
+/* The verdict on every example card */
+.ex { position: relative; }
+.vchip { position: absolute; top: 8px; left: 8px; display: inline-flex; gap: 5px; align-items: center; font: 800 11.5px "Inter", sans-serif;
+  font-style: normal; padding: 4px 9px 4px 7px; border-radius: 99px; color: #fff; box-shadow: 0 2px 8px rgba(0, 0, 0, .25); }
+.vchip .ic { width: 13px; height: 13px; }
+.vchip.inconsistent { background: var(--red); } .vchip.consistent { background: var(--green); } .vchip.cannot_tell { background: var(--amber); }
+@media (max-width: 600px) { .brand { font-size: 17px; gap: 8px; } }
+@media (max-width: 600px) { .nav a[href^="http"] { display: none; } }
+/* ---- Round 2 ---- */
+.banner .summary { max-width: 78ch; }
+.glines path:not(.hot) { opacity: .22; }
+.citedtag.muted { background: rgba(255, 255, 255, .92); color: var(--muted); }
+.tngap.neutral b .ic { color: var(--amber); }
+.thennow.consistent .tngap.neutral b .ic { color: var(--green); }
+.thennow.cannot_tell .tn.first { background: var(--amber-soft); } .thennow.cannot_tell .tn.first .tnk { color: var(--amber); }
+.thennow.consistent .tn.first { background: var(--green-soft); } .thennow.consistent .tn.first .tnk { color: var(--green); }
+@media (max-width: 430px) { .brand { font-size: 0; gap: 0; } }
+/* ---- Round 3: track record ---- */
+.filters select { padding: 8px 30px 8px 12px; border: 1px solid var(--line); border-radius: 10px; background: var(--card); font: 600 13px "Inter", sans-serif; color: var(--ink); cursor: pointer; }
+.searchrow { display: flex; gap: 14px; align-items: center; margin: 6px 0 4px; }
+.searchrow input { flex: 1; min-width: 0; padding: 10px 14px; border: 1px solid var(--line); border-radius: 10px; font: inherit; background: var(--bg); }
+.searchrow .hint { white-space: nowrap; }
+.rmore summary { cursor: pointer; font-size: 12.5px; font-weight: 700; color: var(--blue); list-style: none; }
+.rmore summary::-webkit-details-marker { display: none; }
+.rmore summary::before { content: "▸ "; } .rmore[open] summary::before { content: "▾ "; }
+.rmore[open] { display: grid; gap: 8px; }
+.more { display: block; margin: 16px auto 4px; padding: 10px 20px; border: 1px solid var(--line); border-radius: 10px; background: var(--card); font: 700 14px "Inter", sans-serif; color: var(--ink); cursor: pointer; }
+.more:hover { border-color: var(--blue-line); color: var(--blue); }
+@media (max-width: 600px) { .filters .seg { width: 100%; } .filters select { flex: 1; } }
+.gnode.claim.neutral { background: var(--bg); border-color: var(--line); } .gnode.claim.neutral b { color: var(--muted); }

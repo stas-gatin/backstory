@@ -69,8 +69,8 @@ def example_image(ex_id: str):
 
 
 # A recorded run replays in a blink; a short pause per step lets a viewer follow the agents. The result says
-# "recorded run". The pause is off for live checks, where the agents' own time is shown; a recorded check of a post
-# on X is always paced, in live mode too.
+# "recorded run". The pause is off for live checks, where the agents' own time is shown; an example is always
+# paced, in live mode too.
 PACE = float(os.environ.get("BACKSTORY_PACE", "1" if config.MODE == "replay" else "0"))
 RECORDED_PACE = float(os.environ.get("BACKSTORY_RECORDED_PACE", "1"))
 
@@ -108,7 +108,7 @@ async def check(request: Request, caption: str = Form(""), posted_on: str = Form
         # Dataset cases carry their recorded search results instead of a live image search.
         matches = ex.get("matches")
         if ex.get("kind") == "link":
-            return _stream(pipeline.run(None, "", None, post_url=ex["post_url"]))
+            return _stream(pipeline.run(None, "", None, post_url=ex["post_url"]), pace=RECORDED_PACE)
         if ex.get("kind") == "video":
             data, video_path = None, str(EXAMPLES / ex["video"])
         else:
@@ -137,7 +137,8 @@ async def check(request: Request, caption: str = Form(""), posted_on: str = Form
     events = pipeline.run(data, caption, posted_on or None, matches=matches, video_path=video_path)
     if not example_id:
         events = _live(request, events)
-    return _stream(events, cleanup)
+    # An example replays its recorded answers: paced, so its agents can be watched.
+    return _stream(events, cleanup, pace=RECORDED_PACE if example_id else None)
 
 
 @app.get("/api/examples/{ex_id}/video")

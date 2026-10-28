@@ -6,7 +6,8 @@
 <title>Backstory track record</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@500&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="/static/style.css?v=48">
+<script>/* a picture another site refuses to serve is hidden, never shown broken */addEventListener("error",(e)=>{if(e.target&&e.target.tagName==="IMG")e.target.classList.add("broken")},true)</script>
+<link rel="stylesheet" href="/static/style.css?v=51">
 </head>
 <body>
 <header class="top">
@@ -36,12 +37,12 @@
         <button class="on" data-v="">All</button><button data-v="caught">Fakes caught</button><button data-v="missed">Fakes not caught</button>
         <button data-v="no alarm">Genuine, no alarm</button><button data-v="false alarm">False alarm</button>
       </div>
-      <div class="seg" data-key="media"><button class="on" data-v="">Photo and video</button><button data-v="photo">Photo</button><button data-v="video">Video</button></div>
-      <div class="seg" data-key="test"><button class="on" data-v="">All tests</button><button data-v="H2">H2</button><button data-v="H3">H3</button><button data-v="H4">H4</button><button data-v="H5">H5</button><button data-v="H6">H6</button></div>
-      <input type="search" id="q" placeholder="Search place, event, account…">
+      <select data-key="media" aria-label="Media"><option value="">Photo and video</option><option value="photo">Photos</option><option value="video">Videos</option></select>
+      <select data-key="test" aria-label="Test"><option value="">All tests (H2–H6)</option><option value="H2">Test H2</option><option value="H3">Test H3</option><option value="H4">Test H4</option><option value="H5">Test H5</option><option value="H6">Test H6</option></select>
     </div>
-    <div class="hint" id="count"></div>
+    <div class="searchrow"><input type="search" id="q" placeholder="Search place, event, account…"><span class="hint" id="count"></span></div>
     <div class="rows" id="rows"></div>
+    <button type="button" class="more" id="more" hidden></button>
   </section>
 </main>
 <footer>Backstory · Meta AI Developer Hackathon 2026 · <a href="/">Check a post</a> · data: <a href="https://github.com/stas-gatin/backstory/blob/main/eval/track_record.json">eval/track_record.json</a></footer>
@@ -50,7 +51,7 @@ const esc = (s) => String(s ?? "").replace(/[&<>"]/g, (c) => ({ "&": "&amp;", "<
 const link = (u, t) => /^https?:\/\//.test(u || "") ? `<a href="${esc(u)}" target="_blank" rel="noopener noreferrer">${esc(t)}</a>` : esc(t);
 const LABEL = { inconsistent: "Does not fit", consistent: "Fits", cannot_tell: "Cannot verify", error: "Error" };
 const OUT = { caught: ["Fake caught", "ok"], missed: ["Fake not caught", "miss"], "no alarm": ["Genuine, no alarm", "ok"], "false alarm": ["False alarm", "bad"] };
-let data = [], f = { outcome: "", media: "", test: "", q: "" };
+let data = [], f = { outcome: "", media: "", test: "", q: "" }, shown = 25;
 
 function summary() {
   const n = (p) => data.filter(p).length;
@@ -70,18 +71,22 @@ function draw() {
   const rows = data.filter((x) => (!f.outcome || x.outcome === f.outcome) && (!f.media || x.media === f.media) && (!f.test || x.test === f.test)
     && (!q || [x.claimed, x.truth, x.summary, x.post_url].join(" ").toLowerCase().includes(q)));
   $("count").textContent = rows.length + " of " + data.length + " posts";
-  $("rows").innerHTML = rows.map((x) => {
+  $("more").hidden = rows.length <= shown;
+  $("more").textContent = `Show ${Math.min(25, rows.length - shown)} more (${rows.length - shown} left)`;
+  $("rows").innerHTML = rows.slice(0, shown).map((x) => {
     const [ol, oc] = OUT[x.outcome];
     const fc = x.first_copy;
     return `<article class="rrow ${oc}">
       <div class="rhead"><span class="rout ${oc}">${ol}</span><span class="rv ${x.verdict}">${LABEL[x.verdict] || esc(x.verdict)}</span>
-        <span class="rmeta">${esc(x.test)} · version ${esc(x.version)} · ${esc(x.media)}${x.community_note ? " · has a Community Note" : ""}</span>
+        <span class="rmeta">Test ${esc(x.test)} · ${esc(x.media)}${x.community_note ? " · has a Community Note" : ""}</span>
         <span class="rlinks"><button type="button" class="showpost" data-url="${esc(x.post_url)}">Show the post</button> · ${link(x.post_url, "Open on X")}${x.fact_check ? " · " + link(x.fact_check, x.group === "fake" ? "Fact-check" : "Source") : ""}</span></div>
       <div class="rgrid"><div><div class="rk">The post claimed</div>${esc(x.claimed)}</div>
         <div><div class="rk">${x.group === "fake" ? "The fact-checker found" : "What it really shows"}</div>${esc(x.truth)}</div></div>
       <div class="rsay"><div class="rk">Backstory said</div>${esc(x.summary || "")}</div>
-      ${fc ? `<div class="rfc"><div class="rk">Earliest copy it cited</div>${esc(fc.date)} · ${link(fc.url, fc.domain)} (${esc(fc.how)})</div>` : ""}
-      ${x.proof ? `<div class="rfc"><div class="rk">Proof check</div>${esc(x.proof)}</div>` : ""}
+      ${fc || x.proof ? `<details class="rmore"><summary>Evidence and proof check</summary>
+        ${fc ? `<div class="rfc"><div class="rk">Earliest copy it cited</div>${esc(fc.date)} · ${link(fc.url, fc.domain)} (${esc(fc.how)})</div>` : ""}
+        ${x.proof ? `<div class="rfc"><div class="rk">Proof check</div>${esc(x.proof)}</div>` : ""}
+        <div class="rmeta">Pipeline version ${esc(x.version)}${x.usd != null ? ` · $${(+x.usd).toFixed(3)}` : ""}</div></details>` : ""}
       <div class="embed" hidden></div>
     </article>`;
   }).join("");
@@ -102,9 +107,11 @@ $("rows").addEventListener("click", (e) => {
 document.querySelectorAll(".seg").forEach((seg) => seg.addEventListener("click", (e) => {
   const b = e.target.closest("button"); if (!b) return;
   seg.querySelectorAll("button").forEach((x) => x.classList.toggle("on", x === b));
-  f[seg.dataset.key] = b.dataset.v; draw();
+  f[seg.dataset.key] = b.dataset.v; shown = 25; draw();
 }));
-$("q").addEventListener("input", (e) => { f.q = e.target.value; draw(); });
+document.querySelectorAll(".filters select").forEach((sel) => sel.addEventListener("change", () => { f[sel.dataset.key] = sel.value; shown = 25; draw(); }));
+$("q").addEventListener("input", (e) => { f.q = e.target.value; shown = 25; draw(); });
+$("more").addEventListener("click", () => { shown += 25; draw(); });
 fetch("/api/record").then((r) => r.json()).then((d) => { data = d; summary(); draw(); });
 </script>
 <script src="/static/motion.js?v=2"></script>

@@ -7,7 +7,8 @@
 <meta name="description" content="Does the caption fit the photo's past? Backstory finds where a photo or video appeared online before and checks the caption against that record.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@500&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="/static/style.css?v=48">
+<script>/* a picture another site refuses to serve is hidden, never shown broken */addEventListener("error",(e)=>{if(e.target&&e.target.tagName==="IMG")e.target.classList.add("broken")},true)</script>
+<link rel="stylesheet" href="/static/style.css?v=51">
 </head>
 <body>
 <header class="top">
@@ -34,7 +35,7 @@
     </ul>
   </div>
   <section class="card input" id="inputCard">
-    <div class="input-title">Check a post</div>
+    <div class="input-title">Paste a post</div>
     <div class="tabs" role="tablist">
       <button type="button" class="tabbtn on" data-tab="link" role="tab">Link to an X post</button>
       <button type="button" class="tabbtn" data-tab="upload" role="tab">Photo or video + caption</button>
@@ -123,7 +124,7 @@
 
 <footer>Backstory · built for the Meta AI Developer Hackathon 2026 on Muse Spark, Muse Wonder, Muse Voice Transcribe and SAM 3.1 ·
   <a href="/tested">Accuracy</a> · <a href="https://github.com/stas-gatin/backstory" target="_blank" rel="noopener">Code</a></footer>
-<script src="/static/app.js?v=47"></script>
+<script src="/static/app.js?v=50"></script>
 <script src="/static/motion.js?v=2"></script>
 </body>
 </html>
