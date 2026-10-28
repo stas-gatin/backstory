@@ -1,0 +1,168 @@
+{
+ "note": "claim",
+ "response": {
+  "top_logprobs": 0,
+  "temperature": 1.0,
+  "top_p": 1.0,
+  "service_tier": "auto",
+  "model": "muse-spark-1.3",
+  "reasoning": {
+   "effort": "low"
+  },
+  "background": false,
+  "tools": [
+   {
+    "type": "web_search"
+   }
+  ],
+  "tool_choice": "auto",
+  "truncation": "disabled",
+  "id": "resp_6ae215d9b7bbe615b5df4a2f",
+  "object": "response",
+  "status": "completed",
+  "created_at": 1793201625.0,
+  "completed_at": 1793201631.0,
+  "error": null,
+  "incomplete_details": null,
+  "output": [
+   {
+    "type": "reasoning",
+    "id": "rs_6ae215d9b7bbe615b5df4a2f:rs_9bb7c2fa-397b-4bf8-9448-e33cdf38c665",
+    "summary": [],
+    "status": "completed"
+   },
+   {
+    "type": "message",
+    "id": "rs_8d575935-494c-407d-9e42-09c2838174cf",
+    "role": "assistant",
+    "content": [
+     {
+      "type": "output_text",
+      "text": "I'll search the web to pin down when the claimed Kamchatka tsunami occurred.",
+      "annotations": [],
+      "logprobs": []
+     }
+    ],
+    "phase": "commentary",
+    "status": "completed"
+   },
+   {
+    "type": "web_search_call",
+    "id": "ws_call_9b3c5da6-4af1-4e1f-8ebd-cacbb3497094",
+    "status": "completed",
+    "action": {
+     "type": "search",
+     "query": "tsunami reached Kamchatka coast July 2025"
+    },
+    "results": [
+     {
+      "type": "text_result",
+      "title": "2025 Kamchatka Tsunami: Insights on Wave Patterns and Warnings",
+      "url": "https://climatescience.press/?p=475889",
+      "snippet": ""
+     },
+     {
+      "type": "text_result",
+      "title": "Far-Field Tsunami Observations of the 29 July 2025 Mw 8.8 Kamchatka Earthquake and Comparison with other Far-Field Tsunamis on the Mexican Pacific Coast",
+      "url": "https://link.springer.com/article/10.1007/s00024-026-04118-5",
+      "snippet": ""
+     },
+     {
+      "type": "text_result",
+      "title": "Joe marks 1 year since 2025 Kamchatka Pacific-wide Tsunami",
+      "url": "https://www.redwoodnews.tv/local-news/joe-marks-1-year-since-2025-kamchatka-pacific-wide-tsunami/article_982a7671-ffe5-4b42-9b2f-17754df43971.html",
+      "snippet": ""
+     },
+     {
+      "type": "text_result",
+      "title": "The 2025 Kamchatka tsunami kept the Pacific ringing for more than ten hours. Its rhythm could help tsunami warnings",
+      "url": "https://phys.org/news/2026-09-kamchatka-tsunami-pacific-ten-hours.html",
+      "snippet": ""
+     },
+     {
+      "type": "text_result",
+      "title": "The 2025 Kamchatka tsunami kept the Pacific ringing for more than ten hours. Its rhythm could help tsunami warnings",
+      "url": "https://phys.org/news/2026-09-kamchatka-tsunami-pacific-ten-hours.pdf",
+      "snippet": ""
+     },
+     {
+      "type": "text_result",
+      "title": "Limited impact of the 2025 Kamchatka tsunami explained by the complex seismic rupture",
+      "url": "https://www.nature.com/articles/s43247-026-04050-5?error=cookies_not_supported&code=ac130b30-74f5-4f23-992b-126e197a0b98",
+      "snippet": ""
+     },
+     {
+      "type": "text_result",
+      "title": "Russia Earthquake Tsunami Warning - 2025 Kamchatka Quake Updates - TheCityPost.co.uk",
+      "url": "https://thecitypost.co.uk/world/russia-earthquake-tsunami-warning/",
+      "snippet": ""
+     },
+     {
+      "type": "text_result",
+      "title": "Pacific Tsunami Warning System Passes Kamchatka Earthquake Test",
+      "url": "https://ecomagazine.com/news/research/pacific-tsunami-warning-system-passes-kamchatka-earthquake-test/",
+      "snippet": ""
+     },
+     {
+      "type": "text_result",
+      "title": "Tsunami Damages Russian Nuclear Submarine Base",
+      "url": "https://www.globalsecurity.org/wmd/library/news/russia/2025/08/russia-250804-rferl01.htm",
+      "snippet": ""
+     },
+     {
+      "type": "text_result",
+      "title": "Russia Earthquake: 7.0-Magnitude Quake Strikes Kamchatka as NO...",
+      "url": "https://Www.ibtimes.sg/russia-earthquake-7-0-magnitude-quake-strikes-kamchatka-noaa-rules-out-tsunami-threat-95200",
+      "snippet": ""
+     },
+     {
+      "type": "text_result",
+      "title": "2025 Kamchatka Peninsula earthquake",
+      "url": "https://simple.wikipedia.org/wiki/2025_Kamchatka_Peninsula_earthquake",
+      "snippet": ""
+     },
+     {
+      "type": "text_result",
+      "title": "Russian quake is among the top 10 in history: See where it ranks",
+      "url": "https://www.beaconjournal.com/story/news/nation/2025/07/30/strongest-earthquakes-ever-in-the-world/85434059007/",
+      "snippet": ""
+     }
+    ]
+   },
+   {
+    "type": "reasoning",
+    "id": "rs_6ae215d9b7bbe615b5df4a2f:rs_53fa6a60-3769-4bb6-aed9-21ba7784851b",
+    "summary": [],
+    "status": "completed"
+   },
+   {
+    "type": "message",
+    "id": "msg_06efe0d8-537a-4e3d-8cad-7f33e36f3ebe",
+    "role": "assistant",
+    "content": [
+     {
+      "type": "output_text",
+      "text": "{\"place\": \"Kamchatka coast, Kamchatka, Russia\", \"event\": \"tsunami reaching the coast and flooding towns\", \"claimed_date\": \"this morning on 30 July 2025\", \"period_start\": \"2025-07-30\", \"precision\": \"day\", \"date_basis\": \"caption says this morning; post published 2025-07-30\", \"presented_as_new\": true, \"language\": \"English\"}",
+      "annotations": [],
+      "logprobs": []
+     }
+    ],
+    "status": "completed"
+   }
+  ],
+  "instructions": null,
+  "usage": {
+   "input_tokens": 3355,
+   "input_tokens_details": {
+    "cached_tokens": 0
+   },
+   "output_tokens": 1349,
+   "output_tokens_details": {
+    "reasoning_tokens": 1157
+   },
+   "total_tokens": 4704
+  },
+  "parallel_tool_calls": true,
+  "store": true
+ }
+}

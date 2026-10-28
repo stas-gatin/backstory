@@ -1,0 +1,807 @@
+{
+ "note": "web detection",
+ "response": {
+  "webEntities": [
+   {
+    "entityId": "/t/24_kbcy1k1k85",
+    "score": 0.7321
+   },
+   {
+    "entityId": "/m/02r97",
+    "score": 0.7112,
+    "description": "Earthquake"
+   },
+   {
+    "entityId": "/m/07nq4",
+    "score": 0.7005,
+    "description": "Tsunami"
+   },
+   {
+    "entityId": "/m/07nnlb",
+    "score": 0.69734997,
+    "description": "Hurricane Katrina"
+   },
+   {
+    "entityId": "/m/05ztg0z",
+    "score": 0.6477,
+    "description": "Kyshtym disaster"
+   },
+   {
+    "entityId": "/m/0dbtv",
+    "score": 0.4674,
+    "description": "Flood"
+   },
+   {
+    "entityId": "/m/02q545q",
+    "score": 0.4574,
+    "description": "Disaster risk reduction"
+   },
+   {
+    "entityId": "/m/0r3vgzt",
+    "score": 0.4203,
+    "description": "Engineering disasters"
+   },
+   {
+    "entityId": "/g/11c5xww5h5",
+    "score": 0.4167,
+    "description": "Natural event"
+   },
+   {
+    "entityId": "/m/058th7",
+    "score": 0.4099,
+    "description": "Emergency evacuation"
+   }
+  ],
+  "fullMatchingImages": [
+   {
+    "url": "https://media.defense.gov/2011/Mar/13/2001163199/-1/-1/0/906504-J-UAD78-776.jpg"
+   },
+   {
+    "url": "https://upload.wikimedia.org/wikipedia/commons/2/2a/SH-60B_helicopter_flies_over_Sendai.jpg?utm_source=ka.wikipedia.org&utm_campaign=index&utm_content=original"
+   },
+   {
+    "url": "http://culturacientifica.com/app/uploads/2018/02/SH-60B_helicopter_flies_over_Sendai.jpg"
+   },
+   {
+    "url": "https://img.jagranjosh.com/images/2023/February/822023/tohoku-min.jpg"
+   },
+   {
+    "url": "https://static.wikia.nocookie.net/nintendo/images/0/0c/2011_Sendai_earthquake_and_tsunami.jpg/revision/latest/scale-to-width-down/2763?cb=20121211224722&path-prefix=en"
+   },
+   {
+    "url": "https://images.prismic.io/quake/750f854c-1651-4924-901f-215498589b49_SH-60B_helicopter_flies_over_Sendai.jpg?auto=compress,format"
+   },
+   {
+    "url": "https://images.twnmm.com/c55i45ef3o2a/33AioeBjYvvfoJwY7IHm0t/f9f47bda0b16357398c3ddea9127cca6/Sendai_earthquake_US_Navy.jpg?w=3840&q=80&fm=webp"
+   },
+   {
+    "url": "https://i.redd.it/v4drvi0n7bph1.jpeg"
+   },
+   {
+    "url": "https://images.bonnier.cloud/files/ill/production/20260928133927/Tsunami-2011-scaled.jpg"
+   },
+   {
+    "url": "http://environmental-geology-dev.pressbooks.tru.ca/wp-content/uploads/sites/73/2021/07/SH-60B_helicopter_flies_over_Sendai-scaled-1.jpg"
+   },
+   {
+    "url": "https://www.why-not.jp/wp-content/uploads/2023/03/SH-60B_helicopter_flies_over_Sendai-scaled.jpg"
+   },
+   {
+    "url": "https://www.globalconstructionreview.com/wp-content/uploads/2022/07/130722-Fukushima-pic-scaled.jpg"
+   },
+   {
+    "url": "https://www.worldatlas.com/r/w2560-q80/upload/98/08/10/sh-60b-helicopter-flies-over-sendai.jpg"
+   },
+   {
+    "url": "https://assets.st-note.com/production/uploads/images/6548660/c559e4ea85c709de20e1a1a7f26c6343.jpg"
+   },
+   {
+    "url": "https://pbs.twimg.com/media/Gltd_9SWQAAnr3E?format=webp&name=large"
+   },
+   {
+    "url": "https://lookaside.fbsbx.com/lookaside/crawler/media/?media_id=790078963771559"
+   },
+   {
+    "url": "https://ixbt.online/live/images/original/38/33/22/2026/02/18/2583e9987a.jpg"
+   },
+   {
+    "url": "https://s3.us-west-004.backblazeb2.com/wcn-media/2026/08/SH-60B_helicopter_flies_over_Sendai-scaled.jpg"
+   },
+   {
+    "url": "https://static.zpe.gov.pl/portal/f/res-minimized/R1Mpem6MkGPIh/1712839987/1eXS204TjIYkJSlQJmiacaVgTYQQVzky.jpg"
+   },
+   {
+    "url": "https://i1.wp.com/itoito.style/wp-content/uploads/2017/03/SH-60B_helicopter_flies_over_Sendai.jpg?fit=1920%2C1282&quality=100&ssl=1"
+   },
+   {
+    "url": "https://es.gizmodo.com/app/uploads/2020/02/k0ln6bakhrbitrll6cet.jpg"
+   },
+   {
+    "url": "https://itoito.style/wp-content/uploads/2017/03/SH-60B_helicopter_flies_over_Sendai.jpg"
+   },
+   {
+    "url": "https://lookaside.fbsbx.com/lookaside/crawler/media/?media_id=1751990085948531"
+   },
+   {
+    "url": "https://preview.redd.it/massive-quake-devastates-eastern-japanese-states-v0-g53ix61g0dwe1.jpg?width=1920&format=pjpg&auto=webp&s=0dcdf476467f7056d761a732a9fd52de6492d78b"
+   },
+   {
+    "url": "https://assets.st-note.com/img/1778128833-uqLNAgonmybSQHCOdUtwz7rP.jpg"
+   },
+   {
+    "url": "https://www.tiktok.com/api/img/?itemId=7656355743213325590&location=3&aid=1988&index=0"
+   },
+   {
+    "url": "https://www.worldatlas.com/r/w1200/upload/98/08/10/sh-60b-helicopter-flies-over-sendai.jpg"
+   },
+   {
+    "url": "https://miro.medium.com/v2/resize:fit:1400/0*CE_CsyGCSy1NPqUs.jpg"
+   },
+   {
+    "url": "https://assets.st-note.com/production/uploads/images/7748632/picture_pc_251006af661c3ae322b93b1f1d030d5f.jpg"
+   },
+   {
+    "url": "https://www.hayadan.org.il/images/content3/2017/09/1280px-SH-60B_helicopter_flies_over_Sendai-1.jpg"
+   },
+   {
+    "url": "https://cdn.epnnews.com/news/photo/201909/2543_2905_4621.jpg"
+   },
+   {
+    "url": "https://www.huffingtonpost.gr/wp-content/uploads/2026/06/SH-60B_helicopter_flies_over_Sendai.jpg"
+   },
+   {
+    "url": "https://www.japandigest.de/wp-content/uploads/2016/07/1280px-SH-60B_helicopter_flies_over_Sendai.jpg"
+   },
+   {
+    "url": "https://external-preview.redd.it/til-that-the-2011-t%C5%8Dhoku-earthquake-was-so-powerful-that-it-v0-KcCYWDHA7SP8xmVpS14xUGL0xNZmCPmrnOG5e-ElkLs.jpeg?auto=webp&s=ab00606cb3dc3ff8b4963a3af8f2602cbdab5a51"
+   },
+   {
+    "url": "http://res.cloudinary.com/jerrick/image/upload/v1766528250/694b14f97afd1d001dc0498e.jpg"
+   },
+   {
+    "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/2/2a/SH-60B_helicopter_flies_over_Sendai.jpg/1280px-SH-60B_helicopter_flies_over_Sendai.jpg?utm_source=ka.wikipedia.org&utm_campaign=index&utm_content=thumbnail"
+   },
+   {
+    "url": "http://image.freshnewsasia.com/2021//fn-2024-01-19-17-03-43-7.jpg"
+   },
+   {
+    "url": "https://www.linkiesta.it/wp-content/uploads/2020/02/e2e736e5-c037-47f3-879e-443f6cb69c42_large.jpg"
+   },
+   {
+    "url": "http://image.freshnewsasia.com/2021/id-024/fn-2023-02-01-17-52-50-5.jpg"
+   },
+   {
+    "url": "http://image.freshnewsasia.com/2020/id-021/September/fn-2020-09-04-20-45-41-7.jpg"
+   },
+   {
+    "url": "http://image.freshnewsasia.com/2020/id-154/fn-2020-06-26-15-40-49-6.jpg"
+   },
+   {
+    "url": "https://img.turkiyetoday.com/images/2025/7/30/worlds-most-powerful-earthquakes-occurred-along-the-pacific-ring-of-fire-3204832_202507300925_6.jpg"
+   },
+   {
+    "url": "https://s3.us-west-004.backblazeb2.com/wcn-media/2026/08/SH-60B_helicopter_flies_over_Sendai-1200x900.jpg"
+   },
+   {
+    "url": "https://tocana.jp/wp-content/uploads/2025/03/2025311_thumb.jpg"
+   },
+   {
+    "url": "https://www.futura-sciences.com/nl/wp-content/uploads/2025/09/%C2%A9-U.S.-Navy-photo.jpg"
+   },
+   {
+    "url": "https://content.onliner.by/news/1200x5616/5b8f44bd1b6f26cc9eb0c9daa7effe8f.jpg"
+   },
+   {
+    "url": "https://naked-science.ru/wp-content/uploads/2026/08/2-52.jpg"
+   },
+   {
+    "url": "https://www.elimparcial.com/resizer/v2/EGTUHLXWSFEK3FP5D3DDDKPHQ4.jpg?auth=bf35b5210541dfa8e644bac5d40d1be06cdf05f2c52e49da994a6031e8881a99&smart=true&width=1200&height=802&quality=70"
+   },
+   {
+    "url": "https://image.forskning.no/?imageId=132169&width=1200"
+   },
+   {
+    "url": "https://content.onliner.by/news/1200x5616/7165052281d591c295845db12d1900b1.jpg"
+   }
+  ],
+  "partialMatchingImages": [
+   {
+    "url": "https://lookaside.fbsbx.com/lookaside/crawler/media/?media_id=2157701691287070"
+   },
+   {
+    "url": "https://lookaside.fbsbx.com/lookaside/crawler/media/?media_id=1590803327976912"
+   },
+   {
+    "url": "https://lookaside.fbsbx.com/lookaside/crawler/media/?media_id=965897890467462"
+   },
+   {
+    "url": "https://lookaside.fbsbx.com/lookaside/crawler/media/?media_id=4001423073254373"
+   },
+   {
+    "url": "https://photo-baomoi.bmcdn.me/w250_r3x2/2024_09_13_106_50165643/768f0dda4d95a4cbfd84.jpg"
+   },
+   {
+    "url": "https://cdn.kpbs.org/dims4/default/5ee9ec8/2147483647/strip/true/crop/900x554+0+22/resize/880x542!/quality/90/?url=http%3A%2F%2Fkpbs-brightspot.s3.us-west-2.amazonaws.com%2Fimg%2Fphotos%2F2021%2F03%2F09%2FSH-60B_helicopter_flies_over_Sendai.jpg"
+   },
+   {
+    "url": "https://www.aljazeera.net/wp-content/uploads/2019/08/a1f562bc-1f9d-4792-b34c-8a1a70899781.jpeg?quality=80"
+   },
+   {
+    "url": "https://img.nsctotal.com.br/wp-content/uploads/2026/09/177-1-696x392.jpg"
+   },
+   {
+    "url": "https://static.spektrum.de/fm/912/f640x360/110312-N-0000X-003.jpg"
+   },
+   {
+    "url": "https://lookaside.fbsbx.com/lookaside/crawler/media/?media_id=4740417719388979"
+   },
+   {
+    "url": "https://imagenes.elpais.com/resizer/v2/ETET47UN2RN5ZDV3LUW3FVHHRU.jpg?auth=41e51f00cdb9e83d200a9f81d145bda3b59f51afeabf9bf230626448baa406a6&width=414"
+   },
+   {
+    "url": "https://assets1.cbsnewsstatic.com/hub/i/r/2011/03/15/f7301f79-a642-11e2-a3f0-029118418759/thumbnail/1200x630/b4619896a6b10c6f99ba80c1fda9a52d/110312-N-0000X-003.jpg"
+   },
+   {
+    "url": "https://external-preview.redd.it/lCb0DyWcbZrtv7FM7ULE6RkfVR1XVYZFjZyAYU-ucOk.jpeg?width=140&height=101&auto=webp&s=f311112be4c4c79853343bed69e9bd73e92a6cb1"
+   },
+   {
+    "url": "https://external-preview.redd.it/til-the-japanese-bullet-train-system-is-equipped-with-a-v0-lCb0DyWcbZrtv7FM7ULE6RkfVR1XVYZFjZyAYU-ucOk.jpeg?auto=webp&s=abcecc3149fd2b185a65113fa5e92e278fca2f8c"
+   },
+   {
+    "url": "https://cdn.kpbs.org/dims4/default/0571c37/2147483647/strip/true/crop/900x473+0+63/resize/1200x630!/quality/90/?url=http%3A%2F%2Fkpbs-brightspot.s3.us-west-2.amazonaws.com%2Fimg%2Fphotos%2F2021%2F03%2F09%2FSH-60B_helicopter_flies_over_Sendai.jpg"
+   },
+   {
+    "url": "https://cdn.gazetasp.com.br/uploads/2026/05/SH-60B_helicopter_flies_over_Sendai-649x365.jpg"
+   },
+   {
+    "url": "https://imgix.bustle.com/inverse/d0/cc/e4/83/c26c/4a02/9397/b77472aa64a6/tsunami-damage-sendai-japan.jpeg?w=1200&h=900&fit=crop&crop=faces&fm=jpg"
+   },
+   {
+    "url": "https://pbs.twimg.com/media/HDGwmyIa8AAg57Q?format=webp&name=large"
+   }
+  ],
+  "pagesWithMatchingImages": [
+   {
+    "url": "https://preparecenter.org/resource/natech/",
+    "pageTitle": "NATECH - PrepareCenter - Global Disaster Preparedness Center",
+    "fullMatchingImages": [
+     {
+      "url": "https://preparecenter.org/wp-content/uploads/2021/04/Natech-OECD.jpg"
+     }
+    ]
+   },
+   {
+    "url": "https://www.epis-thinktank.com/publications/natech-disasters",
+    "pageTitle": "Natech Disasters - EPIS Think Tank"
+   },
+   {
+    "url": "https://ui.adsabs.harvard.edu/abs/2011NHESS..11.1129G/abstract",
+    "pageTitle": "The natech events during the 17 August 1999 Kocaeli earthquake"
+   },
+   {
+    "url": "https://www.researchgate.net/figure/Industrial-sectors-affected-by-Natech-accidents-triggered-by-heat-waves-occurred-See_fig4_370959765",
+    "pageTitle": "Industrial sectors affected by Natech accidents triggered by heat ..."
+   },
+   {
+    "url": "https://scispace.com/papers/natech-events-triggered-by-floods-when-floods-cause-2sr911ffs9",
+    "pageTitle": "When Floods Cause Technological Accidents (2016) | Eric Piatyszek"
+   },
+   {
+    "url": "https://www.globalconstructionreview.com/ex-managers-ordered-to-pay-97bn-over-fukushima-nuclear-disaster/",
+    "pageTitle": "Ex-managers ordered to pay $97bn over Fukushima nuclear disaster",
+    "fullMatchingImages": [
+     {
+      "url": "https://www.globalconstructionreview.com/wp-content/uploads/2022/07/130722-Fukushima-pic-scaled.jpg"
+     }
+    ]
+   },
+   {
+    "url": "https://courses.ems.psu.edu/earth107/node/1109",
+    "pageTitle": "Overcoming Response Challenges | EARTH 107 - Dutton Institute",
+    "fullMatchingImages": [
+     {
+      "url": "https://courses.ems.psu.edu/earth107/sites/earth107/files/Unit4/Mod11/Mod11Fig11%20%281%29.png"
+     }
+    ]
+   },
+   {
+    "url": "https://blogs.ubc.ca/sebmiskovic/2017/10/25/geog-481-blog-post-2-disaster-early-warning-systems-the-2020-olympic-games/",
+    "pageTitle": "Disaster Early Warning Systems & the 2020 Olympic Games",
+    "fullMatchingImages": [
+     {
+      "url": "https://blogs.ubc.ca/sebmiskovic/files/2017/10/SH-60B_helicopter_flies_over_Sendai-624x417.jpg"
+     }
+    ]
+   },
+   {
+    "url": "https://en.wikipedia.org/wiki/2011_T%C5%8Dhoku_earthquake_and_tsunami",
+    "pageTitle": "2011 Tōhoku earthquake and tsunami - Wikipedia",
+    "fullMatchingImages": [
+     {
+      "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/2/2a/SH-60B_helicopter_flies_over_Sendai.jpg/330px-SH-60B_helicopter_flies_over_Sendai.jpg?utm_source=en.wikipedia.org&utm_campaign=parser&utm_content=thumbnail"
+     },
+     {
+      "url": "https://upload.wikimedia.org/wikipedia/commons/2/2a/SH-60B_helicopter_flies_over_Sendai.jpg?utm_source=en.wikipedia.org&utm_campaign=index&utm_content=original"
+     },
+     {
+      "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/2/2a/SH-60B_helicopter_flies_over_Sendai.jpg/1280px-SH-60B_helicopter_flies_over_Sendai.jpg?utm_source=en.wikipedia.org&utm_campaign=index&utm_content=thumbnail"
+     }
+    ]
+   },
+   {
+    "url": "https://www.reddit.com/r/AskTheWorld/comments/1xcn8mi/what_was_the_most_devastating_natural_disaster_in/",
+    "pageTitle": "What was the most devastating natural disaster in your country's ...",
+    "fullMatchingImages": [
+     {
+      "url": "https://preview.redd.it/what-was-the-most-devastating-natural-disaster-in-your-v0-4rtvmvrpo1xh1.jpeg?width=547&format=pjpg&auto=webp&s=dafd067775bb84686e9d5b2aa05e16e2ea87299e"
+     },
+     {
+      "url": "https://i.redd.it/4rtvmvrpo1xh1.jpeg"
+     }
+    ]
+   },
+   {
+    "url": "https://massivesci.com/articles/natural-disaster-mental-health-damage/",
+    "pageTitle": "Natural disasters leave behind more than just physical damage",
+    "fullMatchingImages": [
+     {
+      "url": "https://images.takeshape.io/fd194db7-7b25-4b5a-8cc7-da7f31fab475/dev/c04e87ec-be58-426d-9735-80ea74c3ae49/SH-60B_helicopter_flies_over_Sendai.jpg"
+     }
+    ]
+   },
+   {
+    "url": "https://www.geographypods.com/9-adjustments-and-responses-to-hazards-and-disasters.html",
+    "pageTitle": "9. Adjustments and responses to hazards and disasters",
+    "fullMatchingImages": [
+     {
+      "url": "https://www.geographypods.com/uploads/7/6/2/2/7622863/753766508.jpg?1395743357"
+     }
+    ]
+   },
+   {
+    "url": "https://www.toptenz.net/10-disturbing-facts-about-the-aftermath-of-the-fukushima-nuclear-disaster.php",
+    "pageTitle": "10 Disturbing Facts About the Aftermath of the Fukushima Nuclear ...",
+    "fullMatchingImages": [
+     {
+      "url": "https://www.toptenz.net/wp-content/uploads/2018/10/fukushima-1-640x427.jpg"
+     }
+    ]
+   },
+   {
+    "url": "https://www.worldatlas.com/articles/what-was-the-kyshtym-disaster.html",
+    "pageTitle": "What Was the Kyshtym Disaster? - World Atlas",
+    "fullMatchingImages": [
+     {
+      "url": "https://www.worldatlas.com/r/w1200/upload/98/08/10/sh-60b-helicopter-flies-over-sendai.jpg"
+     }
+    ]
+   },
+   {
+    "url": "https://www.cbsnews.com/pictures/us-relief-crews-in-japan/",
+    "pageTitle": "U.S. relief crews in Japan - CBS News",
+    "partialMatchingImages": [
+     {
+      "url": "https://assets1.cbsnewsstatic.com/hub/i/r/2011/03/15/f7301f79-a642-11e2-a3f0-029118418759/thumbnail/1200x630/b4619896a6b10c6f99ba80c1fda9a52d/110312-N-0000X-003.jpg"
+     }
+    ]
+   },
+   {
+    "url": "https://www.facebook.com/Fox8NewsCleveland/posts/the-number-of-deaths-has-surpassed-the-toll-in-a-2011-earthquake-off-japan-that-/754069089638600/",
+    "pageTitle": "The number of deaths has surpassed the toll in a 2011 earthquake ...",
+    "fullMatchingImages": [
+     {
+      "url": "https://lookaside.fbsbx.com/lookaside/crawler/media/?media_id=789156950530427"
+     }
+    ]
+   },
+   {
+    "url": "https://www.rainviewer.com/blog/top-10-costliest-weather-disasters-in-history.html",
+    "pageTitle": "Billion-Dollar Weather and Climate Disasters | RainViewer Blog",
+    "fullMatchingImages": [
+     {
+      "url": "https://www.rainviewer.com/images/posts/2024-11-29-top-10-costliest-weather-disasters-in-history/costliest_01.jpg"
+     }
+    ]
+   },
+   {
+    "url": "https://www.worldatlas.com/articles/worst-countries-at-reducing-disaster-risk.html",
+    "pageTitle": "Worst Countries At Reducing Disaster Risk - World Atlas",
+    "fullMatchingImages": [
+     {
+      "url": "https://www.worldatlas.com/r/w1200/upload/98/08/10/sh-60b-helicopter-flies-over-sendai.jpg"
+     }
+    ]
+   },
+   {
+    "url": "https://www.eurasiantimes.com/worlds-biggest-earthquake-alarm-japan/",
+    "pageTitle": "Tsunami, Then Nuclear Disaster: World's Biggest Earthquake Alarm ...",
+    "fullMatchingImages": [
+     {
+      "url": "https://upload.wikimedia.org/wikipedia/commons/2/2a/SH-60B_helicopter_flies_over_Sendai.jpg?utm_source=en.wikipedia.org&utm_campaign=imageinfo&utm_content=original"
+     }
+    ]
+   },
+   {
+    "url": "https://www.toptenz.net/10-tragic-engineering-disasters.php",
+    "pageTitle": "Tragic and Famous Engineering Disasters - Toptenz.net",
+    "fullMatchingImages": [
+     {
+      "url": "https://www.toptenz.net/wp-content/uploads/2018/10/fukushima-1-640x427.jpg"
+     }
+    ]
+   },
+   {
+    "url": "https://www.globalconstructionreview.com/japans-pm-signals-nuclear-revival-amid-soaring-energy-costs/",
+    "pageTitle": "Japan's PM signals nuclear revival amid soaring energy costs",
+    "fullMatchingImages": [
+     {
+      "url": "https://www.globalconstructionreview.com/wp-content/uploads/2022/08/130722-Fukushima-pic-scaled-1.jpg"
+     }
+    ]
+   },
+   {
+    "url": "https://kids.kiddle.co/Lists_of_disasters",
+    "pageTitle": "Lists of disasters Facts for Kids",
+    "fullMatchingImages": [
+     {
+      "url": "https://kids.kiddle.co/images/thumb/2/2a/SH-60B_helicopter_flies_over_Sendai.jpg/300px-SH-60B_helicopter_flies_over_Sendai.jpg"
+     }
+    ]
+   },
+   {
+    "url": "https://www.facebook.com/groups/293131130735001/posts/2118328111548618/",
+    "pageTitle": "Japan earthquake and tsunami disaster - Facebook",
+    "fullMatchingImages": [
+     {
+      "url": "https://lookaside.fbsbx.com/lookaside/crawler/media/?media_id=1948751295233476"
+     }
+    ]
+   },
+   {
+    "url": "https://www.worldatlas.com/articles/best-countries-at-reducing-disaster-risk.html",
+    "pageTitle": "Best Countries At Reducing Disaster Risk - World Atlas",
+    "fullMatchingImages": [
+     {
+      "url": "https://www.worldatlas.com/r/w1200/upload/98/08/10/sh-60b-helicopter-flies-over-sendai.jpg"
+     },
+     {
+      "url": "https://www.worldatlas.com/r/w2560-q80/upload/98/08/10/sh-60b-helicopter-flies-over-sendai.jpg"
+     }
+    ]
+   },
+   {
+    "url": "https://en.wikinews.org/wiki/Death_toll_rises_from_Japan_quake",
+    "pageTitle": "Death toll rises from Japan quake - Wikinews, the free news source",
+    "fullMatchingImages": [
+     {
+      "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/2/2a/SH-60B_helicopter_flies_over_Sendai.jpg/1280px-SH-60B_helicopter_flies_over_Sendai.jpg?utm_source=en.wikinews.org&utm_campaign=index&utm_content=thumbnail"
+     },
+     {
+      "url": "https://upload.wikimedia.org/wikipedia/commons/2/2a/SH-60B_helicopter_flies_over_Sendai.jpg?utm_source=en.wikinews.org&utm_campaign=index&utm_content=original"
+     }
+    ]
+   },
+   {
+    "url": "https://allthatsinteresting.com/tsunami-spirits",
+    "pageTitle": "Tsunami Spirits: The Ghosts Haunting Japan's Disaster Zone",
+    "fullMatchingImages": [
+     {
+      "url": "https://allthatsinteresting.com/wordpress/wp-content/uploads/2020/10/aerial-view-of-sendai.jpg"
+     }
+    ]
+   },
+   {
+    "url": "https://www.accuweather.com/en/weather-news/preparing-in-advance-of-a-tsunami-can-save-your-life-2/434164",
+    "pageTitle": "Preparing in advance of a tsunami can save your life - AccuWeather",
+    "fullMatchingImages": [
+     {
+      "url": "https://cms.accuweather.com/wp-content/uploads/2018/01/2011-japan-tsunami-3.jpg?w=632"
+     },
+     {
+      "url": "https://cms.accuweather.com/wp-content/uploads/2018/01/2011-japan-tsunami-2.jpg?w=768"
+     },
+     {
+      "url": "https://cms.accuweather.com/wp-content/uploads/2018/01/2011-japan-tsunami-2.jpg"
+     }
+    ]
+   },
+   {
+    "url": "https://lisbonquake.com/en-GB/blog",
+    "pageTitle": "Blog | Quake",
+    "fullMatchingImages": [
+     {
+      "url": "https://upload.wikimedia.org/wikipedia/commons/2/2a/SH-60B_helicopter_flies_over_Sendai.jpg"
+     },
+     {
+      "url": "https://images.prismic.io/quake/750f854c-1651-4924-901f-215498589b49_SH-60B_helicopter_flies_over_Sendai.jpg?auto=compress,format"
+     }
+    ]
+   },
+   {
+    "url": "https://www.fastcompany.com/section/earthquake",
+    "pageTitle": "earthquake - Fast Company",
+    "fullMatchingImages": [
+     {
+      "url": "https://images.fastcompany.com/image/upload/f_webp,c_fit,w_384,q_auto/fc/5522650215_7be3a8f198_o.jpg"
+     }
+    ]
+   },
+   {
+    "url": "https://www.worldatlas.com/world-facts/page203",
+    "pageTitle": "World Facts",
+    "fullMatchingImages": [
+     {
+      "url": "https://www.worldatlas.com/r/w1200/upload/98/08/10/sh-60b-helicopter-flies-over-sendai.jpg"
+     }
+    ]
+   },
+   {
+    "url": "https://www.kpbs.org/news/arts-culture/2021/03/09/311-tsunami",
+    "pageTitle": "3/11 - THE TSUNAMI | KPBS Public Media",
+    "fullMatchingImages": [
+     {
+      "url": "https://cdn.kpbs.org/dims4/default/5ee9ec8/2147483647/strip/true/crop/900x554+0+22/resize/880x542!/quality/90/?url=http%3A%2F%2Fkpbs-brightspot.s3.us-west-2.amazonaws.com%2Fimg%2Fphotos%2F2021%2F03%2F09%2FSH-60B_helicopter_flies_over_Sendai.jpg"
+     },
+     {
+      "url": "https://cdn.kpbs.org/dims4/default/0571c37/2147483647/strip/true/crop/900x473+0+63/resize/1200x630!/quality/90/?url=http%3A%2F%2Fkpbs-brightspot.s3.us-west-2.amazonaws.com%2Fimg%2Fphotos%2F2021%2F03%2F09%2FSH-60B_helicopter_flies_over_Sendai.jpg"
+     },
+     {
+      "url": "https://cdn.kpbs.org/img/photos/2021/03/09/SH-60B_helicopter_flies_over_Sendai.jpg"
+     }
+    ]
+   },
+   {
+    "url": "https://www.war.gov/Multimedia/Photos/igphoto/2001163199/",
+    "pageTitle": "A helicopter flies over Sendai, Japan, March 13, 2011, to ... - War.gov",
+    "fullMatchingImages": [
+     {
+      "url": "https://media.defense.gov/2011/Mar/13/2001163199/-1/-1/0/906504-J-UAD78-776.jpg"
+     }
+    ]
+   },
+   {
+    "url": "https://www.planetdeadly.com/nature/devastating-tsunamis-history",
+    "pageTitle": "The Most Devastating Tsunamis in History - Planet Deadly",
+    "fullMatchingImages": [
+     {
+      "url": "https://www.planetdeadly.com/wp-content/uploads/japan-2011-tsunami-720x481.webp"
+     }
+    ]
+   },
+   {
+    "url": "https://www.historydefined.net/the-tohuku-earthquake-and-fukushima-nuclear-disaster/",
+    "pageTitle": "The Tohuku Earthquake and Fukushima Nuclear Disaster",
+    "fullMatchingImages": [
+     {
+      "url": "https://www.historydefined.net/wp-content/uploads/2024/01/SH-60B_helicopter_flies_over_Sendai-1-1024x684.jpg"
+     }
+    ]
+   },
+   {
+    "url": "https://www.mhlw.go.jp/file/06-Seisakujouhou-10500000-Daijinkanboukokusaika/0000191321.pdf",
+    "pageTitle": "Health development of children for future generations"
+   },
+   {
+    "url": "https://en.wikinews.org/wiki/8.9_magnitude_earthquake_hits_Japan,_causes_tsunami",
+    "pageTitle": "8.9 magnitude earthquake hits Japan, causes tsunami - Wikinews",
+    "fullMatchingImages": [
+     {
+      "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/2/2a/SH-60B_helicopter_flies_over_Sendai.jpg/1280px-SH-60B_helicopter_flies_over_Sendai.jpg?utm_source=en.wikinews.org&utm_campaign=index&utm_content=thumbnail"
+     },
+     {
+      "url": "https://upload.wikimedia.org/wikipedia/commons/2/2a/SH-60B_helicopter_flies_over_Sendai.jpg?utm_source=en.wikinews.org&utm_campaign=index&utm_content=original"
+     }
+    ]
+   },
+   {
+    "url": "https://www.wikiwand.com/en/Lists_of_disasters",
+    "pageTitle": "Lists of disasters - Wikiwand",
+    "fullMatchingImages": [
+     {
+      "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/2/2a/SH-60B_helicopter_flies_over_Sendai.jpg/500px-SH-60B_helicopter_flies_over_Sendai.jpg?utm_source=en.wikipedia.org&utm_campaign=parser&utm_content=thumbnail"
+     }
+    ]
+   },
+   {
+    "url": "https://www.quora.com/Has-there-ever-been-a-single-earthquake-so-impactful-that-it-permanently-reshaped-the-land-By-permanent-I-mean-on-a-human-scale-rather-than-permanent-permanent",
+    "pageTitle": "Has there ever been a single earthquake so impactful that it ... - Quora",
+    "fullMatchingImages": [
+     {
+      "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/2/2a/SH-60B_helicopter_flies_over_Sendai.jpg/1280px-SH-60B_helicopter_flies_over_Sendai.jpg?utm_source=en.wikipedia.org&utm_campaign=index&utm_content=thumbnail"
+     }
+    ]
+   },
+   {
+    "url": "https://www.fastcompany.com/section/tsunami",
+    "pageTitle": "tsunami - Fast Company",
+    "fullMatchingImages": [
+     {
+      "url": "https://images.fastcompany.com/image/upload/f_webp,c_fit,w_384,q_auto/fc/5522650215_7be3a8f198_o.jpg"
+     }
+    ]
+   },
+   {
+    "url": "https://chuckhillscgblog.net/2011/06/09/japanese-coast-guard-response-to-the-earthquaketsunami/",
+    "pageTitle": "Japanese Coast Guard Response to the Earthquake/Tsunami",
+    "fullMatchingImages": [
+     {
+      "url": "http://upload.wikimedia.org/wikipedia/commons/2/2a/SH-60B_helicopter_flies_over_Sendai.jpg"
+     }
+    ]
+   },
+   {
+    "url": "https://en.wikinews.org/wiki/Japan_earthquake_shifts_Earth%27s_axis_10_centimetres",
+    "pageTitle": "Japan earthquake shifts Earth's axis 10 centimetres - Wikinews",
+    "fullMatchingImages": [
+     {
+      "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/2/2a/SH-60B_helicopter_flies_over_Sendai.jpg/1280px-SH-60B_helicopter_flies_over_Sendai.jpg?utm_source=en.wikinews.org&utm_campaign=index&utm_content=thumbnail"
+     },
+     {
+      "url": "https://upload.wikimedia.org/wikipedia/commons/2/2a/SH-60B_helicopter_flies_over_Sendai.jpg?utm_source=en.wikinews.org&utm_campaign=index&utm_content=original"
+     }
+    ]
+   },
+   {
+    "url": "https://www.wikidata.org/wiki/Q36204",
+    "pageTitle": "2011 Tōhoku earthquake and tsunami - Wikidata",
+    "fullMatchingImages": [
+     {
+      "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/2/2a/SH-60B_helicopter_flies_over_Sendai.jpg/1280px-SH-60B_helicopter_flies_over_Sendai.jpg?utm_source=www.wikidata.org&utm_campaign=index&utm_content=thumbnail"
+     }
+    ]
+   },
+   {
+    "url": "https://www.toptenz.net/the-most-radioactive-places-on-earth.php",
+    "pageTitle": "The 10 Most Radioactive Places on Earth - Toptenz.net",
+    "fullMatchingImages": [
+     {
+      "url": "https://www.toptenz.net/wp-content/uploads/2018/10/fukushima-1-640x427.jpg"
+     }
+    ]
+   },
+   {
+    "url": "https://www.reddit.com/r/todayilearned/comments/1faf1k7/til_that_the_2011_japanese_earthquake_and_tsunami/",
+    "pageTitle": "TIL that the 2011 Japanese earthquake and tsunami had waves up ...",
+    "fullMatchingImages": [
+     {
+      "url": "https://external-preview.redd.it/til-that-the-2011-japanese-earthquake-and-tsunami-had-waves-v0-KbrSDvafxFbRbEJUFxKYPWQCVKhvVfYeuH88xKw-0Ss.jpeg?width=640&crop=smart&auto=webp&s=9bbe7e3a0d1972c7c3d91e682adce54ac2c9503a"
+     },
+     {
+      "url": "https://external-preview.redd.it/til-that-the-2011-japanese-earthquake-and-tsunami-had-waves-v0-KbrSDvafxFbRbEJUFxKYPWQCVKhvVfYeuH88xKw-0Ss.jpeg?auto=webp&s=22570568a9133670b6601564ead9386972cde813"
+     },
+     {
+      "url": "https://external-preview.redd.it/til-that-the-2011-japanese-earthquake-and-tsunami-had-waves-v0-KbrSDvafxFbRbEJUFxKYPWQCVKhvVfYeuH88xKw-0Ss.jpeg?width=1080&crop=smart&auto=webp&s=08c372dc07eb24c1a0aa8c868c475534e0f5daa0"
+     }
+    ]
+   },
+   {
+    "url": "https://commons.wikimedia.org/wiki/Category:2011_T%C5%8Dhoku_earthquake_damage",
+    "pageTitle": "Category:2011 Tōhoku earthquake damage - Wikimedia Commons",
+    "fullMatchingImages": [
+     {
+      "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/2/2a/SH-60B_helicopter_flies_over_Sendai.jpg/1280px-SH-60B_helicopter_flies_over_Sendai.jpg?utm_source=commons.wikimedia.org&utm_campaign=index&utm_content=thumbnail"
+     }
+    ]
+   },
+   {
+    "url": "https://en.meteorologiaenred.com/A-magnitude-5-earthquake-shakes-the-Marmaris-region-of-Turkey.-Impact-assessment-and-testimonies..html",
+    "pageTitle": "A 5.8 magnitude earthquake strikes the Marmaris region of Türkiye",
+    "fullMatchingImages": [
+     {
+      "url": "https://www.meteorologiaenred.com/wp-content/uploads/2025/03/cambios-en-las-propiedades-elasticas-de-la-corteza-terrestre-debido-a-terremotos-300x200.jpg"
+     }
+    ]
+   },
+   {
+    "url": "https://bernews.com/2012/02/very-good-year-for-white-mountains/",
+    "pageTitle": "'Very Good Year' For White Mountains - Bernews",
+    "fullMatchingImages": [
+     {
+      "url": "https://cloudfront.bernews.com/wp-content/uploads/2012/02/helicopter_flies_over_Sendai.jpg"
+     }
+    ]
+   },
+   {
+    "url": "https://reflections.live/articles/23288/japan-in-fear-unpacking-the-predictions-of-baba-vanga-and-tatsuki-about-japans-future-article-by-hanan-kolangath-23334-mdn56tj4.html",
+    "pageTitle": "Japan in Fear: Unpacking the Predictions of Baba Vanga and ...",
+    "fullMatchingImages": [
+     {
+      "url": "https://assets.reflections.live/1753712258733-mdn56tj4.png"
+     }
+    ]
+   },
+   {
+    "url": "https://www.turkiyetoday.com/world/worlds-most-powerful-earthquakes-occurred-along-the-pacific-ring-of-fire-3204832",
+    "pageTitle": "World's most powerful earthquakes occurred along Pacific Ring of Fire",
+    "fullMatchingImages": [
+     {
+      "url": "https://img.turkiyetoday.com/images/2025/7/30/worlds-most-powerful-earthquakes-occurred-along-the-pacific-ring-of-fire-3204832_202507300925_6.jpg"
+     }
+    ]
+   },
+   {
+    "url": "https://commons.wikimedia.org/wiki/File:SH-60B_helicopter_flies_over_Sendai.jpg",
+    "pageTitle": "File:SH-60B helicopter flies over Sendai.jpg - Wikimedia Commons",
+    "fullMatchingImages": [
+     {
+      "url": "https://upload.wikimedia.org/wikipedia/commons/2/2a/SH-60B_helicopter_flies_over_Sendai.jpg?utm_source=commons.wikimedia.org&utm_campaign=index&utm_content=original"
+     },
+     {
+      "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/2/2a/SH-60B_helicopter_flies_over_Sendai.jpg/1280px-SH-60B_helicopter_flies_over_Sendai.jpg?utm_source=commons.wikimedia.org&utm_campaign=index&utm_content=thumbnail"
+     },
+     {
+      "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/2/2a/SH-60B_helicopter_flies_over_Sendai.jpg/330px-SH-60B_helicopter_flies_over_Sendai.jpg?utm_source=commons.wikimedia.org&utm_campaign=index&utm_content=thumbnail"
+     }
+    ]
+   }
+  ],
+  "visuallySimilarImages": [
+   {
+    "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/2/2a/SH-60B_helicopter_flies_over_Sendai.jpg/1280px-SH-60B_helicopter_flies_over_Sendai.jpg?utm_source=ml.wikipedia.org&utm_campaign=index&utm_content=thumbnail"
+   },
+   {
+    "url": "https://lookaside.instagram.com/seo/google_widget/crawler/?media_id=3226442183799505087"
+   },
+   {
+    "url": "https://projects.thestar.com/climate-change-canada/alberta/img/timeline/May-4(3).jpg"
+   },
+   {
+    "url": "https://cdn.milenio.com/uploads/media/2026/04/06/refineria-pemex-cadereyta-leon-roberto.jpeg"
+   },
+   {
+    "url": "https://i.guim.co.uk/img/media/c8ede1a7fd38565bbd3841a245fd552b18185ff0/0_0_4752_3014/master/4752.jpg?width=445&dpr=1&s=none&crop=none"
+   },
+   {
+    "url": "https://trthaberstatic.cdn.wp.trt.com.tr/resimler/2484000/yangin-aa-2484927.jpg"
+   },
+   {
+    "url": "https://i.insider.com/4c3b5a967f8b9a5631170000?width=600&format=jpeg&auto=webp"
+   },
+   {
+    "url": "https://www.geologic.com/wp-content/uploads/2026/02/Permian-Basin-Texas-drilling-iStock.jpg"
+   },
+   {
+    "url": "https://media.licdn.com/dms/image/v2/C4D12AQHaFxr22BE3Xw/article-cover_image-shrink_720_1280/article-cover_image-shrink_720_1280/0/1626717810867?e=2147483647&v=beta&t=LGU8O1s_x9GtU0HsRZ46lMJpLNqBdK9hv5prC54tCQk"
+   },
+   {
+    "url": "https://s.rfi.fr/media/display/26d81928-84d9-11f1-b542-005056bf30b7/w:1280/p:3x4/000-B98P2T3.jpg"
+   },
+   {
+    "url": "https://lookaside.instagram.com/seo/google_widget/crawler/?media_id=3983852028991695968"
+   },
+   {
+    "url": "https://media.gettyimages.com/id/2186601419/photo/topshot-in-this-picture-taken-from-the-northern-syrian-village-of-ariha-smoke-billows-from.jpg?s=612x612&w=gi&k=20&c=WM6U0ehbOxhXZnQdmIKSU4Hx-tcQeu909mYEX7FeCbc="
+   },
+   {
+    "url": "https://www.eldebate.com/files/article_social/files/fp/uploads/2026/09/19/6aaeb4986d2b8.r_d.577-600-17544.jpeg"
+   },
+   {
+    "url": "https://media.gettyimages.com/id/2186601396/photo/topshot-in-this-picture-taken-from-the-northern-syrian-village-of-ariha-smoke-billows-from.jpg?s=612x612&w=gi&k=20&c=NxZGeZu84SgCGwAaqElosVcw5y7DggjCbAwiYfsyxAU="
+   },
+   {
+    "url": "https://cce-signin.gsfc.nasa.gov/files/gallery/firesense//2025_ToC_N53W_prescribed_fire_florida_thumb.jpg"
+   },
+   {
+    "url": "https://i.f1g.fr/media/cms/1200x_cropupscale/2026/09/09/f7cb08426a7949dfb777dee56496d703994989b8db49c842e83efc3d87f72ed6.jpg"
+   },
+   {
+    "url": "https://i.guim.co.uk/img/media/da02c61c43ebe59272c05d566bee5fbb7d512c6e/0_507_7600_4560/master/7600.jpg?width=1200&quality=85&auto=format&fit=max&s=dfd7a8033105eb88b079aecce6742f43"
+   },
+   {
+    "url": "https://i0.wp.com/www.hcn.org/wp-content/uploads/2022/10/sanjuannewmexico-800x600.jpg?resize=800%2C600&quality=100&ssl=1"
+   },
+   {
+    "url": "https://www.ludwigshafen24.de/assets/images/2/915/2915145-663494524-explosion-basf-2LFODG6lzyec.jpg"
+   },
+   {
+    "url": "https://static01.nyt.com/images/2019/04/10/business/10mexoil2/merlin_149033484_505605c0-decd-4d55-ae0f-ccff623cbdf2-articleLarge.jpg?quality=75&auto=avif&disable=upscale"
+   }
+  ],
+  "bestGuessLabels": [
+   {
+    "label": "natech disaster",
+    "languageCode": "en"
+   }
+  ]
+ }
+}

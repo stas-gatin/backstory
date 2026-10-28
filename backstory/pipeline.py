@@ -115,6 +115,7 @@ def _run(image_bytes, caption, posted_on, matches, exclude_fact_checkers, budget
          tmp=None):
     extra = {}
     search_images = [image_bytes]
+    search_kinds = ["the photo"]  # what each search image is, for the check graph
     if post_url:
         # 0. A link to a post: take its own text, date and media.
         yield step("post", "running", "Reading the post")
@@ -127,6 +128,8 @@ def _run(image_bytes, caption, posted_on, matches, exclude_fact_checkers, budget
             tmp.append(f.name)
         elif post["photos"]:
             image_bytes, search_images = post["photos"][0], list(post["photos"])
+            search_kinds = ["photo %d" % (i + 1) if len(search_images) > 1 else "the photo"
+                            for i in range(len(search_images))]
         elif post["has_media"]:
             raise xpost.PostError("the post's photo or video could not be downloaded")
         else:
@@ -144,6 +147,7 @@ def _run(image_bytes, caption, posted_on, matches, exclude_fact_checkers, budget
         if not shots:
             raise video.VideoError("no frames could be read")
         image_bytes, search_images = shots[0]["jpeg"], [f["jpeg"] for f in shots]
+        search_kinds = ["frame at %s s" % f["t"] for f in shots]
         yield step("frames", "done", "%s taken at %s s" % (_count(len(shots), "frame", "frames"),
                                                           ", ".join(str(f["t"]) for f in shots)),
                    thumbs=[_thumb(f["jpeg"]) for f in shots])
@@ -174,6 +178,7 @@ def _run(image_bytes, caption, posted_on, matches, exclude_fact_checkers, budget
         yield step("cutout", "running", "Looking for separate photos inside the post")
         regions = sam.photo_regions(image_bytes, budget=budget)
         search_images = [image_bytes] + [r["jpeg"] for r in regions]
+        search_kinds = ["the whole image"] + ["cut-out %d" % (i + 1) for i in range(len(regions))]
         yield step("cutout", "done", ("Cut out %s; searched along with the whole image" % _count(len(regions), "photo", "separate photos"))
                    if regions else "The image is a single photo", thumbs=[_thumb(r["jpeg"]) for r in regions])
 
@@ -195,6 +200,7 @@ def _run(image_bytes, caption, posted_on, matches, exclude_fact_checkers, budget
                     jpeg = frame_at(t)
                     if jpeg:
                         search_images.append(jpeg)
+                        search_kinds.append("moment at %s s" % round(t, 1))
                         taken.append(t)
         checked = (_guarded(witness.check, c, seen, frame_at, budget=budget) or []) if seen else []
         for k, x in enumerate([x for x in checked if x["confirmed"]]):
@@ -264,7 +270,8 @@ def _run(image_bytes, caption, posted_on, matches, exclude_fact_checkers, budget
     # Read news and archive pages first; video, review and social pages rarely say where a photo is from.
     pages.sort(key=lambda p: (p.get("match") == "partial", search.low_value(p["url"])))
     yield step("search", "done", "Found %s on %s" % ("the frames" if video_path else "the photo",
-                                                      _count(len(pages), "page", "pages")), count=len(pages))
+                                                      _count(len(pages), "page", "pages")), count=len(pages),
+               inputs=[{"kind": k, "thumb": _guarded(_thumb, img, 120)} for k, img in zip(search_kinds, search_images)])
 
     # 2a. Copies on X, TikTok and YouTube: their exact posting dates, from the post id or the page metadata.
     own = clock.X_STATUS.match(post_url or "")
@@ -355,7 +362,7 @@ def _run(image_bytes, caption, posted_on, matches, exclude_fact_checkers, budget
     ev = [{"id": "E%d" % (i + 1), "url": p["url"], "domain": p["domain"], "fact_checker": p["fact_checker"],
            "match": p.get("match"), "image_first": None, "image_snapshot": None, "page_first": None,
            "page_published": p.get("posted"), "date_source": p.get("posted_how"),
-           "image_url": (p.get("image_urls") or [p.get("thumb")])[0]}
+           "image_url": (p.get("image_urls") or [p.get("thumb")])[0], "found_by": p.get("found_by")}
           for i, p in enumerate(pages)]
     yield step("archive", "running", "Looking up first archive dates for %s and %s"
                % (_count(len(image_jobs), "image file", "image files"), _count(len(to_read), "page", "pages")))

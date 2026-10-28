@@ -1,0 +1,60 @@
+{
+ "note": "critic",
+ "response": {
+  "top_logprobs": 0,
+  "temperature": 1.0,
+  "top_p": 1.0,
+  "service_tier": "auto",
+  "model": "muse-wonder-1.0",
+  "reasoning": {
+   "effort": "medium"
+  },
+  "background": false,
+  "tools": [],
+  "tool_choice": "auto",
+  "truncation": "disabled",
+  "id": "resp_6ae216ad4aff96a4912a488f",
+  "object": "response",
+  "status": "completed",
+  "created_at": 1793201837.0,
+  "completed_at": 1793201837.0,
+  "error": null,
+  "incomplete_details": null,
+  "output": [
+   {
+    "type": "reasoning",
+    "id": "rs_6ae216ad4aff96a4912a488f:rs_4eaa59b0-5608-4c55-b2a5-91d889fee188",
+    "summary": [],
+    "status": "completed"
+   },
+   {
+    "type": "message",
+    "id": "msg_5a0eb864-2bff-4e5f-91b6-651f36589d4b",
+    "role": "assistant",
+    "content": [
+     {
+      "type": "output_text",
+      "text": "{\"approve\": true, \"same_source_checked\": null, \"problem\": null}",
+      "annotations": [],
+      "logprobs": []
+     }
+    ],
+    "status": "completed"
+   }
+  ],
+  "instructions": null,
+  "usage": {
+   "input_tokens": 1598,
+   "input_tokens_details": {
+    "cached_tokens": 0
+   },
+   "output_tokens": 1112,
+   "output_tokens_details": {
+    "reasoning_tokens": 1086
+   },
+   "total_tokens": 2710
+  },
+  "parallel_tool_calls": true,
+  "store": true
+ }
+}

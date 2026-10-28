@@ -179,6 +179,7 @@ async function errorText(res) {
 }
 
 let t0 = 0, timer = null, modelCalls = 0;
+let G = {};  // what the check graph needs, collected from the agents' messages
 function tick() { $("#elapsed").textContent = ((performance.now() - t0) / 1000).toFixed(0) + " s"; }
 
 function showPost(p) {
@@ -190,6 +191,8 @@ function showPost(p) {
 
 function reset(post) {
   finished = false; modelCalls = 0;
+  G = { post: post, inputs: [], rows: {}, judge: 0, sent: 0, speech: "", found: 0, checked: 0, kept: 0 };
+  $("#graphCard").hidden = true;
   clearInterval(timer);
   timer = setInterval(tick, 500);
   t0 = performance.now();
@@ -227,6 +230,7 @@ function feedLine({ agent, cls, mark, name, by, text, thumbs }) {
 function addStep(ev) {
   const node = document.getElementById("node-" + ev.agent);
   const [name, by] = (ev.label || ev.agent).split(" · ");
+  if (ev.status === "done") collect(ev);
   if (ev.status === "running") {
     node?.classList.remove("done", "sent");
     node?.classList.add("running");
@@ -252,6 +256,7 @@ const ext = (url, text) => /^https?:\/\//i.test(url || "")
 const MATCH = { full: ["Same image", "full"], "confirmed look-alike": ["Same footage, checked", "confirmed"], partial: ["Partial match", ""], scene: ["In the footage itself", "scene"] };
 
 function addEvidence(r) {
+  G.rows[r.id] = r;
   $("#evidenceCard").hidden = false;
   let card = document.getElementById("ev-" + r.id);
   if (!card) {
@@ -352,7 +357,94 @@ function showResult(r) {
     if (card) { card.classList.add("cited"); card.querySelector(".pic").insertAdjacentHTML("beforeend", '<span class="citedtag">Cited</span>'); }
   });
   $("#mapHint").textContent = "done";
+  drawGraph(r);
   box.scrollIntoView({ behavior: "smooth", block: "start" });
 }
 
 init();
+
+// The check graph: what was checked, which parts of the media were searched, what was found and kept, and what
+// the verdict rests on.
+function collect(ev) {
+  if (ev.agent === "post" && ev.post) G.post = { media: (ev.thumbs || [])[0] || G.post?.media, text: ev.post.text, meta: "@" + ev.post.author };
+  if (ev.agent === "frames" && !G.post?.media && (ev.thumbs || []).length) G.post = { ...(G.post || {}), media: ev.thumbs[0] };
+  if (ev.agent === "speech") G.speech = ev.transcript || "";
+  if (ev.agent === "search") { G.inputs = ev.inputs || []; G.found = ev.count || 0; }
+  if (ev.agent === "match") G.checked += ev.checked || 0;
+  if (ev.agent === "judge") G.judge += 1;
+  if (ev.agent === "critic" && ev.approve === false) G.sent += 1;
+  if (ev.agent === "critic") G.approved = ev.approve !== false;
+}
+
+const short = (t, n) => { t = String(t || ""); return t.length > n ? t.slice(0, n - 1) + "…" : t; };
+
+function drawGraph(r) {
+  const card = $("#graphCard");
+  const rows = Object.values(G.rows).length ? Object.values(G.rows) : (r.evidence || []);
+  const cited = new Set(r.cited || []);
+  const ruleId = r.rule?.evidence_id;
+  const pages = rows.filter((x) => x.match !== "scene");
+  const scene = rows.filter((x) => x.match === "scene");
+  const shown = [...pages].sort((a, b) => (cited.has(b.id) - cited.has(a.id)) || (+a.id.slice(1) - +b.id.slice(1))).slice(0, 7);
+  const aside = Math.max(0, G.found - pages.length);
+  const c = r.claim || {};
+  const date = (x) => String(x.page_published || x.image_first || x.page_first || "").slice(0, 10);
+  const badge = (x) => { const [l, k] = MATCH[x.match] || [x.match, ""]; return `<span class="badge ${k}">${esc(l)}</span>`; };
+  const media = G.post?.media ? `<img src="${esc(G.post.media)}" alt="">` : "";
+  const col1 = `<div class="gcol"><div class="gt">1 · The post</div>
+    <div class="gnode post" id="g-post">${media}<div class="gtext">${esc(short(G.post?.text || c.caption, 140))}</div></div>
+    <div class="gnode claim" id="g-claim"><b>The claim</b>${[c.place, c.claimed_date, c.event].filter(Boolean).map((v) => `<span>${esc(short(v, 60))}</span>`).join("")}</div></div>`;
+  const tiles = G.inputs.map((x, i) => `<div class="gnode tile" id="g-in-${i}">${x.thumb ? `<img src="${esc(x.thumb)}" alt="">` : ""}<span>${esc(x.kind)}</span></div>`).join("");
+  const col2 = `<div class="gcol"><div class="gt">2 · What was searched</div><div class="tiles">${tiles}</div>
+    ${scene.map((x) => `<div class="gnode sign" id="g-${x.id}">${x.image_url ? `<img src="${esc(x.image_url)}" alt="">` : ""}<span>Sign in the scene: “${esc(short(x.quote, 40))}” → ${esc(x.described_place || "")}</span></div>`).join("")}
+    ${G.speech ? `<div class="gnode speech" id="g-speech">${icon("speech")}<span>“${esc(short(G.speech, 90))}”</span></div>` : ""}</div>`;
+  const col3 = `<div class="gcol"><div class="gt">3 · What was found</div>
+    <div class="gsum">${G.found} page${G.found === 1 ? "" : "s"} found${G.checked ? ` · ${G.checked} look-alikes compared` : ""}</div>
+    ${shown.map((x) => `<div class="gnode row ${cited.has(x.id) || x.id === ruleId ? "cited" : ""}" id="g-${x.id}"><div><b>${esc(x.id)}</b> ${esc(short(x.domain, 28))}</div>
+      <div class="gmeta">${badge(x)}${date(x) ? `<span class="gdate">${esc(date(x))}</span>` : ""}</div>
+      ${x.described_place || x.described_event ? `<div class="gsays">${esc(short([x.described_place, x.described_event].filter(Boolean).join(" · "), 70))}</div>` : ""}</div>`).join("")}
+    ${pages.length ? "" : `<div class="gnode gempty">No earlier copy of this ${G.inputs.length > 1 ? "media" : "photo"} found online</div>`}
+    ${pages.length > shown.length ? `<div class="gsum dim">+ ${pages.length - shown.length} more kept</div>` : ""}
+    ${aside ? `<div class="gsum dim">${aside} set aside: not the same image, or nothing to read or date</div>` : ""}</div>`;
+  const ok = r.verdict;
+  const g = r.grounds;
+  const col4 = `<div class="gcol"><div class="gt">4 · The decision</div>
+    <div class="gnode step ${r.basis === "date rule" ? "on" : ""}" id="g-rule">${icon("rule")}<div><b>Date rule</b><span>${r.basis === "date rule" ? `fired: a copy archived ${esc(r.rule?.image_first || "")}` : "did not fire"}</span></div></div>
+    <div class="gnode step ${r.basis !== "date rule" && G.judge ? "on" : ""}" id="g-judge">${icon("judge")}<div><b>Judge · Muse Spark</b><span>${G.judge > 1 ? G.judge + " rounds" : G.judge ? "1 round" : "not needed"}</span></div></div>
+    <div class="gnode step ${G.sent ? "warn" : G.approved ? "on" : ""}" id="g-critic">${icon("critic")}<div><b>Critic · Muse Wonder</b><span>${G.sent ? `sent the judge back ${G.sent > 1 ? G.sent + " times" : "once"}${G.approved ? ", then approved" : ""}` : G.approved ? "approved" : "not needed"}</span></div></div>
+    ${g ? `<div class="gnode step ${g.ok ? "on" : "warn"}" id="g-grounds">${icon("grounds")}<div><b>Proof check · code</b><span>${g.ok ? esc(short(g.kind, 40)) : "too little proof"}</span></div></div>` : ""}
+    <div class="gnode verdict ${ok}" id="g-verdict">${icon(ok)}<b>${LABEL[ok] || ok}</b></div></div>`;
+  card.hidden = false;
+  $("#graph").innerHTML = `<svg class="glines" id="glines"></svg>${col1}${col2}${col3}${col4}`;
+  const links = [["g-post", "g-claim", ""]];
+  G.inputs.forEach((_, i) => links.push(["g-post", "g-in-" + i, ""]));
+  shown.forEach((x) => links.push([x.found_by != null && document.getElementById("g-in-" + x.found_by) ? "g-in-" + x.found_by : "g-in-0", "g-" + x.id, cited.has(x.id) ? "hot" : ""]));
+  shown.filter((x) => cited.has(x.id) || x.id === ruleId).forEach((x) => links.push(["g-" + x.id, x.id === ruleId && r.basis === "date rule" ? "g-rule" : "g-judge", "hot"]));
+  scene.filter((x) => cited.has(x.id)).forEach((x) => links.push(["g-" + x.id, "g-judge", "hot"]));
+  links.push(["g-claim", "g-judge", ""], ["g-rule", "g-judge", ""], ["g-judge", "g-critic", ""]);
+  links.push([g ? "g-critic" : "g-critic", g ? "g-grounds" : "g-verdict", ""]);
+  if (g) links.push(["g-grounds", "g-verdict", ""]);
+  if (r.basis === "date rule") links.push(["g-rule", "g-verdict", "hot"]);
+  G.links = links;
+  requestAnimationFrame(drawLines);
+}
+
+function drawLines() {
+  const box = $("#graph"), svg = $("#glines");
+  if (!box || !svg || !G.links) return;
+  const b = box.getBoundingClientRect();
+  svg.setAttribute("width", b.width); svg.setAttribute("height", b.height);
+  const narrow = innerWidth < 900;
+  svg.innerHTML = G.links.map(([from, to, cls]) => {
+    const p = document.getElementById(from), q = document.getElementById(to);
+    if (!p || !q) return "";
+    const a = p.getBoundingClientRect(), z = q.getBoundingClientRect();
+    let x1, y1, x2, y2;
+    if (narrow || Math.abs(a.left - z.left) < 20) { x1 = a.left + a.width / 2 - b.left; y1 = a.bottom - b.top; x2 = z.left + z.width / 2 - b.left; y2 = z.top - b.top; }
+    else { x1 = a.right - b.left; y1 = a.top + a.height / 2 - b.top; x2 = z.left - b.left; y2 = z.top + z.height / 2 - b.top; }
+    const m = narrow || Math.abs(a.left - z.left) < 20 ? `M${x1},${y1} C${x1},${(y1 + y2) / 2} ${x2},${(y1 + y2) / 2} ${x2},${y2}`
+      : `M${x1},${y1} C${(x1 + x2) / 2},${y1} ${(x1 + x2) / 2},${y2} ${x2},${y2}`;
+    return `<path class="${cls}" d="${m}"/>`;
+  }).join("");
+}
+addEventListener("resize", () => requestAnimationFrame(drawLines));

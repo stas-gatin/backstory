@@ -1,1 +1,32 @@
-[]
+[
+ {
+  "id": "valencia",
+  "kind": "photo",
+  "title": "\"Valencia today, after the floods\"",
+  "blurb": "A staged example: a famous flood photo with a Spanish caption about Valencia, October 2024.",
+  "caption": "Así está Valencia hoy después de la DANA. Barrios enteros bajo el agua y nadie dice nada.",
+  "posted_on": "2024-10-30",
+  "credit": "U.S. Coast Guard, Petty Officer 2nd Class Kyle Niemi, 29 Aug 2005, public domain (Wikimedia Commons)",
+  "image": "katrina.jpg"
+ },
+ {
+  "id": "katrina_true",
+  "kind": "photo",
+  "title": "The same photo, true caption",
+  "blurb": "The caption that matches the photo's history: what \"Fits\" looks like.",
+  "caption": "New Orleans under water after Hurricane Katrina, 29 August 2005.",
+  "posted_on": "2005-08-30",
+  "credit": "U.S. Coast Guard, Petty Officer 2nd Class Kyle Niemi, 29 Aug 2005, public domain (Wikimedia Commons)",
+  "image": "katrina.jpg"
+ },
+ {
+  "id": "kamchatka",
+  "kind": "photo",
+  "title": "\"Tsunami in Kamchatka this morning\"",
+  "blurb": "A staged example: a 2011 photo with a caption about the July 2025 Kamchatka earthquake.",
+  "caption": "BREAKING: the tsunami has reached the Kamchatka coast this morning. Whole towns flooded.",
+  "posted_on": "2025-07-30",
+  "credit": "U.S. Navy photo, 12 Mar 2011, public domain (Wikimedia Commons)",
+  "image": "sendai.jpg"
+ }
+]

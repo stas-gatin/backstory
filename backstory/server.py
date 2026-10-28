@@ -125,4 +125,9 @@ def index():
     return FileResponse(WEB / "index.html")
 
 
+@app.get("/tested")
+def tested():
+    return FileResponse(WEB / "tested.html")
+
+
 app.mount("/static", StaticFiles(directory=WEB), name="static")
