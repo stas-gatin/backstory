@@ -7,7 +7,9 @@ same results that were recorded.
 import hashlib
 import json
 import os
+import shutil
 import threading
+from pathlib import Path
 
 from . import config
 
@@ -28,9 +30,25 @@ def _path(kind, h):
     return config.REPLAY_DIR / kind / h[:2] / (h + ".json")
 
 
+# Other record stores to read from (colon-separated). An answer found there is copied into REPLAY_DIR, so a
+# store for the demo can be assembled from earlier test runs and then works on its own.
+EXTRA = [Path(d) for d in os.environ.get("BACKSTORY_REPLAY_EXTRA", "").split(":") if d]
+
+
+def _copy_from_extra(rel):
+    for d in EXTRA:
+        src = d / rel
+        if src.exists():
+            dst = config.REPLAY_DIR / rel
+            dst.parent.mkdir(parents=True, exist_ok=True)
+            shutil.copyfile(src, dst)
+            return dst
+    return None
+
+
 def lookup(kind, payload):
     p = _path(kind, request_hash(payload))
-    if p.exists():
+    if p.exists() or (EXTRA and _copy_from_extra(p.relative_to(config.REPLAY_DIR))):
         return json.loads(p.read_text())["response"]
     return None
 
@@ -47,7 +65,7 @@ def store(kind, payload, response, note=None):
 def cached_bytes(kind, payload, fetch):
     """Like cached(), for binary answers (downloaded media). fetch() returns bytes or None (not stored)."""
     p = config.REPLAY_DIR / kind / (request_hash(payload) + ".bin")
-    if p.exists():
+    if p.exists() or (EXTRA and _copy_from_extra(p.relative_to(config.REPLAY_DIR))):
         return p.read_bytes()
     if config.MODE != "live":
         raise NotInReplay(kind)

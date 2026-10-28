@@ -202,7 +202,7 @@ def _run(image_bytes, caption, posted_on, matches, exclude_fact_checkers, budget
                                "fact_checker": False, "match": "scene", "image_first": None, "image_snapshot": None,
                                "page_first": None, "described_place": x["country"], "quote": x["text"],
                                "scene_t": x["t"], "other_country": x["other_country"], "relevant": True,
-                               "check_reason": x["reason"]})
+                               "check_reason": x["reason"], "image_url": _guarded(_thumb, x["jpeg"], 480)})
         if not seen:
             text = "Could not watch the %s" % ("video" if video_path else "photo")
         else:
@@ -216,7 +216,8 @@ def _run(image_bytes, caption, posted_on, matches, exclude_fact_checkers, budget
             if video_path and len(search_images) > len(shots):
                 text += "; %s added to the search" % _count(len(search_images) - len(shots), "distinctive moment",
                                                           "distinctive moments")
-        yield step("witness", "done", text, scene=[{k: r[k] for k in ("id", "quote", "described_place", "scene_t",
+        yield step("witness", "done", text, thumbs=[t for t in (_guarded(_thumb, x["jpeg"]) for x in checked if x["confirmed"]) if t][:2],
+                   scene=[{k: r[k] for k in ("id", "quote", "described_place", "scene_t",
                                                                       "other_country")} for r in scene_rows])
 
     # 2. Where else is this photo online?
@@ -353,7 +354,8 @@ def _run(image_bytes, caption, posted_on, matches, exclude_fact_checkers, budget
                 queued.add(u)
     ev = [{"id": "E%d" % (i + 1), "url": p["url"], "domain": p["domain"], "fact_checker": p["fact_checker"],
            "match": p.get("match"), "image_first": None, "image_snapshot": None, "page_first": None,
-           "page_published": p.get("posted"), "date_source": p.get("posted_how")}
+           "page_published": p.get("posted"), "date_source": p.get("posted_how"),
+           "image_url": (p.get("image_urls") or [p.get("thumb")])[0]}
           for i, p in enumerate(pages)]
     yield step("archive", "running", "Looking up first archive dates for %s and %s"
                % (_count(len(image_jobs), "image file", "image files"), _count(len(to_read), "page", "pages")))

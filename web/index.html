@@ -4,86 +4,95 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Backstory</title>
+<meta name="description" content="Does the caption fit the photo's past? Backstory finds where a photo or video appeared online before and checks the caption against that record.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="/static/style.css?v=11">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/static/style.css?v=23">
 </head>
 <body>
 <header class="top">
-  <div class="brand"><span class="logo"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3.5 12a8.5 8.5 0 1 0 2.6-6.1L3.5 8.5"/><path d="M3.5 3.5v5h5"/><path d="M12 7.5V12l3 2"/></svg></span>Backstory</div>
-  <div class="tag">Every photo has a past. Does the caption fit it?</div>
-  <div id="mode" class="mode"></div>
+  <a class="brand" href="/"><span class="logo"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3.5 12a8.5 8.5 0 1 0 2.6-6.1L3.5 8.5"/><path d="M3.5 3.5v5h5"/><path d="M12 7.5V12l3 2"/></svg></span>Backstory</a>
+  <span class="tag">Every photo has a past. Does the caption fit it?</span>
+  <span id="mode" class="mode"></span>
+  <a class="gh" href="https://github.com/stas-gatin/backstory" target="_blank" rel="noopener">Source</a>
 </header>
+
 <section class="hero">
-  <h1>Real photo, <span>wrong story?</span></h1>
-  <p>Backstory finds where this exact photo appeared online before, reads how those pages describe it,
-    and checks the caption against that record. Every verdict cites its sources.</p>
+  <div class="hero-text">
+    <h1>Real photo, <span>wrong story?</span></h1>
+    <p>Most viral fakes are real photos with a false caption: an old flood shown as today's, a fire from
+      another country. Backstory's agents find where the exact photo or video appeared online before, date every
+      copy, read how each page describes it, and check the caption against that record.</p>
+    <ul class="promises">
+      <li><span data-icon="grounds"></span>Every verdict cites its evidence, and code checks the proof</li>
+      <li><span data-icon="cannot_tell"></span>No record, no guess: the answer is "Cannot verify"</li>
+    </ul>
+  </div>
+</section>
+
+<section class="examples-wrap" id="examplesWrap" hidden>
+  <div class="section-title">Try a real case <span class="hint">recorded runs: the same agents, replayed step by step</span></div>
+  <div id="examples" class="examples"></div>
 </section>
 
 <main>
-  <section class="input card">
-    <h2>Check a post</h2>
-    <div id="examplesWrap" hidden>
-      <div class="label">Examples</div>
-      <div id="examples" class="examples"></div>
-      <div class="or"><span>or check your own</span></div>
-    </div>
-    <form id="form">
-      <label class="field linkfield">Link to a post on X
-        <div class="linkbox"><span data-icon="link"></span><input type="url" id="postUrl" placeholder="https://x.com/user/status/…" autocomplete="off"></div>
-        <small class="hint">Backstory takes the post's photo or video, text and date itself.</small>
-      </label>
-      <div class="or"><span>or upload a photo or video</span></div>
-      <label class="drop" id="drop">
-        <input type="file" id="file" accept="image/*,video/*" hidden>
-        <img id="preview" alt="" hidden>
-        <video id="previewVideo" controls muted playsinline hidden></video>
-        <span id="dropText" class="droptext"><span data-icon="search"></span><b>Drop a photo or video here</b><small>or click to choose a file · photos up to 20 MB (JPEG, PNG, WebP, HEIC), videos up to 60 MB</small></span>
-      </label>
-      <label class="field">Caption, as it was shared
-        <textarea id="caption" rows="3" placeholder="e.g. Valencia yesterday after the DANA. Nobody is talking about this."></textarea>
-      </label>
-      <label class="field">Posted on <span class="hint">(optional, resolves "yesterday")</span>
-        <input type="date" id="posted">
-      </label>
-      <button id="go" type="submit">Check the caption</button>
-      <div id="formError" class="error" role="alert"></div>
-    </form>
-    <p class="note">Backstory does not judge from the pixels. With no earlier record of the photo, the answer is
-      “Cannot verify”, never a guess.</p>
-  </section>
+  <aside class="left">
+    <section class="card input" id="inputCard">
+      <div class="tabs" role="tablist">
+        <button type="button" class="tabbtn on" data-tab="link" role="tab">Link to an X post</button>
+        <button type="button" class="tabbtn" data-tab="upload" role="tab">Upload photo or video</button>
+      </div>
+      <form id="form">
+        <div class="pane" data-pane="link">
+          <div class="linkbox"><span data-icon="link"></span><input type="url" id="postUrl" placeholder="https://x.com/user/status/…" autocomplete="off"></div>
+          <small class="hint">Backstory reads the post's text, date and photo or video itself. Its Community Note, if any, is shown next to the verdict, never given to the agents.</small>
+        </div>
+        <div class="pane" data-pane="upload" hidden>
+          <label class="drop" id="drop">
+            <input type="file" id="file" accept="image/*,video/*" hidden>
+            <span id="dropText" class="droptext"><span data-icon="search"></span><b>Drop a photo or video</b><small>or click to choose · photos up to 20 MB, videos up to 60 MB</small></span>
+          </label>
+          <label class="field">Caption, as it was shared
+            <textarea id="caption" rows="3" placeholder="e.g. Valencia yesterday after the floods. Nobody is talking about this."></textarea>
+          </label>
+          <label class="field">Posted on <span class="hint">(optional, resolves "yesterday")</span>
+            <input type="date" id="posted">
+          </label>
+        </div>
+        <button id="go" type="submit">Check the caption</button>
+        <div id="formError" class="error" role="alert"></div>
+      </form>
+    </section>
 
-  <section class="work">
-    <div class="card empty" id="emptyCard">
-      <h2>How a check works</h2>
-      <ol class="how">
-        <li><span data-icon="speech"></span><div><b>Hear the video</b><small>For video posts: still frames, and what is said · Muse Voice Transcribe</small></div></li>
-        <li><span data-icon="claim"></span><div><b>Read the caption</b><small>Place, event and date it claims · Muse Spark with web search</small></div></li>
-        <li><span data-icon="cutout"></span><div><b>Find the photos in the post</b><small>Separates the photos in a screenshot or collage · SAM 3.1</small></div></li>
-        <li><span data-icon="search"></span><div><b>Find the photo online</b><small>Pages that show this exact image · reverse image search</small></div></li>
-        <li><span data-icon="match"></span><div><b>Check look-alikes</b><small>When exact copies are scarce, compares similar images with the post · Muse Spark</small></div></li>
-        <li><span data-icon="archive"></span><div><b>Date every copy</b><small>First Internet Archive capture of each page and image file</small></div></li>
-        <li><span data-icon="reader"></span><div><b>Read each page</b><small>How it describes the photo · Muse Spark</small></div></li>
-        <li><span data-icon="rule"></span><div><b>Apply the date rule</b><small>A copy older than the claimed date rules the caption out</small></div></li>
-        <li><span data-icon="judge"></span><div><b>Judge</b><small>Weighs the evidence and must cite it · Muse Spark</small></div></li>
-        <li><span data-icon="critic"></span><div><b>Critic</b><small>Checks every citation and can send the judge back · Muse Wonder</small></div></li>
-      </ol>
-    </div>
-    <div class="card" id="stepsCard" hidden>
-      <h2>Agents at work <span id="elapsed" class="hint"></span></h2>
-      <ol id="steps" class="steps"></ol>
-    </div>
-    <div class="card result" id="result" hidden></div>
-    <div class="card" id="evidenceCard" hidden>
-      <h2>Evidence <span class="hint">where this photo was found, and what each page says</span></h2>
-      <div class="tablewrap"><table id="evidence">
-        <thead><tr><th>#</th><th>Page</th><th>Image first archived</th><th>Page first archived</th><th>Published</th><th>How the page describes the photo</th></tr></thead>
-        <tbody></tbody>
-      </table></div>
-    </div>
+    <section class="card post" id="postCard" hidden>
+      <div class="section-title">The post being checked</div>
+      <div class="media" id="media"></div>
+      <div class="post-meta" id="postMeta"></div>
+      <p class="post-text" id="postText"></p>
+    </section>
+  </aside>
+
+  <section class="right">
+    <section class="card map" id="mapCard">
+      <div class="map-head">
+        <div class="section-title">The agents <span class="hint" id="mapHint">15 agents, 5 Meta models and tools, in four stages</span></div>
+        <div class="meter" id="meter" hidden><span id="elapsed">0 s</span><span id="calls"></span></div>
+      </div>
+      <div class="stages" id="stages"></div>
+      <ol class="feed" id="feed" hidden></ol>
+    </section>
+
+    <section class="card result" id="result" hidden></section>
+
+    <section class="card" id="evidenceCard" hidden>
+      <div class="section-title">Evidence <span class="hint">every copy the agents found, dated and read</span></div>
+      <div class="evidence" id="evidence"></div>
+    </section>
   </section>
 </main>
-<footer>Backstory · built on Muse Spark and Muse Wonder · <a href="https://github.com/stas-gatin/backstory">Source code</a></footer>
-<script src="/static/app.js?v=11"></script>
+
+<footer>Backstory · built for the Meta AI Developer Hackathon 2026 on Muse Spark, Muse Wonder, Muse Voice Transcribe and SAM 3.1 ·
+  <a href="https://github.com/stas-gatin/backstory" target="_blank" rel="noopener">How it was tested</a></footer>
+<script src="/static/app.js?v=23"></script>
 </body>
 </html>

@@ -4,6 +4,7 @@ Run: uvicorn backstory.server:app --port 8000
 """
 import json
 import os
+import time
 import tempfile
 from pathlib import Path
 
@@ -36,7 +37,7 @@ def status():
 
 @app.get("/api/examples")
 def examples():
-    return [{k: e[k] for k in ("id", "title", "caption", "posted_on", "credit", "kind", "post_url") if k in e} for e in _examples()]
+    return [{k: e[k] for k in ("id", "title", "blurb", "caption", "posted_on", "credit", "kind", "post_url") if k in e} for e in _examples()]
 
 
 @app.get("/api/examples/{ex_id}/image")
@@ -47,9 +48,18 @@ def example_image(ex_id: str):
     raise HTTPException(404)
 
 
+# A recorded run replays in a blink; a short pause per step lets a viewer follow the agents. The result says
+# "recorded run", and the pause is off in live mode, where the agents' own time is shown.
+PACE = float(os.environ.get("BACKSTORY_PACE", "1" if config.MODE == "replay" else "0"))
+
+
 def _ndjson(events):
     for ev in events:
         yield json.dumps(ev, ensure_ascii=False) + "\n"
+        if PACE and ev.get("type") == "step":
+            time.sleep(PACE * (0.25 if ev["status"] == "running" else 0.55))
+        elif PACE and ev.get("type") == "evidence":
+            time.sleep(PACE * 0.06)
 
 
 def _stream(events, cleanup=None):

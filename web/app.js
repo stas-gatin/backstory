@@ -1,16 +1,17 @@
 const $ = (s) => document.querySelector(s);
-let chosenFile = null, chosenExample = null, captionEdited = false, running = false, finished = false;
+let chosenFile = null, chosenExample = null, running = false, finished = false, tab = "link";
 
 const esc = (s) => String(s ?? "").replace(/[&<>"]/g, (c) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" }[c]));
 
 // Line icons, 24x24, drawn with the current text colour.
 const PATHS = {
+  post: '<path d="M4 5h16v11H8l-4 4z"/><path d="M8 9h8M8 12h5"/>',
   cutout: '<path d="M4 8V5a1 1 0 0 1 1-1h3M16 4h3a1 1 0 0 1 1 1v3M20 16v3a1 1 0 0 1-1 1h-3M8 20H5a1 1 0 0 1-1-1v-3"/><rect x="8" y="8" width="8" height="8" rx="1"/>',
   match: '<rect x="3" y="3" width="12" height="12" rx="2"/><rect x="9" y="9" width="12" height="12" rx="2"/>',
   frames: '<rect x="3" y="5" width="18" height="14" rx="2"/><path d="M7 5v14M17 5v14M3 9h4M3 15h4M17 9h4M17 15h4"/>',
   speech: '<rect x="9" y="3" width="6" height="11" rx="3"/><path d="M5 11a7 7 0 0 0 14 0M12 18v3"/>',
   claim: '<path d="M4 6h16M4 12h12M4 18h8"/>',
-  search: '<rect x="3" y="4" width="18" height="16" rx="2"/><circle cx="9" cy="10" r="2"/><path d="m21 16-5-5-9 9"/>',
+  search: '<circle cx="11" cy="11" r="6"/><path d="m20 20-4.5-4.5"/>',
   archive: '<rect x="3" y="4" width="18" height="5" rx="1"/><path d="M5 9v10a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1V9M10 13h4"/>',
   reader: '<path d="M14 3H6a1 1 0 0 0-1 1v16a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1V8z"/><path d="M14 3v5h5M9 13h6M9 17h6"/>',
   rule: '<rect x="3" y="5" width="18" height="16" rx="2"/><path d="M3 10h18M8 3v4M16 3v4"/>',
@@ -25,109 +26,108 @@ const PATHS = {
   inconsistent: '<circle cx="12" cy="12" r="9"/><path d="m9 9 6 6M15 9l-6 6"/>',
   consistent: '<circle cx="12" cy="12" r="9"/><path d="m8 12 3 3 5-6"/>',
   cannot_tell: '<circle cx="12" cy="12" r="9"/><path d="M9.5 9.5a2.5 2.5 0 1 1 3.5 2.3c-.6.3-1 .8-1 1.5v.2M12 17h.01"/>',
-  link: '<path d="M14 4h6v6M20 4l-9 9M18 14v5a1 1 0 0 1-1 1H5a1 1 0 0 1-1-1V7a1 1 0 0 1 1-1h5"/>',
+  link: '<path d="M10 14a4 4 0 0 0 5.7 0l3-3a4 4 0 0 0-5.7-5.7l-1 1"/><path d="M14 10a4 4 0 0 0-5.7 0l-3 3a4 4 0 0 0 5.7 5.7l1-1"/>',
   globe: '<circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3a14 14 0 0 1 0 18M12 3a14 14 0 0 0 0 18"/>',
+  image: '<rect x="3" y="4" width="18" height="16" rx="2"/><circle cx="9" cy="10" r="2"/><path d="m21 16-5-5-9 9"/>',
 };
-const icon = (name, cls = "ic") => `<svg class="${cls}" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">${PATHS[name]}</svg>`;
+const icon = (name, cls = "ic") => `<svg class="${cls}" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">${PATHS[name] || PATHS.check}</svg>`;
+document.querySelectorAll("[data-icon]").forEach((el) => { el.innerHTML = icon(el.dataset.icon); });
 
-const TAG = { claim: "Caption", evidence: "Archive", described: "Page says" };
+// The agents, in the order they work. "by" names the model or tool; Meta models are highlighted.
+const STAGES = [
+  { title: "Read the post", agents: [
+    ["post", "Post reader", "X post data"], ["frames", "Frame grabber", "ffmpeg"],
+    ["speech", "Speech reader", "Muse Voice Transcribe"], ["claim", "Claim reader", "Muse Spark + web search"],
+    ["cutout", "Photo finder", "SAM 3.1"], ["witness", "Scene witness", "Muse Spark + Muse Wonder"]] },
+  { title: "Find its past", agents: [
+    ["search", "Image search", "Google Vision"], ["clock", "Post clock", "code"],
+    ["match", "Match checker", "Muse Spark"], ["archive", "Archivist", "Internet Archive"],
+    ["reader", "Page reader", "Muse Spark"]] },
+  { title: "Decide", agents: [
+    ["rule", "Date rule", "code"], ["judge", "Judge", "Muse Spark"], ["critic", "Critic", "Muse Wonder"]] },
+  { title: "Check the proof", agents: [["grounds", "Proof check", "code"]] },
+];
+const IS_META = (by) => /Muse|SAM/.test(by || "");
+const MODEL_NAMES = { "muse-spark-1.3": "Muse Spark", "muse-wonder-1.0": "Muse Wonder", "muse-voice-transcribe-1.0": "Muse Voice Transcribe", "sam-3.1": "SAM 3.1" };
 const LABEL = { inconsistent: "Does not fit", consistent: "Fits", cannot_tell: "Cannot verify" };
 const BASIS = {
-  "date rule": "Decided by the date rule: an archived copy predates the claim",
+  "date rule": "Decided by the date rule (code): an archived copy predates the claim",
   "judge, approved by critic": "Decided by the judge, approved by the critic",
   "judge and critic disagree": "The judge and the critic did not agree, so no verdict is given",
   "no evidence": "No earlier copy of the photo was found",
-  "proof too weak": "The judge leaned to \"does not fit\", but the code found too little proof in the evidence",
+  "proof too weak": "The judge leaned to \"does not fit\", but the proof check found too little proof",
 };
+const TAG = { claim: "Caption claims", evidence: "Copy online", described: "A page says" };
 
-document.querySelectorAll("[data-icon]").forEach((el) => { el.innerHTML = icon(el.dataset.icon); });
+function drawMap() {
+  $("#stages").innerHTML = STAGES.map((s, i) => `<div class="stage"><h4><i>${i + 1}</i>${esc(s.title)}</h4>
+    ${s.agents.map(([id, name, by]) => `<div class="node ${IS_META(by) ? "meta" : ""}" id="node-${id}" title="">
+      <span class="nd">${icon(id)}</span><div><b>${esc(name)}</b><small>${esc(by)}</small></div></div>`).join("")}</div>`).join("");
+}
 
 async function init() {
-  const st = await fetch("/api/status").then((r) => r.json());
+  drawMap();
+  const st = await fetch("/api/status").then((r) => r.json()).catch(() => ({}));
   $("#mode").innerHTML = st.mode === "replay"
-    ? '<i class="live off"></i>Replay · recorded answers' : '<i class="live"></i>Live';
-  const ex = await fetch("/api/examples").then((r) => r.json());
+    ? '<i class="live off"></i>Replay · recorded runs' : '<i class="live"></i>Live';
+  const ex = await fetch("/api/examples").then((r) => r.json()).catch(() => []);
   $("#examplesWrap").hidden = !ex.length;
+  const KIND = { link: "X post", video: "Video", photo: "Photo" };
   $("#examples").innerHTML = ex.map((e) => `
     <button type="button" class="ex" data-id="${esc(e.id)}">
-      <img src="/api/examples/${encodeURIComponent(e.id)}/image" alt="">
-      <div><b>${esc(e.title)}</b><span>${esc(e.caption)}</span></div>
+      <img src="/api/examples/${encodeURIComponent(e.id)}/image" alt="" loading="lazy">
+      <div class="exbody"><span class="kind">${KIND[e.kind || "photo"] || "Photo"}</span><b>${esc(e.title)}</b><span>${esc(e.blurb || e.caption)}</span></div>
     </button>`).join("");
-  document.querySelectorAll(".ex").forEach((b) => b.addEventListener("click", () => pickExample(ex.find((e) => e.id === b.dataset.id))));
+  document.querySelectorAll(".ex").forEach((b) => b.addEventListener("click", () => {
+    if (running) return;
+    chosenExample = ex.find((e) => e.id === b.dataset.id);
+    document.querySelectorAll(".ex").forEach((x) => x.classList.toggle("on", x === b));
+    $("#form").requestSubmit();
+  }));
 }
 
-function pickExample(e) {
-  if (running) return;
-  chosenExample = e; chosenFile = null; captionEdited = false;
-  $("#postUrl").value = e.kind === "link" ? e.post_url : "";
-  document.querySelectorAll(".ex").forEach((b) => b.classList.toggle("on", b.dataset.id === e.id));
-  if (e.kind === "link") clearPreview();
-  else if (e.kind === "video") showVideo(`/api/examples/${encodeURIComponent(e.id)}/video`);
-  else showPreview(`/api/examples/${encodeURIComponent(e.id)}/image`);
-  $("#caption").value = e.caption;
-  $("#posted").value = /^\d{4}-\d\d-\d\d$/.test(e.posted_on || "") ? e.posted_on : "";
+function setTab(name) {
+  tab = name;
+  document.querySelectorAll(".tabbtn").forEach((b) => b.classList.toggle("on", b.dataset.tab === name));
+  document.querySelectorAll(".pane").forEach((p) => { p.hidden = p.dataset.pane !== name; });
 }
-
-function showPreview(src) {
-  $("#preview").src = src; $("#preview").hidden = false; $("#dropText").hidden = true;
-  $("#previewVideo").hidden = true; $("#previewVideo").removeAttribute("src");
-}
-
-function clearPreview() {
-  $("#preview").hidden = true; $("#previewVideo").hidden = true; $("#previewVideo").removeAttribute("src");
-  $("#dropText").hidden = false;
-}
-
-function showVideo(src) {
-  $("#previewVideo").src = src; $("#previewVideo").hidden = false; $("#dropText").hidden = true;
-  $("#preview").hidden = true;
-}
+document.querySelectorAll(".tabbtn").forEach((b) => b.addEventListener("click", () => setTab(b.dataset.tab)));
 
 function pickFile(f) {
   if (!f || running) return;
   chosenFile = f; chosenExample = null;
-  $("#postUrl").value = "";
   document.querySelectorAll(".ex").forEach((b) => b.classList.remove("on"));
   const url = URL.createObjectURL(f);
-  if (f.type.startsWith("video/")) showVideo(url); else showPreview(url);
+  $("#drop").querySelector("img, video")?.remove();
+  const el = document.createElement(f.type.startsWith("video/") ? "video" : "img");
+  el.src = url; if (el.tagName === "VIDEO") { el.muted = true; el.controls = true; }
+  $("#dropText").hidden = true; $("#drop").appendChild(el);
 }
-
 $("#file").addEventListener("change", (e) => pickFile(e.target.files[0]));
 const drop = $("#drop");
 drop.addEventListener("dragover", (e) => { e.preventDefault(); drop.classList.add("over"); });
 drop.addEventListener("dragleave", () => drop.classList.remove("over"));
 drop.addEventListener("drop", (e) => { e.preventDefault(); drop.classList.remove("over"); pickFile(e.dataTransfer.files[0]); });
-drop.addEventListener("click", (e) => { if (running) e.preventDefault(); });
-$("#postUrl").addEventListener("input", () => {
-  if (chosenExample && $("#postUrl").value !== (chosenExample.post_url || "")) {
-    chosenExample = null;
-    document.querySelectorAll(".ex").forEach((b) => b.classList.remove("on"));
-  }
-});
-$("#caption").addEventListener("input", () => {
-  // Editing an example's caption keeps its photo: the photo is then sent as an upload with the new caption.
-  if (chosenExample) captionEdited = $("#caption").value !== chosenExample.caption;
-});
+$("#postUrl").addEventListener("input", () => { chosenExample = null; document.querySelectorAll(".ex").forEach((b) => b.classList.remove("on")); });
 
 $("#form").addEventListener("submit", async (e) => {
   e.preventDefault();
+  if (running) return;
   const fd = new FormData();
-  const link = $("#postUrl").value.trim();
-  if (chosenExample && captionEdited && chosenExample.kind !== "link") {
-    if (!$("#caption").value.trim()) { $("#formError").textContent = "Enter the caption to check."; return; }
-    const kind = chosenExample.kind === "video" ? "video" : "image";
-    const blob = await fetch(`/api/examples/${encodeURIComponent(chosenExample.id)}/${kind}`).then((r) => r.blob());
-    fd.append("image", blob, kind === "video" ? "example.mp4" : "example.jpg");
-    fd.append("caption", $("#caption").value);
-    fd.append("posted_on", $("#posted").value);
-  } else if (chosenExample) fd.append("example_id", chosenExample.id);
-  else if (link) {
+  let post = null;
+  if (chosenExample) {
+    fd.append("example_id", chosenExample.id);
+    post = { media: chosenExample.kind === "video" ? `/api/examples/${encodeURIComponent(chosenExample.id)}/video` : `/api/examples/${encodeURIComponent(chosenExample.id)}/image`,
+             video: chosenExample.kind === "video", text: chosenExample.kind === "link" ? "" : chosenExample.caption,
+             meta: chosenExample.kind === "link" ? chosenExample.post_url : (chosenExample.posted_on ? "Posted " + chosenExample.posted_on : "") };
+  } else if (tab === "link") {
+    const link = $("#postUrl").value.trim();
     if (!/^https?:\/\/(www\.|mobile\.)?(x|twitter)\.com\/[^/]+\/status\/\d+/.test(link)) {
-      $("#formError").textContent = "That is not a link to a post on X (x.com/user/status/…).";
+      $("#formError").textContent = "Paste a link to a post on X (x.com/user/status/…), or pick a case above.";
       return;
     }
     fd.append("post_url", link);
-    clearPreview();
+    post = { media: null, text: "", meta: link };
   } else {
     if (!chosenFile || !$("#caption").value.trim()) {
       $("#formError").textContent = "Choose a photo or video and enter the caption it was shared with.";
@@ -136,9 +136,11 @@ $("#form").addEventListener("submit", async (e) => {
     fd.append("image", chosenFile);
     fd.append("caption", $("#caption").value);
     fd.append("posted_on", $("#posted").value);
+    post = { media: URL.createObjectURL(chosenFile), video: chosenFile.type.startsWith("video/"), text: $("#caption").value,
+             meta: $("#posted").value ? "Posted " + $("#posted").value : "" };
   }
   $("#formError").textContent = "";
-  reset();
+  reset(post);
   setRunning(true);
   try {
     const res = await fetch("/api/check", { method: "POST", body: fd });
@@ -163,9 +165,8 @@ $("#form").addEventListener("submit", async (e) => {
 function setRunning(on) {
   running = on;
   $("#go").disabled = on;
-  $("#go").textContent = on ? "Checking…" : "Check the caption";
-  document.querySelector(".input").classList.toggle("busy", on);
-  ["#postUrl", "#caption", "#posted", "#file"].forEach((s) => { $(s).disabled = on; });
+  $("#go").textContent = on ? "Agents at work…" : "Check the caption";
+  $("#inputCard").classList.toggle("busy", on);
 }
 
 async function errorText(res) {
@@ -177,17 +178,28 @@ async function errorText(res) {
   return `The server answered ${res.status} ${res.statusText}`.trim();
 }
 
-let t0 = 0, timer = null;
+let t0 = 0, timer = null, modelCalls = 0;
 function tick() { $("#elapsed").textContent = ((performance.now() - t0) / 1000).toFixed(0) + " s"; }
-function reset() {
-  finished = false;
+
+function showPost(p) {
+  $("#postCard").hidden = false;
+  $("#media").innerHTML = p.media ? (p.video ? `<video src="${esc(p.media)}" controls muted playsinline></video>` : `<img src="${esc(p.media)}" alt="The checked photo">`) : "";
+  $("#postMeta").innerHTML = p.meta ? esc(p.meta) : "";
+  $("#postText").textContent = p.text || "";
+}
+
+function reset(post) {
+  finished = false; modelCalls = 0;
   clearInterval(timer);
   timer = setInterval(tick, 500);
-  $("#steps").innerHTML = ""; $("#stepsCard").hidden = false; $("#emptyCard").hidden = true;
-  $("#result").hidden = true; $("#evidenceCard").hidden = true;
-  $("#evidence tbody").innerHTML = "";
-  $("#elapsed").textContent = "";
   t0 = performance.now();
+  drawMap();
+  $("#mapHint").textContent = "watch them work";
+  $("#meter").hidden = false; $("#calls").textContent = "";
+  $("#feed").innerHTML = ""; $("#feed").hidden = false;
+  $("#result").hidden = true; $("#evidenceCard").hidden = true; $("#evidence").innerHTML = "";
+  showPost(post);
+  $("#mapCard").scrollIntoView({ behavior: "smooth", block: "start" });
 }
 
 function handle(ev) {
@@ -196,89 +208,150 @@ function handle(ev) {
   else if (ev.type === "evidence") addEvidence(ev.row);
   else if (ev.type === "result") showResult(ev);
   else if (ev.type === "error") {
-    const li = document.createElement("li"); li.className = "err";
-    li.innerHTML = `<span class="dot">${icon("alert")}</span><div><div class="head"><span class="who">Stopped</span></div>
-      <div class="what error">${esc(ev.text)}</div></div>`;
-    $("#steps").appendChild(li);
+    feedLine({ agent: "error", cls: "err", mark: "alert", name: "Stopped", by: "", text: ev.text });
+    document.querySelectorAll(".node.running").forEach((n) => n.classList.replace("running", "fail"));
   }
 }
 
-function addStep(ev) {
-  if (ev.agent === "post" && ev.status === "done") {
-    if (ev.post) { $("#caption").value = ev.post.text; $("#posted").value = ev.post.posted_on || ""; }
-    if ((ev.thumbs || []).length) showPreview(ev.thumbs[0]);
-  }
-  if (ev.agent === "frames" && ev.status === "done" && $("#preview").hidden && $("#previewVideo").hidden
-      && (ev.thumbs || []).length) showPreview(ev.thumbs[0]);
-  // A finished step replaces its own "running" line; a second round of judge/critic gets a new line.
-  const open = [...$("#steps").children].reverse().find((li) => li.dataset.agent === ev.agent && li.classList.contains("running"));
-  const li = ev.status === "done" && open ? open : document.createElement("li");
-  li.dataset.agent = ev.agent;
-  const sent = ev.status === "done" && ev.approve === false;
-  li.className = ev.status === "done" ? (sent ? "sent" : "done") : "running";
-  const [name, by] = ev.label.split(" · ");
-  const mark = ev.status === "done" ? (sent ? "back" : "check") : ev.agent;
+function feedLine({ agent, cls, mark, name, by, text, thumbs }) {
+  const li = document.createElement("li");
+  li.className = cls; li.dataset.agent = agent;
   li.innerHTML = `<span class="dot">${icon(mark)}</span><div><div class="head"><span class="who">${esc(name)}</span>
-    <span class="chip ${/Muse|SAM/.test(by || "") ? "" : "tool"}">${esc(by || "")}</span></div><div class="what">${esc(ev.text)}</div>
-    ${(ev.thumbs || []).length ? `<div class="thumbs">${ev.thumbs.map((t) => `<img src="${t}" alt="">`).join("")}</div>` : ""}</div>`;
-  if (!li.parentNode) $("#steps").appendChild(li);
+    ${by ? `<span class="chip ${IS_META(by) ? "" : "tool"}">${esc(by)}</span>` : ""}</div><div class="what">${esc(text)}</div>
+    ${(thumbs || []).length ? `<div class="thumbs ${agent === "witness" ? "big" : ""}">${thumbs.map((t) => `<img src="${t}" alt="">`).join("")}</div>` : ""}</div>`;
+  $("#feed").appendChild(li);
+  $("#feed").scrollTop = $("#feed").scrollHeight;
+  return li;
+}
+
+function addStep(ev) {
+  const node = document.getElementById("node-" + ev.agent);
+  const [name, by] = (ev.label || ev.agent).split(" · ");
+  if (ev.status === "running") {
+    node?.classList.remove("done", "sent");
+    node?.classList.add("running");
+    return;
+  }
+  const sent = ev.approve === false;
+  if (node) { node.classList.remove("running"); node.classList.add(sent ? "sent" : "done"); node.title = ev.text; }
+  if (ev.agent === "post" && ev.post) {
+    showPost({ media: (ev.thumbs || [])[0] || null, text: ev.post.text,
+               meta: `@${ev.post.author} · ${ev.post.posted_on || ""}` });
+  }
+  if (ev.agent === "frames" && !$("#media").innerHTML && (ev.thumbs || []).length) {
+    $("#media").innerHTML = `<img src="${ev.thumbs[0]}" alt="A frame of the video">`;
+  }
+  if (/Muse|SAM/.test(by || "")) { modelCalls += 1; $("#calls").textContent = modelCalls + " model steps"; }
+  feedLine({ agent: ev.agent, cls: sent ? "sent" : (ev.agent === "grounds" && ev.grounds?.ok ? "ok" : ""), mark: sent ? "back" : ev.agent,
+             name, by, text: ev.text, thumbs: ev.agent === "post" ? [] : ev.thumbs });
 }
 
 // Only web links become clickable; anything else (javascript:, data:) is shown as plain text.
 const ext = (url, text) => /^https?:\/\//i.test(url || "")
   ? `<a href="${esc(url)}" target="_blank" rel="noopener noreferrer">${esc(text)}</a>` : esc(text);
+const MATCH = { full: ["Same image", "full"], "confirmed look-alike": ["Same footage, checked", "confirmed"], partial: ["Partial match", ""], scene: ["In the footage itself", "scene"] };
 
 function addEvidence(r) {
   $("#evidenceCard").hidden = false;
-  let tr = document.getElementById("ev-" + r.id);
-  if (!tr) {
-    // Rows arrive as agents finish; keep them in evidence order (E1, E2, ...).
-    tr = document.createElement("tr"); tr.id = "ev-" + r.id;
-    const n = +r.id.slice(1);
-    const next = [...$("#evidence tbody").children].find((x) => +x.id.slice(4) > n);
-    $("#evidence tbody").insertBefore(tr, next || null);
+  let card = document.getElementById("ev-" + r.id);
+  if (!card) {
+    card = document.createElement("article"); card.className = "ev"; card.id = "ev-" + r.id;
+    const n = (r.id[0] === "S" ? -100 : 0) + +r.id.slice(1);
+    const key = (x) => (x.id[3] === "S" ? -100 : 0) + +x.id.slice(4);
+    const next = [...$("#evidence").children].find((x) => key(x) > n);
+    $("#evidence").insertBefore(card, next || null);
   }
-  const date = (d, url) => d ? (url ? ext(url, d) : esc(d)) : '<span class="nil">–</span>';
+  const [mlabel, mcls] = MATCH[r.match] || [r.match || "", ""];
   const says = [r.described_place, r.described_date, r.described_event].filter(Boolean).join(" · ");
-  const pub = r.page_published ? esc(String(r.page_published).slice(0, 10)) : '<span class="nil">–</span>';
-  tr.innerHTML = `<td class="id">${esc(r.id)}</td>
-    <td><div class="src">${icon("globe", "ic sm")}${ext(r.url, r.domain)}</div>${r.fact_checker ? '<span class="fc">Fact-check</span>' : ""}</td>
-    <td class="mono">${date(r.image_first, r.image_snapshot)}</td>
-    <td class="mono">${date(r.page_first, r.page_snapshot)}</td>
-    <td class="mono">${pub}</td>
-    <td>${says ? esc(says) : `<span class="nil">${r.opened === false ? "Page did not open" : "Not stated"}</span>`}
-      ${r.quote ? `<div class="quote">“${esc(r.quote)}”</div>` : ""}</td>`;
+  const dates = [
+    ["Published", r.page_published ? String(r.page_published).slice(0, 10) + (r.date_source ? ` (${r.date_source})` : "") : null],
+    ["Image archived", r.image_first ? ext(r.image_snapshot, r.image_first) : null],
+    ["Page archived", r.page_first ? ext(r.page_snapshot, r.page_first) : null],
+    ["In the video at", r.scene_t != null ? r.scene_t + " s" : null],
+  ].filter(([, v]) => v);
+  const pic = r.image_url && /^(https?:|data:image\/)/.test(r.image_url)
+    ? `<img src="${esc(r.image_url)}" alt="" loading="lazy" referrerpolicy="no-referrer" onerror="this.parentNode.classList.add('noimg');this.remove()">` : "";
+  card.innerHTML = `<div class="pic ${pic ? "" : "noimg"}">${pic}<span class="id">${esc(r.id)}</span></div>
+    <div class="body">
+      <div class="src">${icon("globe")}${r.match === "scene" ? "The post's own footage" : ext(r.url, r.domain)}</div>
+      <div class="badges">${mlabel ? `<span class="badge ${mcls}">${esc(mlabel)}</span>` : ""}${r.fact_checker ? '<span class="badge fc">Fact-check site</span>' : ""}</div>
+      ${dates.length ? `<dl class="dates">${dates.map(([k, v]) => `<dt>${k}</dt><dd>${k === "Published" || k === "In the video at" ? esc(v) : v}</dd>`).join("")}</dl>` : ""}
+      <div class="says">${says ? esc(says) : `<span class="nil">${r.opened === false ? "Page did not open" : "No description read"}</span>`}</div>
+      ${r.quote ? `<div class="quote">“${esc(r.quote)}”</div>` : ""}
+    </div>`;
 }
 
-function fact(label, parts) {
+function fact(label, parts, cls = "") {
   const v = parts.filter(Boolean);
-  return `<div class="fact"><div class="k">${label}</div><div class="v">${v.length ? v.map(esc).join("<br>") : '<span class="nil">Not stated</span>'}</div></div>`;
+  return `<div class="fact ${cls}"><div class="k">${label}</div><div class="v">${v.length ? v.map(esc).join("<br>") : '<span class="nil">Not stated</span>'}</div></div>`;
+}
+
+function span(a, b) {
+  // "4 years 7 months" between two ISO dates.
+  const d1 = new Date(a), d2 = new Date(b);
+  if (isNaN(d1) || isNaN(d2) || d2 <= d1) return null;
+  let m = (d2.getFullYear() - d1.getFullYear()) * 12 + d2.getMonth() - d1.getMonth();
+  if (d2.getDate() < d1.getDate()) m -= 1;
+  const days = Math.round((d2 - d1) / 864e5);
+  if (m < 1) return days + (days === 1 ? " day" : " days");
+  const y = Math.floor(m / 12), mo = m % 12;
+  return [y ? y + (y === 1 ? " year" : " years") : "", mo ? mo + (mo === 1 ? " month" : " months") : ""].filter(Boolean).join(" ");
+}
+
+function axis(tl) {
+  const pts = tl.filter((t) => /^\d{4}-\d\d-\d\d/.test(t.date)).map((t) => ({ ...t, ms: +new Date(t.date.slice(0, 10)) }));
+  if (pts.length < 2) return "";
+  const lo = Math.min(...pts.map((p) => p.ms)), hi = Math.max(...pts.map((p) => p.ms));
+  if (hi === lo) return "";
+  const x = (ms) => 2 + 96 * (ms - lo) / (hi - lo);
+  const claim = pts.find((p) => p.kind === "claim"), first = pts.filter((p) => p.kind !== "claim")[0];
+  const seg = claim && first && first.ms < claim.ms ? `<div class="seg" style="left:${x(first.ms)}%;width:${x(claim.ms) - x(first.ms)}%"></div>` : "";
+  return `<div class="axis">${seg}${pts.map((p) => `<span class="pin ${p.kind}" style="left:${x(p.ms)}%" title="${esc(p.date)}"></span>`).join("")}</div>`;
 }
 
 function showResult(r) {
+  (r.evidence || []).forEach(addEvidence);
   const box = $("#result");
   box.hidden = false;
   box.className = "card result " + r.verdict;
+  document.querySelectorAll(".node:not(.done):not(.sent):not(.fail)").forEach((n) => n.classList.add("skipped"));
   const c = r.claim || {}, a = r.actual || {};
-  const calls = Object.values(r.cost?.calls || {}).reduce((x, y) => x + y, 0);
-  const img = !$("#preview").hidden ? `<img class="thumb" src="${esc($("#preview").src)}" alt="Checked photo">`
-    : !$("#previewVideo").hidden ? `<video class="thumb" src="${esc($("#previewVideo").src)}" muted></video>` : "";
+  const tl = r.timeline || [];
+  const claimT = tl.find((t) => t.kind === "claim");
+  const firstCopy = tl.filter((t) => t.kind === "evidence")[0];
+  const gap = r.verdict === "inconsistent" && claimT && firstCopy ? span(firstCopy.date, claimT.date) : null;
   const compare = r.verdict === "inconsistent" && (a.place || a.date || a.event)
-    ? `<div class="compare">${fact("The caption says", [c.place, c.claimed_date, c.event])}
-         <div class="vs">${icon("inconsistent")}</div>
-         ${fact("The record says", [a.place, a.date, a.event])}</div>`
+    ? `<div class="compare">${fact("The caption says", [c.place, c.claimed_date, c.event])}<div class="vs">${icon("inconsistent")}</div>${fact("The record says", [a.place, a.date, a.event], "record")}</div>`
     : `<div class="compare single">${fact("The caption says", [c.place, c.claimed_date, c.event])}</div>`;
+  let proof = "";
+  if (r.basis === "date rule" && r.rule) {
+    proof = `<div class="proof">${icon("grounds")}<div><b>Proof checked by code: the date rule</b><span>The image file was archived on ${esc(r.rule.image_first)}, ${r.rule.days_before} days before the earliest date the caption allows (${esc(r.rule.period_start)}).</span></div></div>`;
+  } else if (r.grounds) {
+    proof = `<div class="proof ${r.grounds.ok ? "" : "weak"}">${icon(r.grounds.ok ? "grounds" : "alert")}<div><b>${r.grounds.ok ? "Proof checked by code" : "Proof check: not enough"}</b><span>${esc(r.grounds.text)}</span></div></div>`;
+  }
+  const calls = r.cost?.calls || {};
+  const models = Object.entries(calls).map(([m, n]) => `<span class="chip">${esc(MODEL_NAMES[m] || m)} × ${n}</span>`).join("");
   box.innerHTML = `
-    <div class="rhead">${img}<div>
-      <span class="verdict">${icon(r.verdict)}${LABEL[r.verdict] || r.verdict}</span>
+    <div class="banner"><span class="big">${icon(r.verdict)}</span><div>
+      <div class="verdict">${LABEL[r.verdict] || esc(r.verdict)}</div>
       <p class="summary">${esc(r.summary || "")}</p></div></div>
-    ${compare}
-    ${r.timeline.length ? `<h3>Timeline</h3><div class="timeline">${r.timeline.map((t) => `
-      <div class="${t.kind}"><time>${esc(t.date)}</time><span class="tag">${TAG[t.kind]}</span><span>${t.url ? ext(t.url, t.text) : esc(t.text)}</span></div>`).join("")}</div>` : ""}
-    ${r.community_note ? `<div class="compare-note"><div class="k">For comparison: the X Community Note on this post</div>
-      <p>${esc(r.community_note)}</p><small class="hint">Not shown to the agents. Backstory reached its verdict without it.</small></div>` : ""}
-    <div class="basis">${r.post ? `Post: ${ext(r.post.url, "@" + r.post.author + ", " + r.post.posted_on)} · ` : ""}${esc(BASIS[r.basis] || r.basis)} · ${calls} model calls · $${(r.cost?.usd ?? 0).toFixed(3)}${r.mode === "replay" ? " · recorded run" : ""}</div>`;
-  (r.cited || []).forEach((id) => document.getElementById("ev-" + id)?.classList.add("cited"));
+    <div class="rbody">
+      ${gap ? `<div class="gap"><b>${gap}</b><span>between the earliest copy online (${esc(firstCopy.date)}) and the date the caption claims (${esc(claimT.date)})</span></div>` : ""}
+      ${compare}
+      ${proof}
+      ${tl.length ? `<h3>Timeline</h3>${axis(tl)}<ol class="tl">${tl.map((t) => `
+        <li class="${t.kind}"><time>${esc(t.date)}</time><span class="tag">${TAG[t.kind] || t.kind}</span><span>${t.url ? ext(t.url, t.text) : esc(t.text)}</span></li>`).join("")}</ol>` : ""}
+      ${r.community_note ? `<div class="note"><div class="k">For comparison: the X Community Note on this post</div>
+        <p>${esc(r.community_note)}</p><small class="hint">Never shown to the agents: Backstory reached its verdict without it.</small></div>` : ""}
+      <div class="basis"><span>${esc(BASIS[r.basis] || r.basis || "")}</span>
+        ${r.post ? `<span>Post: ${ext(r.post.url, "@" + r.post.author + ", " + r.post.posted_on)}</span>` : ""}
+        <span class="models">${models}</span><span>$${(r.cost?.usd ?? 0).toFixed(3)}${r.mode === "replay" ? " · recorded run" : ""}</span></div>
+    </div>`;
+  (r.cited || []).forEach((id) => {
+    const card = document.getElementById("ev-" + id);
+    if (card) { card.classList.add("cited"); card.querySelector(".pic").insertAdjacentHTML("beforeend", '<span class="citedtag">Cited</span>'); }
+  });
+  $("#mapHint").textContent = "done";
   box.scrollIntoView({ behavior: "smooth", block: "start" });
 }
 
