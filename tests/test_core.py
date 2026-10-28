@@ -489,3 +489,10 @@ def test_scene_row_is_used_when_search_finds_nothing(offline):
         "verdict": "inconsistent", "cited": ["S1"], "summary": "Sign says Athens.", "actual": {}})
     result = run_events()[-1]
     assert result["verdict"] == "inconsistent" and result["grounds"]["kind"] == "the scene itself"
+
+
+def test_grounds_ignores_the_creation_date_of_a_wiki_article():
+    ev = [row(1, "en.wikipedia.org", page_published="2005-05-09")]
+    assert not verdict.grounds({"period_start": "2005-08-29"}, ev, {"cited": ["E1"]})["ok"]
+    ev[0]["image_first"] = "2005-06-01"
+    assert verdict.grounds({"period_start": "2005-08-29"}, ev, {"cited": ["E1"]})["ok"]

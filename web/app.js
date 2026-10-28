@@ -322,8 +322,14 @@ function showResult(r) {
   document.querySelectorAll(".node:not(.done):not(.sent):not(.fail)").forEach((n) => n.classList.add("skipped"));
   const c = r.claim || {}, a = r.actual || {};
   const tl = r.timeline || [];
+  // The gap uses only dates that show the image itself existed: an archived image file, or the publication date of a
+  // page with the same image (not a wiki article's creation date), among the copies the verdict cites.
   const claimT = tl.find((t) => t.kind === "claim");
-  const firstCopy = tl.filter((t) => t.kind === "evidence")[0];
+  const ev = Object.fromEntries((r.evidence || []).map((e) => [e.id, e]));
+  const proven = (e) => [e.image_first, (["full", "confirmed look-alike"].includes(e.match) && !/(^|\.)(wikipedia|wikimedia|wikiwand|fandom)\.(org|com)$/.test(e.domain || ""))
+    ? String(e.page_published || "").slice(0, 10) : null].filter((d) => /^\d{4}-\d\d-\d\d$/.test(d || ""));
+  const dates = (r.cited || []).flatMap((id) => (ev[id] ? proven(ev[id]) : [])).sort();
+  const firstCopy = dates.length ? { date: dates[0] } : null;
   const gap = r.verdict === "inconsistent" && claimT && firstCopy ? span(firstCopy.date, claimT.date) : null;
   const compare = r.verdict === "inconsistent" && (a.place || a.date || a.event)
     ? `<div class="compare">${fact("The caption says", [c.place, c.claimed_date, c.event])}<div class="vs">${icon("inconsistent")}</div>${fact("The record says", [a.place, a.date, a.event], "record")}</div>`
@@ -341,7 +347,7 @@ function showResult(r) {
       <div class="verdict">${LABEL[r.verdict] || esc(r.verdict)}</div>
       <p class="summary">${esc(r.summary || "")}</p></div></div>
     <div class="rbody">
-      ${gap ? `<div class="gap"><b>${gap}</b><span>between the earliest copy online (${esc(firstCopy.date)}) and the date the caption claims (${esc(claimT.date)})</span></div>` : ""}
+      ${gap ? `<div class="gap"><b>${gap}</b><span>between the earliest dated copy of this image the verdict cites (${esc(firstCopy.date)}) and the date the caption claims (${esc(claimT.date)})</span></div>` : ""}
       ${compare}
       ${proof}
       ${tl.length ? `<h3>Timeline</h3>${axis(tl)}<ol class="tl">${tl.map((t) => `
@@ -388,7 +394,8 @@ function drawGraph(r) {
   const shown = [...pages].sort((a, b) => (cited.has(b.id) - cited.has(a.id)) || (+a.id.slice(1) - +b.id.slice(1))).slice(0, 7);
   const aside = Math.max(0, G.found - pages.length);
   const c = r.claim || {};
-  const date = (x) => String(x.page_published || x.image_first || x.page_first || "").slice(0, 10);
+  const date = (x) => x.image_first ? "archived " + x.image_first : x.page_published ? "published " + String(x.page_published).slice(0, 10)
+    : x.page_first ? "page archived " + x.page_first : "";
   const badge = (x) => { const [l, k] = MATCH[x.match] || [x.match, ""]; return `<span class="badge ${k}">${esc(l)}</span>`; };
   const media = G.post?.media ? `<img src="${esc(G.post.media)}" alt="">` : "";
   const col1 = `<div class="gcol"><div class="gt">1 · The post</div>

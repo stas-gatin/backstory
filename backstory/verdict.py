@@ -46,7 +46,9 @@ def _first_dated(e):
     """Earliest date the table proves this exact image existed: the archived image file, or the publication date
     of a page that shows the same image file. A page's own archive date is not used: the page may predate the photo."""
     dates = [e.get("image_first")]
-    if e.get("match") == "full" or (e.get("match") == "confirmed look-alike" and e.get("page_published")):
+    # A wiki page's "published" date is when the article was created; photos are added to it years later.
+    living = re.search(r"(^|\.)(wikipedia|wikimedia|wikiwand|fandom)\.(org|com)$", e.get("domain") or "")
+    if not living and (e.get("match") == "full" or (e.get("match") == "confirmed look-alike" and e.get("page_published"))):
         dates.append(_iso_day(e.get("page_published")))
     dates = [d for d in dates if d]
     return min(dates) if dates else None

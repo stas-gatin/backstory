@@ -18,16 +18,16 @@
 
 <section class="hero">
   <h1>How it was <span>tested</span></h1>
-  <p>Eight tests on real cases. Before each run, the pass rule was written down and committed; afterwards, the result
-    was reported against that rule, including when it failed. A version is measured once, on data it has never seen;
+  <p>Nine tests on real cases. Before each run, the pass rule was written down (and, from Test G on, committed);
+    afterwards, the result was reported against that rule, including when it failed. A version is measured once, on data it has never seen;
     a fix is measured again on new data.</p>
 </section>
 
 <main class="tested">
   <section class="kpis">
-    <div class="kpi"><b>20 of 21</b><span>"Does not fit" verdicts that were right, on 207 real posts on X checked from the link alone (H2–H6)</span></div>
+    <div class="kpi"><b>20 of 21</b><span>"Does not fit" verdicts that were right, on 207 real posts on X checked from the link alone (H2–H6, five successive versions)</span></div>
     <div class="kpi"><b>79%</b><span>of false captions caught on 75 fact-checked photos it had never seen, with 10.7% false alarms (Test I)</span></div>
-    <div class="kpi"><b>1 of 99</b><span>genuine news posts on X wrongly called "does not fit" (H2–H6)</span></div>
+    <div class="kpi"><b>1 of 99</b><span>genuine posts on X wrongly called "does not fit" (H2–H6)</span></div>
     <div class="kpi weak"><b>12 of 90</b><span>fake videos on X caught. Reverse search on video frames finds too little: the weak spot</span></div>
   </section>
 
@@ -39,8 +39,8 @@
       <div class="bar"><span class="lbl">Full pipeline: the agents on Muse Spark and Muse Wonder, checked by code</span><span class="track"><i class="on" style="width:78.7%"></i></span><span class="num">79% caught · 10.7% false alarms</span></div>
     </div>
     <p class="hint">A model judging pixels is close to useless here; the models' value is in reading the caption, comparing
-      images and reading what the web says about them. Test D was run on Test E's cases, not on Test I's; its numbers are
-      shown for scale.</p>
+      images and reading what the web says about them. Test D was run on a different sample (29 photos of the 5Pils test split); its
+      numbers are shown for scale.</p>
   </section>
 
   <section class="card wide">
@@ -48,7 +48,8 @@
     <div class="tablewrap"><table class="tests">
       <thead><tr><th>Test</th><th>What changed</th><th>Data</th><th>Caught</th><th>False alarms</th><th>Pre-registered rule</th></tr></thead>
       <tbody>
-        <tr><td>E</td><td>Core method: archive dates + Muse Spark reading the evidence</td><td>105 fact-checked photos (5Pils)</td><td>67%</td><td>8.6%</td><td class="pass">baseline</td></tr>
+        <tr><td>E</td><td>Core method: archive dates + Muse Spark reading the evidence</td><td>105 fact-checked photos (5Pils)</td><td>67%</td><td>8.6%</td><td class="pass">passed (GO)</td></tr>
+        <tr><td>G</td><td>SAM 3.1 cut-out searched instead of the screenshot</td><td>17 synthetic post screenshots</td><td>65% found (vs 82%)</td><td></td><td class="fail">failed (NO-GO): SAM used only in addition</td></tr>
         <tr><td>H1</td><td>Full agent pipeline: judge, critic, match checker</td><td>Test E's 105 photos</td><td>79%</td><td>22.9%</td><td class="fail">failed: false alarms &gt; 10%</td></tr>
         <tr><td>I</td><td>+ proof check in code</td><td>75 new fact-checked photos</td><td>78.7%</td><td>10.7%</td><td class="fail">failed, narrowly: false alarms &gt; 10%</td></tr>
         <tr><td>H2</td><td>Same version as I, on real posts</td><td>53 posts on X, link only</td><td>6 / 25</td><td>1 / 28</td><td class="pass">no bar (first look)</td></tr>
@@ -63,12 +64,13 @@
   <section class="card wide">
     <div class="section-title">What the failures taught</div>
     <ul class="lessons">
-      <li><b>H1: the judge was too eager.</b> It took a copy published a few days before the claim, or one page describing the photo differently, as proof. Fix: a <b>proof check in code</b>. A "does not fit" must rest on a copy dated more than a week before the claim, or on two independent sites. False alarms halved on new data (Test I).</li>
+      <li><b>H1: the judge was too eager.</b> It took a copy published a few days before the claim, or one page describing the photo differently, as proof. Fix: a <b>proof check in code</b>. A "does not fit" must rest on a copy dated more than a week before the claim, or on two independent sites. False alarms were about half on new data (Test I, a different split).</li>
       <li><b>H3: news posts rarely give a date.</b> "First picture of a chemical attack in Kursk" names no date, so a copy from 2016 had nothing to beat. Fix: a post that presents media as news is taken as no older than 30 days before the post. On 14 posts no version had seen: 3 of 6 fakes caught, no false alarm.</li>
       <li><b>H5 and H6: video stays hard.</b> Two ideas, each tested A/B on fresh posts, gave no gain. For a third of fake videos, reverse search finds nothing for any frame. Backstory then says "cannot verify" and does not guess.</li>
-      <li><b>Every run is recorded.</b> Each external answer is stored, so every number here can be replayed without keys.</li>
+      <li><b>Every run is recorded.</b> Each external answer is stored by a hash of its request. The examples in the repository replay without keys; the test runs' recordings hold third-party media and are kept locally.</li>
     </ul>
-    <p class="hint">Full reports, with the rules as written before each run: <a href="https://github.com/stas-gatin/backstory/blob/main/docs/TESTS.md">Test E</a> ·
+    <p class="hint">Full reports, with the rules as written before each run: <a href="https://github.com/stas-gatin/backstory/blob/main/docs/TESTS.md">Tests D, E</a> ·
+      <a href="https://github.com/stas-gatin/backstory/blob/main/docs/TEST_G.md">Test G</a> ·
       <a href="https://github.com/stas-gatin/backstory/blob/main/docs/TEST_H.md">Tests H1–H6</a> ·
       <a href="https://github.com/stas-gatin/backstory/blob/main/docs/TEST_I.md">Test I</a>.</p>
   </section>
