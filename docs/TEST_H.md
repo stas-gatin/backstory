@@ -158,3 +158,22 @@ and also pooled with H3 for the version at c79bf8e (39 posts) and 3bf7dfe (14 po
 number for one version. If any true post is called "inconsistent", the README says so.
 
 Budget: hard cap 2 USD.
+
+## H4 result (2026-10-28, pipeline at commit 3bf7dfe, 0.94 USD)
+All 14 posts checked, no errors.
+
+| | fake (6: 3 photo, 3 video) | true (8: 4 photo, 4 video) |
+|---|---|---|
+| "inconsistent" | 3 (all three photos) | 0 |
+| "cannot_tell" | 3 (all three videos) | 7 |
+| "consistent" | 0 | 1 |
+
+No true post was called "inconsistent". The three caught fakes rest on earlier originals, none on a debunk: a 2019
+VOA/in.gr photo of a German army ceremony shown as an Iranian raid in 2024; a bridge photo archived in 2024 shown as
+a November 2025 collapse; a gazeta.ru photo archived in 2014 shown as Moscow in the dark in 2024. Two fake videos had
+no reverse-search result; the third had one page only, on x.com. On one true photo (Kentucky flood, 2022) the judge
+and critic agreed on "inconsistent" from two YouTube partial matches; the proof check stopped it ("proof too weak").
+Speech was transcribed in 3 of 7 videos; it did not change any verdict.
+
+Pooled with H3 by version, as pre-registered: c79bf8e on 39 posts caught 5 of 23 fakes with 0 of 16 false alarms;
+3bf7dfe on 14 posts caught 3 of 6 fakes with 0 of 8 false alarms. The samples are too small for a rate.
