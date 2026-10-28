@@ -7,13 +7,14 @@
 <meta name="description" content="Does the caption fit the photo's past? Backstory finds where a photo or video appeared online before and checks the caption against that record.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@500&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="/static/style.css?v=27">
+<link rel="stylesheet" href="/static/style.css?v=32">
 </head>
 <body>
 <header class="top">
   <a class="brand" href="/"><span class="logo"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3.5 12a8.5 8.5 0 1 0 2.6-6.1L3.5 8.5"/><path d="M3.5 3.5v5h5"/><path d="M12 7.5V12l3 2"/></svg></span>Backstory</a>
   <span class="tag">Every photo has a past. Does the caption fit it?</span>
   <span id="mode" class="mode"></span>
+  <a class="gh" href="/record">Track record</a>
   <a class="gh" href="/tested">How it was tested</a>
   <a class="gh" href="https://github.com/stas-gatin/backstory" target="_blank" rel="noopener">Source</a>
 </header>
@@ -29,6 +30,14 @@
       <li><span data-icon="cannot_tell"></span>No record, no guess: the answer is "Cannot verify"</li>
     </ul>
   </div>
+  <div class="hero-preview" id="heroPreview" hidden></div>
+</section>
+
+<section class="proofstrip">
+  <a href="/tested" class="ps"><b>20 of 21</b><span>"Does not fit" verdicts right on 207 real posts on X</span></a>
+  <a href="/tested" class="ps"><b>20 of 108</b><span>fakes on those posts caught: it says "Cannot verify" rather than guess</span></a>
+  <a href="/tested" class="ps"><b>79% vs 35%</b><span>false captions caught on fact-checked photos with Meta's models vs plain code</span></a>
+  <a href="/record" class="ps link"><b>All 207 checks</b><span>the track record, every verdict with its evidence &rarr;</span></a>
 </section>
 
 <section class="examples-wrap" id="examplesWrap" hidden>
@@ -76,7 +85,7 @@
   <section class="right">
     <section class="card map" id="mapCard">
       <div class="map-head">
-        <div class="section-title">The agents <span class="hint" id="mapHint">15 agents in four stages, on 4 Meta models</span></div>
+        <div class="section-title">The agents <span class="hint" id="mapHint">15 steps in four stages, 8 of them on Meta's models</span></div>
         <div class="meter" id="meter" hidden><span id="elapsed">0 s</span><span id="calls"></span></div>
       </div>
       <div class="stages" id="stages"></div>
@@ -101,6 +110,6 @@
 
 <footer>Backstory · built for the Meta AI Developer Hackathon 2026 on Muse Spark, Muse Wonder, Muse Voice Transcribe and SAM 3.1 ·
   <a href="/tested">How it was tested</a> · <a href="https://github.com/stas-gatin/backstory" target="_blank" rel="noopener">Source</a></footer>
-<script src="/static/app.js?v=27"></script>
+<script src="/static/app.js?v=32"></script>
 </body>
 </html>

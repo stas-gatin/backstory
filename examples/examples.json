@@ -7,7 +7,15 @@
   "caption": "Así está Valencia hoy después de la DANA. Barrios enteros bajo el agua y nadie dice nada.",
   "posted_on": "2024-10-30",
   "credit": "U.S. Coast Guard, Petty Officer 2nd Class Kyle Niemi, 29 Aug 2005, public domain (Wikimedia Commons)",
-  "image": "katrina.jpg"
+  "image": "katrina.jpg",
+  "preview": {
+   "verdict": "inconsistent",
+   "first_date": "2005-09-01",
+   "first_domain": "shelterforce.org",
+   "claim_date": "2024-10-30",
+   "claimed": "Valencia, Valencian Community, Spain · today, 30 October 2024, after the DANA",
+   "record": "I-10/I-610 interchange and surrounding area of northwest New Orleans and Metairie, Louisiana, USA · 2005-08-29"
+  }
  },
  {
   "id": "katrina_true",
@@ -17,7 +25,15 @@
   "caption": "New Orleans under water after Hurricane Katrina, 29 August 2005.",
   "posted_on": "2005-08-30",
   "credit": "U.S. Coast Guard, Petty Officer 2nd Class Kyle Niemi, 29 Aug 2005, public domain (Wikimedia Commons)",
-  "image": "katrina.jpg"
+  "image": "katrina.jpg",
+  "preview": {
+   "verdict": "consistent",
+   "first_date": "2005-09-01",
+   "first_domain": "shelterforce.org",
+   "claim_date": "2005-08-29",
+   "claimed": "New Orleans, Louisiana, United States · 29 August 2005",
+   "record": "I-10/I-610 interchange and surrounding area of northwest New Orleans and Metairie, Louisiana"
+  }
  },
  {
   "id": "kamchatka",
@@ -27,6 +43,14 @@
   "caption": "BREAKING: the tsunami has reached the Kamchatka coast this morning. Whole towns flooded.",
   "posted_on": "2025-07-30",
   "credit": "U.S. Navy photo, 12 Mar 2011, public domain (Wikimedia Commons)",
-  "image": "sendai.jpg"
+  "image": "sendai.jpg",
+  "preview": {
+   "verdict": "inconsistent",
+   "first_date": "2018-01-05",
+   "first_domain": "massivesci.com",
+   "claim_date": "2025-07-30",
+   "claimed": "Kamchatka coast, Kamchatka, Russia · this morning on 30 July 2025",
+   "record": "Sendai Nippon Oil refinery, Tōhoku, Japan · 2011"
+  }
  }
 ]

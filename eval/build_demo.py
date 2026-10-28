@@ -115,6 +115,14 @@ def main():
             events = pipeline.run((Path(a.local) / d["local_image"]).read_bytes(), d["caption"], d["posted_on"])
         e["image"] = d.get("local_image") if a.public else d["id"] + ".jpg"
         result = [ev for ev in events if ev["type"] in ("result", "error")][-1]
+        if result["type"] == "result":
+            f, c = result.get("first_seen") or {}, result.get("claim") or {}
+            # What the home page shows before any click: the case's answer in one line.
+            e["preview"] = {"verdict": result["verdict"], "first_date": f.get("date"), "first_domain": f.get("domain"),
+                            "claim_date": c.get("period_start"),
+                            "claimed": " · ".join(v for v in (c.get("place"), c.get("claimed_date")) if v),
+                            "record": " · ".join(str(v) for v in ((result.get("actual") or {}).get("place"),
+                                                                 (result.get("actual") or {}).get("date")) if v)}
         print(d["id"], "->", result.get("verdict") or result.get("text"), "|", (result.get("summary") or "")[:140],
               "| $%.3f" % (result.get("cost") or {}).get("usd", 0), flush=True)
         listed.append(e)

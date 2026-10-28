@@ -17,7 +17,7 @@ Meta AI Developer Hackathon 2026 · Indie Developer track · Team CurrentSky (St
 |---|---|
 | **Input** | A link to a post on X, or a photo or video with the caption it was shared with |
 | **Output** | **Does not fit**, **Fits** or **Cannot verify**, with the evidence: every earlier copy of the media found online, its dates, what each page says, and the proof the verdict rests on |
-| **Runs on** | 15 agents: 8 on **Muse Spark**, **Muse Wonder**, **Muse Voice Transcribe** and **SAM 3.1** through the Meta Model API; the rest are tools and plain code for search, archive dates, rules and proof |
+| **Runs on** | 15 steps: 8 on **Muse Spark**, **Muse Wonder**, **Muse Voice Transcribe** and **SAM 3.1** through the Meta Model API; the rest are tools and plain code for search, archive dates, rules and proof |
 | **Start** | `docker compose up --build`, then open http://localhost:8000. Offline, no keys needed ([Quick start](#quick-start)) |
 
 ### Where to find what
@@ -57,7 +57,7 @@ evidence, and code, not a model, has the last word on what counts as proof. When
 
 ### The agents at work
 
-Fifteen agents in four stages: read the post, find its past, decide, check the proof. Each lights up while it
+Fifteen steps in four stages, eight of them on Meta's models: read the post, find its past, decide, check the proof. Each lights up while it
 works; the Meta model it runs on is named; agents a post does not need stay grey. The feed below the map shows
 what each one found; when the critic sends the judge back, that step turns amber.
 
@@ -125,7 +125,7 @@ cites is shown to the user.
 | **Muse Voice Transcribe** | speech reader | What is said in a video is part of what the post claims |
 | **SAM 3.1** | photo finder | Finds the photos inside an uploaded screenshot of a post, so each is searched on its own. Test G found that searching the cut-out *instead of* the screenshot is worse (NO-GO), so cut-outs are only searched *in addition*; that use was not measured end to end |
 
-The three recorded examples each make 9 Muse Spark calls, 1 Muse Wonder call and 1 SAM call, and cost $0.09–0.12.
+The three examples in this repository each make 9 Muse Spark calls, 1 Muse Wonder call and 1 SAM call, and cost $0.09–0.12.
 On the posts of Tests H2–H6 a check cost $0.06–0.10 in the median and at most $0.23. Once a check has spent $0.30
 (`BACKSTORY_COST_CAP`), it starts no new model call.
 
@@ -267,6 +267,7 @@ curl -N -X POST -F example_id=valencia http://localhost:8000/api/check
 - **It needs an earlier copy online.** Most fake videos on X have none that reverse search can find (H5, H6).
 - **Image search is Google Cloud Vision.** The Meta Model API has no reverse image search; everything that reads, compares or judges runs on Meta's models.
 - **Dates on the web are noisy.** Archive captures can be late, and pages can be updated. The proof check allows a week's margin and ignores page archive dates and wiki creation dates; the date rule allows one day and uses archived image files only, including partial matches. In Test I, 3 of the 8 false alarms came from the date rule, where an archived file predated the fact-checker's own date.
+- **A page's publication date can be older than an image on it.** Pages show newer pictures in sidebars and updated articles. The proof check accepts the publication date of a page whose image fully matches; one recorded catch in the tests (H3, the Seoul tanks post) was right but rested on such a date: a 2023 article about another subject that later showed the 2024 photo.
 - **Models vary.** Two live runs of the same post can differ; the critic and the proof check narrow this, and the recordings make every run reproducible.
 
 ---

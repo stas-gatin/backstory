@@ -6,27 +6,28 @@
 <title>How Backstory was tested</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@500&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="/static/style.css?v=27">
+<link rel="stylesheet" href="/static/style.css?v=31">
 </head>
 <body>
 <header class="top">
   <a class="brand" href="/"><span class="logo"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3.5 12a8.5 8.5 0 1 0 2.6-6.1L3.5 8.5"/><path d="M3.5 3.5v5h5"/><path d="M12 7.5V12l3 2"/></svg></span>Backstory</a>
   <span class="tag">How it was tested</span>
   <a class="gh nav-right" href="/">Check a post</a>
+  <a class="gh" href="/record">Track record</a>
   <a class="gh" href="https://github.com/stas-gatin/backstory/tree/main/docs" target="_blank" rel="noopener">Test reports</a>
 </header>
 
 <section class="hero">
   <h1>How it was <span>tested</span></h1>
-  <p>Nine tests on real cases. Before each run, the pass rule was written down (and, from Test G on, committed);
+  <p>Nine tests. Before each run, the pass rule was written down (and, from Test G on, committed);
     afterwards, the result was reported against that rule, including when it failed. A version is measured once, on data it has never seen;
     a fix is measured again on new data.</p>
 </section>
 
 <main class="tested">
   <section class="kpis">
-    <div class="kpi"><b>20 of 21</b><span>"Does not fit" verdicts that were right, on 207 real posts on X checked from the link alone (H2–H6, five successive versions)</span></div>
-    <div class="kpi"><b>79%</b><span>of false captions caught on 75 fact-checked photos it had never seen, with 10.7% false alarms (Test I)</span></div>
+    <div class="kpi"><b>20 of 21</b><span>"Does not fit" verdicts that were right, on 207 real posts on X checked from the link alone (H2–H6, five successive versions). It caught 20 of the 108 fakes; the rest got "Cannot verify"</span></div>
+    <div class="kpi"><b>79%</b><span>of false captions caught on 75 fact-checked photos (5Pils) it had never seen, with 10.7% false alarms: just over Test I's own 10% bar</span></div>
     <div class="kpi"><b>1 of 99</b><span>genuine posts on X wrongly called "does not fit" (H2–H6)</span></div>
     <div class="kpi weak"><b>12 of 90</b><span>fake videos on X caught. Reverse search on video frames finds too little: the weak spot</span></div>
   </section>

@@ -37,7 +37,7 @@ def status():
 
 @app.get("/api/examples")
 def examples():
-    return [{k: e[k] for k in ("id", "title", "blurb", "caption", "posted_on", "credit", "kind", "post_url") if k in e} for e in _examples()]
+    return [{k: e[k] for k in ("id", "title", "blurb", "caption", "posted_on", "credit", "kind", "post_url", "preview") if k in e} for e in _examples()]
 
 
 @app.get("/api/examples/{ex_id}/image")
@@ -128,6 +128,18 @@ def index():
 @app.get("/tested")
 def tested():
     return FileResponse(WEB / "tested.html")
+
+
+@app.get("/record")
+def record():
+    return FileResponse(WEB / "record.html")
+
+
+@app.get("/api/record")
+def record_data():
+    """Every post checked in Tests H2–H6, with its verdict and evidence (eval/track_record.py)."""
+    f = config.ROOT / "eval" / "track_record.json"
+    return FileResponse(f) if f.exists() else []
 
 
 app.mount("/static", StaticFiles(directory=WEB), name="static")

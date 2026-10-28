@@ -18,19 +18,25 @@ class Budget:
         self.cap = cap
         self.usd = 0.0
         self.calls = {}
+        self.log = []  # one line per model call: the receipt shown with the verdict
         self._lock = threading.Lock()
 
-    def add(self, model, usage):
+    def add(self, model, usage, role=None, effort=None, says=None):
         pin, pout = config.PRICES.get(model, (5.0, 20.0))
         cost = (usage.get("input_tokens", 0) * pin + usage.get("output_tokens", 0) * pout) / 1e6
         with self._lock:
             self.usd += cost
             self.calls[model] = self.calls.get(model, 0) + 1
+            self.log.append({"model": model, "role": role, "effort": effort, "in": usage.get("input_tokens", 0),
+                             "out": usage.get("output_tokens", 0),
+                             "reasoning": (usage.get("output_tokens_details") or {}).get("reasoning_tokens", 0),
+                             "usd": round(cost, 5), "says": (says or "")[:220]})
 
-    def add_usd(self, model, usd):
+    def add_usd(self, model, usd, role=None, says=None):
         with self._lock:
             self.usd += usd
             self.calls[model] = self.calls.get(model, 0) + 1
+            self.log.append({"model": model, "role": role, "usd": round(usd, 5), "says": (says or "")[:220]})
 
     def check(self):
         if config.MODE == "replay":
@@ -39,7 +45,7 @@ class Budget:
             raise BudgetExceeded("cost cap of $%.2f reached" % self.cap)
 
     def summary(self):
-        return {"usd": round(self.usd, 4), "calls": dict(self.calls)}
+        return {"usd": round(self.usd, 4), "calls": dict(self.calls), "log": list(self.log)}
 
 
 class BudgetExceeded(Exception):
@@ -88,9 +94,37 @@ def respond(model, text, image_bytes=None, effort="low", web_search=False, budge
     if budget:
         budget.check()
     j = replay.cached("meta", body, lambda: _post(body), note=note)
+    text = output_text(j)
     if budget:
-        budget.add(model, j.get("usage", {}))
-    return output_text(j), web_sources(j)
+        budget.add(model, j.get("usage", {}), role=_role(note), effort=effort, says=_gist(text))
+    return text, web_sources(j)
+
+
+ROLES = [("witness check", "Scene witness check"), ("witness", "Scene witness"), ("claim", "Claim reader"),
+         ("match", "Match checker"), ("read ", "Page reader"), ("judge", "Judge"), ("critic", "Critic")]
+
+
+GIST = ("verdict", "approve", "same", "visible", "in_scene", "country", "place", "claimed_date", "date", "event",
+        "summary", "reason", "problem", "quote")
+
+
+def _gist(text):
+    """The answer's main fields in one line, for the receipt ("same: false · reason: different halls")."""
+    try:
+        d = parse_json(text)
+    except ValueError:
+        return text
+    if not isinstance(d, dict):
+        return text
+    parts = ["%s: %s" % (k, d[k]) for k in GIST if d.get(k) not in (None, "", [])]
+    if d.get("scene_texts"):
+        parts.append("signs read: " + "; ".join('"%s" (%ss)' % (x.get("text"), x.get("t")) for x in d["scene_texts"][:3]
+                                                if isinstance(x, dict)))
+    return " · ".join(parts) or text
+
+
+def _role(note):
+    return next((r for k, r in ROLES if (note or "").startswith(k)), note)
 
 
 def output_text(j):

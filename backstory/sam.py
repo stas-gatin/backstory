@@ -28,7 +28,7 @@ def boxes(image_bytes, phrase="photo", budget=None):
         budget.check()
     j = replay.cached("sam", body, lambda: meta._post(body), note="sam " + phrase)
     if budget:
-        budget.add_usd(SAM, PRICE_PER_IMAGE)
+        budget.add_usd(SAM, PRICE_PER_IMAGE, role="Photo finder", says='segmented "%s" regions in the image' % phrase)
     out = []
     for m in BOX.finditer(meta.output_text(j) or json.dumps(j)):
         x1, y1, x2, y2, w, h = (int(m.group(i)) for i in range(1, 7))
