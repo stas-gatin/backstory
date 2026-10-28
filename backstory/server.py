@@ -9,7 +9,7 @@ import tempfile
 from pathlib import Path
 
 from fastapi import FastAPI, File, Form, HTTPException, UploadFile
-from fastapi.responses import FileResponse, StreamingResponse
+from fastapi.responses import FileResponse, RedirectResponse, StreamingResponse
 from fastapi.staticfiles import StaticFiles
 from starlette.background import BackgroundTask
 
@@ -37,7 +37,7 @@ def status():
 
 @app.get("/api/examples")
 def examples():
-    return [{k: e[k] for k in ("id", "title", "blurb", "caption", "posted_on", "credit", "kind", "post_url", "preview") if k in e} for e in _examples()]
+    return [{k: e[k] for k in ("id", "title", "blurb", "caption", "posted_on", "credit", "kind", "post_url", "preview", "image_url") if k in e} for e in _examples()]
 
 
 @app.get("/api/examples/{ex_id}/image")
@@ -45,6 +45,8 @@ def example_image(ex_id: str):
     for e in _examples():
         if e["id"] == ex_id and e.get("image"):
             return FileResponse(EXAMPLES / e["image"])
+        if e["id"] == ex_id and str(e.get("image_url") or "").startswith("https://pbs.twimg.com/"):
+            return RedirectResponse(e["image_url"])  # the post's own image, served by X
     raise HTTPException(404)
 
 
@@ -78,6 +80,10 @@ async def check(caption: str = Form(""), posted_on: str = Form(""), example_id: 
         ex = next((e for e in _examples() if e["id"] == example_id), None)
         if not ex:
             raise HTTPException(404, "unknown example")
+        if ex.get("recording"):
+            # A recorded check of a post on X: its events as they were, without the post's media.
+            lines = (EXAMPLES / ex["recording"]).read_text().splitlines()
+            return _stream(json.loads(l) for l in lines if l.strip())
         caption, posted_on = ex["caption"], ex.get("posted_on") or ""
         # Dataset cases carry their recorded search results instead of a live image search.
         matches = ex.get("matches")

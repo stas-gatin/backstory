@@ -75,7 +75,7 @@ async function init() {
   const ex = await fetch("/api/examples").then((r) => r.json()).catch(() => []);
   EXAMPLES = ex;
   $("#examplesWrap").hidden = !ex.length;
-  const KIND = { link: "X post", video: "Video", photo: "Photo" };
+  const KIND = { link: "X post", recorded: "X post", video: "Video", photo: "Photo" };
   $("#examples").innerHTML = ex.map((e) => `
     <button type="button" class="ex" data-id="${esc(e.id)}">
       <img src="/api/examples/${encodeURIComponent(e.id)}/image" alt="" loading="lazy">
@@ -160,8 +160,8 @@ $("#form").addEventListener("submit", async (e) => {
     url = "/check?case=" + encodeURIComponent(chosenExample.id); title = chosenExample.title;
     fd.append("example_id", chosenExample.id);
     post = { media: chosenExample.kind === "video" ? `/api/examples/${encodeURIComponent(chosenExample.id)}/video` : `/api/examples/${encodeURIComponent(chosenExample.id)}/image`,
-             video: chosenExample.kind === "video", text: chosenExample.kind === "link" ? "" : chosenExample.caption,
-             meta: chosenExample.kind === "link" ? chosenExample.post_url : (chosenExample.posted_on ? "Posted " + chosenExample.posted_on : "") };
+             video: chosenExample.kind === "video", text: /link|recorded/.test(chosenExample.kind) ? "" : chosenExample.caption,
+             meta: /link|recorded/.test(chosenExample.kind) ? chosenExample.post_url : (chosenExample.posted_on ? "Posted " + chosenExample.posted_on : "") };
   } else if (tab === "link") {
     const link = $("#postUrl").value.trim();
     if (!/^https?:\/\/(www\.|mobile\.)?(x|twitter)\.com\/[^/]+\/status\/\d+/.test(link)) {
@@ -233,7 +233,7 @@ function tick() { $("#elapsed").textContent = ((performance.now() - t0) / 1000).
 function showPost(p) {
   $("#postCard").hidden = false;
   $("#media").innerHTML = p.media ? (p.video ? `<video src="${esc(p.media)}" controls muted playsinline></video>` : `<img src="${esc(p.media)}" alt="The checked photo">`) : "";
-  $("#postMeta").innerHTML = p.meta ? esc(p.meta) : "";
+  $("#postMeta").innerHTML = (p.meta ? esc(p.meta) : "") + (p.url ? ` · ${ext(p.url, "open on X")}` : "");
   $("#postText").textContent = p.text || "";
 }
 
@@ -249,6 +249,7 @@ function reset(post) {
   $("#meter").hidden = false; $("#calls").textContent = "";
   $("#feed").innerHTML = ""; $("#feed").hidden = false;
   $("#logToggle")?.remove(); $("#evMore")?.remove();
+  $("#mapCard").classList.remove("wide"); $(".right").appendChild($("#mapCard")); $(".pair").classList.remove("done");
   $("#result").hidden = true; $("#evidenceCard").hidden = true; $("#evidence").innerHTML = "";
   showPost(post);
 }
@@ -287,8 +288,9 @@ function addStep(ev) {
   const sent = ev.approve === false;
   if (node) { node.classList.remove("running"); node.classList.add(sent ? "sent" : "done"); node.title = ev.text; }
   if (ev.agent === "post" && ev.post) {
-    showPost({ media: (ev.thumbs || [])[0] || null, text: ev.post.text,
-               meta: `@${ev.post.author} · ${ev.post.posted_on || ""}` });
+    // A recorded post carries no copy of its media: the picture is the post's own, served by X.
+    showPost({ media: (ev.thumbs || [])[0] || (ev.post.media_urls || [])[0] || null, text: ev.post.text,
+               meta: `@${ev.post.author} · ${ev.post.posted_on || ""}`, url: ev.post.url });
   }
   if (ev.agent === "frames" && !$("#media").innerHTML && (ev.thumbs || []).length) {
     $("#media").innerHTML = `<img src="${ev.thumbs[0]}" alt="A frame of the video">`;
@@ -421,8 +423,11 @@ function claimFact(c) {
 function showResult(r) {
   (r.evidence || []).forEach(addEvidence);
   const box = $("#result");
-  // Verdict first: it moves above the agent map, and the agents' log folds into one line.
-  $("#mapCard").parentNode.insertBefore(box, $("#mapCard"));
+  // Verdict first, next to the post; the agent map moves below, full width, and its log folds into one line.
+  $(".right").insertBefore(box, $(".right").firstChild);
+  $(".pair").classList.add("done");  // the post is shown inside the verdict now
+  $("#mapCard").classList.add("wide");
+  $(".pair").after($("#mapCard"));
   box.hidden = false;
   box.className = "card result " + r.verdict;
   document.querySelectorAll(".node:not(.done):not(.sent):not(.fail)").forEach((n) => n.classList.add("skipped"));
@@ -435,7 +440,8 @@ function showResult(r) {
     ? `<img src="${esc(f.image_url)}" alt="" referrerpolicy="no-referrer" onerror="this.remove()">` : "";
   const then = r.verdict === "inconsistent" && f ? `<div class="thennow">
       <div class="tn"><div class="tnk">Shared as</div>${postImg}<b>${esc(short([c.place, c.claimed_date].filter(Boolean).join(" · ") || "the caption's claim", 70))}</b>
-        <span>${esc(r.post ? "@" + r.post.author + ", " + r.post.posted_on : (G.post?.meta || ""))}</span></div>
+        <span>${esc(r.post ? "@" + r.post.author + ", " + r.post.posted_on : (G.post?.meta || ""))}</span>
+        ${(G.post?.text || c.caption) ? `<q>${esc(short(G.post?.text || c.caption, 200))}</q>` : ""}</div>
       <div class="tngap"><b class="count" data-to="${esc(gap || "")}">${esc(gap || "")}</b><span>earlier</span></div>
       <div class="tn first"><div class="tnk">First seen</div>${firstImg || postImg}<b>${esc(f.date)} · ${ext(f.url, f.domain)}</b>
         <span>${esc(f.how)}${f.described ? " · " + esc(short(f.described, 80)) : ""}</span></div></div>` : "";
@@ -443,7 +449,8 @@ function showResult(r) {
   const sceneThen = r.verdict === "inconsistent" && !f && scene ? `<div class="thennow">
       <div class="tn"><div class="tnk">Shared as</div>${postImg}<b>${esc(short(c.place || "", 60))}</b><span>${esc(r.post ? "@" + r.post.author + ", " + r.post.posted_on : "")}</span></div>
       <div class="tngap"><b>${icon("witness")}</b><span>the footage says</span></div>
-      <div class="tn first"><div class="tnk">Sign in the scene, at ${esc(scene.scene_t)} s</div>${scene.image_url ? `<img src="${esc(scene.image_url)}" alt="">` : ""}<b>“${esc(scene.quote)}” → ${esc(scene.described_place)}</b>
+      <div class="tn first"><div class="tnk">Sign in the scene, at ${esc(scene.scene_t)} s</div>${scene.image_url ? `<img src="${esc(scene.image_url)}" alt="">`
+        : r.post?.url ? `<div class="xembed" data-url="${esc(r.post.url)}"></div><span>Play the post: the sign is on screen at 0:0${Math.round(scene.scene_t || 0)}.</span>` : ""}<b>“${esc(scene.quote)}” → ${esc(scene.described_place)}</b>
         <span>read by Muse Spark, confirmed on the frame by Muse Wonder</span></div></div>` : "";
   const compare = r.verdict === "inconsistent" && (a.place || a.date || a.event)
     ? `<div class="compare">${claimFact(c)}<div class="vs">${icon("inconsistent")}</div>${fact("The record says", [a.place, a.date, a.event], "record")}</div>`
@@ -478,6 +485,7 @@ function showResult(r) {
         ${r.post ? `<span>Post: ${ext(r.post.url, "@" + r.post.author + ", " + r.post.posted_on)}</span>` : ""}
         <span class="models">${models}</span><span>$${(r.cost?.usd ?? 0).toFixed(3)}${r.mode === "replay" ? " · recorded run" : ""}</span></div>
     </div>`;
+  box.querySelectorAll(".xembed").forEach(xEmbed);
   box.querySelectorAll(".copy").forEach((b) => b.addEventListener("click", () => {
     navigator.clipboard?.writeText(b.dataset.copy).then(() => { b.textContent = "Copied"; setTimeout(() => { b.textContent = "Copy"; }, 1500); });
   }));
@@ -531,7 +539,7 @@ init();
 // The check graph: what was checked, which parts of the media were searched, what was found and kept, and what
 // the verdict rests on.
 function collect(ev) {
-  if (ev.agent === "post" && ev.post) G.post = { media: (ev.thumbs || [])[0] || G.post?.media, text: ev.post.text, meta: "@" + ev.post.author };
+  if (ev.agent === "post" && ev.post) G.post = { media: (ev.thumbs || [])[0] || (ev.post.media_urls || [])[0] || G.post?.media, text: ev.post.text, meta: "@" + ev.post.author };
   if (ev.agent === "frames" && !G.post?.media && (ev.thumbs || []).length) G.post = { ...(G.post || {}), media: ev.thumbs[0] };
   if (ev.agent === "speech") G.speech = ev.transcript || "";
   if (ev.agent === "search") { G.inputs = ev.inputs || []; G.found = ev.count || 0; }
@@ -615,3 +623,10 @@ function drawLines() {
   }).join("");
 }
 addEventListener("resize", () => requestAnimationFrame(drawLines));
+
+// A post shown with X's own embed: its photo or video comes from X, not from this site.
+function xEmbed(el) {
+  el.innerHTML = `<blockquote class="twitter-tweet" data-dnt="true" data-conversation="none" data-cards="visible"><a href="${esc(el.dataset.url.replace("x.com", "twitter.com"))}"></a></blockquote>`;
+  if (window.twttr?.widgets) return window.twttr.widgets.load(el);
+  if (!document.getElementById("xw")) { const sc = document.createElement("script"); sc.id = "xw"; sc.async = true; sc.src = "https://platform.twitter.com/widgets.js"; document.body.appendChild(sc); }
+}

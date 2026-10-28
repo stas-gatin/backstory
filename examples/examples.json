@@ -1,5 +1,131 @@
 [
  {
+  "id": "la_fires",
+  "kind": "recorded",
+  "title": "\"LA fires\" freeway video",
+  "blurb": "A freeway lined with flames, shared during the January 2025 Los Angeles fires.",
+  "post_url": "https://x.com/HustleBitch_/status/1877770103229485090",
+  "caption": "x.com/HustleBitch_/status/1877770103229485090",
+  "preview": {
+   "verdict": "inconsistent",
+   "first_date": "2017-12-06",
+   "first_domain": "businessinsider.com",
+   "claim_date": "2025-01-07",
+   "claimed": "Los Angeles, California, United States · January 2025",
+   "record": "101 Freeway in Ventura, Calif. · 2017-12-05"
+  },
+  "recording": "recorded/la_fires.ndjson",
+  "image_url": "https://pbs.twimg.com/ext_tw_video_thumb/1877769875113869313/pu/img/S6ESnMTrqHHeSAMP.jpg"
+ },
+ {
+  "id": "athens",
+  "kind": "recorded",
+  "title": "\"Fleeing Israel\" at the airport",
+  "blurb": "Crowds said to be fleeing Israel at Ben Gurion airport. Read the signs.",
+  "post_url": "https://x.com/butterflyteeee/status/1841592595073405004",
+  "caption": "x.com/butterflyteeee/status/1841592595073405004",
+  "preview": {
+   "verdict": "inconsistent",
+   "first_date": null,
+   "first_domain": null,
+   "claim_date": "2024-10-02",
+   "claimed": "Lod, Central District, Israel · ongoing now as of publication",
+   "record": ""
+  },
+  "recording": "recorded/athens.ndjson",
+  "image_url": "https://pbs.twimg.com/ext_tw_video_thumb/1841592328093413376/pu/img/XUVAZ1Afv4b8UDkf.jpg"
+ },
+ {
+  "id": "moscow",
+  "kind": "recorded",
+  "title": "Moscow in the dark",
+  "blurb": "A city without power, shared as Moscow under sanctions in August 2024.",
+  "post_url": "https://x.com/jurgen_nauditt/status/1826463362328199217",
+  "caption": "x.com/jurgen_nauditt/status/1826463362328199217",
+  "preview": {
+   "verdict": "inconsistent",
+   "first_date": "2014-03-29",
+   "first_domain": "gazeta.ru",
+   "claim_date": "2024-08-22",
+   "claimed": "Moscow, Moscow, Russia · now, as an ongoing situation",
+   "record": ""
+  },
+  "recording": "recorded/moscow.ndjson",
+  "image_url": "https://pbs.twimg.com/media/GVjmvvNW4AA-gh-.jpg"
+ },
+ {
+  "id": "pope",
+  "kind": "recorded",
+  "title": "The Pope's \"last address\"",
+  "blurb": "Shared as Pope Francis's last public words, about Gaza, at Easter 2025.",
+  "post_url": "https://x.com/AyshaSusmaz/status/1914305735871115479",
+  "caption": "x.com/AyshaSusmaz/status/1914305735871115479",
+  "preview": {
+   "verdict": "inconsistent",
+   "first_date": "2014-12-21",
+   "first_domain": "youtu.be",
+   "claim_date": "2025-04-20",
+   "claimed": "the last address",
+   "record": "2014-12-21"
+  },
+  "recording": "recorded/pope.ndjson",
+  "image_url": "https://pbs.twimg.com/amplify_video_thumb/1914240689417617408/img/x5b26UxdaR2VE93a.jpg"
+ },
+ {
+  "id": "embassy",
+  "kind": "recorded",
+  "title": "\"Raid on an embassy in Tehran\"",
+  "blurb": "Special forces said to be raiding the Indian embassy in Tehran, May 2024.",
+  "post_url": "https://x.com/NavCom24/status/1792246481249833460",
+  "caption": "x.com/NavCom24/status/1792246481249833460",
+  "preview": {
+   "verdict": "inconsistent",
+   "first_date": "2019-12-02",
+   "first_domain": "in.gr",
+   "claim_date": "2024-05-19",
+   "claimed": "Tehran, Tehran Province, Iran · breaking now on 19 May 2024",
+   "record": "Germany"
+  },
+  "recording": "recorded/embassy.ndjson",
+  "image_url": "https://pbs.twimg.com/media/GN9WrO3XMAEqs1F.jpg"
+ },
+ {
+  "id": "jakarta",
+  "kind": "recorded",
+  "title": "Jakarta floods (genuine)",
+  "blurb": "A real news post: what Backstory says when the caption is right.",
+  "post_url": "https://x.com/jokowi/status/1212554859372670976",
+  "caption": "x.com/jokowi/status/1212554859372670976",
+  "preview": {
+   "verdict": "consistent",
+   "first_date": "2020-01-03",
+   "first_domain": "newspenguin.com",
+   "claim_date": "2020-01-01",
+   "claimed": "Jakarta, Jakarta, Indonesia · early 2020",
+   "record": "Jakarta, Indonesia · 2020-01-03"
+  },
+  "recording": "recorded/jakarta.ndjson",
+  "image_url": "https://pbs.twimg.com/media/ENPcNk_UcAAU7dI.jpg"
+ },
+ {
+  "id": "river",
+  "kind": "recorded",
+  "title": "Rubbish in a London river",
+  "blurb": "A phone video with no earlier copy online: Backstory does not guess.",
+  "post_url": "https://x.com/mrsunshinebaby/status/2010783577164653054",
+  "caption": "x.com/mrsunshinebaby/status/2010783577164653054",
+  "preview": {
+   "verdict": "cannot_tell",
+   "first_date": null,
+   "first_domain": null,
+   "claim_date": "2025-12-13",
+   "claimed": "London, England, United Kingdom · just",
+   "record": ""
+  },
+  "recording": "recorded/river.ndjson",
+  "image_url": "https://pbs.twimg.com/amplify_video_thumb/2010783250239893504/img/nPiWE1QHJT66tik6.jpg"
+ },
+ {
   "id": "valencia",
   "kind": "photo",
   "title": "\"Valencia today, after the floods\"",

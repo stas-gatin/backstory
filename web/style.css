@@ -439,3 +439,17 @@ th { color: var(--muted); font-weight: 600; border-top: 0; font-size: 12px; }
 .showpost { border: 0; background: none; color: var(--blue); font: inherit; cursor: pointer; padding: 0; }
 .showpost:hover { text-decoration: underline; }
 .embed { max-width: 550px; }
+
+/* Check page: the post stays in view next to whatever is on the right */
+#checkView .left { position: sticky; top: 76px; }
+#checkView main.checkmain { display: block; }
+.pair { display: grid; grid-template-columns: minmax(300px, 380px) minmax(0, 1fr); gap: 24px; align-items: start; }
+#checkView .wide { margin: 0 0 20px; }
+@media (max-width: 900px) { .pair { grid-template-columns: 1fr; } }
+@media (max-width: 900px) { #checkView .left { position: static; } }
+.pair.done { grid-template-columns: 1fr; }
+.pair.done .left { display: none; }
+.tn q { font-size: 13px; color: var(--ink); font-style: italic; quotes: "\201C" "\201D"; }
+.thennow { grid-template-columns: 1fr 200px 1fr; }
+.tn img { height: 260px; }
+@media (max-width: 900px) { .thennow { grid-template-columns: 1fr; } .tn img { height: 200px; } }

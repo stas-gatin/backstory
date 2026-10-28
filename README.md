@@ -227,8 +227,10 @@ cd backstory
 docker compose up --build
 ```
 
-Open http://localhost:8000. With no keys, Backstory runs in **replay mode**: the three example cases replay from
-the recorded answers in `replay/`, step by step, with no network. Stop it with Ctrl+C.
+Open http://localhost:8000. With no keys, Backstory runs in **replay mode**: ten recorded checks replay step by step.
+Seven are real posts on X, kept as text-only recordings of every agent's step (`examples/recorded/`; the post itself
+is shown through X's own embed, so its media loads from X). Three are staged on public-domain photos and re-run the
+whole pipeline from the recorded answers in `replay/`. Stop it with Ctrl+C.
 
 ### Live, with keys
 
@@ -310,6 +312,7 @@ tests/       offline tests
 | [5Pils](https://github.com/UKPLab/5pils) (UKPLab) | Evaluation on fact-checked photos | CC-BY-SA-4.0; downloaded, not redistributed |
 | Posts on X in `eval/realset*.json` | Evaluation on real posts | Links and short descriptions only; no media is stored in the repository |
 | `examples/katrina.jpg`, `examples/sendai.jpg` | The offline examples | Public domain (U.S. Coast Guard, U.S. Navy), see [`examples/CREDITS.md`](examples/CREDITS.md) |
-| `replay/` | The examples' recorded answers | Titles, dates, short excerpts and captions of the pages where the photos appear, and the models' answers |
+| `replay/` | The public-domain examples' recorded answers | Titles, dates, short excerpts and captions of the pages where the photos appear, and the models' answers |
+| `examples/recorded/` | Recorded checks of seven real posts on X | Each agent's messages, the evidence rows (links, dates, descriptions) and the verdict; no media. The post is shown through X's official embed |
 
 Everything in this repository was written during the hackathon (26 October – 4 November 2026). Code: MIT.
