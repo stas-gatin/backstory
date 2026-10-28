@@ -7,7 +7,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@500&display=swap" rel="stylesheet">
 <script>/* a picture another site refuses to serve is hidden, never shown broken */addEventListener("error",(e)=>{if(e.target&&e.target.tagName==="IMG")e.target.classList.add("broken")},true)</script>
-<link rel="stylesheet" href="/static/style.css?v=51">
+<link rel="stylesheet" href="/static/style.css?v=54">
 </head>
 <body>
 <header class="top">
@@ -40,12 +40,12 @@
       <select data-key="media" aria-label="Media"><option value="">Photo and video</option><option value="photo">Photos</option><option value="video">Videos</option></select>
       <select data-key="test" aria-label="Test"><option value="">All tests (H2–H6)</option><option value="H2">Test H2</option><option value="H3">Test H3</option><option value="H4">Test H4</option><option value="H5">Test H5</option><option value="H6">Test H6</option></select>
     </div>
-    <div class="searchrow"><input type="search" id="q" placeholder="Search place, event, account…"><span class="hint" id="count"></span></div>
+    <div class="searchrow"><input type="search" id="q" placeholder="Search posts…"><span class="hint" id="count"></span></div>
     <div class="rows" id="rows"></div>
     <button type="button" class="more" id="more" hidden></button>
   </section>
 </main>
-<footer>Backstory · Meta AI Developer Hackathon 2026 · <a href="/">Check a post</a> · data: <a href="https://github.com/stas-gatin/backstory/blob/main/eval/track_record.json">eval/track_record.json</a></footer>
+<footer>Backstory · built for the Meta AI Developer Hackathon 2026 on Muse Spark, Muse Wonder, Muse Voice Transcribe and SAM 3.1 · <a href="/">Check a post</a> · <a href="/record">Track record</a> · <a href="/tested">Accuracy</a> · <a href="https://github.com/stas-gatin/backstory" target="_blank" rel="noopener">Code</a></footer>
 <script>
 const esc = (s) => String(s ?? "").replace(/[&<>"]/g, (c) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" }[c]));
 const link = (u, t) => /^https?:\/\//.test(u || "") ? `<a href="${esc(u)}" target="_blank" rel="noopener noreferrer">${esc(t)}</a>` : esc(t);

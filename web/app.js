@@ -322,7 +322,7 @@ function addStep(ev) {
   if (ev.agent === "frames" && !$("#media").innerHTML && (ev.thumbs || []).length) {
     $("#media").innerHTML = `<img src="${ev.thumbs[0]}" alt="A frame of the video">`;
   }
-  if (/Muse|SAM/.test(by || "")) { modelCalls += 1; $("#calls").textContent = modelCalls + " model steps"; }
+  if (/Muse|SAM/.test(by || "")) { modelCalls += 1; $("#calls").textContent = modelCalls + " steps on Meta's models"; }
   feedLine({ agent: ev.agent, cls: sent ? "sent" : (ev.agent === "grounds" && ev.grounds?.ok ? "ok" : ""), mark: sent ? "back" : ev.agent,
              name, by, text: ev.text, thumbs: ev.agent === "post" ? [] : ev.thumbs });
 }
@@ -330,7 +330,7 @@ function addStep(ev) {
 // Only web links become clickable; anything else (javascript:, data:) is shown as plain text.
 const ext = (url, text) => /^https?:\/\//i.test(url || "")
   ? `<a href="${esc(url)}" target="_blank" rel="noopener noreferrer">${esc(text)}</a>` : esc(text);
-const MATCH = { full: ["Same image", "full"], "confirmed look-alike": ["Same footage, checked", "confirmed"], partial: ["Partial match", ""], scene: ["In the footage itself", "scene"] };
+const MATCH = { full: ["Same image", "full"], "confirmed look-alike": ["Same footage, checked by Muse Spark", "full"], partial: ["Partial match", ""], scene: ["In the footage itself", "scene"] };
 
 function addEvidence(r) {
   G.rows[r.id] = r;
@@ -347,26 +347,26 @@ function addEvidence(r) {
   const says = [r.described_place, r.described_date, r.described_event].filter(Boolean).join(" · ");
   const dates = [
     WIKI.test(r.domain || "") && r.page_published
-      ? ["Article created", String(r.page_published).slice(0, 10) + " · not used as proof"]
+      ? ["Article created", String(r.page_published).slice(0, 10)]
       : ["Published", r.page_published ? String(r.page_published).slice(0, 10) + (r.date_source ? ` (${r.date_source})` : "") : null],
     ["Image archived", r.image_first ? ext(r.image_snapshot, r.image_first) : null],
     ["Page archived", r.page_first ? ext(r.page_snapshot, r.page_first) : null],
-    ["In the video at", r.scene_t != null ? r.scene_t + " s" : null],
+    ["In the video at", r.scene_t != null ? vtime(r.scene_t) : null],
   ].filter(([, v]) => v);
   const pic = r.image_url && /^(https?:|data:image\/)/.test(r.image_url)
     ? `<img src="${esc(r.image_url)}" alt="" loading="lazy" referrerpolicy="no-referrer" onerror="this.parentNode.classList.add('noimg');this.remove()">` : "";
   card.innerHTML = `<div class="pic ${pic ? "" : "noimg"}">${pic}<span class="id">${esc(r.id)}</span></div>
     <div class="body">
-      <div class="src">${icon("globe")}${r.match === "scene" ? "The post's own footage" : ext(r.url, r.domain)}</div>
+      <div class="src">${icon(r.match === "scene" ? "witness" : "globe")}${r.match === "scene" ? "The post's own footage" : ext(r.url, r.domain)}</div>
       <div class="badges">${mlabel ? `<span class="badge ${mcls}">${esc(mlabel)}</span>` : ""}${r.fact_checker ? '<span class="badge fc">Fact-check site</span>' : ""}</div>
-      ${dates.length ? `<dl class="dates">${dates.map(([k, v]) => `<dt>${k}</dt><dd>${k === "Published" || k === "Article created" || k === "In the video at" ? esc(v) : v}</dd>`).join("")}</dl>` : ""}
-      <div class="says">${says ? esc(says) : `<span class="nil">${r.opened === false ? "Page did not open" : "No description read"}</span>`}</div>
+      ${dates.length ? `<dl class="dates">${dates.map(([k, v]) => `<dt>${k}</dt><dd>${k === "Published" || k === "Article created" || k === "In the video at" ? esc(v) : v}${k === "Article created" ? '<small class="unused">not used as proof</small>' : ""}</dd>`).join("")}</dl>` : ""}
+      <div class="says">${says ? esc(says) : `<span class="nil">${r.opened === false ? "Page did not open" : "The page gives no description"}</span>`}</div>
       ${r.quote ? `<div class="quote">“${esc(r.quote)}”</div>` : ""}
     </div>`;
 }
 
 // "E7 (tiktok.com) shows…" reads as "tiktok.com shows…": evidence numbers are for the table, not for sentences.
-const plainIds = (t) => String(t || "").replace(/\b[ES]\d+ \(([^)]+)\)/g, "$1");
+const plainIds = (t) => String(t || "").replace(/^[ES]\d+:\s*/, "").replace(/\b[ES]\d+ \(([^)]+)\)/g, "$1");
 const WIKI = /(^|\.)(wikipedia|wikimedia|wikiwand|fandom)\.(org|com)$/;
 
 function fact(label, parts, cls = "") {
@@ -412,9 +412,10 @@ function noteDraft(r) {
   } else if (f) {
     // Shortest parts first to go when the note is too long; never cut a sentence in the middle.
     const base = `This ${what} is older than the post claims. It was online by ${f.date} (${f.domain})`;
-    const tail = `. It does not show ${short(c.event || c.place || "what the post says", 90)}${c.claimed_date ? " (" + short(c.claimed_date, 40) + ")" : ""}.`;
-    const desc = a.event ? `, described as ${short(a.event, 80)}` : "";
-    text = (base + desc + tail).length <= 250 ? base + desc + tail : base + tail;
+    const what2 = c.event || c.place || "what the post says";
+    const tails = [`. It does not show ${what2}${c.claimed_date ? " (" + c.claimed_date + ")" : ""}.`, `. It does not show ${what2}.`, "."];
+    const desc = a.event ? `, described as ${a.event}` : "";
+    text = [base + desc + tails[0], base + tails[0], base + tails[1], base + tails[2]].find((t) => t.length <= 250) || base + ".";
   } else return "";
   const src = scene ? "" : f.url || "";
   return text + (src ? " " + src : "");
@@ -445,7 +446,7 @@ function receipt(r) {
 
 function claimFact(c) {
   const lines = [c.place, c.claimed_date, c.event].filter(Boolean).map(esc);
-  const how = [c.language ? "Caption in " + esc(c.language) : "", c.date_basis ? "Date: " + esc(c.date_basis) : ""].filter(Boolean);
+  const how = [c.language ? "Caption in " + esc(LANG(c.language)) : "", c.date_basis ? "Date: " + esc(c.date_basis) : ""].filter(Boolean);
   const src = (c.sources || []).filter((s) => /^https?:/.test(s.url || "")).slice(0, 3);
   return `<div class="fact"><div class="k">The caption says${c.implied ? ' <span class="inferred">date inferred from the post</span>' : ""}</div>
     <div class="v">${lines.length ? lines.join("<br>") : '<span class="nil">No place or date</span>'}</div>
@@ -479,17 +480,17 @@ function showResult(r) {
   const then = r.verdict === "inconsistent" && f ? `<div class="thennow">
       <div class="tn"><div class="tnk">Shared as</div>${postImg}<b>${esc(short([c.place, c.claimed_date].filter(Boolean).join(" · ") || "the caption's claim", 70))}</b>
         <span>${esc(r.post ? "@" + r.post.author + ", " + r.post.posted_on : (G.post?.meta || ""))}</span>
-        ${(G.post?.text || c.caption) ? `<q>${esc(short(G.post?.text || c.caption, 200))}</q>` : ""}</div>
+        ${(G.post?.text || c.caption) ? `<q>${esc(short(unquote(G.post?.text || c.caption), 200))}</q>` : ""}</div>
       <div class="tngap"><b class="count" data-to="${esc(gap || "")}">${esc(gap || "")}</b><span>earlier</span></div>
       <div class="tn first"><div class="tnk">First seen</div>${firstImg || postImg}<b>${esc(f.date)} · ${ext(f.url, f.domain)}</b>
-        <span>${esc(f.how)}${f.described ? " · " + esc(short(f.described, 80)) : ""}</span></div></div>` : "";
+        <span>${esc(HOW(f.how))}${f.described ? " · " + esc(short(f.described, 80)) : ""}</span></div></div>` : "";
   const scene = (r.evidence || []).find((e) => e.match === "scene" && e.other_country && (r.cited || []).includes(e.id));
   const sceneThen = r.verdict === "inconsistent" && !f && scene ? `<div class="thennow">
       <div class="tn"><div class="tnk">The post: shared as</div>${postImg}<b>${esc(short(c.place || "", 60))}</b><span>${esc(r.post ? "@" + r.post.author + ", " + r.post.posted_on : "")}</span>
-        ${(G.post?.text || c.caption) ? `<q>${esc(short(G.post?.text || c.caption, 200))}</q>` : ""}</div>
-      <div class="tngap"><b>${icon("witness")}</b><span>the same video, ${Math.round(scene.scene_t || 0)} s in</span></div>
+        ${(G.post?.text || c.caption) ? `<q>${esc(short(unquote(G.post?.text || c.caption), 200))}</q>` : ""}</div>
+      <div class="tngap"><b>${icon("witness")}</b><span>the same video, at ${vtime(scene.scene_t)}</span></div>
       <div class="tn first"><div class="tnk">What the footage shows</div>${scene.image_url ? `<img src="${esc(scene.image_url)}" alt="The frame with the sign">`
-        : `<div class="signcard"><small>a sign on screen at 0:${String(Math.round(scene.scene_t || 0)).padStart(2, "0")}</small><blockquote>${esc(scene.quote)}</blockquote></div>`}
+        : `<div class="signcard"><small>a sign on screen at ${vtime(scene.scene_t)}</small><blockquote>${esc(scene.quote)}</blockquote></div>`}
         <b>“${esc(scene.quote)}” → ${esc(scene.described_place)}</b>
         <span>read by Muse Spark, confirmed on the frame by Muse Wonder${!scene.image_url && r.post?.url ? ` · ${ext(r.post.url, "play the post on X")} to see it` : ""}</span></div></div>` : "";
   // Fits and Cannot verify get the same two pictures: the post, and the oldest copy the agents kept.
@@ -500,9 +501,9 @@ function showResult(r) {
   const otherThen = r.verdict !== "inconsistent" && oldest && MID[r.verdict] ? `<div class="thennow ${r.verdict}">
       <div class="tn"><div class="tnk">The post: shared as</div>${postImg}<b>${esc(short([c.place, c.claimed_date].filter(Boolean).join(" · ") || "No place or date given", 70))}</b>
         <span>${esc(r.post ? "@" + r.post.author + ", " + r.post.posted_on : (G.post?.meta || ""))}</span>
-        ${(G.post?.text || c.caption) ? `<q>${esc(short(G.post?.text || c.caption, 200))}</q>` : ""}</div>
+        ${(G.post?.text || c.caption) ? `<q>${esc(short(unquote(G.post?.text || c.caption), 200))}</q>` : ""}</div>
       <div class="tngap neutral"><b>${MID[r.verdict][0] === "fits" ? icon("consistent") : icon("cannot_tell")}</b><span>${esc(MID[r.verdict][1])}</span></div>
-      <div class="tn first"><div class="tnk">Oldest copy found</div>${oldest.image_url && /^https?:/.test(oldest.image_url) ? `<img src="${esc(oldest.image_url)}" alt="" referrerpolicy="no-referrer">` : postImg}
+      <div class="tn first"><div class="tnk">${(r.cited || []).includes(oldest.id) ? "Oldest copy the verdict cites" : "Oldest copy found"}</div>${oldest.image_url && /^https?:/.test(oldest.image_url) ? `<img src="${esc(oldest.image_url)}" alt="" referrerpolicy="no-referrer">` : postImg}
         <b>${esc(dated(oldest))} · ${ext(oldest.url, oldest.domain)}</b>
         <span>${esc(short([oldest.described_place, oldest.described_date, oldest.described_event].filter(Boolean).join(" · ") || (MATCH[oldest.match] || [""])[0], 90))}</span></div></div>` : "";
   const compare = r.verdict === "inconsistent" && (a.place || a.date || a.event)
@@ -510,7 +511,7 @@ function showResult(r) {
     : `<div class="compare single">${claimFact(c)}</div>`;
   let proof = "";
   if (r.basis === "date rule" && r.rule) {
-    proof = `<div class="proof">${icon("grounds")}<div><b>Decided by code: the date rule</b><span>The image file was archived on ${esc(r.rule.image_first)}, ${r.rule.days_before} days before the earliest date the caption allows (${esc(r.rule.period_start)}).${f && f.date < r.rule.image_first ? ` The earliest copy the verdict cites is older still: ${esc(f.date)} (${esc(f.domain)}, ${esc(f.how)}).` : ""}</span></div></div>`;
+    proof = `<div class="proof">${icon("grounds")}<div><b>Decided by code: the date rule</b><span>The image file was archived on ${esc(r.rule.image_first)}, ${r.rule.days_before} days before the earliest date the caption allows (${esc(r.rule.period_start)}).${f && f.date < r.rule.image_first ? ` The earliest copy the verdict cites is older still: ${esc(f.date)} (${esc(f.domain)}, ${esc(HOW(f.how))}).` : ""}</span></div></div>`;
   } else if (r.grounds) {
     proof = `<div class="proof ${r.grounds.ok ? "" : "weak"}">${icon(r.grounds.ok ? "grounds" : "alert")}<div><b>${r.grounds.ok ? "Proof checked by code" : "Proof check: not enough"}</b><span>${esc(plainIds(r.grounds.text))}${r.grounds.kind === "the scene itself" ? ". This verdict rests on one sign in the scene, confirmed by a second model; no earlier copy was found." : ""}</span></div></div>`;
   }
@@ -604,7 +605,18 @@ function collect(ev) {
   if (ev.agent === "critic") G.approved = ev.approve !== false;
 }
 
-const short = (t, n) => { t = String(t || ""); return t.length > n ? t.slice(0, n - 1) + "…" : t; };
+const short = (t, n) => {
+  t = String(t || ""); if (t.length <= n) return t;
+  const cut = t.slice(0, n - 1), sp = cut.lastIndexOf(" ");
+  return (sp > n * 0.6 ? cut.slice(0, sp) : cut).replace(/[\s,;:.(–-]+$/, "") + "…";
+};
+// A post's text often arrives wrapped in its own quotes; the page adds its own.
+const unquote = (t) => String(t || "").trim().replace(/^["“”']+|["“”']+$/g, "");
+const LANG = (code) => { let n = code; try { n = new Intl.DisplayNames(["en"], { type: "language" }).of(code) || code; } catch { /* a name, not a code */ } return String(n).charAt(0).toUpperCase() + String(n).slice(1); };
+const vtime = (t) => { const s = Math.round(+t || 0); return Math.floor(s / 60) + ":" + String(s % 60).padStart(2, "0"); };
+// How a date was found, said plainly.
+const HOW = (h) => String(h || "").replace("published (TikTok post id)", "date read from the TikTok video ID")
+  .replace("published (X post id)", "date read from the X post ID").replace("published (YouTube upload date)", "YouTube upload date");
 
 function drawGraph(r) {
   const card = $("#graphCard");
@@ -616,7 +628,7 @@ function drawGraph(r) {
   const shown = [...pages].sort((a, b) => (cited.has(b.id) - cited.has(a.id)) || (+a.id.slice(1) - +b.id.slice(1))).slice(0, 7);
   const aside = Math.max(0, G.found - pages.length);
   const c = r.claim || {};
-  const date = (x) => x.image_first ? "archived " + x.image_first : x.page_published ? "published " + String(x.page_published).slice(0, 10)
+  const date = (x) => x.image_first ? "archived " + x.image_first : x.page_published ? (WIKI.test(x.domain || "") ? "article created " : "published ") + String(x.page_published).slice(0, 10)
     : x.page_first ? "page archived " + x.page_first : "";
   const badge = (x) => { const [l, k] = MATCH[x.match] || [x.match, ""]; return `<span class="badge ${k}">${esc(l)}</span>`; };
   const media = G.post?.media ? `<img src="${esc(G.post.media)}" alt="">` : "";
@@ -628,7 +640,7 @@ function drawGraph(r) {
     ${scene.map((x) => `<div class="gnode sign" id="g-${x.id}">${x.image_url ? `<img src="${esc(x.image_url)}" alt="">` : ""}<span>Sign in the scene: “${esc(short(x.quote, 40))}” → ${esc(x.described_place || "")}</span></div>`).join("")}
     ${G.speech ? `<div class="gnode speech" id="g-speech">${icon("speech")}<span>“${esc(short(G.speech, 90))}”</span></div>` : ""}</div>`;
   const col3 = `<div class="gcol"><div class="gt">3 · What was found</div>
-    <div class="gsum">${G.found} page${G.found === 1 ? "" : "s"} found${G.checked ? ` · ${G.checked} look-alikes compared` : ""}</div>
+    <div class="gsum">${G.found ? `${G.found} page${G.found === 1 ? "" : "s"} found${G.checked ? ` · ${G.checked} look-alikes compared` : ""}` : G.checked ? `${G.checked} look-alikes compared, none the same image` : "no earlier copy found"}</div>
     ${shown.map((x) => `<div class="gnode row ${cited.has(x.id) || x.id === ruleId ? "cited" : ""}" id="g-${x.id}"><div><b>${esc(x.id)}</b> ${esc(short(x.domain, 28))}</div>
       <div class="gmeta">${badge(x)}${date(x) ? `<span class="gdate">${esc(date(x))}</span>` : ""}</div>
       ${x.described_place || x.described_event ? `<div class="gsays">${esc(short([x.described_place, x.described_event].filter(Boolean).join(" · "), 70))}</div>` : ""}</div>`).join("")}
@@ -638,7 +650,7 @@ function drawGraph(r) {
   const ok = r.verdict;
   const g = r.grounds;
   const col4 = `<div class="gcol"><div class="gt">4 · The decision</div>
-    <div class="gnode step ${r.basis === "date rule" ? "on" : ""}" id="g-rule">${icon("rule")}<div><b>Date rule</b><span>${r.basis === "date rule" ? `fired: a copy archived ${esc(r.rule?.image_first || "")}` : "did not fire"}</span></div></div>
+    <div class="gnode step ${r.basis === "date rule" ? "on" : ""}" id="g-rule">${icon("rule")}<div><b>Date rule</b><span>${r.basis === "date rule" ? `decided: a copy archived ${esc(r.rule?.image_first || "")}` : "not used"}</span></div></div>
     <div class="gnode step ${r.basis !== "date rule" && G.judge ? "on" : ""}" id="g-judge">${icon("judge")}<div><b>Judge · Muse Spark</b><span>${G.judge > 1 ? G.judge + " rounds" : G.judge ? "1 round" : "not needed"}</span></div></div>
     <div class="gnode step ${G.sent ? "warn" : G.approved ? "on" : ""}" id="g-critic">${icon("critic")}<div><b>Critic · Muse Wonder</b><span>${G.sent ? `sent the judge back ${G.sent > 1 ? G.sent + " times" : "once"}${G.approved ? ", then approved" : ""}` : G.approved ? "approved" : "not needed"}</span></div></div>
     ${g ? `<div class="gnode step ${g.ok ? "on" : "warn"}" id="g-grounds">${icon("grounds")}<div><b>Proof check · code</b><span>${g.ok ? esc(short(g.kind, 40)) : "too little proof"}</span></div></div>` : ""}
