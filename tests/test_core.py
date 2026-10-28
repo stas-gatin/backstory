@@ -159,6 +159,7 @@ def offline(monkeypatch):
              "period_start": "2025-01-07", "caption": "c"}
     monkeypatch.setattr(pipeline.claim, "read_claim", lambda caption, posted_on, budget=None: dict(claim))
     monkeypatch.setattr(pipeline.sam, "photo_regions", lambda b, budget=None: [])
+    monkeypatch.setattr(pipeline.witness, "look", lambda **k: None)
     monkeypatch.setattr(pipeline.archive, "first_capture",
                         lambda url: {"date": "2023-08-24" if url.endswith(".jpg") else None,
                                      "snapshot": "https://web.archive.org/x", "ok": True})
@@ -447,3 +448,44 @@ def test_cover_image_of_an_early_copy_is_compared_but_never_archive_dated(offlin
     assert compared == ["https://i.ytimg.com/vi/abcdefghijk/hqdefault.jpg"]
     assert not any("ytimg" in u for u in archived)
     assert result["basis"] != "date rule"
+
+
+# Scene witness -------------------------------------------------------------------------------------------------------
+
+def test_grounds_accepts_confirmed_scene_text_naming_another_country():
+    ev = [{"id": "S1", "domain": "the footage itself", "match": "scene", "quote": "Love, Athens", "scene_t": 2.0,
+           "described_place": "Greece", "other_country": True, "fact_checker": False}]
+    g = verdict.grounds({"period_start": None}, ev, {"cited": ["S1"]})
+    assert g["ok"] and g["kind"] == "the scene itself" and "Love, Athens" in g["text"]
+    ev[0]["other_country"] = False
+    assert not verdict.grounds({"period_start": None}, ev, {"cited": ["S1"]})["ok"]
+
+
+def test_witness_check_keeps_only_texts_confirmed_in_the_scene(monkeypatch):
+    from backstory import witness
+    answers = iter([({"visible": True, "in_scene": True, "country": "Greece", "other_country": True,
+                      "could_be_at_claimed_place": False}, []),
+                    ({"visible": True, "in_scene": False, "country": "Greece", "other_country": True,
+                      "could_be_at_claimed_place": False}, []),
+                    ({"visible": True, "in_scene": True, "country": "Vatican City", "other_country": True,
+                      "could_be_at_claimed_place": True}, [])])
+    monkeypatch.setattr(witness.meta, "ask_json", lambda *a, **k: next(answers))
+    seen = {"scene_texts": [{"t": 2, "text": "Love, Athens", "names_place": "Athens"},
+                            {"t": 5, "text": "@athens_news", "names_place": "Athens"},
+                            {"t": 6, "text": "SEDES VACANS", "names_place": "Vatican City"},
+                            {"t": 7, "text": "SALE", "names_place": None}]}
+    out = witness.check({"place": "Tel Aviv, Israel"}, seen, lambda t: b"jpeg")
+    assert [x["other_country"] for x in out] == [True, False, False]
+    assert witness.check({"place": None}, seen, lambda t: b"jpeg") == []
+
+
+def test_scene_row_is_used_when_search_finds_nothing(offline):
+    offline.setattr(pipeline.search, "google_vision", lambda b: {"pages": [], "best_guess": [], "similar": []})
+    offline.setattr(pipeline.witness, "look", lambda **k: {"scene_texts": [], "moments": []})
+    offline.setattr(pipeline.witness, "check", lambda c, seen, f, budget=None: [
+        {"t": 2.0, "text": "Love, Athens", "country": "Greece", "other_country": True, "confirmed": True,
+         "reason": "sign", "jpeg": b""}])
+    offline.setattr(pipeline.verdict, "judge", lambda *a, **k: {
+        "verdict": "inconsistent", "cited": ["S1"], "summary": "Sign says Athens.", "actual": {}})
+    result = run_events()[-1]
+    assert result["verdict"] == "inconsistent" and result["grounds"]["kind"] == "the scene itself"

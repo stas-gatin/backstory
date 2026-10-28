@@ -13,7 +13,7 @@ from pathlib import Path
 
 from PIL import Image
 
-from . import archive, claim, clock, config, matcher, meta, reader, replay, sam, search, verdict, video, xpost
+from . import archive, claim, clock, config, matcher, meta, reader, replay, sam, search, verdict, video, witness, xpost
 
 AGENTS = {
     "post": "Post reader · X",
@@ -21,6 +21,7 @@ AGENTS = {
     "speech": "Speech reader · Muse Voice Transcribe",
     "claim": "Claim reader · Muse Spark + web search",
     "cutout": "Photo finder · SAM 3.1",
+    "witness": "Scene witness · Muse Spark + Muse Wonder",
     "search": "Image search · Google Vision",
     "clock": "Post clock · code",
     "match": "Match checker · Muse Spark",
@@ -176,6 +177,48 @@ def _run(image_bytes, caption, posted_on, matches, exclude_fact_checkers, budget
         yield step("cutout", "done", ("Cut out %s; searched along with the whole image" % _count(len(regions), "photo", "separate photos"))
                    if regions else "The image is a single photo", thumbs=[_thumb(r["jpeg"]) for r in regions])
 
+    # 1c. What does the footage itself show? Readable signs and landmarks, checked frame by frame; for a video,
+    # the most distinctive moments are searched as well.
+    scene_rows = []
+    if config.WITNESS:
+        yield step("witness", "running", "Watching the %s for signs, text and landmarks" % ("video" if video_path else "photo"))
+        seen = _guarded(witness.look, video_path=video_path, image_bytes=None if video_path else image_bytes,
+                        budget=budget)
+        if video_path:
+            frame_at = lambda t: _guarded(video.frame_at, video_path, t)  # noqa: E731
+        else:
+            frame_at = lambda t: image_bytes  # noqa: E731
+        if seen and video_path:
+            taken = [f["t"] for f in shots]
+            for t in seen["moments"]:
+                if all(abs(t - u) > 1.5 for u in taken):
+                    jpeg = frame_at(t)
+                    if jpeg:
+                        search_images.append(jpeg)
+                        taken.append(t)
+        checked = (_guarded(witness.check, c, seen, frame_at, budget=budget) or []) if seen else []
+        for k, x in enumerate([x for x in checked if x["confirmed"]]):
+            scene_rows.append({"id": "S%d" % (k + 1), "url": post_url or "", "domain": "the footage itself",
+                               "fact_checker": False, "match": "scene", "image_first": None, "image_snapshot": None,
+                               "page_first": None, "described_place": x["country"], "quote": x["text"],
+                               "scene_t": x["t"], "other_country": x["other_country"], "relevant": True,
+                               "check_reason": x["reason"]})
+        if not seen:
+            text = "Could not watch the %s" % ("video" if video_path else "photo")
+        else:
+            n = len(seen["scene_texts"])
+            text = "%s in the scene" % _count(n, "readable text", "readable texts")
+            if scene_rows:
+                text += "; confirmed by Muse Wonder: " + "; ".join(
+                    '"%s" (%s)' % (r["quote"], r["described_place"]) for r in scene_rows)
+            elif checked:
+                text += "; none confirmed on its frame"
+            if video_path and len(search_images) > len(shots):
+                text += "; %s added to the search" % _count(len(search_images) - len(shots), "distinctive moment",
+                                                          "distinctive moments")
+        yield step("witness", "done", text, scene=[{k: r[k] for k in ("id", "quote", "described_place", "scene_t",
+                                                                      "other_country")} for r in scene_rows])
+
     # 2. Where else is this photo online?
     what = "these frames" if video_path else "this exact photo"
     yield step("search", "running", "Searching the web for %s" % what)
@@ -293,7 +336,7 @@ def _run(image_bytes, caption, posted_on, matches, exclude_fact_checkers, budget
             _count(len(ok), "partial match is", "partial matches are"), "; ".join(p["domain"] for p in ok)))
             if ok else "None of the partial matches is the same photo or footage", checked=len(partial))
         pages.sort(key=lambda p: (p.get("match") == "partial", search.low_value(p["url"])))
-    if not pages:
+    if not pages and not scene_rows:
         yield from _finish(c, [], None, None, None, budget, extra, "No earlier copy of this photo was found online, "
                                                             "so there is nothing to check the caption against.")
         return
@@ -352,7 +395,7 @@ def _run(image_bytes, caption, posted_on, matches, exclude_fact_checkers, budget
     # A dated copy on X, TikTok or YouTube joins the table only when it is the same footage; unconfirmed partial
     # matches with dates only distract the judge.
     useful = [e for i, e in enumerate(ev) if i in read_idx or e["image_first"]
-              or (e.get("date_source") and e["match"] in ("full", "confirmed look-alike"))]
+              or (e.get("date_source") and e["match"] in ("full", "confirmed look-alike"))] + scene_rows
     dated = sum(1 for e in useful if e["image_first"] or e["page_first"])
     yield step("archive", "done", "%d of %d page%s dated by the Internet Archive" % (dated, len(useful), "" if len(useful) == 1 else "s"))
     if to_read:

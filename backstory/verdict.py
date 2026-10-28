@@ -90,6 +90,13 @@ def grounds(claim, evidence, judged):
     describe where, when or what it is (the judge has said how that differs from the caption)."""
     by_id = {e["id"]: e for e in evidence}
     cited = [by_id[i] for i in (judged.get("cited") or []) if i in by_id]
+    # The footage itself: a sign in the scene, confirmed on its frame by Muse Wonder, naming another country.
+    scene = [e for e in cited if e.get("match") == "scene" and e.get("other_country")]
+    if scene:
+        e = scene[0]
+        return {"ok": True, "kind": "the scene itself", "ids": [x["id"] for x in scene],
+                "text": '%s: "%s" is readable in the scene at %ss and points to %s'
+                        % (e["id"], e["quote"], e.get("scene_t"), e["described_place"])}
     start = claim.get("period_start")
     if start:
         limit = (dt.date.fromisoformat(start) - dt.timedelta(days=MARGIN_DAYS)).isoformat()
@@ -123,7 +130,7 @@ def evidence_table(evidence):
     rows = []
     for e in evidence:
         rows.append({k: e.get(k) for k in ("id", "domain", "match", "match_reason", "image_first", "page_first",
-                                            "page_published", "date_source",
+                                            "page_published", "date_source", "scene_t", "other_country",
                                             "described_place", "described_date", "described_event", "quote",
                                             "fact_checker")})
     return json.dumps(rows, ensure_ascii=False, indent=0)
@@ -147,6 +154,10 @@ Evidence table (one row per web page where reverse image search found this photo
   confirmed with high confidence that both come from the same photo or video footage (match_reason says why).
   Treat a confirmed look-alike as the same source, so its archive date counts like any other copy.
 - fact_checker: true if the page is a fact-checking site
+- Rows with id S1, S2... and match "scene" are not web pages: they are text readable in the post's own photo or
+  video (at second scene_t), confirmed on that frame by a second model. described_place is the country the text
+  points to; other_country is true if that is not the claimed country. A sign in the scene naming another country
+  is direct evidence against the claimed place.
 {table}
 
 Rules:
@@ -158,7 +169,8 @@ Rules:
 - What counts as proof for "inconsistent" (code checks it afterwards; cite every row it rests on):
   a copy of the same image dated more than a week before the earliest possible date (a few days earlier is not
   proof: web dates are noisy), or at least two pages on different sites that show the same image and describe a
-  different place, date or event. One page with a different description is a sign, not proof: say "cannot_tell".
+  different place, date or event, or a scene row (S...) with other_country true. One page with a different
+  description is a sign, not proof: say "cannot_tell".
 - A caption about several images, or a date given only as "published"/"found" rather than when the photo was taken,
   is vague; do not treat an older copy as proof against a date that only says when the image was found.
 {critic_note}

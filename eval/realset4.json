@@ -1,0 +1,407 @@
+[
+ {
+  "group": "fake",
+  "post_url": "https://x.com/KnightRises_/status/1444916237293740033",
+  "claimed": "Cyclone Shaheen waterspout recorded near Oman (Oct 2021)",
+  "truth": "Tornado/waterspout video online since Nov 2019, attributed to the Gwadar coast, Pakistan",
+  "media": "video",
+  "source_url": "https://factly.in/old-and-unrelated-visuals-are-passed-off-attributing-them-to-cyclone-shaheen",
+  "notes": "Factly links this post as the 'cloud burst' video. Exact location not confirmed by Factly, only that it predates 2021."
+ },
+ {
+  "group": "true",
+  "post_url": "https://x.com/nhk_news/status/2082087021812814096",
+  "claimed": "Several people unaccounted for at the Nippon Paper factory in Yatsushiro, Kumamoto, after the earthquake (28 Jul 2026)",
+  "truth": "Same: Yatsushiro, Kumamoto, Japan, 28 Jul 2026 earthquake",
+  "media": "video",
+  "source_url": "https://www.theguardian.com/world/live/2026/jul/28/people-trapped-japan-earthquake-kumamoto-aeon-shopping-centre-mall-latest-news-updates",
+  "notes": "NHK News (broadcaster); Japanese caption; Guardian live blog embed."
+ },
+ {
+  "group": "true",
+  "post_url": "https://x.com/SInow/status/1081689683678113793",
+  "claimed": "AT&T Stadium looks like Black Friday as doors open (5 Jan 2019)",
+  "truth": "Same: fans rushing into AT&T Stadium, Arlington, Texas, 5 Jan 2019",
+  "media": "video",
+  "source_url": "https://www.boomlive.in/fact-check/fake-news-viral-video-kabul-airport-opened-chaos-2019-texas-stadium-dallas-cowboys-vs-seattle-seahawks-united-states-factcheck-14418",
+  "notes": "Sports Illustrated; original cited by BOOM. Pairs with OccuWorld/1427376676091084800. Also jonmachota/1081687003677233154 (journalist)."
+ },
+ {
+  "group": "true",
+  "post_url": "https://x.com/drfahrettinkoca/status/1626363710078943235",
+  "claimed": "Mustafa, rescued from rubble in Hatay in the 261st hour, calls a relative (16 Feb 2023)",
+  "truth": "Same: rescue in Hatay, Turkiye, 16 Feb 2023",
+  "media": "video",
+  "source_url": "https://www.middleeasteye.net/live/live-turkey-syria-huge-quake-kills-hundreds",
+  "notes": "Official account of Turkiye's then Health Minister Fahrettin Koca; Turkish caption. Same rescue as anadoluagency/1626363377181237248 (pairs)."
+ },
+ {
+  "group": "true",
+  "post_url": "https://x.com/ZelenskyyUa/status/2066456111654252626",
+  "claimed": "First responders put out fires at the Kyiv Pechersk Lavra and Mystetskyi Arsenal after Russian strikes (15 Jun 2026)",
+  "truth": "Same: Kyiv, Ukraine, overnight strikes 14-15 Jun 2026",
+  "media": "video",
+  "source_url": "https://www.theguardian.com/world/live/2026/jun/15/eu-g7-ukraine-kyiv-russia-war-iran-zelenskyy-macron-trump-europe-latest-news-updates",
+  "notes": "President of Ukraine (official); Guardian live blog embed."
+ },
+ {
+  "group": "true",
+  "post_url": "https://x.com/AFP/status/1958280386624032996",
+  "claimed": "78 people died after a bus carrying Afghan migrants collided with two other vehicles in western Afghanistan (20 Aug 2025)",
+  "truth": "Same: Herat province road crash, Afghanistan, 19 Aug 2025",
+  "media": "video",
+  "source_url": "https://en.wikipedia.org/wiki/2025_Herat_road_crash",
+  "notes": "AFP; cited on Wikipedia. Posted the day after the crash."
+ },
+ {
+  "group": "true",
+  "post_url": "https://x.com/CENTCOM/status/2057144264526598381",
+  "claimed": "US Marines board the Iranian-flagged tanker M/T Celestial Sea in the Gulf of Oman (20 May 2026)",
+  "truth": "Same: boarding in the Gulf of Oman, 20 May 2026",
+  "media": "video",
+  "source_url": "https://www.theguardian.com/world/live/2026/may/20/us-iran-israel-lebanon-gaza-trump-oil-hormuz-latest-news-updates",
+  "notes": "US Central Command (official); Guardian live blog embed."
+ },
+ {
+  "group": "true",
+  "post_url": "https://x.com/anadoluagency/status/1626363377181237248",
+  "claimed": "2 men rescued from rubble 261 hours after quakes hit Turkiye (16 Feb 2023)",
+  "truth": "Same: rescue in Hatay (Antakya), Turkiye, 16 Feb 2023, 11 days after the 6 Feb earthquakes",
+  "media": "video",
+  "source_url": "https://www.middleeasteye.net/live/live-turkey-syria-huge-quake-kills-hundreds",
+  "notes": "Anadolu Agency; found via Middle East Eye live blog embed, not a fact-check. Posted the same day as the rescue."
+ },
+ {
+  "group": "true",
+  "post_url": "https://x.com/nowthisimpact/status/1169302353360478208",
+  "claimed": "Aerial view of Hurricane Dorian destruction in the Bahamas (4 Sep 2019)",
+  "truth": "Same: Dorian damage, Abaco/Grand Bahama, Bahamas, early Sep 2019",
+  "media": "video",
+  "source_url": "https://www.theguardian.com/us-news/live/2019/sep/04/hurricane-dorian-live-trump-florida-bahamas-latest-news-storm-democrats-2020-updates",
+  "notes": "NowThis (news media); Guardian live blog embed. Posted ~1-2 days after the storm passed."
+ },
+ {
+  "group": "fake",
+  "post_url": "https://x.com/AfricaFactsZone/status/1701610803341013396",
+  "claimed": "Deadly floods in Derna, Libya, after dams collapsed (12 Sep 2023)",
+  "truth": "Flash flood in Saudi Arabia, online since at least 2015",
+  "media": "video",
+  "source_url": "https://fullfact.org/news/Libya-video-false-Saudi-Arabia/",
+  "notes": "Full Fact links this post."
+ },
+ {
+  "group": "fake",
+  "post_url": "https://x.com/SilentlySirs/status/1856480964991406144",
+  "claimed": "Footage of cruise missiles and drones targeting the US aircraft carrier Abraham Lincoln in the Arabian Sea (12 Nov 2024)",
+  "truth": "Fire aboard the USS Bonhomme Richard in San Diego, USA, July 2020",
+  "media": "video",
+  "source_url": "https://fullfact.org/online/old-video-us-navy-ship-attack-arabian-sea/",
+  "notes": "Full Fact links this post. SilentlySirs has other (different) posts in the old sets."
+ },
+ {
+  "group": "fake",
+  "post_url": "https://x.com/GCC24h/status/1444158050374389765",
+  "claimed": "Clouds from Cyclone Shaheen entering the coast of Pakistan (2 Oct 2021)",
+  "truth": "Dense cloud formation over Bheemili beach, Visakhapatnam, India, June 2021",
+  "media": "video",
+  "source_url": "https://factly.in/old-and-unrelated-visuals-are-passed-off-attributing-them-to-cyclone-shaheen",
+  "notes": "Factly links this post. Pairs with true item V6News/1405767481998774282."
+ },
+ {
+  "group": "fake",
+  "post_url": "https://x.com/OccuWorld/status/1427376676091084800",
+  "claimed": "Surreal footage from Kabul airport as soon as it opened this morning (16 Aug 2021)",
+  "truth": "Fans rushing into AT&T Stadium, Arlington, Texas, before the Cowboys vs Seahawks playoff game, 5 Jan 2019",
+  "media": "video",
+  "source_url": "https://www.boomlive.in/fact-check/fake-news-viral-video-kabul-airport-opened-chaos-2019-texas-stadium-dallas-cowboys-vs-seattle-seahawks-united-states-factcheck-14418",
+  "notes": "BOOM links this post. Pairs with true item SInow/1081689683678113793. Same clip: uajalsingh/1427288501523947526 (Alt News)."
+ },
+ {
+  "group": "fake",
+  "post_url": "https://x.com/BGatesIsaPyscho/status/1899207811055124500",
+  "claimed": "Ukrainians surrendering in huge numbers in the Kursk region (10-11 Mar 2025)",
+  "truth": "Footage online since at least April 2022, released by Russian media as Ukrainian soldiers surrendering in Mariupol",
+  "media": "video",
+  "source_url": "https://fullfact.org/online/ukraine-soldiers-surrendering-old-video/",
+  "notes": "Full Fact links this post; on-screen text also carries the Kursk/date claim. Full Fact gives only 'since April 2022'; Mariupol context from the Conflicts/1511090230736076814 post Full Fact cites."
+ },
+ {
+  "group": "true",
+  "post_url": "https://x.com/accuweather/status/1844101666657927583",
+  "claimed": "Roofs torn off homes in Fort Myers, Florida, after a tornado as Hurricane Milton approaches (9 Oct 2024)",
+  "truth": "Same: tornado damage in Fort Myers, Florida, 9 Oct 2024",
+  "media": "video",
+  "source_url": "https://www.theguardian.com/us-news/live/2024/oct/09/hurricane-milton-latest-updates-harris-trump-election",
+  "notes": "AccuWeather (weather media); found via Guardian live blog embed."
+ },
+ {
+  "group": "true",
+  "post_url": "https://x.com/BFMTV/status/2089252660603965787",
+  "claimed": "Gironde wildfire: Prime Minister Sebastien Lecornu booed on arrival at Le Porge (17 Aug 2026)",
+  "truth": "Same: Le Porge, Gironde, France, 17 Aug 2026",
+  "media": "video",
+  "source_url": "https://www.theguardian.com/world/live/2026/aug/17/europe-wildfires-france-greece-belgium-germany-climate-crisis-drought-extreme-heat-latest-news-updates",
+  "notes": "BFMTV (broadcaster); French caption; Guardian live blog embed. Political visit during the fire, not fire footage as such."
+ },
+ {
+  "group": "fake",
+  "post_url": "https://x.com/rosalinda5901/status/1993989719022084567",
+  "claimed": "Breaking: huge fire erupts at the Marina Gardens building in Singapore (27 Nov 2025)",
+  "truth": "Fire on the Marina Bay Sands complex, Singapore, about a month earlier (28 Oct 2025)",
+  "media": "video",
+  "source_url": "https://www.misbar.com/en/factcheck/2025/11/27/viral-video-singapore-marina-bay-sands-fire-one-month-old",
+  "notes": "Misbar lists this post. Same city, wrong date. Weak: Misbar's analysis text is sparse; the 28 Oct date is from the Straits Times post Misbar cites. Also theinformant_x/1994004905795649950 (claims Marina Bay Sands, 27 Nov)."
+ },
+ {
+  "group": "true",
+  "post_url": "https://x.com/NSWRFS/status/1213319570129182721",
+  "claimed": "Emergency warning: Currowan Fire burning quickly towards the coast between Nowra and Kioloa, NSW (4 Jan 2020)",
+  "truth": "Same: Currowan Fire, NSW South Coast, Australia, 4 Jan 2020",
+  "media": "video",
+  "source_url": "https://www.theguardian.com/australia-news/live/2020/jan/04/australia-nsw-fires-live-updates-victoria-bushfires-rfs-cfa-road-closures-near-sydney-melbourne-latest-news",
+  "notes": "NSW Rural Fire Service (official emergency account); Guardian live blog embed."
+ },
+ {
+  "group": "fake",
+  "post_url": "https://x.com/dana916/status/1779266641299177840",
+  "claimed": "The arrival of the first batch of Iranian drones in Israel (13 Apr 2024)",
+  "truth": "People at a petrol station on the outskirts of Sderot, Israel, taking cover as Gaza rockets were intercepted, July 2023",
+  "media": "video",
+  "source_url": "https://fullfact.org/online/old-video-miscaptioned-iran-attack-israel/",
+  "notes": "Full Fact links this post (caption matches the quoted wording). Same country, wrong date/event."
+ },
+ {
+  "group": "fake",
+  "post_url": "https://x.com/ravindraJourno/status/1430905164748054532",
+  "claimed": "Second explosion hits the Baron Hotel near Kabul airport (26 Aug 2021)",
+  "truth": "Israeli airstrike on a Hamas site in the Gaza Strip, 21 Aug 2021",
+  "media": "video",
+  "source_url": "https://www.thequint.com/amp/story/news/webqoof/old-video-of-an-airstrikes-in-gaza-shared-as-kabul-airport-blast-fact-check",
+  "notes": "The Quint names this post (News18 journalist Ravindra Singh; handle was ravindrachanni). Same clip and caption: MalikAliiRaza/1430904448017068032 (embedded by The Quint). Pairs with true item AJA_Egypt/1429231846383042564. Indian poster."
+ },
+ {
+  "group": "fake",
+  "post_url": "https://x.com/itskipronoh/status/1983803979546161520",
+  "claimed": "Protests in Tanzania after the October 2025 election (30 Oct 2025)",
+  "truth": "Anti-Finance Bill protest in Nakuru, Kenya, June 2024",
+  "media": "video",
+  "source_url": "https://allafrica.com/stories/202512010118.html",
+  "notes": "Africa Check (republished on allAfrica) links this post; caption names Tanzania via 'Mama Samia'."
+ },
+ {
+  "group": "fake",
+  "post_url": "https://x.com/realgerhardtvdm/status/2033007246490378528",
+  "claimed": "Massive protests spreading in Tel Aviv and all over Israel, streets set on fire (15 Mar 2026)",
+  "truth": "Anti-government protest in Mashhad, Iran, January 2026 (posted by Iran Human Rights on 30 Jan 2026)",
+  "media": "video",
+  "source_url": "https://newsmeter.in/fact-check/fact-check-anti-war-protests-in-tel-aviv-no-old-video-from-iran-goes-viral-764676",
+  "notes": "NewsMeter links this post."
+ },
+ {
+  "group": "fake",
+  "post_url": "https://x.com/david_ordaz/status/2088441890559361478",
+  "claimed": "Strong earthquakes in Indonesia (7.7) and Granada, Spain, this morning (15 Aug 2026)",
+  "truth": "Footage from the April 2024 Hualien earthquake in Taiwan",
+  "media": "video",
+  "source_url": "https://maldita.es/desinfo/20260817/este-video-muestra-el-derrumbe-de-un-edificio-en-el-terremoto-con-magnitud-77-de-indonesia/",
+  "notes": "Maldita embeds this post. Post has two videos; Spanish caption."
+ },
+ {
+  "group": "fake",
+  "post_url": "https://x.com/DaNang_Meme/status/1737059478753939888",
+  "claimed": "A girl sobs after her relatives died in the earthquake in China (Gansu, Dec 2023)",
+  "truth": "Scene from a school play performed at a primary school in Hunan, China",
+  "media": "video",
+  "source_url": "https://annielab.org/2023/12/22/misleading-these-videos-do-not-show-the-recent-earthquake-in-gansu/",
+  "notes": "Annie Lab links this post. Same country; false event (staged play, not quake). Account formerly memeforgirls."
+ },
+ {
+  "group": "true",
+  "post_url": "https://x.com/Reuters/status/1993800681690681644",
+  "claimed": "Hong Kong resident watches flames rip through the high-rise where he lives (Tai Po, 26 Nov 2025)",
+  "truth": "Same: Wang Fuk Court fire, Tai Po, Hong Kong, 26 Nov 2025",
+  "media": "video",
+  "source_url": "https://www.misbar.com/en/factcheck/2025/11/27/viral-video-singapore-marina-bay-sands-fire-one-month-old",
+  "notes": "Reuters; listed among Misbar's sources (cited by a fact-check). Caption is human-interest framing; place is in the attached video/story."
+ },
+ {
+  "group": "true",
+  "post_url": "https://x.com/JamaicaConstab/status/1983672750662414494",
+  "claimed": "Trelawny police help residents clear roads after Hurricane Melissa (29 Oct 2025)",
+  "truth": "Same: Trelawny, Jamaica, 29 Oct 2025",
+  "media": "video",
+  "source_url": "https://www.theguardian.com/world/live/2025/oct/29/hurricane-melissa-live-updates-strengthens-cuba-extensive-damage-parts-of-jamaica",
+  "notes": "Jamaica Constabulary Force (official); Guardian live blog embed. Same storm as JamaicaConstab/1983311743616221615."
+ },
+ {
+  "group": "fake",
+  "post_url": "https://x.com/IndrajitGurjar/status/1962920562747166958",
+  "claimed": "A whole family drowned in the Punjab (India) floods after help came too late (2 Sep 2025)",
+  "truth": "Family swept away by flash flooding in the Swat River, Khyber Pakhtunkhwa, Pakistan, 27 Jun 2025",
+  "media": "video",
+  "source_url": "https://newschecker.in/fact-check/old-pakistan-video-shared-as-family-washed-away-in-punjab-floods",
+  "notes": "Newschecker shows a screengrab of this post. Hindi caption. India item."
+ },
+ {
+  "group": "true",
+  "post_url": "https://x.com/NarasiNewsroom/status/1625850244557864960",
+  "claimed": "Dozens of Brimob officers shout and cheer in front of the courtroom at the Kanjuruhan tragedy trial, Surabaya District Court (14 Feb 2023)",
+  "truth": "Same: Surabaya District Court, East Java, Indonesia, 14 Feb 2023",
+  "media": "video",
+  "source_url": "https://en.wikipedia.org/wiki/Kanjuruhan_Stadium_disaster",
+  "notes": "Narasi (Indonesian news outlet); cited on Wikipedia. Indonesian caption. Posted one day after."
+ },
+ {
+  "group": "fake",
+  "post_url": "https://x.com/shalabhmani/status/1612779762149363714",
+  "claimed": "Pakistanis fighting over flour during the current (January 2023) wheat crisis",
+  "truth": "Clip online since 6 Sep 2022, shared then as chaos over flood-relief aid in Pakistan; predates the 2023 flour crisis",
+  "media": "video",
+  "source_url": "https://www.thequint.com/news/webqoof/old-video-showing-people-fighting-over-a-wheat-sack-passed-off-as-recent",
+  "notes": "The Quint names this post (Indian politician, Hindi caption). Same country, wrong date/event; The Quint could not verify the exact location. Earliest copy: LiaqatB10857542/1567103678229659648 (available). India-adjacent item."
+ },
+ {
+  "group": "fake",
+  "post_url": "https://x.com/usanewshq/status/2003519987236192657",
+  "claimed": "Muslims gather in the town square to tear down a large Christmas tree meant for families (23 Dec 2025, implied current and Western)",
+  "truth": "New Year's Eve celebration in Madinaty, Egypt, midnight 1 Jan 2025: young men climb a large tree and throw decorations to the crowd",
+  "media": "video",
+  "source_url": "https://www.misbar.com/en/editorial/2025/12/25/old-videos-showing-christmas-tree-vandalism-spark-online-controversy",
+  "notes": "Misbar (editorial) links this post. WEAK: caption names no place or date; the false parts are the implied time/setting and the event (anti-Christmas attack vs New Year celebration), and partly WHO. Same clip: BasilTheGreat/2003501392367964352."
+ },
+ {
+  "group": "true",
+  "post_url": "https://x.com/ZNSDigital/status/1168515961957363712",
+  "claimed": "Video from the Abacos, Bahamas, during Hurricane Dorian (2 Sep 2019)",
+  "truth": "Same: Abaco Islands, Bahamas, Hurricane Dorian, 1-2 Sep 2019",
+  "media": "video",
+  "source_url": "https://www.theguardian.com/world/live/2019/sep/02/hurricane-dorian-category-5-storm-bahamas-florida-south-north-carolina-updates",
+  "notes": "ZNS Bahamas (national broadcaster); Guardian live blog embed. Video features a minister's message."
+ },
+ {
+  "group": "true",
+  "post_url": "https://x.com/V6News/status/1405767481998774282",
+  "claimed": "A wonderful sight at Bheemili beach, Visakhapatnam (18 Jun 2021)",
+  "truth": "Same: cloud formation over Bheemili beach, Visakhapatnam, India, June 2021",
+  "media": "video",
+  "source_url": "https://factly.in/old-and-unrelated-visuals-are-passed-off-attributing-them-to-cyclone-shaheen",
+  "notes": "Telugu TV channel V6 News; original cited by Factly. Caption in Telugu. Exact filming date not stated; Factly cites Telugu news reports from June 2021. Pairs with GCC24h/1444158050374389765."
+ },
+ {
+  "group": "fake",
+  "post_url": "https://x.com/Glenn_Diesen/status/1935178336688394332",
+  "claimed": "Missile strikes during the June 2025 Iran-Israel war (posted 17-18 Jun 2025)",
+  "truth": "Footage of missiles hitting an urban area at night that was online by 1 Oct 2024 (Iran's missile attack on Israel); predates the June 2025 conflict",
+  "media": "video",
+  "source_url": "https://leadstories.com/hoax-alert/2025/06/fact-check-video-does-not-show-strike-happening-during-june-2025-iran-israel-conflict.html",
+  "notes": "Lead Stories names this post. Caption implies date only (does not say 'today'); same broad conflict, wrong round. Weak-ish: exact location not given by the fact-check."
+ },
+ {
+  "group": "true",
+  "post_url": "https://x.com/HarveyBiggs/status/1215152287481360384",
+  "claimed": "The fire front is beginning to hit the outskirts of Parndana, Kangaroo Island (9 Jan 2020)",
+  "truth": "Same: Kangaroo Island bushfire near Parndana, South Australia, 9 Jan 2020",
+  "media": "video",
+  "source_url": "https://www.theguardian.com/australia-news/live/2020/jan/09/nsw-fires-live-updates-victoria-bushfires-south-australia-fire-sa-australian-bushfire-near-me-rfs-cfa-latest-news-thursday",
+  "notes": "9News Adelaide reporter (personal account tagging @9NewsAdel), not the outlet's own account; Guardian live blog embed. Kangaroo Island not named in caption."
+ },
+ {
+  "group": "fake",
+  "post_url": "https://x.com/SamuelIse3/status/1833737570653524373",
+  "claimed": "Maiduguri, Nigeria, currently (Alau Dam flood, 11 Sep 2024)",
+  "truth": "Landslide in Atami, Japan, July 2021",
+  "media": "video",
+  "source_url": "https://dubawa.org/video-of-japan-landslide-falsely-used-to-portray-maiduguri-flood-scene/",
+  "notes": "DUBAWA debunks this X post (low-reach post, ~376 views)."
+ },
+ {
+  "group": "true",
+  "post_url": "https://x.com/VivianGonzalez7/status/1844018416329609242",
+  "claimed": "Tornado on the ground crossing I-75, 14 miles west of Sunrise, Florida (9 Oct 2024)",
+  "truth": "Same: tornado in western Broward County, Florida, ahead of Hurricane Milton, 9 Oct 2024",
+  "media": "video",
+  "source_url": "https://www.theguardian.com/us-news/live/2024/oct/09/hurricane-milton-latest-updates-harris-trump-election",
+  "notes": "WSVN 7News reporter's personal account (tags @wsvn), not the outlet's own account; Guardian live blog embed."
+ },
+ {
+  "group": "true",
+  "post_url": "https://x.com/delcyrodriguezv/status/2071562027613454443",
+  "claimed": "Aaron Levi Cantillo rescued alive after 106 hours trapped (Venezuela earthquake, 29 Jun 2026)",
+  "truth": "Same: rescue from the OPP 25 building, Tanaguarena, La Guaira, Venezuela, 29 Jun 2026",
+  "media": "video",
+  "source_url": "https://www.theguardian.com/world/live/2026/jun/29/venezuela-earthquakes-search-rescue-latest-updates",
+  "notes": "Official account of Venezuela's Delcy Rodriguez; Spanish caption; Guardian live blog embed. Same rescue also posted by nayibbukele/2071552309897679035 (names the building)."
+ },
+ {
+  "group": "fake",
+  "post_url": "https://x.com/GhorbaniiNiyak/status/2007351765826695240",
+  "claimed": "US military strikes on the Port of Caracas and Margarita Island, Venezuela (3 Jan 2026)",
+  "truth": "Iranian missiles striking Israel's Nevatim Airbase, 1 Oct 2024",
+  "media": "video",
+  "source_url": "https://fullfact.org/world/old-video-us-strikes-venezuela/",
+  "notes": "Full Fact links this post."
+ },
+ {
+  "group": "fake",
+  "post_url": "https://x.com/btysonmd/status/2063830570296287547",
+  "claimed": "A 7.8 earthquake hits the Philippines today (7 Jun 2026)",
+  "truth": "People fleeing falling ceiling debris in a mall in General Santos City, Philippines, during the magnitude 6.8 earthquake offshore Davao Occidental, 17 Nov 2023",
+  "media": "video",
+  "source_url": "https://www.politifact.com/factchecks/2026/jun/08/tweets/philippines-earthquake-old-video/",
+  "notes": "PolitiFact names this post. Same country, wrong date/event. Pairs with true item upuknews1/1725463001665515950."
+ },
+ {
+  "group": "fake",
+  "post_url": "https://x.com/SAexploring/status/1877527383231680523",
+  "claimed": "People trapped in a burning house during the Los Angeles (Palisades) fires (10 Jan 2025)",
+  "truth": "House fire in Adelaide's western suburbs, Australia, footage online since December 2024",
+  "media": "video",
+  "source_url": "https://www.misbar.com/en/factcheck/2025/01/11/video-shows-individuals-trapped-burning-house-australia-not-los-angeles",
+  "notes": "Misbar embeds this post; same clip also posted by BobbySeeta/1877309846124372415, hellasxg/1877439876603208140, iamsakibali1/1877645720334815364 (all available). Misbar page gives 'Australia, predates LA fires'; Adelaide detail from Misbar summary."
+ },
+ {
+  "group": "fake",
+  "post_url": "https://x.com/dev_eth0/status/1708505629923348662",
+  "claimed": "More footage from the New York City flooding (29 Sep - 1 Oct 2023)",
+  "truth": "Water cascading onto a New York City subway train during Hurricane Ida flooding, 1-2 Sep 2021",
+  "media": "video",
+  "source_url": "https://www.thequint.com/news/webqoof/water-falling-on-train-new-york-floodings-viral-video-fact-check",
+  "notes": "The Quint WebQoof links this post (account was cb_doge01 at the time, now dev_eth0). Same city, wrong date/event."
+ },
+ {
+  "group": "fake",
+  "post_url": "https://x.com/jacksonhinkle/status/1920967136853340534",
+  "claimed": "Missiles launched from India hit a road near Pakistan's PAF Base Nur Khan in Rawalpindi (9 May 2025)",
+  "truth": "Fire after tankers collided near the Nur Khan airbase / old airport, Rawalpindi, around 6 Dec 2023",
+  "media": "video",
+  "source_url": "https://fullfact.org/conflict/fullfactorgconflictpakistan-air-base-miscaptioned-clip/",
+  "notes": "Full Fact names Jackson Hinkle's X post. Same place, wrong date/event. India-Pakistan conflict item."
+ },
+ {
+  "group": "true",
+  "post_url": "https://x.com/upuknews1/status/1725463001665515950",
+  "claimed": "Earthquake of magnitude 6.9 strikes southern Philippines (17 Nov 2023)",
+  "truth": "Same: footage from the 17 Nov 2023 Mindanao earthquake (General Santos City mall)",
+  "media": "video",
+  "source_url": "https://www.politifact.com/factchecks/2026/jun/08/tweets/philippines-earthquake-old-video/",
+  "notes": "Original cited by PolitiFact; small news account posting same day. Pairs with btysonmd/2063830570296287547."
+ },
+ {
+  "group": "true",
+  "post_url": "https://x.com/AJA_Egypt/status/1429231846383042564",
+  "claimed": "First footage of Israeli strikes on Palestinian faction sites in the Gaza Strip (22 Aug 2021)",
+  "truth": "Same: Israeli airstrikes in Gaza, night of 21-22 Aug 2021",
+  "media": "video",
+  "source_url": "https://www.boomlive.in/fact-check/fact-check-fake-news-afghanistan-kabul-airport-taliban-isis-terror-attack-blast-photos-videos-viral-fake-tv-news-14448",
+  "notes": "Al Jazeera (Egypt-focused Arabic account); original cited by BOOM/The Quint. Arabic caption. Pairs with ravindraJourno/1430905164748054532."
+ },
+ {
+  "group": "true",
+  "post_url": "https://x.com/JamaicaConstab/status/1983311743616221615",
+  "claimed": "Black River Police Station becomes a refuge for flooded residents during Hurricane Melissa (28 Oct 2025)",
+  "truth": "Same: Black River, St Elizabeth, Jamaica, 28 Oct 2025",
+  "media": "video",
+  "source_url": "https://www.theguardian.com/world/live/2025/oct/28/hurricane-melissa-live-updates-category-5-storm-jamaica-landfall-latest-news",
+  "notes": "Jamaica Constabulary Force (official); Guardian live blog embed."
+ }
+]

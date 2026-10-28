@@ -70,6 +70,12 @@ def frames(path, n=4):
     return out
 
 
+def frame_at(path, t):
+    """One JPEG frame at second t (recorded by the video file's hash, like frames())."""
+    return replay.cached_bytes("frame", {"video_sha256": file_sha(path), "t": round(float(t), 1)},
+                               lambda: _grab(path, float(t)))
+
+
 def audio_wav(path):
     """16 kHz mono WAV of the first 10 minutes, or None if the video has no sound."""
     with tempfile.TemporaryDirectory() as tmp:
