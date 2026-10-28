@@ -340,12 +340,14 @@ function noteDraft(r) {
   if (scene) {
     text = `This ${what} is not from ${c.place || "the place claimed"}. A sign in the footage reads "${scene.quote}", which places it in ${scene.described_place}.`;
   } else if (f) {
-    const was = [a.event, a.place].filter(Boolean).join(", ");
-    const claimed = c.event || c.place || "what the post says";
-    text = `This ${what} is older than the post claims. It was online by ${f.date} (${f.domain})${was ? ", described as " + was : ""}. It does not show ${claimed}${c.claimed_date ? " (" + c.claimed_date + ")" : ""}.`;
+    // Shortest parts first to go when the note is too long; never cut a sentence in the middle.
+    const base = `This ${what} is older than the post claims. It was online by ${f.date} (${f.domain})`;
+    const tail = `. It does not show ${short(c.event || c.place || "what the post says", 90)}${c.claimed_date ? " (" + short(c.claimed_date, 40) + ")" : ""}.`;
+    const desc = a.event ? `, described as ${short(a.event, 80)}` : "";
+    text = (base + desc + tail).length <= 250 ? base + desc + tail : base + tail;
   } else return "";
   const src = scene ? "" : f.url || "";
-  return (text.length > 250 ? text.slice(0, 249) + "…" : text) + (src ? " " + src : "");
+  return text + (src ? " " + src : "");
 }
 
 function verifyLinks(r) {

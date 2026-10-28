@@ -28,6 +28,7 @@ Meta AI Developer Hackathon 2026 · Indie Developer track · Team CurrentSky (St
 | The agents and how they hand work to each other | [How it works](#how-it-works) · [`backstory/pipeline.py`](backstory/pipeline.py) |
 | What each Meta model does, and why | [Meta's models](#metas-models-what-each-one-does) |
 | Whether it works: nine tests, rules written before each run, failures included | [Results](#results) · [`docs/`](docs/) · in the app: `/tested` |
+| Every one of the 207 posts on X it checked, with its verdict and evidence | [The track record](#the-track-record) · [`eval/track_record.json`](eval/track_record.json) |
 | What happens when evidence is missing or a step fails | [When something goes wrong](#when-something-goes-wrong) |
 | Every external call recorded; the examples replay offline from the repository | [`backstory/replay.py`](backstory/replay.py) · [`replay/`](replay/) |
 | The evaluation code | [`eval/fivepils.py`](eval/fivepils.py) (fact-checked photos) · [`eval/realset.py`](eval/realset.py) (posts on X) |
@@ -55,21 +56,22 @@ evidence, and code, not a model, has the last word on what counts as proof. When
 
 ## What you get
 
-### The agents at work
-
-Fifteen steps in four stages, eight of them on Meta's models: read the post, find its past, decide, check the proof. Each lights up while it
-works; the Meta model it runs on is named; agents a post does not need stay grey. The feed below the map shows
-what each one found; when the critic sends the judge back, that step turns amber.
-
-![The agent map for the Valencia example: the four stages with the agents that ran, and the feed of their messages](docs/images/valencia_agents.png)
-
 ### The verdict, and why
 
-The verdict comes with the time between the earliest dated copy of the image and the date the caption claims, what the caption
-says against what the record says, the proof the code accepted, and a timeline of every dated copy. For a post on
-X, its Community Note is shown next to the verdict for comparison. It is never given to the agents.
+The verdict comes first: the post as it was shared next to the earliest dated copy of the same image, with the time
+between them; what the caption says against what the record says (with how the claim reader read the caption:
+its language, and how it got the date); the proof the code accepted; a draft Community Note built from the cited
+evidence, next to the post's real Community Note when it has one (never shown to the agents); and a timeline of
+every dated copy, with the ones that appeared after the claimed date greyed out.
 
-![The verdict for a staged example: a 2005 Hurricane Katrina photo captioned as Valencia in October 2024. "Does not fit", 19 years 1 month, caption against record, proof checked by code, timeline](docs/images/valencia_verdict.png)
+![The verdict for a staged example: a 2005 Hurricane Katrina photo captioned as Valencia in October 2024. "Does not fit", the post next to its first copy from 2005, 19 years 1 month, caption against record, proof, a draft Community Note, the timeline](docs/images/valencia_verdict.png)
+
+### Every model call, on a receipt
+
+Each check lists every call to Meta's models: which agent made it, the model, the reasoning effort, the tokens,
+the cost, and the gist of what the model answered.
+
+![The model receipt for the Valencia example: the claim reader, photo finder, scene witness, page readers, judge and critic, each with model, effort, tokens, cost and answer](docs/images/receipt.png)
 
 ### How the verdict was reached
 
@@ -78,6 +80,23 @@ cut-outs, video frames, the moments a model picked, signs read in the scene), th
 aside, and the steps that decided. The blue lines are what the verdict rests on.
 
 ![The check graph for the Valencia example: the post and claim, the image searched, the copies found with their dates, and the decision](docs/images/valencia_graph.png)
+
+### The agents at work
+
+Fifteen steps in four stages, eight of them on Meta's models: read the post, find its past, decide, check the
+proof. Each lights up while it works and names the model it runs on; steps a post does not need stay grey. When
+the critic sends the judge back, that step turns amber, and the exchange between the two models is shown with the
+verdict. The agents' log folds into one line once the verdict is in.
+
+![The agent map for the Valencia example: the four stages with the steps that ran](docs/images/valencia_agents.png)
+
+### The track record
+
+All 207 posts on X checked in Tests H2–H6, not just the good ones: each with the fact-checker's finding, Backstory's
+verdict, the earliest copy it cited, and links to the post and the fact-check, filterable by outcome, media and
+test (`/record`, data in [`eval/track_record.json`](eval/track_record.json), text and links only).
+
+![The track record page: 20 of 21 "Does not fit" verdicts right, 20 of 108 fakes caught, 1 of 99 genuine posts flagged, 12 of 90 fake videos caught, and the list of posts with filters](docs/images/record.png)
 
 The examples in the repository are staged on public-domain photos (U.S. Coast Guard and U.S. Navy, see
 [`examples/CREDITS.md`](examples/CREDITS.md)): the same photo with a false caption and with its true caption, so you
@@ -276,8 +295,8 @@ curl -N -X POST -F example_id=valencia http://localhost:8000/api/check
 
 ```
 backstory/   the agents and the pipeline (pipeline.py), the Meta Model API client, record/replay, the web server
-web/         the app: agent map, feed, verdict, check graph, evidence, How it was tested
-eval/        evaluation on 5Pils and on posts on X, the frozen post sets, the demo builder
+web/         the app: verdict, check graph, agent map, model receipt, evidence, track record, How it was tested
+eval/        evaluation on 5Pils and on posts on X, the frozen post sets, the track record, the demo builder
 docs/        the test reports, each with its rule written before the run; README images
 examples/    the offline example cases (public-domain photos, staged captions)
 replay/      the recorded answers the examples replay from
