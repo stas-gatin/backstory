@@ -53,12 +53,14 @@ def score(rows):
 def main():
     ap = argparse.ArgumentParser()
     ap.add_argument("--set", default=str(ROOT / "eval" / "realset.json"))
+    ap.add_argument("--start", type=int, default=0, help="first position in the set (positions keep their numbers)")
     ap.add_argument("--limit", type=int)
     ap.add_argument("--max-usd", type=float, default=6.0)
     ap.add_argument("--workers", type=int, default=2)
     ap.add_argument("--out", default=str(ROOT / "runs" / "test_h2.json"))
     a = ap.parse_args()
     items = json.load(open(a.set))[:a.limit]
+    todo = range(a.start, len(items))
     lock, rows, spent = threading.Lock(), [], [0.0]
 
     def job(i):
@@ -81,10 +83,10 @@ def main():
         print(i, item["group"], item["media"], "->", row["verdict"], "| $%.2f" % spent[0], flush=True)
 
     with cf.ThreadPoolExecutor(max_workers=a.workers) as pool:
-        list(pool.map(job, range(len(items))))
+        list(pool.map(job, todo))
     if spent[0] >= a.max_usd:
         print("cost cap reached", flush=True)
-    summary = dict(score(rows), usd=round(spent[0], 2), checked=len(rows), listed=len(items))
+    summary = dict(score(rows), usd=round(spent[0], 2), checked=len(rows), listed=len(todo))
     print(json.dumps(summary, indent=1), flush=True)
     json.dump({"summary": summary, "posts": rows}, open(a.out, "w"), indent=1, ensure_ascii=False)
 
