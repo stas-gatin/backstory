@@ -203,3 +203,25 @@ Claims allowed afterwards:
 - "Backstory catches fake videos on X" with a rate only if version 5's detection >= 0.35 and false alarm <= 0.10;
 - if version 5's false alarm > 0.10, the README says the post clock is not ready.
 Budget: hard cap 8 USD for version 5 and 6 USD for version 4.
+
+## H5 result (2026-10-28; version 5 at ef47d1e, 4.64 USD; version 4 at 3bf7dfe, 4.31 USD with shared records)
+All 56 posts checked by both versions, no errors.
+
+| | version 4 | version 5 (post clock) |
+|---|---|---|
+| fake videos called "inconsistent" (31) | 6 (0.194) | 5 (0.161) |
+| true videos called "inconsistent" (25) | 0 | 0 |
+| true videos called "consistent" | 2 | 2 |
+
+The versions differ on one post only (a church fire in Yorkshire): version 4 caught it through the date rule on an
+archived partial-match image; in version 5 the match checker confirmed that page as the same footage, the page's
+image was then not archive-dated, and the judge's "inconsistent" was stopped by the proof check.
+
+Decision under the rule above: version 5 does not catch more fakes than version 4, so **the claim "the post clock
+catches more fake videos" is not supported**. Detection 0.161 < 0.35, so **no detection rate for fake videos on X is
+claimed**. False alarm 0.000 for both. The post clock stays in the pipeline (it shows the exact date of each copy on
+X, TikTok and YouTube and never raised a false alarm), but it is not presented as an improvement.
+
+Why fake videos are missed (version 5, 26 misses): 10 had no reverse-search result for any frame; 13 had pages, but
+nothing the judge could use (copies with no date earlier than the claim, or only unconfirmed partial matches); 3 had
+a sign against the caption that did not meet the proof check.
