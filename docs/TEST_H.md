@@ -118,3 +118,26 @@ Claims allowed afterwards (on the posts checked):
   (H2 on the earlier version: 0.24 and 0.036);
 - if false alarm > 0.10: the new version is not ready for real posts, and the README says so.
 Budget: hard cap 3 USD (the total for all tests stays at about 40 USD).
+
+## H3 result (2026-10-28, pipeline at commit c79bf8e, 3.12 USD)
+The 3 USD cap stopped the run after 39 of the 53 shuffled posts (23 fake: 14 photo, 9 video; 16 true: 10 photo,
+6 video). One fake photo ended in an error (Google Vision returned a server error).
+
+| | fake (23) | true (16) |
+|---|---|---|
+| "inconsistent" | 5 (0.217) | 0 (0.000) |
+| "cannot_tell" | 17 | 11 |
+| "consistent" | 0 | 5 |
+| error | 1 | 0 |
+
+By media: fake photos 5 of 14 (0.357), fake videos 0 of 9.
+
+Decision under the rule above: detection 0.217 < 0.35, so **the claim "the new version catches more fakes on real
+posts" is not supported**. False alarm 0.000 <= 0.10, so the new version raises no false alarm on this set.
+
+Reading (after the result, not part of the rule): six posts had no reverse-search result at all. Three fakes were
+caught by the judge and approved by the critic but stopped by the proof check. In two of them the evidence was a
+copy published long before the post (rainews.it, May 2024, for a post of Feb 2026; Al-Alam, Nov 2016, for a post
+of Aug 2024), but the caption gave no date ("Iran launching missiles from beneath the sea"; "First picture of a
+chemical attack in Kursk"), so there was no claimed date for an earlier copy to beat. A post that presents media as
+news implies "now"; the pipeline did not use the posting date as that implied date.
