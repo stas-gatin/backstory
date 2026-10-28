@@ -242,6 +242,14 @@ docker compose up --build
 Now any link to a post on X, or any uploaded photo or video with its caption, is checked live, and every new
 answer is recorded into `replay/` (mounted from your checkout by `docker-compose.yml`).
 
+### A public copy with live checks
+
+With keys, a public copy limits live checks so the credits cannot run out by accident
+([`backstory/limits.py`](backstory/limits.py)): 3 a day per visitor (`BACKSTORY_LIVE_PER_VISITOR`), $5 a day
+(`BACKSTORY_LIVE_DAY_USD`) and $40 in total (`BACKSTORY_LIVE_TOTAL_USD`), at most two at a time. If the Meta Model
+API stops answering (for example, no credit left), live checks pause for half an hour and the page says so. The
+recorded checks and the track record are never limited, so the site keeps working with no credit at all.
+
 ### Without Docker
 
 You need Python 3.12 and ffmpeg.

@@ -65,13 +65,28 @@ function drawMap() {
       <span class="nd">${icon(id)}</span><div><b>${esc(name)}</b><small>${esc(by)}</small></div></div>`).join("")}</div>`).join("");
 }
 
+async function updateStatus() {
+  const st = await fetch("/api/status").then((r) => r.json()).catch(() => ({}));
+  const lv = st.live || {};
+  if (st.mode !== "live") {
+    $("#mode").innerHTML = '<i class="live off"></i>Demo: recorded checks';
+    $("#mode").title = "This copy replays checks recorded earlier, step by step, with no keys and no network.";
+    $("#demoNote").textContent = "This copy replays recorded checks: pick one of the cases below. New links and uploads are checked when Backstory runs with its keys.";
+  } else if (lv.live) {
+    $("#mode").innerHTML = `<i class="live"></i>Live checks · ${lv.left} of ${lv.per_visitor} left today`;
+    $("#mode").title = "New links and uploads run live on Meta's models. Recorded checks are unlimited.";
+    $("#demoNote").textContent = `Live: paste any post on X. You have ${lv.left} of ${lv.per_visitor} live checks left today; a check takes about a minute. The recorded checks below are unlimited.`;
+  } else {
+    $("#mode").innerHTML = '<i class="live off"></i>Live checks paused';
+    $("#mode").title = "Live checks are paused (" + (lv.reason || "") + "). Recorded checks still work.";
+    $("#demoNote").textContent = `Live checks are paused right now (${lv.reason || "budget"}). The recorded checks below still work, step by step.`;
+  }
+  $("#demoNote").hidden = false;
+}
+
 async function init() {
   drawMap();
-  const st = await fetch("/api/status").then((r) => r.json()).catch(() => ({}));
-  $("#mode").innerHTML = st.mode === "replay"
-    ? '<i class="live off"></i>Demo: recorded checks' : '<i class="live"></i>Live checks';
-  $("#mode").title = st.mode === "replay" ? "This copy replays checks recorded earlier, step by step, with no keys and no network." : "Checks run live on Meta's models.";
-  $("#demoNote").hidden = st.mode !== "replay";
+  await updateStatus();
   const ex = await fetch("/api/examples").then((r) => r.json()).catch(() => []);
   EXAMPLES = ex;
   $("#examplesWrap").hidden = !ex.length;
@@ -208,6 +223,7 @@ $("#form").addEventListener("submit", async (e) => {
   }
   clearInterval(timer);
   setRunning(false);
+  updateStatus();
 });
 
 function setRunning(on) {
@@ -261,6 +277,8 @@ function handle(ev) {
   else if (ev.type === "result") showResult(ev);
   else if (ev.type === "error") {
     feedLine({ agent: "error", cls: "err", mark: "alert", name: "Stopped", by: "", text: ev.text });
+    $("#feed").hidden = false;
+    $("#feed").insertAdjacentHTML("beforeend", `<li class="err"><span></span><div><a href="/">Open a recorded check instead &rarr;</a></div></li>`);
     document.querySelectorAll(".node.running").forEach((n) => n.classList.replace("running", "fail"));
   }
 }

@@ -94,18 +94,18 @@ def run(image_bytes, caption, posted_on=None, matches=None, exclude_fact_checker
         yield from _run(image_bytes, caption, posted_on, matches, exclude_fact_checkers, budget, video_path, post_url,
                         tmp)
     except xpost.PostError as e:
-        yield {"type": "error", "text": "Could not read the post: %s" % e}
+        yield {"type": "error", "cost": budget.summary(), "text": "Could not read the post: %s" % e}
     except replay.NotInReplay as e:
-        yield {"type": "error", "text": "This check was not recorded, and the demo runs without keys (replay mode). "
+        yield {"type": "error", "cost": budget.summary(), "text": "This check was not recorded, and the demo runs without keys (replay mode). "
                                         "Pick one of the examples, or run Backstory locally with keys. (%s)" % e}
     except search.SearchUnavailable as e:
-        yield {"type": "error", "text": str(e)}
+        yield {"type": "error", "cost": budget.summary(), "text": str(e)}
     except video.VideoError as e:
-        yield {"type": "error", "text": "Could not read the video: %s" % e}
+        yield {"type": "error", "cost": budget.summary(), "text": "Could not read the video: %s" % e}
     except meta.BudgetExceeded as e:
-        yield {"type": "error", "text": "Stopped: %s." % e}
+        yield {"type": "error", "cost": budget.summary(), "text": "Stopped: %s." % e}
     except Exception as e:  # noqa: BLE001 - reported to the page, never swallowed silently
-        yield {"type": "error", "text": "%s: %s" % (type(e).__name__, e)}
+        yield {"type": "error", "cost": budget.summary(), "text": "%s: %s" % (type(e).__name__, e)}
     finally:
         for f in tmp:
             Path(f).unlink(missing_ok=True)

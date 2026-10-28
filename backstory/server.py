@@ -8,12 +8,12 @@ import time
 import tempfile
 from pathlib import Path
 
-from fastapi import FastAPI, File, Form, HTTPException, UploadFile
+from fastapi import FastAPI, File, Form, HTTPException, Request, UploadFile
 from fastapi.responses import FileResponse, RedirectResponse, StreamingResponse
 from fastapi.staticfiles import StaticFiles
 from starlette.background import BackgroundTask
 
-from . import config, media, pipeline
+from . import config, limits, media, pipeline
 
 WEB = config.ROOT / "web"
 EXAMPLES = Path(os.environ.get("BACKSTORY_EXAMPLES_DIR", config.ROOT / "examples"))
@@ -29,10 +29,28 @@ def _examples():
     return json.loads(f.read_text()) if f.exists() else []
 
 
+def _visitor(request):
+    # Behind a proxy (Render, Docker), the visitor is the first address in X-Forwarded-For.
+    fwd = request.headers.get("x-forwarded-for", "")
+    return fwd.split(",")[0].strip() or (request.client.host if request.client else "?")
+
+
 @app.get("/api/status")
-def status():
+def status(request: Request):
+    live = limits.status(_visitor(request)) if config.MODE == "live" else {"live": False, "reason": "no keys"}
     return {"mode": config.MODE, "meta_key": bool(config.MODEL_API_KEY),
-            "image_search_key": bool(config.GOOGLE_VISION_API_KEY)}
+            "image_search_key": bool(config.GOOGLE_VISION_API_KEY), "live": live}
+
+
+def _live(request, events):
+    """A new check (not a recorded example): limited on a public copy, and counted when it ends."""
+    if config.MODE != "live":
+        return events
+    try:
+        limits.start(_visitor(request))
+    except limits.Refused as e:
+        raise HTTPException(429, str(e))
+    return limits.watch(events)
 
 
 @app.get("/api/examples")
@@ -71,11 +89,11 @@ def _stream(events, cleanup=None):
 
 
 @app.post("/api/check")
-async def check(caption: str = Form(""), posted_on: str = Form(""), example_id: str = Form(""),
+async def check(request: Request, caption: str = Form(""), posted_on: str = Form(""), example_id: str = Form(""),
                 post_url: str = Form(""), image: UploadFile | None = File(None)):
     video_path, cleanup = None, None
     if post_url.strip():
-        return _stream(pipeline.run(None, "", None, post_url=post_url.strip()))
+        return _stream(_live(request, pipeline.run(None, "", None, post_url=post_url.strip())))
     if example_id:
         ex = next((e for e in _examples() if e["id"] == example_id), None)
         if not ex:
@@ -115,6 +133,8 @@ async def check(caption: str = Form(""), posted_on: str = Form(""), example_id: 
             except media.BadMedia as e:
                 raise HTTPException(400, str(e))
     events = pipeline.run(data, caption, posted_on or None, matches=matches, video_path=video_path)
+    if not example_id:
+        events = _live(request, events)
     return _stream(events, cleanup)
 
 
