@@ -417,7 +417,7 @@ th { color: var(--muted); font-weight: 600; border-top: 0; font-size: 12px; }
 .nav a { color: var(--muted); font-weight: 600; font-size: 14.5px; padding: 6px 0; border-bottom: 2px solid transparent; }
 .nav a:hover { color: var(--ink); text-decoration: none; }
 .nav a.on { color: var(--ink); border-bottom-color: var(--blue); }
-.top .mode { margin-left: auto; cursor: help; }
+.top .mode { margin-left: auto; }
 .top .tag { display: none; }
 /* Home: the input is the first thing to use */
 .hero { grid-template-columns: minmax(0, 1fr) 460px; align-items: start; padding-top: 48px; }
@@ -506,7 +506,7 @@ th { color: var(--muted); font-weight: 600; border-top: 0; font-size: 12px; }
 .preview-wrap .hp-img img { max-height: 300px; }
 .preview-wrap .hp-body { padding: 22px 32px; }
 /* What an agent did, on hover in the agent map */
-.node { cursor: help; transition: transform .15s ease, box-shadow .15s ease; }
+.node { cursor: default; transition: transform .15s ease, box-shadow .15s ease; }
 .node:hover { transform: translateY(-1px); box-shadow: 0 6px 18px rgba(16, 24, 40, .10); }
 #nodeTip { position: absolute; z-index: 50; width: min(380px, calc(100vw - 16px)); background: #fff; border: 1px solid var(--line);
   border-radius: 14px; box-shadow: 0 16px 48px rgba(16, 24, 40, .18); padding: 12px 14px; font-size: 13px; line-height: 1.45;
