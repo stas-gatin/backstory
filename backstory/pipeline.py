@@ -94,18 +94,18 @@ def run(image_bytes, caption, posted_on=None, matches=None, exclude_fact_checker
         yield from _run(image_bytes, caption, posted_on, matches, exclude_fact_checkers, budget, video_path, post_url,
                         tmp)
     except xpost.PostError as e:
-        yield {"type": "error", "text": "Could not read the post: %s" % e}
+        yield {"type": "error", "cost": budget.summary(), "text": "Could not read the post: %s" % e}
     except replay.NotInReplay as e:
-        yield {"type": "error", "text": "This check was not recorded, and the demo runs without keys (replay mode). "
+        yield {"type": "error", "cost": budget.summary(), "text": "This check was not recorded, and the demo runs without keys (replay mode). "
                                         "Pick one of the examples, or run Backstory locally with keys. (%s)" % e}
     except search.SearchUnavailable as e:
-        yield {"type": "error", "text": str(e)}
+        yield {"type": "error", "cost": budget.summary(), "text": str(e)}
     except video.VideoError as e:
-        yield {"type": "error", "text": "Could not read the video: %s" % e}
+        yield {"type": "error", "cost": budget.summary(), "text": "Could not read the video: %s" % e}
     except meta.BudgetExceeded as e:
-        yield {"type": "error", "text": "Stopped: %s." % e}
+        yield {"type": "error", "cost": budget.summary(), "text": "Stopped: %s." % e}
     except Exception as e:  # noqa: BLE001 - reported to the page, never swallowed silently
-        yield {"type": "error", "text": "%s: %s" % (type(e).__name__, e)}
+        yield {"type": "error", "cost": budget.summary(), "text": "%s: %s" % (type(e).__name__, e)}
     finally:
         for f in tmp:
             Path(f).unlink(missing_ok=True)
@@ -136,7 +136,7 @@ def _run(image_bytes, caption, posted_on, matches, exclude_fact_checkers, budget
             raise xpost.PostError("the post has no photo or video")
         media = "a video" if post["video"] else _count(len(post["photos"]), "photo", "photos")
         yield step("post", "done", '@%s, %s, with %s: "%s"' % (post["author"], post["posted_on"], media, post["text"][:240]),
-                   post={k: post[k] for k in ("url", "author", "text", "posted_on")},
+                   post={k: post.get(k) for k in ("url", "author", "text", "posted_on", "media_urls")},
                    thumbs=[_thumb(p) for p in post["photos"]])
         extra = {"post": {k: post[k] for k in ("url", "author", "posted_on")},
                  "community_note": post["community_note"]}
@@ -481,10 +481,30 @@ def _finish(c, evidence, rule, judged, crit, budget, extra, empty_reason=None, g
             timeline.append({"date": said, "kind": "described", "id": e["id"],
                              "text": "%s dates the photo here%s" % (e["domain"], (": " + what) if what else ""),
                              "url": e["url"]})
-    timeline.sort(key=lambda t: t["date"])
     cited = set((judged or {}).get("cited") or [])
     if rule:
         cited.add(rule["evidence_id"])
+    # Publication dates count only for the copies the verdict cites (see verdict._first_dated).
+    for e in evidence:
+        pub = verdict._first_dated(dict(e, image_first=None)) if e["id"] in cited else None
+        if pub and not any(t.get("id") == e["id"] and t["date"] == pub for t in timeline):
+            timeline.append({"date": pub, "kind": "evidence", "id": e["id"],
+                             "text": "%s: published%s" % (e["domain"], " (%s)" % e["date_source"] if e.get("date_source") else ""),
+                             "url": e.get("url")})
+    timeline.sort(key=lambda t: t["date"])
+    # The earliest copy of the image the verdict cites, by a date that shows the image existed: one fact that the
+    # time gap, the "first seen" card and the proof all refer to.
+    first_seen = None
+    for e in evidence:
+        d = verdict._first_dated(e) if e["id"] in cited else None
+        if d and (first_seen is None or d < first_seen["date"]):
+            first_seen = {"date": d, "id": e["id"], "domain": e["domain"], "url": e.get("url"),
+                          "image_url": e.get("image_url"), "how": "image file archived" if d == e.get("image_first")
+                          else "published" + (" (%s)" % e["date_source"] if e.get("date_source") else ""),
+                          "snapshot": e.get("image_snapshot") if d == e.get("image_first") else None,
+                          "described": " · ".join(str(v) for v in (e.get("described_place"), e.get("described_date"),
+                                                                   e.get("described_event")) if v)}
     yield {"type": "result", "verdict": final, "basis": basis, "summary": summary, "claim": c,
            "actual": (judged or {}).get("actual"), "rule": rule, "cited": sorted(cited), "evidence": evidence,
-           "timeline": timeline, "critic": crit, "grounds": grounds, "cost": budget.summary(), "mode": config.MODE, **extra}
+           "timeline": timeline, "critic": crit, "grounds": grounds, "first_seen": first_seen,
+           "cost": budget.summary(), "mode": config.MODE, **extra}

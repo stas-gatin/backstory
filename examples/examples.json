@@ -1,5 +1,170 @@
 [
  {
+  "id": "pisa",
+  "kind": "recorded",
+  "title": "Flag on the Tower of Pisa, \"now\"",
+  "fresh": true,
+  "blurb": "October 2026: a giant Palestinian flag on the Leaning Tower, shared as today's protests.",
+  "post_url": "https://x.com/theseed59788459/status/2111893141972513167",
+  "caption": "x.com/theseed59788459/status/2111893141972513167",
+  "preview": {
+   "verdict": "inconsistent",
+   "first_date": "2023-11-19",
+   "first_domain": "tiktok.com",
+   "claim_date": "2026-10-18",
+   "claimed": "Pisa, Tuscany, Italy · now, during ongoing cost-of-living protests",
+   "record": "Leaning Tower of Pisa in Italy"
+  },
+  "recording": "recorded/pisa.ndjson",
+  "image_url": "https://pbs.twimg.com/ext_tw_video_thumb/2051681222057672705/pu/img/24iu_r21g6MbWNPT.jpg"
+ },
+ {
+  "id": "greece",
+  "kind": "recorded",
+  "title": "\"Greece at a standstill\"",
+  "fresh": true,
+  "blurb": "October 2026: a huge crowd shared as a protest erupting right now.",
+  "post_url": "https://x.com/realgerhardtvdm/status/2107635699138568213",
+  "caption": "x.com/realgerhardtvdm/status/2107635699138568213",
+  "preview": {
+   "verdict": "inconsistent",
+   "first_date": "2026-08-31",
+   "first_domain": "x.com",
+   "claim_date": "2026-10-07",
+   "claimed": "Greece · now, ongoing as of publication",
+   "record": "Tesalónica · 2025-02-28"
+  },
+  "recording": "recorded/greece.ndjson",
+  "image_url": "https://pbs.twimg.com/amplify_video_thumb/2107635664808263681/img/Y6ndYwNWLrLq2KPN.jpg"
+ },
+ {
+  "id": "greta",
+  "kind": "recorded",
+  "title": "\"Greta Thunberg arrested again\"",
+  "fresh": true,
+  "blurb": "October 2026: it finds the 2023 original, but the caption claims no place or date to test.",
+  "post_url": "https://x.com/TodayUpdates0/status/2114156879962054742",
+  "caption": "x.com/TodayUpdates0/status/2114156879962054742",
+  "preview": {
+   "verdict": "cannot_tell",
+   "first_date": "2025-03-04",
+   "first_domain": "bbc.co.uk",
+   "claim_date": null,
+   "claimed": "no date given",
+   "record": "Malmö, Sweden · 2023"
+  },
+  "recording": "recorded/greta.ndjson",
+  "image_url": "https://pbs.twimg.com/media/HVb-d1pWIAAy7-y.jpg"
+ },
+ {
+  "id": "la_fires",
+  "kind": "recorded",
+  "title": "\"LA fires\" freeway video",
+  "blurb": "A freeway lined with flames, shared during the January 2025 Los Angeles fires.",
+  "post_url": "https://x.com/HustleBitch_/status/1877770103229485090",
+  "caption": "x.com/HustleBitch_/status/1877770103229485090",
+  "preview": {
+   "verdict": "inconsistent",
+   "first_date": "2017-12-06",
+   "first_domain": "businessinsider.com",
+   "claim_date": "2025-01-07",
+   "claimed": "Los Angeles, California, United States · January 2025",
+   "record": "101 Freeway in Ventura, Calif. · 2017-12-05"
+  },
+  "recording": "recorded/la_fires.ndjson",
+  "image_url": "https://pbs.twimg.com/ext_tw_video_thumb/1877769875113869313/pu/img/S6ESnMTrqHHeSAMP.jpg"
+ },
+ {
+  "id": "athens",
+  "kind": "recorded",
+  "title": "\"Fleeing Israel\" at the airport",
+  "blurb": "Crowds said to be fleeing Israel at Ben Gurion airport. Read the signs.",
+  "post_url": "https://x.com/butterflyteeee/status/1841592595073405004",
+  "caption": "x.com/butterflyteeee/status/1841592595073405004",
+  "preview": {
+   "verdict": "inconsistent",
+   "first_date": null,
+   "first_domain": null,
+   "claim_date": "2024-10-02",
+   "claimed": "Lod, Central District, Israel · ongoing now as of publication",
+   "record": ""
+  },
+  "recording": "recorded/athens.ndjson",
+  "image_url": "https://pbs.twimg.com/ext_tw_video_thumb/1841592328093413376/pu/img/XUVAZ1Afv4b8UDkf.jpg"
+ },
+ {
+  "id": "moscow",
+  "kind": "recorded",
+  "title": "Moscow in the dark",
+  "blurb": "A city without power, shared as Moscow under sanctions in August 2024.",
+  "post_url": "https://x.com/jurgen_nauditt/status/1826463362328199217",
+  "caption": "x.com/jurgen_nauditt/status/1826463362328199217",
+  "preview": {
+   "verdict": "inconsistent",
+   "first_date": "2014-03-29",
+   "first_domain": "gazeta.ru",
+   "claim_date": "2024-08-22",
+   "claimed": "Moscow, Moscow, Russia · now, as an ongoing situation",
+   "record": ""
+  },
+  "recording": "recorded/moscow.ndjson",
+  "image_url": "https://pbs.twimg.com/media/GVjmvvNW4AA-gh-.jpg"
+ },
+ {
+  "id": "pope",
+  "kind": "recorded",
+  "title": "The Pope's \"last address\"",
+  "blurb": "Shared as Pope Francis's last public words, about Gaza, at Easter 2025.",
+  "post_url": "https://x.com/AyshaSusmaz/status/1914305735871115479",
+  "caption": "x.com/AyshaSusmaz/status/1914305735871115479",
+  "preview": {
+   "verdict": "inconsistent",
+   "first_date": "2014-12-21",
+   "first_domain": "youtu.be",
+   "claim_date": "2025-04-20",
+   "claimed": "the last address",
+   "record": "2014-12-21"
+  },
+  "recording": "recorded/pope.ndjson",
+  "image_url": "https://pbs.twimg.com/amplify_video_thumb/1914240689417617408/img/x5b26UxdaR2VE93a.jpg"
+ },
+ {
+  "id": "jakarta",
+  "kind": "recorded",
+  "title": "Jakarta floods (genuine)",
+  "blurb": "A real news post: what Backstory says when the caption is right.",
+  "post_url": "https://x.com/jokowi/status/1212554859372670976",
+  "caption": "x.com/jokowi/status/1212554859372670976",
+  "preview": {
+   "verdict": "consistent",
+   "first_date": "2020-01-03",
+   "first_domain": "newspenguin.com",
+   "claim_date": "2020-01-01",
+   "claimed": "Jakarta, Jakarta, Indonesia · early 2020",
+   "record": "Jakarta, Indonesia · 2020-01-03"
+  },
+  "recording": "recorded/jakarta.ndjson",
+  "image_url": "https://pbs.twimg.com/media/ENPcNk_UcAAU7dI.jpg"
+ },
+ {
+  "id": "river",
+  "kind": "recorded",
+  "title": "Rubbish in a London river",
+  "blurb": "A phone video with no earlier copy online: Backstory does not guess.",
+  "post_url": "https://x.com/mrsunshinebaby/status/2010783577164653054",
+  "caption": "x.com/mrsunshinebaby/status/2010783577164653054",
+  "preview": {
+   "verdict": "cannot_tell",
+   "first_date": null,
+   "first_domain": null,
+   "claim_date": "2025-12-13",
+   "claimed": "London, England, United Kingdom · just",
+   "record": ""
+  },
+  "recording": "recorded/river.ndjson",
+  "image_url": "https://pbs.twimg.com/amplify_video_thumb/2010783250239893504/img/nPiWE1QHJT66tik6.jpg"
+ },
+ {
   "id": "valencia",
   "kind": "photo",
   "title": "\"Valencia today, after the floods\"",
@@ -7,17 +172,16 @@
   "caption": "Así está Valencia hoy después de la DANA. Barrios enteros bajo el agua y nadie dice nada.",
   "posted_on": "2024-10-30",
   "credit": "U.S. Coast Guard, Petty Officer 2nd Class Kyle Niemi, 29 Aug 2005, public domain (Wikimedia Commons)",
-  "image": "katrina.jpg"
- },
- {
-  "id": "katrina_true",
-  "kind": "photo",
-  "title": "The same photo, true caption",
-  "blurb": "The caption that matches the photo's history: what \"Fits\" looks like.",
-  "caption": "New Orleans under water after Hurricane Katrina, 29 August 2005.",
-  "posted_on": "2005-08-30",
-  "credit": "U.S. Coast Guard, Petty Officer 2nd Class Kyle Niemi, 29 Aug 2005, public domain (Wikimedia Commons)",
-  "image": "katrina.jpg"
+  "image": "katrina.jpg",
+  "preview": {
+   "verdict": "inconsistent",
+   "first_date": "2005-09-01",
+   "first_domain": "shelterforce.org",
+   "claim_date": "2024-10-30",
+   "claimed": "Valencia, Valencian Community, Spain · today, 30 October 2024, after the DANA",
+   "record": "I-10/I-610 interchange and surrounding area of northwest New Orleans and Metairie, Louisiana, USA · 2005-08-29"
+  },
+  "recording": "recorded/valencia.ndjson"
  },
  {
   "id": "kamchatka",
@@ -27,6 +191,15 @@
   "caption": "BREAKING: the tsunami has reached the Kamchatka coast this morning. Whole towns flooded.",
   "posted_on": "2025-07-30",
   "credit": "U.S. Navy photo, 12 Mar 2011, public domain (Wikimedia Commons)",
-  "image": "sendai.jpg"
+  "image": "sendai.jpg",
+  "preview": {
+   "verdict": "inconsistent",
+   "first_date": "2018-01-05",
+   "first_domain": "massivesci.com",
+   "claim_date": "2025-07-30",
+   "claimed": "Kamchatka coast, Kamchatka, Russia · this morning on 30 July 2025",
+   "record": "Sendai Nippon Oil refinery, Tōhoku, Japan · 2011"
+  },
+  "recording": "recorded/kamchatka.ndjson"
  }
 ]

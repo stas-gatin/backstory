@@ -144,7 +144,8 @@ def test_photo_regions_single_photo_returns_nothing(monkeypatch):
 
 # Budget ------------------------------------------------------------------------------------------------------------
 
-def test_budget_stops_at_cap():
+def test_budget_stops_at_cap(monkeypatch):
+    monkeypatch.setattr(config, "MODE", "live")  # replays are never capped, and CI runs with no keys
     b = meta.Budget(cap=0.01)
     b.add(config.SPARK, {"input_tokens": 10_000, "output_tokens": 0})
     with pytest.raises(meta.BudgetExceeded):

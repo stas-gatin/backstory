@@ -1,8 +1,18 @@
+<p align="center">
+  <img src="docs/images/art/hero.svg" width="100%" alt="Backstory: real photo, wrong story? A real check: a Palestinian flag on the Leaning Tower of Pisa, shared on X on 18 October 2026 as news; the same footage was on TikTok on 19 November 2023. Does not fit">
+</p>
+
 # Backstory
 
 **Real photo, wrong story? Backstory checks a viral photo or video against its own past online, and tells you whether the caption fits it.**
 
 Meta AI Developer Hackathon 2026 · Indie Developer track · Team CurrentSky (Stanislav Gatin, solo)
+
+<!-- The two buttons get their real links once the public copy and the video are up. -->
+<p align="center">
+  <a href="#quick-start"><img src="docs/images/buttons/live.svg" height="64" alt="Try it live: 11 recorded checks, or a post of your own"></a>&nbsp;
+  <a href="#quick-start"><img src="docs/images/buttons/video.svg" height="64" alt="Watch the demo: 3 minutes on YouTube"></a>
+</p>
 
 <p align="center">
   <a href="#quick-start"><b>Quick start</b></a> ·
@@ -13,11 +23,13 @@ Meta AI Developer Hackathon 2026 · Indie Developer track · Team CurrentSky (St
   <a href="#scope-and-limitations">Limitations</a>
 </p>
 
+[![CI](https://github.com/stas-gatin/backstory/actions/workflows/ci.yml/badge.svg)](https://github.com/stas-gatin/backstory/actions/workflows/ci.yml)
+
 | | |
 |---|---|
 | **Input** | A link to a post on X, or a photo or video with the caption it was shared with |
 | **Output** | **Does not fit**, **Fits** or **Cannot verify**, with the evidence: every earlier copy of the media found online, its dates, what each page says, and the proof the verdict rests on |
-| **Runs on** | 15 agents: 8 on **Muse Spark**, **Muse Wonder**, **Muse Voice Transcribe** and **SAM 3.1** through the Meta Model API; the rest are tools and plain code for search, archive dates, rules and proof |
+| **Runs on** | 15 steps: 8 on **Muse Spark**, **Muse Wonder**, **Muse Voice Transcribe** and **SAM 3.1** through the Meta Model API; the rest are tools and plain code for search, archive dates, rules and proof |
 | **Start** | `docker compose up --build`, then open http://localhost:8000. Offline, no keys needed ([Quick start](#quick-start)) |
 
 ### Where to find what
@@ -28,11 +40,14 @@ Meta AI Developer Hackathon 2026 · Indie Developer track · Team CurrentSky (St
 | The agents and how they hand work to each other | [How it works](#how-it-works) · [`backstory/pipeline.py`](backstory/pipeline.py) |
 | What each Meta model does, and why | [Meta's models](#metas-models-what-each-one-does) |
 | Whether it works: nine tests, rules written before each run, failures included | [Results](#results) · [`docs/`](docs/) · in the app: `/tested` |
+| Every one of the 207 posts on X it checked, with its verdict and evidence | [The track record](#the-track-record) · [`eval/track_record.json`](eval/track_record.json) |
 | What happens when evidence is missing or a step fails | [When something goes wrong](#when-something-goes-wrong) |
 | Every external call recorded; the examples replay offline from the repository | [`backstory/replay.py`](backstory/replay.py) · [`replay/`](replay/) |
 | The evaluation code | [`eval/fivepils.py`](eval/fivepils.py) (fact-checked photos) · [`eval/realset.py`](eval/realset.py) (posts on X) |
 
-![The app's home page: the question, three cases to try, and the input](docs/images/home.png)
+<p align="center">
+  <img src="docs/images/check.gif" width="100%" alt="A recorded check replayed at 2x: the post, the agent map lighting up stage by stage, then the verdict Does not fit with the post next to its first copy online from 2005, 19 years 1 month earlier">
+</p>
 
 ---
 
@@ -55,21 +70,22 @@ evidence, and code, not a model, has the last word on what counts as proof. When
 
 ## What you get
 
-### The agents at work
-
-Fifteen agents in four stages: read the post, find its past, decide, check the proof. Each lights up while it
-works; the Meta model it runs on is named; agents a post does not need stay grey. The feed below the map shows
-what each one found; when the critic sends the judge back, that step turns amber.
-
-![The agent map for the Valencia example: the four stages with the agents that ran, and the feed of their messages](docs/images/valencia_agents.png)
-
 ### The verdict, and why
 
-The verdict comes with the time between the earliest dated copy of the image and the date the caption claims, what the caption
-says against what the record says, the proof the code accepted, and a timeline of every dated copy. For a post on
-X, its Community Note is shown next to the verdict for comparison. It is never given to the agents.
+The verdict comes first: the post as it was shared next to the earliest dated copy of the same image, with the time
+between them; what the caption says against what the record says (with how the claim reader read the caption:
+its language, and how it got the date); the proof the code accepted; a draft Community Note built from the cited
+evidence, next to the post's real Community Note when it has one (never shown to the agents); and a timeline of
+every dated copy, with the ones that appeared after the claimed date greyed out.
 
-![The verdict for a staged example: a 2005 Hurricane Katrina photo captioned as Valencia in October 2024. "Does not fit", 19 years 1 month, caption against record, proof checked by code, timeline](docs/images/valencia_verdict.png)
+![The verdict for a staged example: a 2005 Hurricane Katrina photo captioned as Valencia in October 2024. "Does not fit", the post next to its first copy from 2005, 19 years 1 month, caption against record, proof, a draft Community Note, the timeline](docs/images/valencia_verdict.png)
+
+### Every model call, on a receipt
+
+Each check lists every call to Meta's models: which agent made it, the model, the reasoning effort, the tokens,
+the cost, and the gist of what the model answered.
+
+![The model receipt for the Valencia example: the claim reader, photo finder, scene witness, page readers, judge and critic, each with model, effort, tokens, cost and answer](docs/images/receipt.png)
 
 ### How the verdict was reached
 
@@ -79,9 +95,26 @@ aside, and the steps that decided. The blue lines are what the verdict rests on.
 
 ![The check graph for the Valencia example: the post and claim, the image searched, the copies found with their dates, and the decision](docs/images/valencia_graph.png)
 
+### The agents at work
+
+Fifteen steps in four stages, eight of them on Meta's models: read the post, find its past, decide, check the
+proof. Each lights up while it works and names the model it runs on; steps a post does not need stay grey. When
+the critic sends the judge back, that step turns amber, and the exchange between the two models is shown with the
+verdict. The agents' log folds into one line once the verdict is in.
+
+![The agent map for the Valencia example: the four stages with the steps that ran](docs/images/valencia_agents.png)
+
+### The track record
+
+All 207 posts on X checked in Tests H2–H6, not just the good ones: each with the fact-checker's finding, Backstory's
+verdict, the earliest copy it cited, and links to the post and the fact-check, filterable by outcome, media and
+test (`/record`, data in [`eval/track_record.json`](eval/track_record.json), text and links only).
+
+![The track record page: 20 of 21 "Does not fit" verdicts right, 20 of 108 fakes caught, 1 of 99 genuine posts flagged, 12 of 90 fake videos caught, and the list of posts with filters](docs/images/record.png)
+
 The examples in the repository are staged on public-domain photos (U.S. Coast Guard and U.S. Navy, see
-[`examples/CREDITS.md`](examples/CREDITS.md)): the same photo with a false caption and with its true caption, so you
-can see "Does not fit" and "Fits" side by side, and a 2011 tsunami photo shared as the 2025 Kamchatka tsunami.
+[`examples/CREDITS.md`](examples/CREDITS.md)): a 2005 New Orleans flood photo shared as the 2024 Valencia floods, and a
+2011 tsunami photo shared as the 2025 Kamchatka tsunami. "Fits" is shown by a genuine post (Jakarta floods).
 
 ---
 
@@ -125,7 +158,7 @@ cites is shown to the user.
 | **Muse Voice Transcribe** | speech reader | What is said in a video is part of what the post claims |
 | **SAM 3.1** | photo finder | Finds the photos inside an uploaded screenshot of a post, so each is searched on its own. Test G found that searching the cut-out *instead of* the screenshot is worse (NO-GO), so cut-outs are only searched *in addition*; that use was not measured end to end |
 
-The three recorded examples each make 9 Muse Spark calls, 1 Muse Wonder call and 1 SAM call, and cost $0.09–0.12.
+The two staged examples each make 9 Muse Spark calls, 1 Muse Wonder call and 1 SAM call, and cost $0.09–0.10.
 On the posts of Tests H2–H6 a check cost $0.06–0.10 in the median and at most $0.23. Once a check has spent $0.30
 (`BACKSTORY_COST_CAP`), it starts no new model call.
 
@@ -163,7 +196,9 @@ what the web says, not in judging pixels.
 
 ## Results
 
-![Results of the tests: 20 of 21 "Does not fit" verdicts right on 207 posts on X; 79% of false captions caught with 10.7% false alarms on 75 fact-checked photos; 1 of 99 genuine posts flagged; 12 of 90 fake videos caught](docs/images/tested_kpis.png)
+<p align="center">
+  <img src="docs/images/art/results.svg" width="100%" alt="Results of the tests: 20 of 21 Does not fit verdicts right on 207 posts on X; 79% of false captions caught with Meta's models against 35% with code alone, and 10.7% false alarms against 4.0%, on 75 fact-checked photos; 1 of 99 genuine posts flagged; 12 of 90 fake videos caught">
+</p>
 
 Nine tests, each on data the version under test had never seen. **Before each run, the pass rule was written down**
 (and, from Test G on, committed before the run); afterwards, the result was reported against it, including when it
@@ -192,7 +227,11 @@ reverse search finds nothing usable, which happens for most fake videos, it says
 - **H5, H6: video stays hard.** Two ideas, each tested A/B on fresh posts, gave no gain. For a third of the fake videos, reverse search finds nothing for any frame.
 - One fix came after all tests: the creation date of a wiki article no longer counts as a date for the photo in it. No verdict in any test rested on such a date alone.
 
-The same numbers, with the comparison against plain code, are on the app's **How it was tested** page (`/tested`).
+**Fresh posts, October 2026** ([`docs/FRESH.md`](docs/FRESH.md)): after the freeze, ten viral fakes from this month,
+debunked by fact-checkers, were checked live from the link alone. Backstory caught 4 of 10 and said "Cannot verify" on
+the other 6. Not pre-registered; a look at current posts, not a measurement.
+
+The same numbers, with the comparison against plain code, are on the app's **Accuracy** page (`/tested`).
 
 ---
 
@@ -208,8 +247,10 @@ cd backstory
 docker compose up --build
 ```
 
-Open http://localhost:8000. With no keys, Backstory runs in **replay mode**: the three example cases replay from
-the recorded answers in `replay/`, step by step, with no network. Stop it with Ctrl+C.
+Open http://localhost:8000. With no keys, Backstory runs in **replay mode**: eleven recorded checks replay step by step,
+from text-only recordings of every agent's step (`examples/recorded/`). Nine are real posts on X (the post itself is
+shown through X's own embed, so its media loads from X). Two are staged on public-domain photos; the recorded answers
+of their external calls are in `replay/`. Stop it with Ctrl+C.
 
 ### Live, with keys
 
@@ -220,6 +261,14 @@ docker compose up --build
 
 Now any link to a post on X, or any uploaded photo or video with its caption, is checked live, and every new
 answer is recorded into `replay/` (mounted from your checkout by `docker-compose.yml`).
+
+### A public copy with live checks
+
+With keys, a public copy limits live checks so the credits cannot run out by accident
+([`backstory/limits.py`](backstory/limits.py)): 3 a day per visitor (`BACKSTORY_LIVE_PER_VISITOR`), $5 a day
+(`BACKSTORY_LIVE_DAY_USD`) and $40 in total (`BACKSTORY_LIVE_TOTAL_USD`), at most two at a time. If the Meta Model
+API stops answering (for example, no credit left), live checks pause for half an hour and the page says so. The
+recorded checks and the track record are never limited, so the site keeps working with no credit at all.
 
 ### Without Docker
 
@@ -267,6 +316,7 @@ curl -N -X POST -F example_id=valencia http://localhost:8000/api/check
 - **It needs an earlier copy online.** Most fake videos on X have none that reverse search can find (H5, H6).
 - **Image search is Google Cloud Vision.** The Meta Model API has no reverse image search; everything that reads, compares or judges runs on Meta's models.
 - **Dates on the web are noisy.** Archive captures can be late, and pages can be updated. The proof check allows a week's margin and ignores page archive dates and wiki creation dates; the date rule allows one day and uses archived image files only, including partial matches. In Test I, 3 of the 8 false alarms came from the date rule, where an archived file predated the fact-checker's own date.
+- **A page's publication date can be older than an image on it.** Pages show newer pictures in sidebars and updated articles. The proof check accepts the publication date of a page whose image fully matches; one recorded catch in the tests (H3, the Seoul tanks post) was right but rested on such a date: a 2023 article about another subject that later showed the 2024 photo.
 - **Models vary.** Two live runs of the same post can differ; the critic and the proof check narrow this, and the recordings make every run reproducible.
 
 ---
@@ -275,8 +325,8 @@ curl -N -X POST -F example_id=valencia http://localhost:8000/api/check
 
 ```
 backstory/   the agents and the pipeline (pipeline.py), the Meta Model API client, record/replay, the web server
-web/         the app: agent map, feed, verdict, check graph, evidence, How it was tested
-eval/        evaluation on 5Pils and on posts on X, the frozen post sets, the demo builder
+web/         the app: verdict, check graph, agent map, model receipt, evidence, track record, How it was tested
+eval/        evaluation on 5Pils and on posts on X, the frozen post sets, the track record, the demo builder
 docs/        the test reports, each with its rule written before the run; README images
 examples/    the offline example cases (public-domain photos, staged captions)
 replay/      the recorded answers the examples replay from
@@ -290,6 +340,7 @@ tests/       offline tests
 | [5Pils](https://github.com/UKPLab/5pils) (UKPLab) | Evaluation on fact-checked photos | CC-BY-SA-4.0; downloaded, not redistributed |
 | Posts on X in `eval/realset*.json` | Evaluation on real posts | Links and short descriptions only; no media is stored in the repository |
 | `examples/katrina.jpg`, `examples/sendai.jpg` | The offline examples | Public domain (U.S. Coast Guard, U.S. Navy), see [`examples/CREDITS.md`](examples/CREDITS.md) |
-| `replay/` | The examples' recorded answers | Titles, dates, short excerpts and captions of the pages where the photos appear, and the models' answers |
+| `replay/` | The public-domain examples' recorded answers | Titles, dates, short excerpts and captions of the pages where the photos appear, and the models' answers |
+| `examples/recorded/` | Recorded checks of seven real posts on X | Each agent's messages, the evidence rows (links, dates, descriptions) and the verdict; no media. The post is shown through X's official embed |
 
 Everything in this repository was written during the hackathon (26 October – 4 November 2026). Code: MIT.

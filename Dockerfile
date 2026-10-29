@@ -7,5 +7,6 @@ COPY backstory backstory
 COPY web web
 COPY examples examples
 COPY replay replay
+COPY eval/track_record.json eval/track_record.json
 EXPOSE 8000
 CMD ["uvicorn", "backstory.server:app", "--host", "0.0.0.0", "--port", "8000"]

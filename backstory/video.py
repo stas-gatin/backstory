@@ -108,7 +108,8 @@ def speech(path, budget=None):
     j = replay.cached("asr", {"video_sha256": file_sha(path), "model": ASR_MODEL}, fetch, note="speech",
                       keep=lambda r: not r.get("failed"))
     if budget:
-        budget.add_usd(ASR_MODEL, j.get("audioDurationMs", 0) / 3.6e6 * ASR_USD_PER_HOUR)
+        budget.add_usd(ASR_MODEL, j.get("audioDurationMs", 0) / 3.6e6 * ASR_USD_PER_HOUR, role="Speech reader",
+                       says=(j.get("transcript") or "")[:220])
     if j.get("failed"):
         return None
     return (j.get("transcript") or "").strip()

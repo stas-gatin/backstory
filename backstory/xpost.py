@@ -88,4 +88,6 @@ def read(url):
     return {"id": pid, "url": "https://x.com/%s/status/%s" % ((j.get("user") or {}).get("screen_name", "i"), pid),
             "author": (j.get("user") or {}).get("screen_name"), "text": text,
             "posted_on": (j.get("created_at") or "")[:10] or None,
-            "photos": photos, "video": video, "has_media": bool(j.get("mediaDetails")), "community_note": note}
+            "photos": photos, "video": video, "has_media": bool(j.get("mediaDetails")), "community_note": note,
+            # The public image addresses of the post's media (a video's preview still), for "check it yourself" links.
+            "media_urls": [m["media_url_https"] for m in j.get("mediaDetails", []) if m.get("media_url_https")]}

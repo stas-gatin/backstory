@@ -3,30 +3,35 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>How Backstory was tested</title>
+<title>Backstory accuracy</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@500&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="/static/style.css?v=27">
+<script>/* a picture another site refuses to serve is hidden, never shown broken */addEventListener("error",(e)=>{if(e.target&&e.target.tagName==="IMG")e.target.classList.add("broken")},true)</script>
+<link rel="stylesheet" href="/static/style.css?v=57">
 </head>
 <body>
 <header class="top">
   <a class="brand" href="/"><span class="logo"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3.5 12a8.5 8.5 0 1 0 2.6-6.1L3.5 8.5"/><path d="M3.5 3.5v5h5"/><path d="M12 7.5V12l3 2"/></svg></span>Backstory</a>
-  <span class="tag">How it was tested</span>
-  <a class="gh nav-right" href="/">Check a post</a>
-  <a class="gh" href="https://github.com/stas-gatin/backstory/tree/main/docs" target="_blank" rel="noopener">Test reports</a>
+  <nav class="nav">
+    <a href="/">Check a post</a>
+    <a href="/record">Track record</a>
+    <a href="/tested" class="on">Accuracy</a>
+    <a href="https://github.com/stas-gatin/backstory" target="_blank" rel="noopener">Code ↗</a>
+  </nav>
+  <span id="mode" class="mode"></span>
 </header>
 
-<section class="hero">
-  <h1>How it was <span>tested</span></h1>
-  <p>Nine tests on real cases. Before each run, the pass rule was written down (and, from Test G on, committed);
+<section class="hero single">
+  <h1>How accurate <span>is it?</span></h1>
+  <p>Nine tests in the table, and Test D (a model alone) for scale. Before each run, the pass rule was written down (and, from Test G on, committed);
     afterwards, the result was reported against that rule, including when it failed. A version is measured once, on data it has never seen;
     a fix is measured again on new data.</p>
 </section>
 
 <main class="tested">
   <section class="kpis">
-    <div class="kpi"><b>20 of 21</b><span>"Does not fit" verdicts that were right, on 207 real posts on X checked from the link alone (H2–H6, five successive versions)</span></div>
-    <div class="kpi"><b>79%</b><span>of false captions caught on 75 fact-checked photos it had never seen, with 10.7% false alarms (Test I)</span></div>
+    <div class="kpi"><b>20 of 21</b><span>"Does not fit" verdicts that were right, on 207 real posts on X checked from the link alone (Tests H2–H6)</span></div>
+    <div class="kpi"><b>79%</b><span>of false captions caught on 75 fact-checked photos (5Pils) it had never seen, with 10.7% false alarms: just over Test I's own 10% bar</span></div>
     <div class="kpi"><b>1 of 99</b><span>genuine posts on X wrongly called "does not fit" (H2–H6)</span></div>
     <div class="kpi weak"><b>12 of 90</b><span>fake videos on X caught. Reverse search on video frames finds too little: the weak spot</span></div>
   </section>
@@ -49,12 +54,12 @@
       <thead><tr><th>Test</th><th>What changed</th><th>Data</th><th>Caught</th><th>False alarms</th><th>Pre-registered rule</th></tr></thead>
       <tbody>
         <tr><td>E</td><td>Core method: archive dates + Muse Spark reading the evidence</td><td>105 fact-checked photos (5Pils)</td><td>67%</td><td>8.6%</td><td class="pass">passed (GO)</td></tr>
-        <tr><td>G</td><td>SAM 3.1 cut-out searched instead of the screenshot</td><td>17 synthetic post screenshots</td><td>65% found (vs 82%)</td><td></td><td class="fail">failed (NO-GO): SAM used only in addition</td></tr>
+        <tr><td>G</td><td>SAM 3.1 cut-out searched instead of the screenshot</td><td>17 synthetic post screenshots</td><td>65% found (vs 82%)</td><td>—</td><td class="fail">failed (NO-GO): SAM used only in addition</td></tr>
         <tr><td>H1</td><td>Full agent pipeline: judge, critic, match checker</td><td>Test E's 105 photos</td><td>79%</td><td>22.9%</td><td class="fail">failed: false alarms &gt; 10%</td></tr>
         <tr><td>I</td><td>+ proof check in code</td><td>75 new fact-checked photos</td><td>78.7%</td><td>10.7%</td><td class="fail">failed, narrowly: false alarms &gt; 10%</td></tr>
-        <tr><td>H2</td><td>Same version as I, on real posts</td><td>53 posts on X, link only</td><td>6 / 25</td><td>1 / 28</td><td class="pass">no bar (first look)</td></tr>
+        <tr><td>H2</td><td>Same version as I, on real posts</td><td>53 posts on X, link only</td><td>6 / 25</td><td>1 / 28</td><td class="none">no pass bar set (first look)</td></tr>
         <tr><td>H3</td><td>+ match checker confirms look-alikes</td><td>39 fresh posts on X</td><td>5 / 23</td><td>0 / 16</td><td class="fail">failed: caught &lt; 35%</td></tr>
-        <tr><td>H4</td><td>+ a news post with no date is taken as recent</td><td>14 posts no version had seen</td><td>3 / 6</td><td>0 / 8</td><td class="pass">counts only (small)</td></tr>
+        <tr><td>H4</td><td>+ a news post with no date is taken as recent</td><td>14 posts no version had seen</td><td>3 / 6</td><td>0 / 8</td><td class="none">no pass bar set (counts only)</td></tr>
         <tr><td>H5</td><td>+ post clock (dates of copies on X, TikTok, YouTube), A/B</td><td>56 fresh video posts</td><td>5 / 31 (vs 6)</td><td>0 / 25</td><td class="fail">failed: no gain</td></tr>
         <tr><td>H6</td><td>+ scene witness (Spark watches the video, Wonder checks signs), A/B</td><td>45 fresh video posts</td><td>1 / 23 (vs 1)</td><td>0 / 22</td><td class="fail">failed: no gain</td></tr>
       </tbody>
@@ -75,6 +80,8 @@
       <a href="https://github.com/stas-gatin/backstory/blob/main/docs/TEST_I.md">Test I</a>.</p>
   </section>
 </main>
-<footer>Backstory · Meta AI Developer Hackathon 2026 · <a href="/">Check a post</a></footer>
+<footer>Backstory · built for the Meta AI Developer Hackathon 2026 on Muse Spark, Muse Wonder, Muse Voice Transcribe and SAM 3.1 · <a href="/">Check a post</a> · <a href="/record">Track record</a> · <a href="/tested">Accuracy</a> · <a href="https://github.com/stas-gatin/backstory" target="_blank" rel="noopener">Code</a></footer>
+<script>/* the same live/demo pill as on the check page */fetch("/api/status").then((r)=>r.json()).then((st)=>{const m=document.getElementById("mode"),lv=st.live||{};m.innerHTML=st.mode!=="live"?'<i class="live off"></i>Demo: recorded checks':lv.live?'<i class="live"></i>Live checks · '+lv.left+' of '+lv.per_visitor+' left today':'<i class="live off"></i>Live checks paused';}).catch(()=>{});</script>
+<script src="/static/motion.js?v=2"></script>
 </body>
 </html>
