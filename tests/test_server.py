@@ -1,6 +1,7 @@
 """Server behaviour on bad input: rejected before any model is called."""
 import io
 import json
+import time
 
 import pytest
 from fastapi.testclient import TestClient
@@ -131,3 +132,15 @@ def test_recorded_examples_are_never_limited(live, monkeypatch, tmp_path):
     for _ in range(5):
         r = live.post("/api/check", data={"example_id": "r"}, headers={"x-forwarded-for": "1.1.1.1"})
         assert r.status_code == 200
+
+
+def test_an_example_paced_by_the_page_comes_without_pauses(live, monkeypatch, tmp_path):
+    steps = [{"type": "step", "agent": "post", "status": s} for s in ("running", "done")] * 5
+    (tmp_path / "examples.json").write_text(json.dumps([{"id": "r", "kind": "recorded", "recording": "r.ndjson",
+                                                         "caption": "c"}]))
+    (tmp_path / "r.ndjson").write_text("".join(json.dumps(e) + "\n" for e in steps + [{"type": "result"}]))
+    monkeypatch.setattr(server, "EXAMPLES", tmp_path)
+    monkeypatch.setattr(server, "RECORDED_PACE", 1.0)
+    t = time.monotonic()
+    r = live.post("/api/check", data={"example_id": "r", "paced_here": "1"})
+    assert r.status_code == 200 and len(r.text.splitlines()) == 11 and time.monotonic() - t < 1

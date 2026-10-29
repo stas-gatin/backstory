@@ -92,8 +92,11 @@ def _stream(events, cleanup=None, pace=None):
 
 @app.post("/api/check")
 async def check(request: Request, caption: str = Form(""), posted_on: str = Form(""), example_id: str = Form(""),
-                post_url: str = Form(""), image: UploadFile | None = File(None)):
+                post_url: str = Form(""), image: UploadFile | None = File(None), paced_here: str = Form("")):
     video_path, cleanup = None, None
+    # The check page can pace an example itself (so a viewer can speed it up or skip to the answer): then it is sent
+    # whole, without pauses.
+    ex_pace = 0 if paced_here else RECORDED_PACE
     if post_url.strip():
         return _stream(_live(request, pipeline.run(None, "", None, post_url=post_url.strip())))
     if example_id:
@@ -103,12 +106,12 @@ async def check(request: Request, caption: str = Form(""), posted_on: str = Form
         if ex.get("recording"):
             # A recorded check of a post on X: its events as they were, without the post's media.
             lines = (EXAMPLES / ex["recording"]).read_text().splitlines()
-            return _stream((json.loads(l) for l in lines if l.strip()), pace=RECORDED_PACE)
+            return _stream((json.loads(l) for l in lines if l.strip()), pace=ex_pace)
         caption, posted_on = ex["caption"], ex.get("posted_on") or ""
         # Dataset cases carry their recorded search results instead of a live image search.
         matches = ex.get("matches")
         if ex.get("kind") == "link":
-            return _stream(pipeline.run(None, "", None, post_url=ex["post_url"]), pace=RECORDED_PACE)
+            return _stream(pipeline.run(None, "", None, post_url=ex["post_url"]), pace=ex_pace)
         if ex.get("kind") == "video":
             data, video_path = None, str(EXAMPLES / ex["video"])
         else:
@@ -138,7 +141,7 @@ async def check(request: Request, caption: str = Form(""), posted_on: str = Form
     if not example_id:
         events = _live(request, events)
     # An example replays its recorded answers: paced, so its agents can be watched.
-    return _stream(events, cleanup, pace=RECORDED_PACE if example_id else None)
+    return _stream(events, cleanup, pace=ex_pace if example_id else None)
 
 
 @app.get("/api/examples/{ex_id}/video")

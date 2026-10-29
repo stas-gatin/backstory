@@ -8,7 +8,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@500&display=swap" rel="stylesheet">
 <script>/* a picture another site refuses to serve is hidden, never shown broken */addEventListener("error",(e)=>{if(e.target&&e.target.tagName==="IMG")e.target.classList.add("broken")},true)</script>
-<link rel="stylesheet" href="/static/style.css?v=54">
+<link rel="stylesheet" href="/static/style.css?v=55">
 </head>
 <body>
 <header class="top">
@@ -84,7 +84,7 @@
 </div>
 
 <div id="checkView" hidden>
-<div class="checkbar"><a href="/" id="backHome">&larr; New check</a><span id="checkTitle"></span></div>
+<div class="checkbar"><a href="/" id="backHome">&larr; New check</a><span id="checkTitle"></span><button type="button" class="sharebtn" id="share" hidden><span data-icon="link"></span><b>Copy link</b></button></div>
 <main class="checkmain">
  <div class="pair">
   <aside class="left">
@@ -101,6 +101,7 @@
       <div class="map-head">
         <div class="section-title">The agents <span class="hint" id="mapHint">15 steps in four stages, 8 of them on Meta's models</span></div>
         <div class="meter" id="meter" hidden><span id="elapsed">0 s</span><span id="calls"></span></div>
+        <div class="replay" id="replay" hidden><button type="button" id="speed" aria-pressed="false">2&times; speed</button><button type="button" id="skip">Skip to answer &rarr;</button></div>
       </div>
       <div class="stages" id="stages"></div>
       <ol class="feed" id="feed" hidden></ol>
@@ -123,7 +124,7 @@
 </div>
 
 <footer>Backstory · built for the Meta AI Developer Hackathon 2026 on Muse Spark, Muse Wonder, Muse Voice Transcribe and SAM 3.1 · <a href="/">Check a post</a> · <a href="/record">Track record</a> · <a href="/tested">Accuracy</a> · <a href="https://github.com/stas-gatin/backstory" target="_blank" rel="noopener">Code</a></footer>
-<script src="/static/app.js?v=52"></script>
+<script src="/static/app.js?v=53"></script>
 <script src="/static/motion.js?v=2"></script>
 </body>
 </html>

@@ -168,7 +168,7 @@ function route() {
   }
   showView("home");
 }
-addEventListener("popstate", () => { runId += 1; running = false; setRunning(false); route(); });
+addEventListener("popstate", () => { runId += 1; wake?.(); running = false; setRunning(false); route(); });
 
 $("#form").addEventListener("submit", async (e) => {
   e.preventDefault();
@@ -208,6 +208,10 @@ $("#form").addEventListener("submit", async (e) => {
   $("#formError").textContent = "";
   reset(post);
   setRunning(true);
+  // A recorded check comes whole and is paced here, so the viewer can speed it up or skip to the answer.
+  const paced = fd.has("example_id");
+  if (paced) fd.append("paced_here", "1");
+  playback(paced, url);
   try {
     const res = await fetch("/api/check", { method: "POST", body: fd });
     if (!res.ok) throw new Error(await errorText(res));
@@ -218,7 +222,11 @@ $("#form").addEventListener("submit", async (e) => {
       if (done) break;
       buf += dec.decode(value, { stream: true });
       let i;
-      while ((i = buf.indexOf("\n")) >= 0) { if (mine === runId) handle(JSON.parse(buf.slice(0, i))); buf = buf.slice(i + 1); }
+      while ((i = buf.indexOf("\n")) >= 0 && mine === runId) {
+        const ev = JSON.parse(buf.slice(0, i)); buf = buf.slice(i + 1);
+        handle(ev);
+        if (paced) await pause(ev);
+      }
       if (mine !== runId) { reader.cancel(); break; }
     }
     if (!finished && mine === runId) handle({ type: "error", text: "The connection closed before the check finished. Please try again." });
@@ -227,7 +235,60 @@ $("#form").addEventListener("submit", async (e) => {
   }
   clearInterval(timer);
   setRunning(false);
+  $("#replay").hidden = true;
   updateStatus();
+});
+
+// The post and the copy in one frame: drag across to see one turn into the other. Offered only when both pictures load
+// and they are not the same file.
+function wipe(pair) {
+  const a = pair?.querySelector(".tn:not(.first) img"), b = pair?.querySelector(".tn.first img");
+  if (!a || !b || a.src === b.src || G.post?.video) return;
+  const loaded = (img) => new Promise((ok, no) => {
+    if (img.complete) return img.naturalWidth ? ok() : no();
+    img.addEventListener("load", ok, { once: true }); img.addEventListener("error", no, { once: true });
+  });
+  Promise.all([loaded(a), loaded(b)]).then(() => {
+    const right = pair.querySelector(".tn.first .tnk").textContent;
+    pair.insertAdjacentHTML("afterend", `<div class="wipebox"><button type="button" class="more wipebtn">${icon("match")}Compare the two pictures</button>
+      <div class="wipe" hidden style="--at:50%"><img class="wa" src="${esc(a.src)}" alt="The post's picture">
+        <img class="wb" src="${esc(b.src)}" alt="" referrerpolicy="no-referrer"><span class="wl">The post</span><span class="wr">${esc(right)}</span>
+        <input type="range" min="0" max="100" value="50" aria-label="Slide between the post's picture and the copy"></div></div>`);
+    const box = pair.nextElementSibling, w = box.querySelector(".wipe");
+    box.querySelector(".wipebtn").addEventListener("click", (e) => {
+      w.hidden = !w.hidden;
+      e.currentTarget.lastChild.textContent = w.hidden ? "Compare the two pictures" : "Hide the comparison";
+    });
+    w.querySelector("input").addEventListener("input", (e) => w.style.setProperty("--at", e.target.value + "%"));
+  }, () => {});
+}
+
+// Pauses between a recorded check's steps, the same as the server's: a viewer can follow the agents, at 1x or 2x.
+let speed = 1, skipping = false, wake = null;
+function pause(ev) {
+  const s = ev.type === "step" ? (ev.status === "running" ? 0.25 : 0.55) : ev.type === "evidence" ? 0.06 : 0;
+  if (!s || skipping) return Promise.resolve();
+  return new Promise((done) => { const t = setTimeout(done, s * 1000 / speed); wake = () => { clearTimeout(t); done(); }; });
+}
+function playback(paced, url) {
+  skipping = false;
+  $("#replay").hidden = !paced;
+  // Recorded checks and posts on X have a link that opens the same check; an uploaded file has none.
+  $("#share").hidden = url === "/check";
+  $("#share").dataset.url = url;
+  $("#share b").textContent = "Copy link";
+}
+$("#speed").addEventListener("click", () => {
+  speed = speed === 1 ? 2 : 1;
+  $("#speed").setAttribute("aria-pressed", speed === 2);
+  wake?.();
+});
+$("#skip").addEventListener("click", () => { skipping = true; wake?.(); $("#replay").hidden = true; });
+$("#share").addEventListener("click", () => {
+  const link = location.origin + $("#share").dataset.url;
+  const said = () => { $("#share b").textContent = "Link copied"; setTimeout(() => { $("#share b").textContent = "Copy link"; }, 1800); };
+  if (navigator.clipboard) navigator.clipboard.writeText(link).then(said, () => prompt("Copy this link:", link));
+  else prompt("Copy this link:", link);
 });
 
 function setRunning(on) {
@@ -538,6 +599,7 @@ function showResult(r) {
         ${r.mode === "replay" ? "<span>Recorded run, replayed step by step</span>" : ""}</div>
     </div>`;
   box.querySelectorAll(".xembed").forEach(xEmbed);
+  wipe(box.querySelector(".thennow"));
   box.querySelectorAll(".axis .pin").forEach((el, i) => { el.style.animationDelay = (1.2 + i * 0.12) + "s"; });
   box.querySelectorAll(".tl li").forEach((el, i) => { el.style.animationDelay = (1.3 + i * 0.06) + "s"; });
   box.querySelectorAll(".copy").forEach((b) => b.addEventListener("click", () => {

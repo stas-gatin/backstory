@@ -602,3 +602,25 @@ html, body { overflow-x: clip; }
 .axis .seg { background: color-mix(in srgb, var(--red) 35%, var(--line)) !important; }
 .proofstrip > * { min-width: 0; } @media (max-width: 600px) { .ps b { white-space: normal; } }
 .evidence { grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); }
+
+/* Replay controls, the link to a check, the picture comparison */
+.replay { display: flex; gap: 8px; }
+.replay button { border: 1px solid var(--line); background: #fff; color: var(--ink); border-radius: 99px; font: 700 12.5px "Inter", sans-serif; padding: 5px 12px; cursor: pointer; white-space: nowrap; }
+.replay button:hover { border-color: var(--blue); color: var(--blue); }
+.replay button[aria-pressed="true"] { background: var(--blue); border-color: var(--blue); color: #fff; }
+.checkbar { flex-wrap: wrap; }
+.sharebtn { margin-left: auto; display: inline-flex; align-items: center; gap: 6px; border: 1px solid var(--line); background: #fff; color: var(--ink); border-radius: 99px; font: 700 13px "Inter", sans-serif; padding: 6px 14px; cursor: pointer; align-self: center; }
+.sharebtn:hover { border-color: var(--blue); color: var(--blue); }
+.sharebtn .ic { width: 15px; height: 15px; }
+.wipebox { margin: -4px 0 16px; }
+.wipebtn { display: inline-flex; align-items: center; gap: 8px; margin: 0; }
+.wipebtn .ic { width: 16px; height: 16px; }
+.wipe { position: relative; margin-top: 10px; aspect-ratio: 16 / 10; max-height: 480px; width: 100%; border-radius: 14px; overflow: hidden; background: #0b0f14; user-select: none; }
+.wipe[hidden] { display: none; }
+.wipe img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; display: block; }
+.wipe .wb { clip-path: inset(0 0 0 var(--at)); }
+.wipe::after { content: ""; position: absolute; top: 0; bottom: 0; left: var(--at); width: 3px; margin-left: -1.5px; background: #fff; box-shadow: 0 0 0 1px rgba(0,0,0,.25); pointer-events: none; }
+.wipe .wl, .wipe .wr { position: absolute; top: 10px; font: 800 11px "Inter", sans-serif; letter-spacing: .07em; text-transform: uppercase; color: #fff; background: rgba(11,15,20,.7); padding: 4px 9px; border-radius: 99px; pointer-events: none; }
+.wipe .wl { left: 10px; } .wipe .wr { right: 10px; }
+.wipe input { position: absolute; inset: 0; width: 100%; height: 100%; margin: 0; opacity: 0; cursor: ew-resize; }
+@media (max-width: 600px) { .replay { width: 100%; } .replay button { flex: 1; } .sharebtn { margin-left: 0; } }
