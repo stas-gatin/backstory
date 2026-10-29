@@ -138,6 +138,12 @@ def main():
             rec.mkdir(parents=True, exist_ok=True)
             (rec / (d["id"] + ".ndjson")).write_text("".join(json.dumps(text_only(ev), ensure_ascii=False) + "\n"
                                                              for ev in events))
+        if a.public:
+            # The public photo cases are replayed from a recording too: clicking one never calls the Meta Model API.
+            (out / "recorded").mkdir(exist_ok=True)
+            (out / "recorded" / (d["id"] + ".ndjson")).write_text("".join(json.dumps(text_only(ev), ensure_ascii=False)
+                                                                          + "\n" for ev in events))
+            e["recording"] = "recorded/" + d["id"] + ".ndjson"
         if result["type"] == "result":
             f, c = result.get("first_seen") or {}, result.get("claim") or {}
             # What the home page shows before any click: the case's answer in one line.

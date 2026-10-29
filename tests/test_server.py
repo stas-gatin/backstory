@@ -144,3 +144,10 @@ def test_an_example_paced_by_the_page_comes_without_pauses(live, monkeypatch, tm
     t = time.monotonic()
     r = live.post("/api/check", data={"example_id": "r", "paced_here": "1"})
     assert r.status_code == 200 and len(r.text.splitlines()) == 11 and time.monotonic() - t < 1
+
+
+def test_every_committed_example_replays_a_recording():
+    # A click on an example must never start a live check: it would cost money and take minutes.
+    examples = json.loads((server.config.ROOT / "examples" / "examples.json").read_text())
+    assert examples and all((server.config.ROOT / "examples" / e["recording"]).exists() for e in examples if e.get("recording"))
+    assert [e["id"] for e in examples if not e.get("recording")] == []
