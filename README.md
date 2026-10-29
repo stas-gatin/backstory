@@ -1,8 +1,18 @@
+<p align="center">
+  <img src="docs/images/art/hero.svg" width="100%" alt="Backstory: real photo, wrong story? A real check: a Palestinian flag on the Leaning Tower of Pisa, shared on X on 18 October 2026 as news; the same footage was on TikTok on 19 November 2023. Does not fit">
+</p>
+
 # Backstory
 
 **Real photo, wrong story? Backstory checks a viral photo or video against its own past online, and tells you whether the caption fits it.**
 
 Meta AI Developer Hackathon 2026 · Indie Developer track · Team CurrentSky (Stanislav Gatin, solo)
+
+<!-- The two buttons get their real links once the public copy and the video are up. -->
+<p align="center">
+  <a href="#quick-start"><img src="docs/images/buttons/live.svg" height="64" alt="Try it live: 11 recorded checks, or a post of your own"></a>&nbsp;
+  <a href="#quick-start"><img src="docs/images/buttons/video.svg" height="64" alt="Watch the demo: 3 minutes on YouTube"></a>
+</p>
 
 <p align="center">
   <a href="#quick-start"><b>Quick start</b></a> ·
@@ -12,6 +22,8 @@ Meta AI Developer Hackathon 2026 · Indie Developer track · Team CurrentSky (St
   <a href="#results">Results</a> ·
   <a href="#scope-and-limitations">Limitations</a>
 </p>
+
+[![CI](https://github.com/stas-gatin/backstory/actions/workflows/ci.yml/badge.svg)](https://github.com/stas-gatin/backstory/actions/workflows/ci.yml)
 
 | | |
 |---|---|
@@ -33,7 +45,9 @@ Meta AI Developer Hackathon 2026 · Indie Developer track · Team CurrentSky (St
 | Every external call recorded; the examples replay offline from the repository | [`backstory/replay.py`](backstory/replay.py) · [`replay/`](replay/) |
 | The evaluation code | [`eval/fivepils.py`](eval/fivepils.py) (fact-checked photos) · [`eval/realset.py`](eval/realset.py) (posts on X) |
 
-![The app's home page: the question, three cases to try, and the input](docs/images/home.png)
+<p align="center">
+  <img src="docs/images/check.gif" width="100%" alt="A recorded check replayed at 2x: the post, the agent map lighting up stage by stage, then the verdict Does not fit with the post next to its first copy online from 2005, 19 years 1 month earlier">
+</p>
 
 ---
 
@@ -144,7 +158,7 @@ cites is shown to the user.
 | **Muse Voice Transcribe** | speech reader | What is said in a video is part of what the post claims |
 | **SAM 3.1** | photo finder | Finds the photos inside an uploaded screenshot of a post, so each is searched on its own. Test G found that searching the cut-out *instead of* the screenshot is worse (NO-GO), so cut-outs are only searched *in addition*; that use was not measured end to end |
 
-The three examples in this repository each make 9 Muse Spark calls, 1 Muse Wonder call and 1 SAM call, and cost $0.09–0.12.
+The two staged examples each make 9 Muse Spark calls, 1 Muse Wonder call and 1 SAM call, and cost $0.09–0.10.
 On the posts of Tests H2–H6 a check cost $0.06–0.10 in the median and at most $0.23. Once a check has spent $0.30
 (`BACKSTORY_COST_CAP`), it starts no new model call.
 
@@ -182,7 +196,9 @@ what the web says, not in judging pixels.
 
 ## Results
 
-![Results of the tests: 20 of 21 "Does not fit" verdicts right on 207 posts on X; 79% of false captions caught with 10.7% false alarms on 75 fact-checked photos; 1 of 99 genuine posts flagged; 12 of 90 fake videos caught](docs/images/tested_kpis.png)
+<p align="center">
+  <img src="docs/images/art/results.svg" width="100%" alt="Results of the tests: 20 of 21 Does not fit verdicts right on 207 posts on X; 79% of false captions caught with Meta's models against 35% with code alone, and 10.7% false alarms against 4.0%, on 75 fact-checked photos; 1 of 99 genuine posts flagged; 12 of 90 fake videos caught">
+</p>
 
 Nine tests, each on data the version under test had never seen. **Before each run, the pass rule was written down**
 (and, from Test G on, committed before the run); afterwards, the result was reported against it, including when it
@@ -231,10 +247,10 @@ cd backstory
 docker compose up --build
 ```
 
-Open http://localhost:8000. With no keys, Backstory runs in **replay mode**: ten recorded checks replay step by step.
-Seven are real posts on X, kept as text-only recordings of every agent's step (`examples/recorded/`; the post itself
-is shown through X's own embed, so its media loads from X). Three are staged on public-domain photos and re-run the
-whole pipeline from the recorded answers in `replay/`. Stop it with Ctrl+C.
+Open http://localhost:8000. With no keys, Backstory runs in **replay mode**: eleven recorded checks replay step by step,
+from text-only recordings of every agent's step (`examples/recorded/`). Nine are real posts on X (the post itself is
+shown through X's own embed, so its media loads from X). Two are staged on public-domain photos; the recorded answers
+of their external calls are in `replay/`. Stop it with Ctrl+C.
 
 ### Live, with keys
 

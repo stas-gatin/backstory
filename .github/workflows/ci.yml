@@ -1,0 +1,34 @@
+name: CI
+
+on:
+  push:
+  pull_request:
+
+jobs:
+  tests:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+          cache: pip
+      - name: Install ffmpeg
+        run: sudo apt-get update && sudo apt-get install -y --no-install-recommends ffmpeg
+      - name: Install dependencies
+        run: pip install -r requirements.txt -r requirements-dev.txt
+      # No keys: the tests run offline, on the recorded examples and the replay cache.
+      - name: Run the tests
+        run: python -m pytest -q
+
+  docker:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Build the image
+        run: docker build -t backstory .
+      - name: Start it offline and open a recorded check
+        run: |
+          docker run -d --name bs -p 8000:8000 backstory
+          for i in $(seq 1 30); do curl -sf http://localhost:8000/ >/dev/null && break; sleep 1; done
+          curl -sf -N -X POST -F example_id=valencia http://localhost:8000/api/check | tail -n 1 | grep -q '"type": *"result"'

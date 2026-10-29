@@ -1,0 +1,59 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1280 250" width="1280" height="250" role="img"
+  aria-label="Results: on 207 real posts on X, 20 of 21 &quot;Does not fit&quot; verdicts were right and 1 of 99 genuine posts was flagged; on 75 fact-checked photos, 79% of false captions caught with Meta's models against 35% with code alone, false alarms 10.7% against 4.0%; 12 of 90 fake videos caught.">
+  <defs><style>
+    .t { font-family: Inter, -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif; }
+    .card { opacity: 0; animation: up .7s ease-out forwards; }
+    @keyframes up { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
+  </style></defs>
+  <rect width="1280" height="250" rx="24" fill="#f7f9fb" stroke="#dfe5ec"/>
+  <text x="40" y="38" class="t" font-size="13" font-weight="700" letter-spacing="2" fill="#0866FF">NINE TESTS · PASS RULES WRITTEN BEFORE EACH RUN · FAILURES PUBLISHED</text>
+<g class="card" style="animation-delay:0.00s">
+<rect x="40" y="58" width="224" height="150" rx="16" fill="#ffffff" stroke="#dfe5ec"/>
+<text x="60" y="106" class="t" font-size="38" font-weight="800" fill="#12202B">20<tspan font-size="22" fill="#6b7a90" font-weight="500">/21</tspan></text>
+<text x="60" y="132" class="t" font-size="14" font-weight="700" fill="#3c4a5e">"Does not fit" right</text>
+<text x="60" y="151" class="t" font-size="12" fill="#6b7a90">on 207 real posts on X</text>
+<rect x="60" y="190" width="184" height="6" rx="3" fill="#edf1f5"/>
+<rect x="60" y="190" width="0" height="6" rx="3" fill="#0866FF"><animate attributeName="width" from="0" to="175.2" dur="1.4s" begin="0.40s" fill="freeze"/></rect>
+</g>
+<g class="card" style="animation-delay:0.35s">
+<rect x="284" y="58" width="224" height="150" rx="16" fill="#ffffff" stroke="#dfe5ec"/>
+<text x="304" y="106" class="t" font-size="38" font-weight="800" fill="#12202B">79<tspan font-size="22" fill="#6b7a90" font-weight="500">%</tspan></text>
+<text x="304" y="132" class="t" font-size="14" font-weight="700" fill="#3c4a5e">false captions caught</text>
+<text x="304" y="151" class="t" font-size="12" fill="#6b7a90">75 fact-checked photos</text>
+<rect x="304" y="180" width="184" height="6" rx="3" fill="#edf1f5"/>
+<rect x="304" y="180" width="0" height="6" rx="3" fill="#9AA5B1"><animate attributeName="width" from="0" to="63.8" dur="1.4s" begin="0.75s" fill="freeze"/></rect>
+<text x="488" y="177" class="t" font-size="10.5" fill="#6b7a90" text-anchor="end">code alone 35%</text>
+<rect x="304" y="200" width="184" height="6" rx="3" fill="#edf1f5"/>
+<rect x="304" y="200" width="0" height="6" rx="3" fill="#0866FF"><animate attributeName="width" from="0" to="144.8" dur="1.4s" begin="1.05s" fill="freeze"/></rect>
+<text x="488" y="197" class="t" font-size="10.5" fill="#6b7a90" text-anchor="end">with Meta models 79%</text>
+</g>
+<g class="card" style="animation-delay:0.70s">
+<rect x="528" y="58" width="224" height="150" rx="16" fill="#ffffff" stroke="#dfe5ec"/>
+<text x="548" y="106" class="t" font-size="38" font-weight="800" fill="#12202B">10.7<tspan font-size="22" fill="#6b7a90" font-weight="500">%</tspan></text>
+<text x="548" y="132" class="t" font-size="14" font-weight="700" fill="#3c4a5e">false alarms</text>
+<text x="548" y="151" class="t" font-size="12" fill="#6b7a90">same photos; code alone 4.0%</text>
+<rect x="548" y="180" width="184" height="6" rx="3" fill="#edf1f5"/>
+<rect x="548" y="180" width="0" height="6" rx="3" fill="#9AA5B1"><animate attributeName="width" from="0" to="7.4" dur="1.4s" begin="1.10s" fill="freeze"/></rect>
+<text x="732" y="177" class="t" font-size="10.5" fill="#6b7a90" text-anchor="end">code alone 4.0%</text>
+<rect x="548" y="200" width="184" height="6" rx="3" fill="#edf1f5"/>
+<rect x="548" y="200" width="0" height="6" rx="3" fill="#C8261B"><animate attributeName="width" from="0" to="19.7" dur="1.4s" begin="1.40s" fill="freeze"/></rect>
+<text x="732" y="197" class="t" font-size="10.5" fill="#6b7a90" text-anchor="end">with Meta models 10.7%</text>
+</g>
+<g class="card" style="animation-delay:1.05s">
+<rect x="772" y="58" width="224" height="150" rx="16" fill="#ffffff" stroke="#dfe5ec"/>
+<text x="792" y="106" class="t" font-size="38" font-weight="800" fill="#12202B">1<tspan font-size="22" fill="#6b7a90" font-weight="500">/99</tspan></text>
+<text x="792" y="132" class="t" font-size="14" font-weight="700" fill="#3c4a5e">genuine posts flagged</text>
+<text x="792" y="151" class="t" font-size="12" fill="#6b7a90">real posts on X</text>
+<rect x="792" y="190" width="184" height="6" rx="3" fill="#edf1f5"/>
+<rect x="792" y="190" width="0" height="6" rx="3" fill="#187A36"><animate attributeName="width" from="0" to="1.9" dur="1.4s" begin="1.45s" fill="freeze"/></rect>
+</g>
+<g class="card" style="animation-delay:1.40s">
+<rect x="1016" y="58" width="224" height="150" rx="16" fill="#ffffff" stroke="#dfe5ec"/>
+<text x="1036" y="106" class="t" font-size="38" font-weight="800" fill="#12202B">12<tspan font-size="22" fill="#6b7a90" font-weight="500">/90</tspan></text>
+<text x="1036" y="132" class="t" font-size="14" font-weight="700" fill="#3c4a5e">fake videos caught</text>
+<text x="1036" y="151" class="t" font-size="12" fill="#6b7a90">weak spot: most “Cannot verify”</text>
+<rect x="1036" y="190" width="184" height="6" rx="3" fill="#edf1f5"/>
+<rect x="1036" y="190" width="0" height="6" rx="3" fill="#925C00"><animate attributeName="width" from="0" to="24.5" dur="1.4s" begin="1.80s" fill="freeze"/></rect>
+</g>
+  <text x="40" y="232" class="t" font-size="12" fill="#6b7a90">Posts on X: Tests H2–H6, pooled over five successive versions (eval/track_record.json). Photos: Test I (docs/TEST_I.md), pass rule failed narrowly: false alarms above 10%.</text>
+</svg>
