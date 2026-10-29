@@ -624,3 +624,9 @@ html, body { overflow-x: clip; }
 .wipe .wl { left: 10px; } .wipe .wr { right: 10px; }
 .wipe input { position: absolute; inset: 0; width: 100%; height: 100%; margin: 0; opacity: 0; cursor: ew-resize; }
 @media (max-width: 600px) { .replay { width: 100%; } .replay button { flex: 1; } .sharebtn { margin-left: 0; } }
+
+/* The critic's own check, why a sign settles the place, same-day pins */
+.proof.critic { margin-top: 10px; }
+.tn .why { margin: 4px 0 0; font-size: 13px; line-height: 1.45; color: var(--ink); background: rgba(255,255,255,.6); border-radius: 10px; padding: 8px 10px; }
+.tn .why b { font-weight: 700; }
+.axis .pin i { position: absolute; top: -21px; left: 50%; transform: translateX(-50%); font: 700 10.5px var(--mono); font-style: normal; color: var(--muted); }

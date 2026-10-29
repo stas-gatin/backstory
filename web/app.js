@@ -448,7 +448,13 @@ function span(a, b) {
 }
 
 function axis(tl, claimDate) {
-  const pts = tl.filter((t) => /^\d{4}-\d\d-\d\d/.test(t.date)).map((t) => ({ ...t, ms: +new Date(t.date.slice(0, 10)) }));
+  // Copies from the same day share one pin; its label says how many.
+  const byDay = {};
+  tl.filter((t) => /^\d{4}-\d\d-\d\d/.test(t.date)).forEach((t) => {
+    const k = t.kind + t.date.slice(0, 10);
+    if (byDay[k]) byDay[k].n += 1; else byDay[k] = { ...t, n: 1, ms: +new Date(t.date.slice(0, 10)) };
+  });
+  const pts = Object.values(byDay);
   if (pts.length < 2) return "";
   const lo = Math.min(...pts.map((p) => p.ms)), hi = Math.max(...pts.map((p) => p.ms));
   if (hi === lo) return "";
@@ -459,7 +465,15 @@ function axis(tl, claimDate) {
   const marks = [];
   [lo, claim?.ms, hi].filter(Boolean).forEach((ms) => { if (marks.every((m) => Math.abs(x(m) - x(ms)) > 7)) marks.push(ms); });
   const years = marks.map((ms) => `<span class="yr" style="left:${x(ms)}%">${new Date(ms).getFullYear()}</span>`).join("");
-  return `<div class="axis">${seg}${pts.map((p) => `<span class="pin ${p.kind}${claimDate && p.kind !== "claim" && p.date > claimDate ? " late" : ""}" style="left:${x(p.ms)}%" title="${esc(p.date)}"></span>`).join("")}${years}</div>`;
+  // Pins closer than a pin's width merge into one, labelled with how many dates it holds; the claim keeps its own.
+  const late = (p) => !!(claimDate && p.kind !== "claim" && p.date > claimDate);
+  const groups = [];
+  pts.slice().sort((p, q) => p.ms - q.ms).forEach((p) => {
+    const g = groups[groups.length - 1];
+    if (g && p.kind !== "claim" && g.kind !== "claim" && late(p) === g.late && x(p.ms) - x(g.ms) < 2.5) { g.n += p.n; g.last = p.date.slice(0, 10); }
+    else groups.push({ ...p, late: late(p), last: null });
+  });
+  return `<div class="axis">${seg}${groups.map((p) => `<span class="pin ${p.kind}${p.late ? " late" : ""}" style="left:${x(p.ms)}%" title="${esc(p.date.slice(0, 10) + (p.last ? " to " + p.last : "") + (p.n > 1 ? " · " + p.n + " copies" : ""))}">${p.n > 1 ? `<i>${p.n}</i>` : ""}</span>`).join("")}${years}</div>`;
 }
 
 // A draft for X Community Notes, built by code from the evidence the verdict cites; the user checks it before posting.
@@ -544,7 +558,7 @@ function showResult(r) {
         ${(G.post?.text || c.caption) ? `<q>${esc(short(unquote(G.post?.text || c.caption), 200))}</q>` : ""}</div>
       <div class="tngap"><b class="count" data-to="${esc(gap || "")}">${esc(gap || "")}</b><span>earlier</span></div>
       <div class="tn first"><div class="tnk">First seen</div>${firstImg || postImg}<b>${esc(f.date)} · ${ext(f.url, f.domain)}</b>
-        <span>${esc(HOW(f.how))}${f.described ? " · " + esc(short(f.described, 80)) : ""}</span></div></div>` : "";
+        <span>${esc(HOW(f.how))}${f.snapshot ? " · " + ext(f.snapshot, "archived copy") : ""}${f.described ? " · " + esc(short(f.described, 80)) : ""}</span></div></div>` : "";
   const scene = (r.evidence || []).find((e) => e.match === "scene" && e.other_country && (r.cited || []).includes(e.id));
   const sceneThen = r.verdict === "inconsistent" && !f && scene ? `<div class="thennow">
       <div class="tn"><div class="tnk">The post: shared as</div>${postImg}<b>${esc(short(c.place || "", 60))}</b><span>${esc(r.post ? "@" + r.post.author + ", " + r.post.posted_on : "")}</span>
@@ -553,7 +567,8 @@ function showResult(r) {
       <div class="tn first"><div class="tnk">What the footage shows</div>${scene.image_url ? `<img src="${esc(scene.image_url)}" alt="The frame with the sign">`
         : `<div class="signcard"><small>a sign on screen at ${vtime(scene.scene_t)}</small><blockquote>${esc(scene.quote)}</blockquote></div>`}
         <b>“${esc(scene.quote)}” → ${esc(scene.described_place)}</b>
-        <span>read by Muse Spark, confirmed on the frame by Muse Wonder${!scene.image_url && r.post?.url ? ` · ${ext(r.post.url, "play the post on X")} to see it` : ""}</span></div></div>` : "";
+        <span>read by Muse Spark, confirmed on the frame by Muse Wonder${!scene.image_url && r.post?.url ? ` · ${ext(r.post.url, "play the post on X")} to see it` : ""}</span>
+        ${scene.check_reason ? `<p class="why"><b>Why it settles the place:</b> ${esc(short(scene.check_reason, 260))}</p>` : ""}</div></div>` : "";
   // Fits and Cannot verify get the same two pictures: the post, and the oldest copy the agents kept.
   const dated = (e) => [e.image_first, e.page_published && !WIKI.test(e.domain || "") ? String(e.page_published).slice(0, 10) : null].filter(Boolean).sort()[0];
   const oldest = (r.evidence || []).filter((e) => e.match !== "scene" && dated(e)).sort((p, q) => dated(p) < dated(q) ? -1 : 1)
@@ -572,9 +587,16 @@ function showResult(r) {
     : `<div class="compare single">${claimFact(c)}</div>`;
   let proof = "";
   if (r.basis === "date rule" && r.rule) {
-    proof = `<div class="proof">${icon("grounds")}<div><b>Decided by code: the date rule</b><span>The image file was archived on ${esc(r.rule.image_first)}, ${r.rule.days_before} days before the earliest date the caption allows (${esc(r.rule.period_start)}).${f && f.date < r.rule.image_first ? ` The earliest copy the verdict cites is older still: ${esc(f.date)} (${esc(f.domain)}, ${esc(HOW(f.how))}).` : ""}</span></div></div>`;
+    proof = `<div class="proof">${icon("grounds")}<div><b>Decided by code: the date rule</b><span>The image file was archived on ${ext(r.rule.snapshot, r.rule.image_first)}, ${r.rule.days_before} days before the earliest date the caption allows (${esc(r.rule.period_start)}).${f && f.date < r.rule.image_first ? ` The earliest copy the verdict cites is older still: ${esc(f.date)} (${esc(f.domain)}, ${esc(HOW(f.how))}).` : ""}</span></div></div>`;
   } else if (r.grounds) {
     proof = `<div class="proof ${r.grounds.ok ? "" : "weak"}">${icon(r.grounds.ok ? "grounds" : "alert")}<div><b>${r.grounds.ok ? "Proof checked by code" : "Proof check: not enough"}</b><span>${esc(plainIds(r.grounds.text))}${r.grounds.kind === "the scene itself" ? ". This verdict rests on one sign in the scene, confirmed by a second model; no earlier copy was found." : ""}</span></div></div>`;
+  }
+  // The critic looks at the cited copies itself before it approves; say how many it compared with the post.
+  const checked = String(r.critic?.same_source_checked || "").split(/[;,]\s*/).filter((x) => /:/.test(x));
+  if (r.verdict === "inconsistent" && checked.length) {
+    const same = checked.filter((x) => /:\s*same\b/i.test(x)).length, none = checked.filter((x) => /no image/i.test(x)).length;
+    const pic = (G.inputs || []).some((x) => /frame/.test(x.kind)) || G.post?.video ? "footage" : "image";
+    proof += `<div class="proof critic">${icon("critic")}<div><b>Re-checked by Muse Wonder before it approved</b><span>It checked ${checked.length} cited ${checked.length > 1 ? "copies" : "copy"} against the post itself: ${same === checked.length && same > 1 ? "all " + same + " are" : same + (same === 1 ? " is" : " are")} the same ${pic}${none ? `, ${none} had no picture to compare` : ""}.</span></div></div>`;
   }
   const draft = r.verdict === "inconsistent" ? noteDraft(r) : "";
   const notes = draft || r.community_note ? `<div class="notes ${draft && r.community_note ? "two" : ""}">
