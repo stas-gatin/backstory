@@ -2,6 +2,8 @@ const $ = (s) => document.querySelector(s);
 let chosenFile = null, chosenExample = null, running = false, finished = false, tab = "link";
 
 const esc = (s) => String(s ?? "").replace(/[&<>"]/g, (c) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" }[c]));
+// a post's author; recorded checks of private accounts carry no handle
+const authorOf = (a) => (a ? "@" + a : "X user");
 
 // Line icons, 24x24, drawn with the current text colour.
 const PATHS = {
@@ -378,7 +380,7 @@ function addStep(ev) {
   if (ev.agent === "post" && ev.post) {
     // A recorded post carries no copy of its media: the picture is the post's own, served by X.
     showPost({ media: (ev.thumbs || [])[0] || (ev.post.media_urls || [])[0] || null, text: ev.post.text,
-               meta: `@${ev.post.author} · ${ev.post.posted_on || ""}`, url: ev.post.url });
+               meta: `${authorOf(ev.post.author)} · ${ev.post.posted_on || ""}`, url: ev.post.url });
   }
   if (ev.agent === "frames" && !$("#media").innerHTML && (ev.thumbs || []).length) {
     $("#media").innerHTML = `<img src="${ev.thumbs[0]}" alt="A frame of the video">`;
@@ -554,14 +556,14 @@ function showResult(r) {
     ? `<img src="${esc(f.image_url)}" alt="" referrerpolicy="no-referrer" onerror="this.remove()">` : "";
   const then = r.verdict === "inconsistent" && f ? `<div class="thennow">
       <div class="tn"><div class="tnk">Shared as</div>${postImg}<b>${esc(short([c.place, c.claimed_date].filter(Boolean).join(" · ") || "the caption's claim", 70))}</b>
-        <span>${esc(r.post ? "@" + r.post.author + ", " + r.post.posted_on : (G.post?.meta || ""))}</span>
+        <span>${esc(r.post ? authorOf(r.post.author) + ", " + r.post.posted_on : (G.post?.meta || ""))}</span>
         ${(G.post?.text || c.caption) ? `<q>${esc(short(unquote(G.post?.text || c.caption), 200))}</q>` : ""}</div>
       <div class="tngap"><b class="count" data-to="${esc(gap || "")}">${esc(gap || "")}</b><span>earlier</span></div>
       <div class="tn first"><div class="tnk">First seen</div>${firstImg || postImg}<b>${esc(f.date)} · ${ext(f.url, f.domain)}</b>
         <span>${esc(HOW(f.how))}${f.snapshot ? " · " + ext(f.snapshot, "archived copy") : ""}${f.described ? " · " + esc(short(f.described, 80)) : ""}</span></div></div>` : "";
   const scene = (r.evidence || []).find((e) => e.match === "scene" && e.other_country && (r.cited || []).includes(e.id));
   const sceneThen = r.verdict === "inconsistent" && !f && scene ? `<div class="thennow">
-      <div class="tn"><div class="tnk">The post: shared as</div>${postImg}<b>${esc(short(c.place || "", 60))}</b><span>${esc(r.post ? "@" + r.post.author + ", " + r.post.posted_on : "")}</span>
+      <div class="tn"><div class="tnk">The post: shared as</div>${postImg}<b>${esc(short(c.place || "", 60))}</b><span>${esc(r.post ? authorOf(r.post.author) + ", " + r.post.posted_on : "")}</span>
         ${(G.post?.text || c.caption) ? `<q>${esc(short(unquote(G.post?.text || c.caption), 200))}</q>` : ""}</div>
       <div class="tngap"><b>${icon("witness")}</b><span>the same video, at ${vtime(scene.scene_t)}</span></div>
       <div class="tn first"><div class="tnk">What the footage shows</div>${scene.image_url ? `<img src="${esc(scene.image_url)}" alt="The frame with the sign">`
@@ -576,7 +578,7 @@ function showResult(r) {
   const MID = { consistent: ["fits", "the record agrees with the caption"], cannot_tell: ["?", c.place || c.claimed_date ? "not enough proof either way" : "the post names no place or date to test"] };
   const otherThen = r.verdict !== "inconsistent" && oldest && MID[r.verdict] ? `<div class="thennow ${r.verdict}">
       <div class="tn"><div class="tnk">The post: shared as</div>${postImg}<b>${esc(short([c.place, c.claimed_date].filter(Boolean).join(" · ") || "No place or date given", 70))}</b>
-        <span>${esc(r.post ? "@" + r.post.author + ", " + r.post.posted_on : (G.post?.meta || ""))}</span>
+        <span>${esc(r.post ? authorOf(r.post.author) + ", " + r.post.posted_on : (G.post?.meta || ""))}</span>
         ${(G.post?.text || c.caption) ? `<q>${esc(short(unquote(G.post?.text || c.caption), 200))}</q>` : ""}</div>
       <div class="tngap neutral"><b>${MID[r.verdict][0] === "fits" ? icon("consistent") : icon("cannot_tell")}</b><span>${esc(MID[r.verdict][1])}</span></div>
       <div class="tn first"><div class="tnk">${(r.cited || []).includes(oldest.id) ? "Oldest copy the verdict cites" : "Oldest copy found"}</div>${oldest.image_url && /^https?:/.test(oldest.image_url) ? `<img src="${esc(oldest.image_url)}" alt="" referrerpolicy="no-referrer">` : postImg}
@@ -617,7 +619,7 @@ function showResult(r) {
       ${verifyLinks(r)}
       ${receipt(r)}
       <div class="basis"><span>${esc(BASIS[r.basis] || r.basis || "")}</span>
-        ${r.post ? `<span>Post: ${ext(r.post.url, "@" + r.post.author + ", " + r.post.posted_on)}</span>` : ""}
+        ${r.post ? `<span>Post: ${ext(r.post.url, authorOf(r.post.author) + ", " + r.post.posted_on)}</span>` : ""}
         ${r.mode === "replay" ? "<span>Recorded run, replayed step by step</span>" : ""}</div>
     </div>`;
   box.querySelectorAll(".xembed").forEach(xEmbed);
@@ -678,7 +680,7 @@ init();
 // The check graph: what was checked, which parts of the media were searched, what was found and kept, and what
 // the verdict rests on.
 function collect(ev) {
-  if (ev.agent === "post" && ev.post) G.post = { media: (ev.thumbs || [])[0] || (ev.post.media_urls || [])[0] || G.post?.media, text: ev.post.text, meta: "@" + ev.post.author };
+  if (ev.agent === "post" && ev.post) G.post = { media: (ev.thumbs || [])[0] || (ev.post.media_urls || [])[0] || G.post?.media, text: ev.post.text, meta: authorOf(ev.post.author) };
   if (ev.agent === "frames" && !G.post?.media && (ev.thumbs || []).length) G.post = { ...(G.post || {}), media: ev.thumbs[0] };
   if (ev.agent === "speech") G.speech = ev.transcript || "";
   if (ev.agent === "search") { G.inputs = ev.inputs || []; G.found = ev.count || 0; }

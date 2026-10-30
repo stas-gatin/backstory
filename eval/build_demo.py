@@ -32,7 +32,7 @@ DEMOS = [
      "post_url": "https://x.com/TodayUpdates0/status/2114156879962054742"},
     {"id": "la_fires", "kind": "link", "title": "\"LA fires\" freeway video",
      "blurb": "A freeway lined with flames, shared during the January 2025 Los Angeles fires.",
-     "post_url": "https://x.com/HustleBitch_/status/1877770103229485090"},
+     "post_url": "https://x.com/i/status/1877770103229485090"},
     {"id": "athens", "kind": "link", "title": "\"Fleeing Israel\" at the airport",
      "blurb": "Crowds said to be fleeing Israel at Ben Gurion airport. Read the signs.",
      "post_url": "https://x.com/butterflyteeee/status/1841592595073405004"},
