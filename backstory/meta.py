@@ -2,6 +2,7 @@
 import base64
 import io
 import json
+import sys
 import threading
 import time
 
@@ -68,7 +69,10 @@ def _post(body):
             r = requests.post(config.META_API, headers=headers, data=json.dumps(body), timeout=240)
             if r.status_code == 200:
                 return r.json()
-            last = "HTTP %s: %s" % (r.status_code, r.text[:200])
+            last = "HTTP %s from %s: %s" % (r.status_code, body["model"], r.text[:200])
+            # the host's log shows every refused call, so a failure on a public copy can be traced
+            print("meta call refused: %s, tools %s, request id %s" % (last, [t.get("type") for t in body.get("tools", [])],
+                                                                     r.headers.get("x-request-id", "?")), file=sys.stderr, flush=True)
             if r.status_code == 404 and "model_not_found" in r.text and body["model"] in config.FALLBACK:
                 body = dict(body, model=config.FALLBACK[body["model"]])
                 continue
