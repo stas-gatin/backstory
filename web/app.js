@@ -2,7 +2,7 @@ const $ = (s) => document.querySelector(s);
 let chosenFile = null, chosenExample = null, running = false, finished = false, tab = "link";
 
 const esc = (s) => String(s ?? "").replace(/[&<>"]/g, (c) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" }[c]));
-// a post's author; recorded checks of private accounts carry no handle
+// a post's author; a recorded check can leave a personal account's handle out
 const authorOf = (a) => (a ? "@" + a : "X user");
 
 // Line icons, 24x24, drawn with the current text colour.
