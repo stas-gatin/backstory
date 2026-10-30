@@ -590,7 +590,8 @@ html, body { overflow-x: clip; }
 .tn b { white-space: normal; }
 .axis { background: var(--line) !important; }
 .evidence { grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); }
-.evidence:has(> .ev:only-child) { grid-template-columns: minmax(260px, 420px); }
+/* a lone copy keeps a card's width; no :has(), which some browsers do not re-check as cards arrive */
+.evidence > .ev:only-child { max-width: 420px; }
 .ev .pic.noimg { display: none; }
 @media (max-width: 600px) {
   .stages { display: grid !important; grid-template-columns: 1fr 1fr; gap: 8px; }
