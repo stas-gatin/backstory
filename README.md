@@ -188,6 +188,7 @@ what the web says, not in judging pixels.
 - One page that will not open, one archive lookup that times out, one frame that cannot be searched: the others still count, and the table says "Page did not open".
 - A cost cap per check ($0.30) stops starting new model calls.
 - If the Meta Model API answers "model not found" for Muse Spark 1.3 (it did for most calls on 30 October 2026), the call goes to Muse Spark 1.2, same price; the model receipt names the model that answered.
+- If a call with the web search tool still gets "model not found" (on the public copy, hosted in Oregon, every such call did on 30 October 2026), it is asked again without the search: the claim reader then reads the caption without looking up named events, and the host's log records it.
 - Bad input is rejected before any model is called: not a photo or video, too small, too large, no caption.
 
 **Afterwards, everything can be traced.**
