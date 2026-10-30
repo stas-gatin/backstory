@@ -630,3 +630,17 @@ html, body { overflow-x: clip; }
 .tn .why { margin: 4px 0 0; font-size: 13px; line-height: 1.45; color: var(--ink); background: rgba(255,255,255,.6); border-radius: 10px; padding: 8px 10px; }
 .tn .why b { font-weight: 700; }
 .axis .pin i { position: absolute; top: -21px; left: 50%; transform: translateX(-50%); font: 700 10.5px var(--mono); font-style: normal; color: var(--muted); }
+
+/* Accuracy page: every false caption Test E caught, one line each, fading out towards the end of the list */
+.elist { -webkit-mask-image: linear-gradient(to bottom, #000 0, #000 calc(100% - 1100px), transparent 100%);
+          mask-image: linear-gradient(to bottom, #000 0, #000 calc(100% - 1100px), transparent 100%); }
+.fh, .fi { display: grid; grid-template-columns: minmax(0, 1.25fr) minmax(0, 1.1fr) 96px minmax(0, 1.35fr); gap: 16px; align-items: center; }
+.fh { padding: 0 12px 8px; font-size: 11px; font-weight: 700; color: var(--faint); text-transform: uppercase; letter-spacing: .06em; }
+.fi { padding: 9px 12px; border-top: 1px solid var(--line); color: var(--ink); text-decoration: none; font-size: 13.5px; }
+.fi:hover { background: var(--blue-soft); text-decoration: none; }
+.fi > span { white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.fi .ff { color: var(--muted); } .fi .ff b { color: var(--ink); font-weight: 600; }
+.fi .fv { color: var(--red); font-weight: 700; font-size: 12.5px; }
+.fi .ft em { font-style: normal; color: var(--faint); font-size: 12.5px; }
+.motto { margin: -40px 0 34px; text-align: center; font-size: clamp(30px, 4.6vw, 52px); font-weight: 800; letter-spacing: -.02em; line-height: 1.1; color: var(--ink); }
+@media (max-width: 760px) { .fh { display: none; } .fi { grid-template-columns: 1fr auto; gap: 2px 10px; } .fi .ff, .fi .ft { grid-column: 1 / -1; } }

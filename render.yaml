@@ -1,0 +1,12 @@
+# The public copy: recorded checks only (replay mode, no keys, no model calls).
+services:
+  - type: web
+    name: backstory
+    runtime: docker
+    plan: free
+    branch: main
+    autoDeploy: true
+    healthCheckPath: /api/status
+    envVars:
+      - key: BACKSTORY_MODE
+        value: replay
