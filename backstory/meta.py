@@ -69,6 +69,9 @@ def _post(body):
             if r.status_code == 200:
                 return r.json()
             last = "HTTP %s: %s" % (r.status_code, r.text[:200])
+            if r.status_code == 404 and "model_not_found" in r.text and body["model"] in config.FALLBACK:
+                body = dict(body, model=config.FALLBACK[body["model"]])
+                continue
             if r.status_code in (400, 401, 403):
                 break
         except requests.RequestException as e:
@@ -96,7 +99,7 @@ def respond(model, text, image_bytes=None, effort="low", web_search=False, budge
     j = replay.cached("meta", body, lambda: _post(body), note=note)
     text = output_text(j)
     if budget:
-        budget.add(model, j.get("usage", {}), role=_role(note), effort=effort, says=_gist(text))
+        budget.add(j.get("model") or model, j.get("usage", {}), role=_role(note), effort=effort, says=_gist(text))
     return text, web_sources(j)
 
 

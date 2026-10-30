@@ -31,10 +31,13 @@ REPLAY_DIR = Path(os.environ.get("BACKSTORY_REPLAY_DIR", ROOT / "replay"))
 
 META_API = "https://api.meta.ai/v1/responses"
 SPARK = "muse-spark-1.3"
+# When the API answers "model_not_found" for a model it still lists (it did for Spark 1.3 on 30 Oct 2026), the call
+# goes to this one instead; the receipt names the model that answered.
+FALLBACK = {SPARK: "muse-spark-1.2"}
 WONDER = "muse-wonder-1.0"
 
 # USD per million tokens (input, output). Used only to report and cap spending.
-PRICES = {SPARK: (1.25, 4.25), WONDER: (4.0, 20.0)}  # dev.meta.ai pricing page, 2026-10-27
+PRICES = {SPARK: (1.25, 4.25), "muse-spark-1.2": (1.25, 4.25), WONDER: (4.0, 20.0)}  # dev.meta.ai pricing page, 2026-10-27 and 30
 COST_CAP_PER_CHECK = float(os.environ.get("BACKSTORY_COST_CAP", "0.30"))
 
 MAX_PAGES = 6          # pages the reader agent opens per photo

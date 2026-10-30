@@ -187,6 +187,7 @@ what the web says, not in judging pixels.
 **A step that fails does not end the check.**
 - One page that will not open, one archive lookup that times out, one frame that cannot be searched: the others still count, and the table says "Page did not open".
 - A cost cap per check ($0.30) stops starting new model calls.
+- If the Meta Model API answers "model not found" for Muse Spark 1.3 (it did for most calls on 30 October 2026), the call goes to Muse Spark 1.2, same price; the model receipt names the model that answered.
 - Bad input is rejected before any model is called: not a photo or video, too small, too large, no caption.
 
 **Afterwards, everything can be traced.**
