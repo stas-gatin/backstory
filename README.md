@@ -8,10 +8,9 @@
 
 Meta AI Developer Hackathon 2026 · Indie Developer track · Team CurrentSky (Stanislav Gatin, solo)
 
-<!-- The two buttons get their real links once the public copy and the video are up. -->
 <p align="center">
-  <a href="#quick-start"><img src="docs/images/buttons/live.svg" height="64" alt="Try it live: 11 recorded checks, or a post of your own"></a>&nbsp;
-  <a href="#quick-start"><img src="docs/images/buttons/video.svg" height="64" alt="Watch the demo: 3 minutes on YouTube"></a>
+  <a href="https://backstory-xw0l.onrender.com"><img src="docs/images/buttons/live.svg" height="64" alt="Try it live: 11 recorded checks, or a post of your own"></a>&nbsp;
+  <a href="https://youtu.be/7MF6vIxmxiI"><img src="docs/images/buttons/video.svg" height="64" alt="Watch the demo: 3 minutes on YouTube"></a>
 </p>
 
 <p align="center">
@@ -36,6 +35,8 @@ Meta AI Developer Hackathon 2026 · Indie Developer track · Team CurrentSky (St
 
 | You want | Go to |
 |---|---|
+| The 3-minute demo | [YouTube](https://youtu.be/7MF6vIxmxiI) |
+| Try it without installing: 11 recorded checks, or a post of your own | [backstory-xw0l.onrender.com](https://backstory-xw0l.onrender.com) (the first visit after a quiet spell takes about a minute) |
 | Run it: one command, offline, no keys | [Quick start](#quick-start) |
 | The agents and how they hand work to each other | [How it works](#how-it-works) · [`backstory/pipeline.py`](backstory/pipeline.py) |
 | What each Meta model does, and why | [Meta's models](#metas-models-what-each-one-does) |
