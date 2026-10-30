@@ -25,6 +25,8 @@ GOOGLE_VISION_API_KEY = os.environ.get("GOOGLE_VISION_API_KEY", "")
 # live: call the real services and record every answer into replay/.
 # replay: answer only from replay/ (no keys, no network). Used by the public demo and by judges.
 MODE = os.environ.get("BACKSTORY_MODE") or ("live" if MODEL_API_KEY else "replay")
+if not MODEL_API_KEY:  # live without a key cannot work: serve the recorded checks until one is set
+    MODE = "replay"
 REPLAY_DIR = Path(os.environ.get("BACKSTORY_REPLAY_DIR", ROOT / "replay"))
 
 META_API = "https://api.meta.ai/v1/responses"

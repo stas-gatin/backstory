@@ -1,4 +1,5 @@
-# The public copy: recorded checks only (replay mode, no keys, no model calls).
+# The public copy: recorded checks for everyone, and live checks of a visitor's own post within the limits in
+# backstory/limits.py. The two keys are set in Render's dashboard, never in this file.
 services:
   - type: web
     name: backstory
@@ -9,4 +10,14 @@ services:
     healthCheckPath: /api/status
     envVars:
       - key: BACKSTORY_MODE
-        value: replay
+        value: live
+      - key: MODEL_API_KEY
+        sync: false
+      - key: GOOGLE_VISION_API_KEY
+        sync: false
+      - key: BACKSTORY_LIVE_PER_VISITOR
+        value: "3"
+      - key: BACKSTORY_LIVE_DAY_USD
+        value: "5"
+      - key: BACKSTORY_LIVE_TOTAL_USD
+        value: "40"

@@ -10,7 +10,7 @@ Meta AI Developer Hackathon 2026 · Indie Developer track · Team CurrentSky (St
 
 <!-- The two buttons get their real links once the public copy and the video are up. -->
 <p align="center">
-  <a href="#quick-start"><img src="docs/images/buttons/live.svg" height="64" alt="Try it live: 11 recorded checks, step by step"></a>&nbsp;
+  <a href="#quick-start"><img src="docs/images/buttons/live.svg" height="64" alt="Try it live: 11 recorded checks, or a post of your own"></a>&nbsp;
   <a href="#quick-start"><img src="docs/images/buttons/video.svg" height="64" alt="Watch the demo: 3 minutes on YouTube"></a>
 </p>
 
@@ -264,10 +264,11 @@ answer is recorded into `replay/` (mounted from your checkout by `docker-compose
 
 ### A public copy on Render
 
-[`render.yaml`](render.yaml) describes the public copy: the same Docker image as above, in replay mode, with no keys,
-so it only replays the recorded checks and shows the track record. On [Render](https://render.com), choose
-New → Blueprint and pick this repository; the free plan is enough (the first visit after a quiet spell takes about a
-minute while the service wakes up).
+[`render.yaml`](render.yaml) describes the public copy: the same Docker image as above, with live checks within the
+limits below. On [Render](https://render.com), choose New → Blueprint, pick this repository and enter the two keys
+when asked; the free plan is enough (the first visit after a quiet spell takes about a minute while the service wakes
+up). On the free plan the counts below start again whenever the service restarts, so the hard ceiling is the credit
+left on the Meta Model API and a quota on the Cloud Vision API.
 
 ### A public copy with live checks
 
