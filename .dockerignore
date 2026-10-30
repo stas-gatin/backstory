@@ -1,0 +1,7 @@
+.git
+.venv
+.env
+.claude
+runs
+data
+**/__pycache__

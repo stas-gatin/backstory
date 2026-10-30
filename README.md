@@ -10,7 +10,7 @@ Meta AI Developer Hackathon 2026 · Indie Developer track · Team CurrentSky (St
 
 <!-- The two buttons get their real links once the public copy and the video are up. -->
 <p align="center">
-  <a href="#quick-start"><img src="docs/images/buttons/live.svg" height="64" alt="Try it live: 11 recorded checks, or a post of your own"></a>&nbsp;
+  <a href="#quick-start"><img src="docs/images/buttons/live.svg" height="64" alt="Try it live: 11 recorded checks, step by step"></a>&nbsp;
   <a href="#quick-start"><img src="docs/images/buttons/video.svg" height="64" alt="Watch the demo: 3 minutes on YouTube"></a>
 </p>
 
@@ -262,6 +262,13 @@ docker compose up --build
 Now any link to a post on X, or any uploaded photo or video with its caption, is checked live, and every new
 answer is recorded into `replay/` (mounted from your checkout by `docker-compose.yml`).
 
+### A public copy on Render
+
+[`render.yaml`](render.yaml) describes the public copy: the same Docker image as above, in replay mode, with no keys,
+so it only replays the recorded checks and shows the track record. On [Render](https://render.com), choose
+New → Blueprint and pick this repository; the free plan is enough (the first visit after a quiet spell takes about a
+minute while the service wakes up).
+
 ### A public copy with live checks
 
 With keys, a public copy limits live checks so the credits cannot run out by accident
@@ -283,7 +290,7 @@ python -m venv .venv && .venv/bin/pip install -r requirements.txt
 
 ```bash
 .venv/bin/pip install -r requirements-dev.txt
-.venv/bin/python -m pytest -q tests     # 63 offline tests: every external call is replaced by a stand-in
+.venv/bin/python -m pytest -q tests     # 69 offline tests: every external call is replaced by a stand-in
 ```
 
 ### Evaluation
@@ -337,7 +344,7 @@ tests/       offline tests
 
 | | Used for | Licence / terms |
 |---|---|---|
-| [5Pils](https://github.com/UKPLab/5pils) (UKPLab) | Evaluation on fact-checked photos | CC-BY-SA-4.0; downloaded, not redistributed |
+| [5Pils](https://github.com/UKPLab/5pils) (UKPLab) | Evaluation on fact-checked photos | CC-BY-SA-4.0; downloaded for the evaluation; the 70 caught captions on the Accuracy page ([`web/test_e.json`](web/test_e.json), shortened) are shared under the same licence |
 | Posts on X in `eval/realset*.json` | Evaluation on real posts | Links and short descriptions only; no media is stored in the repository |
 | `examples/katrina.jpg`, `examples/sendai.jpg` | The offline examples | Public domain (U.S. Coast Guard, U.S. Navy), see [`examples/CREDITS.md`](examples/CREDITS.md) |
 | `replay/` | The public-domain examples' recorded answers | Titles, dates, short excerpts and captions of the pages where the photos appear, and the models' answers |

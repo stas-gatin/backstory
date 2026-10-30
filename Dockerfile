@@ -9,4 +9,5 @@ COPY examples examples
 COPY replay replay
 COPY eval/track_record.json eval/track_record.json
 EXPOSE 8000
-CMD ["uvicorn", "backstory.server:app", "--host", "0.0.0.0", "--port", "8000"]
+# a host such as Render gives the port in $PORT
+CMD ["sh", "-c", "exec uvicorn backstory.server:app --host 0.0.0.0 --port ${PORT:-8000}"]
