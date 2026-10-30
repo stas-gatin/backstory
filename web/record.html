@@ -7,7 +7,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@500&display=swap" rel="stylesheet">
 <script>/* a picture another site refuses to serve is hidden, never shown broken */addEventListener("error",(e)=>{if(e.target&&e.target.tagName==="IMG")e.target.classList.add("broken")},true)</script>
-<link rel="stylesheet" href="/static/style.css?v=57">
+<link rel="stylesheet" href="/static/style.css?v=59">
 </head>
 <body>
 <header class="top">
@@ -121,6 +121,6 @@ fetch("/api/record").then((r) => r.json()).then((d) => {
 });
 </script>
 <script>/* the same live/demo pill as on the check page */fetch("/api/status").then((r)=>r.json()).then((st)=>{const m=document.getElementById("mode"),lv=st.live||{};m.innerHTML=st.mode!=="live"?'<i class="live off"></i>Demo: recorded checks':lv.live?'<i class="live"></i>Live checks · '+lv.left+' of '+lv.per_visitor+' left today':'<i class="live off"></i>Live checks paused';}).catch(()=>{});</script>
-<script src="/static/motion.js?v=2"></script>
+<script src="/static/motion.js?v=3"></script>
 </body>
 </html>

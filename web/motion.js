@@ -18,7 +18,7 @@
     });
     words(h);
   });
-  const SEL = ".hero p, .promises li, .section-title, .card:not(.result):not(.input), .ps, .kpi, .rrow, .bar, .lessons li, .tests tbody tr, footer";
+  const SEL = ".hero p, .promises li, .section-title, .card:not(.result):not(.input), .ps, .kpi, .rrow, .bar, .lessons li, .tests tbody tr, .motto, footer";
   const io = new IntersectionObserver((entries) => entries.forEach((e) => {
     if (e.isIntersecting) { e.target.classList.add("in"); io.unobserve(e.target); }
   }), { rootMargin: "0px 0px -8% 0px", threshold: 0.08 });

@@ -7,7 +7,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@500&display=swap" rel="stylesheet">
 <script>/* a picture another site refuses to serve is hidden, never shown broken */addEventListener("error",(e)=>{if(e.target&&e.target.tagName==="IMG")e.target.classList.add("broken")},true)</script>
-<link rel="stylesheet" href="/static/style.css?v=57">
+<link rel="stylesheet" href="/static/style.css?v=59">
 </head>
 <body>
 <header class="top">
@@ -23,7 +23,7 @@
 
 <section class="hero single">
   <h1>How accurate <span>is it?</span></h1>
-  <p>Nine tests in the table, and Test D (a model alone) for scale. Before each run, the pass rule was written down (and, from Test G on, committed);
+  <p>Measured on photos fact-checkers debunked and on 207 real posts on X. Before each run, the pass rule was written down (and, from Test G on, committed);
     afterwards, the result was reported against that rule, including when it failed. A version is measured once, on data it has never seen;
     a fix is measured again on new data.</p>
 </section>
@@ -48,33 +48,14 @@
       numbers are shown for scale.</p>
   </section>
 
-  <section class="card wide">
-    <div class="section-title">Every test, in order</div>
-    <div class="tablewrap"><table class="tests">
-      <thead><tr><th>Test</th><th>What changed</th><th>Data</th><th>Caught</th><th>False alarms</th><th>Pre-registered rule</th></tr></thead>
-      <tbody>
-        <tr><td>E</td><td>Core method: archive dates + Muse Spark reading the evidence</td><td>105 fact-checked photos (5Pils)</td><td>67%</td><td>8.6%</td><td class="pass">passed (GO)</td></tr>
-        <tr><td>G</td><td>SAM 3.1 cut-out searched instead of the screenshot</td><td>17 synthetic post screenshots</td><td>65% found (vs 82%)</td><td>—</td><td class="fail">failed (NO-GO): SAM used only in addition</td></tr>
-        <tr><td>H1</td><td>Full agent pipeline: judge, critic, match checker</td><td>Test E's 105 photos</td><td>79%</td><td>22.9%</td><td class="fail">failed: false alarms &gt; 10%</td></tr>
-        <tr><td>I</td><td>+ proof check in code</td><td>75 new fact-checked photos</td><td>78.7%</td><td>10.7%</td><td class="fail">failed, narrowly: false alarms &gt; 10%</td></tr>
-        <tr><td>H2</td><td>Same version as I, on real posts</td><td>53 posts on X, link only</td><td>6 / 25</td><td>1 / 28</td><td class="none">no pass bar set (first look)</td></tr>
-        <tr><td>H3</td><td>+ match checker confirms look-alikes</td><td>39 fresh posts on X</td><td>5 / 23</td><td>0 / 16</td><td class="fail">failed: caught &lt; 35%</td></tr>
-        <tr><td>H4</td><td>+ a news post with no date is taken as recent</td><td>14 posts no version had seen</td><td>3 / 6</td><td>0 / 8</td><td class="none">no pass bar set (counts only)</td></tr>
-        <tr><td>H5</td><td>+ post clock (dates of copies on X, TikTok, YouTube), A/B</td><td>56 fresh video posts</td><td>5 / 31 (vs 6)</td><td>0 / 25</td><td class="fail">failed: no gain</td></tr>
-        <tr><td>H6</td><td>+ scene witness (Spark watches the video, Wonder checks signs), A/B</td><td>45 fresh video posts</td><td>1 / 23 (vs 1)</td><td>0 / 22</td><td class="fail">failed: no gain</td></tr>
-      </tbody>
-    </table></div>
-  </section>
-
-  <section class="card wide">
-    <div class="section-title">What the failures taught</div>
-    <ul class="lessons">
-      <li><b>H1: the judge was too eager.</b> It took a copy published a few days before the claim, or one page describing the photo differently, as proof. Fix: a <b>proof check in code</b>. A "does not fit" must rest on a copy dated more than a week before the claim, or on two independent sites. False alarms were about half on new data (Test I, a different split).</li>
-      <li><b>H3: news posts rarely give a date.</b> "First picture of a chemical attack in Kursk" names no date, so a copy from 2016 had nothing to beat. Fix: a post that presents media as news is taken as no older than 30 days before the post. On 14 posts no version had seen: 3 of 6 fakes caught, no false alarm.</li>
-      <li><b>H5 and H6: video stays hard.</b> Two ideas, each tested A/B on fresh posts, gave no gain. For a third of fake videos, reverse search finds nothing for any frame. Backstory then says "cannot verify" and does not guess.</li>
-      <li><b>Every run is recorded.</b> Each external answer is stored by a hash of its request. The examples in the repository replay without keys; the test runs' recordings hold third-party media and are kept locally.</li>
-    </ul>
-    <p class="hint">Full reports, with the rules as written before each run: <a href="https://github.com/stas-gatin/backstory/blob/main/docs/TESTS.md">Tests D, E</a> ·
+  <section class="card wide caught">
+    <div class="section-title">Test E, case by case <span class="hint">the 70 false captions it caught among 105 photos debunked by fact-checkers
+      (5Pils), with 9 false alarms on their true captions</span></div>
+    <div class="elist" id="elist" aria-label="False captions caught in Test E"></div>
+    <p class="motto">Every picture has a backstory.</p>
+    <p class="hint">Claims, places and dates from <a href="https://github.com/UKPLab/5pils" target="_blank" rel="noopener">5Pils</a> (UKPLab, CC-BY-SA-4.0), shortened;
+      the earliest copy is what Backstory found. Every test, with the rule written before each run and the ones that failed it:
+      <a href="https://github.com/stas-gatin/backstory/blob/main/docs/TESTS.md">Tests D, E</a> ·
       <a href="https://github.com/stas-gatin/backstory/blob/main/docs/TEST_G.md">Test G</a> ·
       <a href="https://github.com/stas-gatin/backstory/blob/main/docs/TEST_H.md">Tests H1–H6</a> ·
       <a href="https://github.com/stas-gatin/backstory/blob/main/docs/TEST_I.md">Test I</a>.</p>
@@ -82,6 +63,16 @@
 </main>
 <footer>Backstory · built for the Meta AI Developer Hackathon 2026 on Muse Spark, Muse Wonder, Muse Voice Transcribe and SAM 3.1 · <a href="/">Check a post</a> · <a href="/record">Track record</a> · <a href="/tested">Accuracy</a> · <a href="https://github.com/stas-gatin/backstory" target="_blank" rel="noopener">Code</a></footer>
 <script>/* the same live/demo pill as on the check page */fetch("/api/status").then((r)=>r.json()).then((st)=>{const m=document.getElementById("mode"),lv=st.live||{};m.innerHTML=st.mode!=="live"?'<i class="live off"></i>Demo: recorded checks':lv.live?'<i class="live"></i>Live checks · '+lv.left+' of '+lv.per_visitor+' left today':'<i class="live off"></i>Live checks paused';}).catch(()=>{});</script>
-<script src="/static/motion.js?v=2"></script>
+<script>/* every false caption Test E caught, one line each; the list fades out towards its end */(() => {
+  const feed = document.getElementById("elist"), esc = (t) => String(t).replace(/[&<>"]/g, (c) => ({"&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;"})[c]);
+  fetch("/static/test_e.json").then((r) => r.json()).then(({rows}) => {
+    feed.innerHTML = `<div class="fh"><span>Shared as</span><span>Backstory found</span><span></span><span>The fact-check says</span></div>` +
+      rows.map((r) => `<a class="fi" href="${esc(r.fact_check)}" target="_blank" rel="noopener">
+      <span class="fc" title="${esc(r.claim)}">${esc(r.claimed)}</span>
+      <span class="ff">${r.first ? "a copy from <b>" + esc(r.first.date) + "</b> · " + esc(r.first.domain) : "pages describing it as another place or time"}</span>
+      <span class="fv">Does not fit</span><span class="ft">${esc(r.truth)} <em>${esc(r.checker)}</em></span></a>`).join("");
+  }).catch(() => feed.closest(".card").remove());
+})();</script>
+<script src="/static/motion.js?v=3"></script>
 </body>
 </html>
