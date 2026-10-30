@@ -1,0 +1,60 @@
+{
+ "note": "judge",
+ "response": {
+  "top_logprobs": 0,
+  "temperature": 1.0,
+  "top_p": 1.0,
+  "service_tier": "auto",
+  "model": "muse-spark-1.3",
+  "reasoning": {
+   "effort": "low"
+  },
+  "background": false,
+  "tools": [],
+  "tool_choice": "auto",
+  "truncation": "disabled",
+  "id": "resp_6ae215c52baaa983e75340f7",
+  "object": "response",
+  "status": "completed",
+  "created_at": 1793201604.0,
+  "completed_at": 1793201605.0,
+  "error": null,
+  "incomplete_details": null,
+  "output": [
+   {
+    "type": "reasoning",
+    "id": "rs_6ae215c52baaa983e75340f7:rs_a181fd1f-608a-43b7-a9b7-9995b3aba9c2",
+    "summary": [],
+    "status": "completed"
+   },
+   {
+    "type": "message",
+    "id": "msg_0bb0017b-879e-4d11-b70e-260e296caedf",
+    "role": "assistant",
+    "content": [
+     {
+      "type": "output_text",
+      "text": "{\"verdict\": \"consistent\",\n  \"cited\": [\"E1\", \"E2\", \"E3\", \"E6\"],\n  \"summary\": \"Multiple independent pages identify the same photo as flooded New Orleans after Hurricane Katrina, including a Wikipedia page published 2005-08-30 and a page dating it 2005-08-29.\",\n  \"actual\": {\"place\": \"I-10/I-610 interchange and surrounding area of northwest New Orleans and Metairie, Louisiana\", \"date\": null, \"event\": \"Flooding from Hurricane Katrina\"}}",
+      "annotations": [],
+      "logprobs": []
+     }
+    ],
+    "status": "completed"
+   }
+  ],
+  "instructions": null,
+  "usage": {
+   "input_tokens": 3017,
+   "input_tokens_details": {
+    "cached_tokens": 0
+   },
+   "output_tokens": 898,
+   "output_tokens_details": {
+    "reasoning_tokens": 773
+   },
+   "total_tokens": 3915
+  },
+  "parallel_tool_calls": true,
+  "store": true
+ }
+}

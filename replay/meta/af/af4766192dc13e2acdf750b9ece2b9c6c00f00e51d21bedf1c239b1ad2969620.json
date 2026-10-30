@@ -1,0 +1,60 @@
+{
+ "note": "read https://en.wikipedia.org/wiki/2011_T%C5%8Dhoku_earthquake_and_tsunami",
+ "response": {
+  "top_logprobs": 0,
+  "temperature": 1.0,
+  "top_p": 1.0,
+  "service_tier": "auto",
+  "model": "muse-spark-1.3",
+  "reasoning": {
+   "effort": "low"
+  },
+  "background": false,
+  "tools": [],
+  "tool_choice": "auto",
+  "truncation": "disabled",
+  "id": "resp_6ae215f9fc481698773240c6",
+  "object": "response",
+  "status": "completed",
+  "created_at": 1793201656.0,
+  "completed_at": 1793201657.0,
+  "error": null,
+  "incomplete_details": null,
+  "output": [
+   {
+    "type": "reasoning",
+    "id": "rs_6ae215f9fc481698773240c6:rs_b5b7345f-ced4-46e1-a06b-38357c3f9fbb",
+    "summary": [],
+    "status": "completed"
+   },
+   {
+    "type": "message",
+    "id": "msg_5bef9b0c-b48a-4c39-bf79-51735f5ebc1a",
+    "role": "assistant",
+    "content": [
+     {
+      "type": "output_text",
+      "text": "{\"relevant\": true, \"place\": \"Sendai Nippon Oil refinery\", \"date\": null, \"event\": null, \"page_date\": \"2011-03-11\", \"quote\": \"An aerial view of the smoke from the Sendai Nippon Oil refinery\"}",
+      "annotations": [],
+      "logprobs": []
+     }
+    ],
+    "status": "completed"
+   }
+  ],
+  "instructions": null,
+  "usage": {
+   "input_tokens": 1107,
+   "input_tokens_details": {
+    "cached_tokens": 0
+   },
+   "output_tokens": 1227,
+   "output_tokens_details": {
+    "reasoning_tokens": 1159
+   },
+   "total_tokens": 2334
+  },
+  "parallel_tool_calls": true,
+  "store": true
+ }
+}

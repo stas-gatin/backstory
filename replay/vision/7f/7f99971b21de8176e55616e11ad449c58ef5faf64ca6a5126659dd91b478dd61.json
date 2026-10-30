@@ -1,0 +1,927 @@
+{
+ "note": "web detection",
+ "response": {
+  "webEntities": [
+   {
+    "entityId": "/m/07nnlb",
+    "score": 1.49295,
+    "description": "Hurricane Katrina"
+   },
+   {
+    "entityId": "/m/0f2tj",
+    "score": 1.3983487,
+    "description": "New Orleans"
+   },
+   {
+    "entityId": "/m/07pb06",
+    "score": 1.0899,
+    "description": "Effects of Hurricane Katrina in New Orleans"
+   },
+   {
+    "entityId": "/m/0tlsr",
+    "score": 0.7480886,
+    "description": "Buras-Triumph"
+   },
+   {
+    "entityId": "/m/0dbtv",
+    "score": 0.7255,
+    "description": "Flood"
+   },
+   {
+    "entityId": "/m/05h5nsj",
+    "score": 0.5955,
+    "description": "Flood control"
+   },
+   {
+    "entityId": "/t/2h1070kvbcq1p",
+    "score": 0.3894
+   },
+   {
+    "entityId": "/t/2bgx_mfv0mzvv",
+    "score": 0.3894
+   },
+   {
+    "entityId": "/t/2hkl0_ydgcbpw",
+    "score": 0.3894
+   },
+   {
+    "entityId": "/g/120ldy9k",
+    "score": 0.3022,
+    "description": "Levee"
+   },
+   {
+    "entityId": "/t/24_kbcy1k1k85",
+    "score": 0.294
+   },
+   {
+    "entityId": "/g/11b77d3kyc",
+    "score": 0.2856,
+    "description": "2005"
+   },
+   {
+    "entityId": "/m/04ly1",
+    "score": 0.00086335937,
+    "description": "Louisiana"
+   },
+   {
+    "entityId": "/g/11xs8xp4lq",
+    "score": 0.00061512005,
+    "description": "Gulf Coast of the United States"
+   }
+  ],
+  "fullMatchingImages": [
+   {
+    "url": "https://static.scientificamerican.com/sciam/cache/file/F21BBAF1-B3D7-47D9-B3DE4BD274DE2214_source.jpg?crop=16%3A9%2Csmart&w=1920"
+   },
+   {
+    "url": "https://www.tiktok.com/api/img/?itemId=7679638433567870222&location=3&aid=1988&index=0"
+   },
+   {
+    "url": "https://image.slidesharecdn.com/tornadoesandhurricanespres-121017142633-phpapp02/75/Tornadoes-and-hurricanes-pres-10-2048.jpg"
+   },
+   {
+    "url": "https://s.rfi.fr/media/display/fd124200-1106-11ea-b6f3-005056a99247/w:1280/p:3x4/KatrinaNewOrleansFlooded_edit2.jpg"
+   },
+   {
+    "url": "https://image.sciencenorway.no/?imageId=1439822&width=1200"
+   },
+   {
+    "url": "https://static.scientificamerican.com/sciam/cache/file/F21BBAF1-B3D7-47D9-B3DE4BD274DE2214_source.jpg?w=1200"
+   },
+   {
+    "url": "https://lookaside.instagram.com/seo/google_widget/crawler/?media_id=3974523266256317394"
+   },
+   {
+    "url": "https://lookaside.fbsbx.com/lookaside/crawler/media/?media_id=1643372860494064"
+   },
+   {
+    "url": "https://miro.medium.com/v2/resize:fit:1400/0*uvRZ5DLoMGbObnEd.jpg"
+   },
+   {
+    "url": "https://lookaside.instagram.com/seo/google_widget/crawler/?media_id=3975387844286867935"
+   },
+   {
+    "url": "https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEi27PMnfDMM_rQ2K6Dq1FOSqpEWlflPcb152WO3wpm-e0B-v-b1I5r8abTY-KuHcVb1jjtkzqFvi30kh9dEZSKHQ3sswmh42O_kt4qi8ESee-w3HNwvaOKF0xEfjxD1omqXixAB3F85_PQK/s1600/KatrinaNewOrleansFlooded.jpg"
+   },
+   {
+    "url": "https://jwu.pressbooks.pub/app/uploads/sites/4/2020/12/560d4082516e07ddf12ada93f8aff40e.jpg"
+   },
+   {
+    "url": "https://upload.wikimedia.org/wikipedia/commons/3/3d/KatrinaNewOrleansFlooded_edit2.jpg?utm_source=be.wikipedia.org&utm_campaign=index&utm_content=original"
+   },
+   {
+    "url": "https://ericsweatherlibrary.com/wp-content/uploads/2015/08/katrina-flooding.jpg"
+   },
+   {
+    "url": "https://lookaside.fbsbx.com/lookaside/crawler/media/?media_id=1177526741074941"
+   },
+   {
+    "url": "https://www.imd.org/wp-content/uploads/2025/06/KatrinaNewOrleansFlooded_edit2.jpg"
+   },
+   {
+    "url": "https://autorskesperky.com/img/cms/new-orleans-9.webp"
+   },
+   {
+    "url": "https://upload.wikimedia.org/wikipedia/commons/9/9f/KatrinaNewOrleansFlooded.jpg?utm_source=et.wikipedia.org&utm_campaign=index&utm_content=original"
+   },
+   {
+    "url": "https://static.zpe.gov.pl/portal/f/res-minimized/R12isMP0pfbqo/1627313532/1YRcnIzs9VcXvX0vjFcy1NhqocqYvlkY.jpg"
+   },
+   {
+    "url": "https://cdn.serc.carleton.edu/images/integrate/workshops/coastal_hazards/new_orleans_flooded_katrina.webp"
+   },
+   {
+    "url": "https://images.squarespace-cdn.com/content/v1/6787bcc6a17ba8404fb272d7/1737314391379-X8Y9RSQ9KKY9JU39293J/KatrinaNewOrleansFlooded_edit2.jpg"
+   },
+   {
+    "url": "https://lookaside.fbsbx.com/lookaside/crawler/media/?media_id=5750490331672008"
+   },
+   {
+    "url": "https://wealthgang.com/wp-content/uploads/2026/09/14-52.jpg"
+   },
+   {
+    "url": "https://i.pinimg.com/originals/fb/2a/38/fb2a38da4403e63a7f8d37208eb453e3.jpg"
+   },
+   {
+    "url": "https://imgix.ranker.com/user_node_img/3683/73640838/original/hurricane-katrina-u7"
+   },
+   {
+    "url": "https://www.tiktok.com/api/img/?itemId=7408709614499401006&location=3&aid=1988&index=2"
+   },
+   {
+    "url": "https://q9.itc.cn/q_70/images03/20240515/a42b3fa78f0b4b139c1521c4ac1de460.jpeg"
+   },
+   {
+    "url": "https://hao.cnyes.com/download_image.ashx?file=%2FUpload%2Fd2a360f596824eb990c5fbb52a220fa5"
+   },
+   {
+    "url": "https://bkimg.cdn.bcebos.com/pic/f703738da9773912b31bc6be81419118367adbb444e1"
+   },
+   {
+    "url": "https://x0.ifengimg.com/res/2024/CAED7C55F6609679335789E3967CA8DC39366F84_size299_w1080_h1418.jpg"
+   },
+   {
+    "url": "https://64.media.tumblr.com/tumblr_mb1j7r7g1F1qk0j0eo4_1280.jpg"
+   },
+   {
+    "url": "https://www.kvety.cz/images/api/image/1024x1366/f12/f12677de-2ded-4a13-8e10-fd061178d111.webp"
+   },
+   {
+    "url": "https://pbs.twimg.com/media/HQ758JEWUAA5T35?format=webp&name=large"
+   },
+   {
+    "url": "https://static.scientificamerican.com/sciam/cache/file/F21BBAF1-B3D7-47D9-B3DE4BD274DE2214_source.jpg?crop=1%3A1%2Csmart&w=1000"
+   },
+   {
+    "url": "https://images.theconversation.com/files/626207/original/file-20241016-15-6ikv8q.jpg?ixlib=rb-4.1.1&q=45&auto=format&w=1000&fit=clip"
+   },
+   {
+    "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/9/9f/KatrinaNewOrleansFlooded.jpg/960px-KatrinaNewOrleansFlooded.jpg?utm_source=et.wikipedia.org&utm_campaign=index&utm_content=thumbnail"
+   },
+   {
+    "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/3/3d/KatrinaNewOrleansFlooded_edit2.jpg/960px-KatrinaNewOrleansFlooded_edit2.jpg?utm_source=sl.wikipedia.org&utm_campaign=index&utm_content=thumbnail"
+   },
+   {
+    "url": "https://inews.gtimg.com/om_bt/OF2LtjrcbUsPaICgFNwath9yKPOgtfbel78XJTPB1coyMAA/641"
+   },
+   {
+    "url": "https://specials-images.forbesimg.com/imageserve/5db30734616a450007049551/960x0.jpg?fit=scale"
+   },
+   {
+    "url": "https://media-studysmarter.b-cdn.net/media/1865576/summary_images/456px-KatrinaNewOrleansFlooded_edit2.webp?token=ZZW0Kf4kx7276jWJikaz5VCWc9aG3TA0v_USEe3IB0I&expires=1793357998"
+   },
+   {
+    "url": "https://npr.brightspotcdn.com/dims4/default/2d41981/2147483647/strip/true/crop/800x1050+0+0/resize/880x1155!/quality/90/?url=http%3A%2F%2Fnpr-brightspot.s3.amazonaws.com%2Flegacy%2Fsites%2Fwamc%2Ffiles%2F201508%2Fkatrinaflooding.jpg"
+   },
+   {
+    "url": "https://fdmedia-posts.s3.us-east-2.amazonaws.com/posts/1161/59a2e399e7d8d_1161.jpg"
+   },
+   {
+    "url": "https://content.storicang.it/medio/2024/08/27/la-via-di-comunicazione-i-10i-610west-end-blvd-allagata-e-larea-circostante-a-nord-ovest-di-new-orleans-e-metairie-louisiana_302819e5_240827145939_800x1051.jpg"
+   },
+   {
+    "url": "https://www.arcgis.com/sharing/rest/content/items/8d18ab10e24a41efaddda3d03686026d/info/thumbnail/ago_downloaded.jpg?w=800"
+   },
+   {
+    "url": "https://lookaside.fbsbx.com/lookaside/crawler/media/?media_id=1326535002361945"
+   },
+   {
+    "url": "https://alkhaleejonline.net/sites/default/files/inline-images/e68bae13-e76e-405f-9d7f-723ce9dff405.jpg"
+   },
+   {
+    "url": "https://blog.cheaperthandirt.com/wp-content/uploads/2018/11/KatrinaNewOrleansFlooded_edit2-1.jpg"
+   },
+   {
+    "url": "https://noticias.r7.com/resizer/8C0pQrUrumxaVNlNPLcbJPipfDs=/arc-photo-newr7/arc2-prod/public/AZNH7SNPJZKHBHHGEPYVM75HXM.jpg"
+   },
+   {
+    "url": "https://bloximages.newyork1.vip.townnews.com/wvua23.com/content/tncms/assets/v3/editorial/5/a0/5a063d9f-b192-40fd-b7a8-410713ee06d9/68b21510a3075.image.jpg"
+   },
+   {
+    "url": "https://www.wikitree.com/photo.php/a/ad/Flooding_Disasters.jpg"
+   }
+  ],
+  "partialMatchingImages": [
+   {
+    "url": "https://s3.crackedcdn.com/phpimages/imageset/2/1/1/1605211.jpg"
+   },
+   {
+    "url": "https://substackcdn.com/image/fetch/$s_!oZbu!,f_auto,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2Fdc3a2289-a199-4340-b208-80484a0a8b19_600x788.jpeg"
+   },
+   {
+    "url": "https://www.anatropinews.gr/wp-content/uploads/2023/09/376499500_10227545145867589_7031391992004086351_n.jpg"
+   },
+   {
+    "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/9/9f/KatrinaNewOrleansFlooded.jpg/500px-KatrinaNewOrleansFlooded.jpg?utm_source=ja.wikipedia.org&utm_campaign=parser&utm_content=thumbnail"
+   },
+   {
+    "url": "https://lookaside.fbsbx.com/lookaside/crawler/media/?media_id=10228855894934325"
+   },
+   {
+    "url": "https://bloximages.newyork1.vip.townnews.com/wvua23.com/content/tncms/assets/v3/editorial/5/a0/5a063d9f-b192-40fd-b7a8-410713ee06d9/68b21510a3075.image.jpg?resize=200%2C263"
+   },
+   {
+    "url": "https://www.ck12.org/flx/show/image/201412291419878754435060_f8bbb12288a235ac379c92e39047ba0d-201412291419879378350262.jpg"
+   },
+   {
+    "url": "https://i.etsystatic.com/67883465/r/il/50c1f8/8616994031/il_fullxfull.8616994031_mzsw.jpg"
+   },
+   {
+    "url": "https://conteudo.imguol.com.br/c/noticias/76/2020/08/27/furacao-katrina-atinge-new-orleans-em-2005-1598563109513_v2_360x480.jpg.webp"
+   },
+   {
+    "url": "https://lookaside.fbsbx.com/lookaside/crawler/media/?media_id=320383495989258"
+   },
+   {
+    "url": "https://lookaside.fbsbx.com/lookaside/crawler/media/?media_id=26699944012952748"
+   },
+   {
+    "url": "https://conteudo.imguol.com.br/c/noticias/76/2020/08/27/furacao-katrina-atinge-new-orleans-em-2005-1598563109513_v2_300x400.jpg.webp"
+   },
+   {
+    "url": "https://www.tiktok.com/api/img/?itemId=7679401715170381069&location=3&aid=1988&index=5"
+   },
+   {
+    "url": "https://lookaside.fbsbx.com/lookaside/crawler/media/?media_id=1441752197671444"
+   },
+   {
+    "url": "https://lookaside.fbsbx.com/lookaside/crawler/media/?media_id=8479080618790703"
+   },
+   {
+    "url": "https://conteudo.imguol.com.br/c/noticias/76/2020/08/27/furacao-katrina-atinge-new-orleans-em-2005-1598563109513_v2_450x600.jpg.webp"
+   },
+   {
+    "url": "https://lookaside.fbsbx.com/lookaside/crawler/media/?media_id=10173136559935323"
+   },
+   {
+    "url": "https://lookaside.fbsbx.com/lookaside/crawler/media/?media_id=2326648044769440"
+   },
+   {
+    "url": "https://lookaside.fbsbx.com/lookaside/crawler/media/?media_id=4611971722166455"
+   },
+   {
+    "url": "https://lookaside.fbsbx.com/lookaside/crawler/media/?media_id=749051881234663"
+   },
+   {
+    "url": "https://lookaside.fbsbx.com/lookaside/crawler/media/?media_id=122117547735349087"
+   },
+   {
+    "url": "https://lookaside.fbsbx.com/lookaside/crawler/media/?media_id=122113649379356026"
+   },
+   {
+    "url": "https://lookaside.fbsbx.com/lookaside/crawler/media/?media_id=28898332379796151"
+   },
+   {
+    "url": "https://cache.getarchive.net/Prod/thumb/cdn2/L3Bob3RvLzIwMDUvMDgvMjkvaHVycmljYW5lLWthdHJpbmEtNmRiNDRlLTY0MC5qcGc%3D/512/664/webp"
+   },
+   {
+    "url": "https://www.thoughtco.com/thmb/ahOdMzYTU2IaxE3qIYpKVvpI6u8=/1500x0/filters:no_upscale():max_bytes(150000):strip_icc()/53564603-56a9e2233df78cf772ab381f.jpg"
+   },
+   {
+    "url": "https://i.etsystatic.com/67883465/r/il/50c1f8/8616994031/il_300x300.8616994031_mzsw.jpg"
+   },
+   {
+    "url": "https://substackcdn.com/image/fetch/$s_!oZbu!,w_1250,h_703,c_fill,f_auto,q_auto:good,fl_progressive:steep,g_center/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2Fdc3a2289-a199-4340-b208-80484a0a8b19_600x788.jpeg"
+   },
+   {
+    "url": "https://lookaside.fbsbx.com/lookaside/crawler/media/?media_id=122117206221349087"
+   },
+   {
+    "url": "https://conteudo.imguol.com.br/c/noticias/76/2020/08/27/furacao-katrina-atinge-new-orleans-em-2005-1598563109513_v2_750x1.jpg.webp"
+   },
+   {
+    "url": "https://lookaside.fbsbx.com/lookaside/crawler/media/?media_id=981152627462707"
+   },
+   {
+    "url": "https://lookaside.fbsbx.com/lookaside/crawler/media/?media_id=1701032578697216"
+   },
+   {
+    "url": "https://lookaside.fbsbx.com/lookaside/crawler/media/?media_id=1040622178466376"
+   },
+   {
+    "url": "https://lookaside.fbsbx.com/lookaside/crawler/media/?media_id=10214540872827826"
+   },
+   {
+    "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/9/9f/KatrinaNewOrleansFlooded.jpg/120px-KatrinaNewOrleansFlooded.jpg?utm_source=zh.wikipedia.org&utm_campaign=parser&utm_content=thumbnail"
+   },
+   {
+    "url": "https://lookaside.fbsbx.com/lookaside/crawler/media/?media_id=1684245810028972&get_thumbnail=1"
+   },
+   {
+    "url": "https://lookaside.instagram.com/seo/google_widget/crawler/?media_id=3994856771571151702"
+   },
+   {
+    "url": "https://www.jornada.com.mx/2009/08/31/fotos/015n1pol-4.jpg"
+   },
+   {
+    "url": "https://www.educima.com/foto-inundacion-sv7683.jpg"
+   },
+   {
+    "url": "https://lookaside.instagram.com/seo/google_widget/crawler/?media_id=3707099517873320969"
+   },
+   {
+    "url": "https://media.gettyimages.com/id/53533696/photo/new-orleans-in-this-handout-photo-flooded-roadways-can-be-seen-as-the-coast-guard-conducts.jpg?s=612x612&w=gi&k=20&c=2G-1GR4UIct527pjEDbh1nK_Ae8R0Lr0uyjnBU6kBbQ="
+   },
+   {
+    "url": "https://lookaside.fbsbx.com/lookaside/crawler/media/?media_id=2244433956327346"
+   },
+   {
+    "url": "https://s3.crackedcdn.com/phpimages/imageset/2/0/9/1605209.jpg"
+   },
+   {
+    "url": "https://media.gettyimages.com/id/53564603/photo/new-orleans-la-in-this-handout-image-provided-by-the-u-s-coast-guard-water-flooded-roadways-can.jpg?s=612x612&w=gi&k=20&c=ghWXfr0li5rWVCYAGsvQbZgPWNgjn7M2pdg5AVzdcSk="
+   },
+   {
+    "url": "https://images.t-online.de/2021/09/12747238v10/0x0:246x300/fit-in/246x0/hurrikan-katrina-richtet-schaeden-in-milliarden-hoehe-an.jpg"
+   },
+   {
+    "url": "https://www.tiktok.com/api/img/?itemId=7697435639079374111&location=0&aid=1988"
+   },
+   {
+    "url": "https://s3.crackedcdn.com/phpimages/imageset/2/0/9/1605209_800x450.jpg"
+   },
+   {
+    "url": "https://owlcation.com/.image/MTc0NjQwODMwODgyMjYwOTgy/topic-ideas-for-writing-about-water.jpg?profile=default"
+   },
+   {
+    "url": "https://www.abc.com.py/resizer/v2/https%3A%2F%2Farc-anglerfish-arc2-prod-abccolor.s3.amazonaws.com%2Fpublic%2FAEFR3XCIENA7LPOGSXKNCPJR3Y.jpg?auth=3d61b60cdf8e8b509bb7500d0db5b22e75d4816f77ca46a2fcbf87e7d0300cb9&width=770&smart=true"
+   },
+   {
+    "url": "https://www.prensalibre.com/wp-content/uploads/2018/12/c3b0182c-fc77-4922-9593-fce3d1277cbb.jpg?quality=52&w=977"
+   },
+   {
+    "url": "https://cdn-free.tv2i.dk/l/e/g/legacy/1/9/4/1948df03-b434-42c4-a7bd-9dbfa68296f2?ixlib=js-3.8.0&w=624&h=351&q=45&auto=format&fit=crop&crop=faces&s=0f7fe71f47637efc41a940114ad5feb9"
+   }
+  ],
+  "pagesWithMatchingImages": [
+   {
+    "url": "https://en.wikipedia.org/wiki/Hurricane_Katrina",
+    "pageTitle": "Hurricane Katrina - Wikipedia",
+    "fullMatchingImages": [
+     {
+      "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/3/3d/KatrinaNewOrleansFlooded_edit2.jpg/250px-KatrinaNewOrleansFlooded_edit2.jpg?utm_source=en.wikipedia.org&utm_campaign=parser&utm_content=thumbnail"
+     }
+    ]
+   },
+   {
+    "url": "https://en.wikipedia.org/wiki/Effects_of_Hurricane_Katrina_in_New_Orleans",
+    "pageTitle": "Effects of Hurricane Katrina in New Orleans - Wikipedia",
+    "fullMatchingImages": [
+     {
+      "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/3/3d/KatrinaNewOrleansFlooded_edit2.jpg/250px-KatrinaNewOrleansFlooded_edit2.jpg?utm_source=en.wikipedia.org&utm_campaign=parser&utm_content=thumbnail"
+     }
+    ]
+   },
+   {
+    "url": "https://www.facebook.com/cnn/videos/on-august-29-2005-hurricane-katrina-struck-the-gulf-coast-causing-catastrophic-f/1831264164556981/",
+    "pageTitle": "On August 29, 2005, Hurricane Katrina struck the Gulf Coast ...",
+    "fullMatchingImages": [
+     {
+      "url": "https://lookaside.fbsbx.com/lookaside/crawler/media/?media_id=10224328654802553"
+     },
+     {
+      "url": "https://lookaside.fbsbx.com/lookaside/crawler/media/?media_id=8479080618790703"
+     }
+    ]
+   },
+   {
+    "url": "https://www.facebook.com/cnn/posts/on-august-29-2005-hurricane-katrina-struck-the-gulf-coast-causing-catastrophic-f/1455215083137805/",
+    "pageTitle": "On August 29, 2005, Hurricane Katrina struck the Gulf Coast ...",
+    "partialMatchingImages": [
+     {
+      "url": "https://lookaside.fbsbx.com/lookaside/crawler/media/?media_id=4611971722166455"
+     }
+    ]
+   },
+   {
+    "url": "https://www.facebook.com/TheWeatherChannel/posts/hurricane-katrina-impacted-an-estimated-90000-square-miles-and-left-80-of-new-or/1400500338606057/",
+    "pageTitle": "Hurricane Katrina impacted an estimated 90,000 square miles and ...",
+    "partialMatchingImages": [
+     {
+      "url": "https://lookaside.fbsbx.com/lookaside/crawler/media/?media_id=4611971722166455"
+     }
+    ]
+   },
+   {
+    "url": "https://www.gettyimages.com/photos/hurricane-katrina-flood",
+    "pageTitle": "Hurricane Katrina Flood Stock Photos - Getty Images",
+    "partialMatchingImages": [
+     {
+      "url": "https://media.gettyimages.com/id/53533696/photo/new-orleans-in-this-handout-photo-flooded-roadways-can-be-seen-as-the-coast-guard-conducts.jpg?s=612x612&w=gi&k=20&c=2G-1GR4UIct527pjEDbh1nK_Ae8R0Lr0uyjnBU6kBbQ="
+     },
+     {
+      "url": "https://media.gettyimages.com/id/53564603/photo/new-orleans-la-in-this-handout-image-provided-by-the-u-s-coast-guard-water-flooded-roadways-can.jpg?s=612x612&w=gi&k=20&c=ghWXfr0li5rWVCYAGsvQbZgPWNgjn7M2pdg5AVzdcSk="
+     }
+    ]
+   },
+   {
+    "url": "https://shelterforce.org/2005/09/01/it-didnt-begin-with-katrina/",
+    "pageTitle": "It Didn't Begin With Hurricane Katrina - Shelterforce",
+    "fullMatchingImages": [
+     {
+      "url": "https://shelterforce.org/wp-content/uploads/2012/02/Hickey_KatrinaNewOrleansFlooded.jpg"
+     }
+    ]
+   },
+   {
+    "url": "https://www.amazon.ae/Hurricane-Katrina-Northwest-Louisiana-inspiration/dp/B09QFC6LF1",
+    "pageTitle": "Hurricane Katrina: Flooded I-10/I-610 Northwest, New Orleans and ...",
+    "fullMatchingImages": [
+     {
+      "url": "https://m.media-amazon.com/images/I/71Ket2zPJBL._AC_UF1000,1000_QL80_.jpg"
+     }
+    ]
+   },
+   {
+    "url": "https://www.facingsouth.org/2010/08/five-years-after-katrina-army-corps-still-dragging-its-feet-on-reforms.html",
+    "pageTitle": "Five years after Katrina, Army Corps still dragging its feet on reforms",
+    "fullMatchingImages": [
+     {
+      "url": "https://www.facingsouth.org/sites/default/files/assets_c/2010/08/nola_katrina_flooding-thumb-250x328.jpg"
+     }
+    ]
+   },
+   {
+    "url": "https://www.instagram.com/reel/DbD9DKbxv-d/?hl=en",
+    "pageTitle": "Hurricane Katrina impacted an estimated 90,000 square ... - Instagram",
+    "fullMatchingImages": [
+     {
+      "url": "https://lookaside.instagram.com/seo/google_widget/crawler/?media_id=3974523266256317394"
+     },
+     {
+      "url": "https://lookaside.instagram.com/seo/google_widget/crawler/?media_id=3975387844286867935"
+     }
+    ]
+   },
+   {
+    "url": "https://tmvcontrol.com/2018/11/26/new-orleans-streetcars/",
+    "pageTitle": "New Orleans Streetcars - TMV Control Systems",
+    "fullMatchingImages": [
+     {
+      "url": "https://tmvcontrol.com/wp-content/uploads/2018/11/flooded-780x1024.jpg"
+     }
+    ]
+   },
+   {
+    "url": "https://www.rand.org/pubs/research_briefs/RB9612.html",
+    "pageTitle": "Reducing Future Flood Damage in New Orleans Through ... - RAND",
+    "fullMatchingImages": [
+     {
+      "url": "https://www.rand.org/pubs/research_briefs/RB9612/jcr:content/par/teaser.aspectfit.0x280.jpg/1.jpg"
+     }
+    ]
+   },
+   {
+    "url": "https://www.amazon.com.au/Hurricane-Katrina-Northwest-Louisiana-inspiration/dp/B09QFC6LF1",
+    "pageTitle": "Hurricane Katrina: Flooded I-10/I-610 Northwest, New Orleans and ...",
+    "fullMatchingImages": [
+     {
+      "url": "https://m.media-amazon.com/images/I/71Ket2zPJBL._AC_UF1000,1000_QL80_.jpg"
+     }
+    ]
+   },
+   {
+    "url": "https://en.wikipedia.org/wiki/File:KatrinaNewOrleansFlooded_edit2.jpg",
+    "pageTitle": "File:KatrinaNewOrleansFlooded edit2.jpg - Wikipedia",
+    "fullMatchingImages": [
+     {
+      "url": "https://upload.wikimedia.org/wikipedia/commons/3/3d/KatrinaNewOrleansFlooded_edit2.jpg?utm_source=en.wikipedia.org&utm_campaign=index&utm_content=original"
+     },
+     {
+      "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/3/3d/KatrinaNewOrleansFlooded_edit2.jpg/960px-KatrinaNewOrleansFlooded_edit2.jpg?utm_source=en.wikipedia.org&utm_campaign=index&utm_content=thumbnail"
+     },
+     {
+      "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/3/3d/KatrinaNewOrleansFlooded_edit2.jpg/250px-KatrinaNewOrleansFlooded_edit2.jpg?utm_source=en.wikipedia.org&utm_campaign=index&utm_content=thumbnail"
+     }
+    ]
+   },
+   {
+    "url": "https://www.amazon.com.be/-/en/Lina-Alise/dp/B09QFC6LF1",
+    "pageTitle": "Hurricane Katrina: Flooded I-10/I-610 Northwest, New Orleans and ...",
+    "fullMatchingImages": [
+     {
+      "url": "https://m.media-amazon.com/images/I/71Ket2zPJBL._AC_UF1000,1000_QL80_.jpg"
+     }
+    ]
+   },
+   {
+    "url": "https://www.thecharlottepost.com/news/2025/12/06/opinion/faith-in-the-flood-katrina-exposed-injustice-fortified-black-church/",
+    "pageTitle": "Faith in the flood: Katrina exposed injustice, fortified Black church",
+    "fullMatchingImages": [
+     {
+      "url": "https://www.thecharlottepost.com/clientuploads/v52n13photos/Katrina_New_Orleans_flood_2.jpg"
+     }
+    ]
+   },
+   {
+    "url": "https://www.amazon.ca/Hurricane-Katrina-Northwest-Louisiana-inspiration/dp/B09QFC6LF1",
+    "pageTitle": "Hurricane Katrina: Flooded I-10/I-610 Northwest, New Orleans and ...",
+    "fullMatchingImages": [
+     {
+      "url": "https://m.media-amazon.com/images/I/71Ket2zPJBL._AC_UF1000,1000_QL80_.jpg"
+     }
+    ]
+   },
+   {
+    "url": "https://storymaps.arcgis.com/stories/c8ccfb596e7c481e80a9df95d7bd1b03",
+    "pageTitle": "Explore Hurricane Katrina - ArcGIS StoryMaps",
+    "fullMatchingImages": [
+     {
+      "url": "https://upload.wikimedia.org/wikipedia/commons/3/3d/KatrinaNewOrleansFlooded_edit2.jpg"
+     }
+    ]
+   },
+   {
+    "url": "https://courses.ems.psu.edu/earth107/book/export/html/1049",
+    "pageTitle": "Hurricane Katrina: August 2005 - EMS Online Courses",
+    "fullMatchingImages": [
+     {
+      "url": "https://upload.wikimedia.org/wikipedia/commons/3/3d/KatrinaNewOrleansFlooded_edit2.jpg"
+     }
+    ]
+   },
+   {
+    "url": "https://www.gettyimages.com/photos/hurricane-katrina-flooding",
+    "pageTitle": "Hurricane Katrina Flooding Stock Photos - Getty Images",
+    "partialMatchingImages": [
+     {
+      "url": "https://media.gettyimages.com/id/53533696/photo/new-orleans-in-this-handout-photo-flooded-roadways-can-be-seen-as-the-coast-guard-conducts.jpg?s=612x612&w=gi&k=20&c=2G-1GR4UIct527pjEDbh1nK_Ae8R0Lr0uyjnBU6kBbQ="
+     },
+     {
+      "url": "https://media.gettyimages.com/id/53564603/photo/new-orleans-la-in-this-handout-image-provided-by-the-u-s-coast-guard-water-flooded-roadways-can.jpg?s=612x612&w=gi&k=20&c=ghWXfr0li5rWVCYAGsvQbZgPWNgjn7M2pdg5AVzdcSk="
+     }
+    ]
+   },
+   {
+    "url": "https://shelterforce.org/2006/04/23/the_shifting_landscape_of_new_orleans/",
+    "pageTitle": "The Shifting Landscape of New Orleans - Shelterforce",
+    "fullMatchingImages": [
+     {
+      "url": "https://shelterforce.org/wp-content/uploads/2012/02/Hickey_KatrinaNewOrleansFlooded.jpg"
+     }
+    ]
+   },
+   {
+    "url": "https://nationalcoastguardmuseum.org/articles/go-to-new-orleans/",
+    "pageTitle": "Go to New Orleans and do whatever you can to help!",
+    "fullMatchingImages": [
+     {
+      "url": "https://nationalcoastguardmuseum.org/wp-content/uploads/2023/08/katrina-flooding-600x788.jpg"
+     }
+    ]
+   },
+   {
+    "url": "https://www.instagram.com/p/C_PnjzLPZJ5/",
+    "pageTitle": "ON THIS DAY: In 2005, Hurricane Katrina struck the U.S. Gulf Coast ...",
+    "fullMatchingImages": [
+     {
+      "url": "https://lookaside.instagram.com/seo/google_widget/crawler/?media_id=3975387844286867935"
+     }
+    ]
+   },
+   {
+    "url": "https://www.instagram.com/reel/Dcol5rSDybH/",
+    "pageTitle": "On August 29, 2005, Hurricane Katrina struck the Gulf Coast ...",
+    "fullMatchingImages": [
+     {
+      "url": "https://lookaside.instagram.com/seo/google_widget/crawler/?media_id=3974523266256317394"
+     }
+    ]
+   },
+   {
+    "url": "https://www.amazon.com/Hurricane-Katrina-Northwest-Louisiana-inspiration/dp/B09QFC6LF1",
+    "pageTitle": "Hurricane Katrina: Flooded I-10/I-610 Northwest, New Orleans and ...",
+    "fullMatchingImages": [
+     {
+      "url": "https://m.media-amazon.com/images/I/71Ket2zPJBL._AC_UF1000,1000_QL80_.jpg"
+     }
+    ]
+   },
+   {
+    "url": "https://nationalcoastguardmuseum.org/articles/pamlico-katrina-part1/",
+    "pageTitle": "Into the eye of chaos-River Tender Pamlico in Hurricane Katrina ...",
+    "fullMatchingImages": [
+     {
+      "url": "https://nationalcoastguardmuseum.org/wp-content/uploads/2023/08/katrina-flooding-600x788.jpg"
+     }
+    ]
+   },
+   {
+    "url": "https://serc.carleton.edu/details/images/55612.html",
+    "pageTitle": "New Orleans flooded by Katrina - SERC (Carleton)",
+    "fullMatchingImages": [
+     {
+      "url": "https://cdn.serc.carleton.edu/images/integrate/workshops/coastal_hazards/new_orleans_flooded_katrina.webp"
+     }
+    ]
+   },
+   {
+    "url": "https://storymaps.arcgis.com/stories/8d18ab10e24a41efaddda3d03686026d",
+    "pageTitle": "Storm Damage Assessment - ArcGIS StoryMaps",
+    "fullMatchingImages": [
+     {
+      "url": "https://www.arcgis.com/sharing/rest/content/items/8d18ab10e24a41efaddda3d03686026d/info/thumbnail/ago_downloaded.jpg?w=800"
+     }
+    ]
+   },
+   {
+    "url": "https://serc.carleton.edu/details/images/199417.html",
+    "pageTitle": "Flooding in New Orleans from Hurricane Katrina - SERC (Carleton)",
+    "fullMatchingImages": [
+     {
+      "url": "https://cdn.serc.carleton.edu/images/getsi/teaching_materials/climate_change/climate_change_unit_5_image.jpg.webp"
+     }
+    ]
+   },
+   {
+    "url": "https://www.gettyimages.ca/photos/hurricane-katrina-flooding",
+    "pageTitle": "4986 Hurricane Katrina Flooding Stock Photos and High-Res Images",
+    "partialMatchingImages": [
+     {
+      "url": "https://media.gettyimages.com/id/53533696/photo/new-orleans-in-this-handout-photo-flooded-roadways-can-be-seen-as-the-coast-guard-conducts.jpg?s=612x612&w=gi&k=20&c=2G-1GR4UIct527pjEDbh1nK_Ae8R0Lr0uyjnBU6kBbQ="
+     }
+    ]
+   },
+   {
+    "url": "https://nationalcoastguardmuseum.org/hurricane-katrina/timeline/landfall/",
+    "pageTitle": "Hurricane Katrina: Landfall - National Coast Guard Museum",
+    "fullMatchingImages": [
+     {
+      "url": "https://nationalcoastguardmuseum.org/wp-content/uploads/2023/08/katrina-flooding-600x788.jpg"
+     }
+    ]
+   },
+   {
+    "url": "https://www.gettyimages.com.au/photos/hurricane-katrina-flood",
+    "pageTitle": "Hurricane Katrina Flood Stock Photos - Getty Images",
+    "partialMatchingImages": [
+     {
+      "url": "https://media.gettyimages.com/id/53533696/photo/new-orleans-in-this-handout-photo-flooded-roadways-can-be-seen-as-the-coast-guard-conducts.jpg?s=612x612&w=gi&k=20&c=2G-1GR4UIct527pjEDbh1nK_Ae8R0Lr0uyjnBU6kBbQ="
+     }
+    ]
+   },
+   {
+    "url": "https://www.gettyimages.ca/photos/hurricane-katrina-flood",
+    "pageTitle": "Hurricane Katrina Flood Stock Photos - Getty Images",
+    "partialMatchingImages": [
+     {
+      "url": "https://media.gettyimages.com/id/53533696/photo/new-orleans-in-this-handout-photo-flooded-roadways-can-be-seen-as-the-coast-guard-conducts.jpg?s=612x612&w=gi&k=20&c=2G-1GR4UIct527pjEDbh1nK_Ae8R0Lr0uyjnBU6kBbQ="
+     }
+    ]
+   },
+   {
+    "url": "https://safetyandjusticechallenge.org/blog/how-new-orleans-has-applied-lessons-learned-during-hurricane-katrina-to-the-coronavirus/",
+    "pageTitle": "How New Orleans Has Applied Lessons Learned During Hurricane ...",
+    "fullMatchingImages": [
+     {
+      "url": "http://www.safetyandjusticechallenge.org/wp-content/uploads/2020/05/KatrinaNewOrleansFlooded_edit2.jpg"
+     }
+    ]
+   },
+   {
+    "url": "https://www.oah.org/tah/february-4/disasters-of-histories-teaching-and-researching-american-disasters/",
+    "pageTitle": "“Disasters Have Histories”: Teaching and Researching American ...",
+    "fullMatchingImages": [
+     {
+      "url": "https://www.oah.org/site/assets/files/11186/new_olreans_flooded_katrina.jpg"
+     }
+    ]
+   },
+   {
+    "url": "https://www.instagram.com/reel/DQDcTyqiruy/",
+    "pageTitle": "The aftermath of Hurricane Katrina was grim - Instagram",
+    "fullMatchingImages": [
+     {
+      "url": "https://lookaside.instagram.com/seo/google_widget/crawler/?media_id=3974523266256317394"
+     }
+    ]
+   },
+   {
+    "url": "https://www.gettyimages.ca/photos/new-orleans-flood",
+    "pageTitle": "4775 New Orleans Flood Stock Photos and High-Res Images",
+    "partialMatchingImages": [
+     {
+      "url": "https://media.gettyimages.com/id/53533696/photo/new-orleans-in-this-handout-photo-flooded-roadways-can-be-seen-as-the-coast-guard-conducts.jpg?s=612x612&w=gi&k=20&c=2G-1GR4UIct527pjEDbh1nK_Ae8R0Lr0uyjnBU6kBbQ="
+     }
+    ]
+   },
+   {
+    "url": "https://serc.carleton.edu/integrate/workshops/coastal_hazards/index.html",
+    "pageTitle": "Coastal Hazards, Risk, and Environmental Justice - SERC (Carleton)",
+    "fullMatchingImages": [
+     {
+      "url": "https://cdn.serc.carleton.edu/images/integrate/workshops/coastal_hazards/new_orleans_flooded_katrina.webp"
+     }
+    ]
+   },
+   {
+    "url": "https://en.wikinews.org/wiki/Total_evacuation_of_New_Orleans_planned",
+    "pageTitle": "Total evacuation of New Orleans planned - Wikinews",
+    "fullMatchingImages": [
+     {
+      "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/9/9f/KatrinaNewOrleansFlooded.jpg/250px-KatrinaNewOrleansFlooded.jpg?utm_source=en.wikinews.org&utm_campaign=parser&utm_content=thumbnail"
+     }
+    ]
+   },
+   {
+    "url": "https://www.wamc.org/new-england-news/2015-08-24/remembering-the-berkshires-response-to-hurricane-katrina",
+    "pageTitle": "Remembering The Berkshires' Response To Hurricane Katrina",
+    "fullMatchingImages": [
+     {
+      "url": "https://npr.brightspotcdn.com/dims4/default/2d41981/2147483647/strip/true/crop/800x1050+0+0/resize/880x1155!/quality/90/?url=http%3A%2F%2Fnpr-brightspot.s3.amazonaws.com%2Flegacy%2Fsites%2Fwamc%2Ffiles%2F201508%2Fkatrinaflooding.jpg"
+     },
+     {
+      "url": "https://npr.brightspotcdn.com/dims4/default/65a8c2c/2147483647/strip/true/crop/800x420+0+315/resize/1200x630!/quality/90/?url=http%3A%2F%2Fnpr-brightspot.s3.amazonaws.com%2Flegacy%2Fsites%2Fwamc%2Ffiles%2F201508%2Fkatrinaflooding.jpg"
+     },
+     {
+      "url": "https://npr.brightspotcdn.com/legacy/sites/wamc/files/201508/katrinaflooding.jpg"
+     }
+    ]
+   },
+   {
+    "url": "https://dlab.epfl.ch/wikispeedia/wpcd/wp/h/Hurricane_Katrina.htm",
+    "pageTitle": "Hurricane Katrina - dlab @ EPFL",
+    "fullMatchingImages": [
+     {
+      "url": "https://dlab.epfl.ch/wikispeedia/wpcd/images/180/18032.jpg"
+     }
+    ]
+   },
+   {
+    "url": "https://www.thenation.com/article/archive/august-29-2005-hurricane-katrina-strikes-the-gulf-coast/",
+    "pageTitle": "August 29, 2005: Hurricane Katrina Strikes the Gulf Coast | The Nation",
+    "partialMatchingImages": [
+     {
+      "url": "https://www.thenation.com/wp-content/uploads/2015/08/hurricane_katrina_cc_img-680x430.jpg"
+     }
+    ]
+   },
+   {
+    "url": "https://www.gettyimages.co.uk/photos/hurricane-katrina-flooding",
+    "pageTitle": "Hurricane Katrina Flooding Stock Photos - Getty Images",
+    "partialMatchingImages": [
+     {
+      "url": "https://media.gettyimages.com/id/53533696/photo/new-orleans-in-this-handout-photo-flooded-roadways-can-be-seen-as-the-coast-guard-conducts.jpg?s=612x612&w=gi&k=20&c=2G-1GR4UIct527pjEDbh1nK_Ae8R0Lr0uyjnBU6kBbQ="
+     }
+    ]
+   },
+   {
+    "url": "https://dlab.epfl.ch/wikispeedia/wpcd/wp/e/Effect_of_Hurricane_Katrina_on_New_Orleans.htm",
+    "pageTitle": "Effect of Hurricane Katrina on New Orleans - dlab @ EPFL",
+    "fullMatchingImages": [
+     {
+      "url": "https://dlab.epfl.ch/wikispeedia/wpcd/images/180/18032.jpg"
+     }
+    ]
+   },
+   {
+    "url": "https://www.gettyimages.co.uk/photos/hurricane-katrina-flood",
+    "pageTitle": "Hurricane Katrina Flood Stock Photos - Getty Images",
+    "partialMatchingImages": [
+     {
+      "url": "https://media.gettyimages.com/id/53533696/photo/new-orleans-in-this-handout-photo-flooded-roadways-can-be-seen-as-the-coast-guard-conducts.jpg?s=612x612&w=gi&k=20&c=2G-1GR4UIct527pjEDbh1nK_Ae8R0Lr0uyjnBU6kBbQ="
+     }
+    ]
+   },
+   {
+    "url": "https://partner.sciencenorway.no/enviroment-forskningno-marine-tecnology/gaming-technology-for-calculating-floods/1439812",
+    "pageTitle": "Gaming technology for calculating floods - Partner Science Norway",
+    "fullMatchingImages": [
+     {
+      "url": "https://image.sciencenorway.no/?imageId=1439822&width=1200"
+     }
+    ]
+   },
+   {
+    "url": "https://www.gettyimages.com.au/photos/hurricane-katrina-flooding",
+    "pageTitle": "Hurricane Katrina Flooding Stock Photos - Getty Images",
+    "partialMatchingImages": [
+     {
+      "url": "https://media.gettyimages.com/id/53533696/photo/new-orleans-in-this-handout-photo-flooded-roadways-can-be-seen-as-the-coast-guard-conducts.jpg?s=612x612&w=gi&k=20&c=2G-1GR4UIct527pjEDbh1nK_Ae8R0Lr0uyjnBU6kBbQ="
+     }
+    ]
+   },
+   {
+    "url": "https://ericsweatherlibrary.com/2015/08/31/hurricane-katrina-10-years-later/",
+    "pageTitle": "Hurricane Katrina – 10 Years Later - Eric's Weather Library",
+    "fullMatchingImages": [
+     {
+      "url": "https://ericsweatherlibrary.com/wp-content/uploads/2015/08/katrina-flooding.jpg"
+     }
+    ]
+   },
+   {
+    "url": "https://commons.wikimedia.org/wiki/File:KatrinaNewOrleansFlooded_edit2.jpg",
+    "pageTitle": "File:KatrinaNewOrleansFlooded edit2.jpg - Wikimedia Commons",
+    "fullMatchingImages": [
+     {
+      "url": "https://upload.wikimedia.org/wikipedia/commons/3/3d/KatrinaNewOrleansFlooded_edit2.jpg?utm_source=commons.wikimedia.org&utm_campaign=index&utm_content=original"
+     },
+     {
+      "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/3/3d/KatrinaNewOrleansFlooded_edit2.jpg/250px-KatrinaNewOrleansFlooded_edit2.jpg?utm_source=commons.wikimedia.org&utm_campaign=index&utm_content=thumbnail"
+     },
+     {
+      "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/3/3d/KatrinaNewOrleansFlooded_edit2.jpg/960px-KatrinaNewOrleansFlooded_edit2.jpg?utm_source=commons.wikimedia.org&utm_campaign=index&utm_content=thumbnail"
+     }
+    ]
+   },
+   {
+    "url": "https://www.beprepared.com/blogs/articles/top-5-hurricanes-make-u-s-landfall",
+    "pageTitle": "Top 5 Hurricanes to Make U.S. Landfall - Emergency Essentials",
+    "fullMatchingImages": [
+     {
+      "url": "https://www.beprepared.com/cdn/shop/articles/Katrina-Flooding-in-New-Orleans_85f08f7e-eac8-4bf0-b34f-e3d74158cf92.jpg?v=1779133926&width=600"
+     }
+    ]
+   }
+  ],
+  "visuallySimilarImages": [
+   {
+    "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/9/9f/KatrinaNewOrleansFlooded.jpg/960px-KatrinaNewOrleansFlooded.jpg?utm_source=et.wikipedia.org&utm_campaign=index&utm_content=thumbnail"
+   },
+   {
+    "url": "x-raw-image:///fe03d17340171c7f1648eb339608f612d7c453b74f6eb5f3d3f35e18b4fe3409"
+   },
+   {
+    "url": "https://figures.academia-assets.com/59659291/figure_002.jpg"
+   },
+   {
+    "url": "https://almanacco.cnr.it/sites/default/files/styles/immagine_10_14/public/2022-02/new_orleans.jpg?h=de393f13&itok=eqpMmr_e"
+   },
+   {
+    "url": "x-raw-image:///bd9d418af34aabe509ce0d63e672081f77185fa88eef5603995a878037a54f2c"
+   },
+   {
+    "url": "https://s.yimg.com/lo/mysterio/api/39a0bb83e7d5fc7c7bef30a646973eb33a84a519d95642ffe2179d23575bd588/lightyear_networkapi/resizefill_w1200%3Bquality_80%3Bformat_jpg/https%3A%2F%2Fmedia.zenfs.com%2Fen%2Fap.org%2F0671eccf05ee98d5cd860a6dd9dbde90.jpg"
+   },
+   {
+    "url": "https://static.scientificamerican.com/sciam/cache/file/1CA3D0BF-91F9-471D-9DBBA76FF2C2783D_source.jpg"
+   },
+   {
+    "url": "x-raw-image:///ac2f2e72dc14d12b05fec50a13d94f51af6040dcf81d005e63b7b863a1223706"
+   },
+   {
+    "url": "https://pressbooks.pub/app/uploads/sites/277/2022/06/13_3_no_post_katrina.jpg"
+   },
+   {
+    "url": "https://m1.quebecormedia.com/emp/emp/514edb90-7d21-11ef-8ad5-e596aa705c41_ORIGINAL.jpg?impolicy=crop-resize&x=0&y=0&w=1198&h=675&width=1200"
+   },
+   {
+    "url": "https://primetimenews.ng/wp-content/uploads/2024/09/86229ee7-73d7-43de-96e7-346f3fd81e35.jpeg"
+   },
+   {
+    "url": "https://image.cnbcfm.com/api/v1/image/105764798-1551289150200gettyimages-766484113.jpeg?v=1551290388"
+   },
+   {
+    "url": "https://i0.wp.com/newsroom.co.nz/wp-content/uploads/2025/11/west-coast-flooding-e1762207068503.jpeg?resize=1200%2C900&ssl=1"
+   },
+   {
+    "url": "https://www.marsh.com/content/dam/marsh/Imagery/marsh-2/thumbnail-768x768/undermining-the-dam-of-kakhovka-reservoir-768x768.jpg"
+   },
+   {
+    "url": "https://media.licdn.com/dms/image/v2/C4E12AQHNfFueH3WWIQ/article-cover_image-shrink_600_2000/article-cover_image-shrink_600_2000/0/1520128540219?e=2147483647&v=beta&t=oF7SIERPhQHA8KDgqAlc-qfEn8UIncRF5wq9EU3ZWCA"
+   },
+   {
+    "url": "https://www.siempre.mx/wp-content/uploads/2024/10/Nava-3.jpg"
+   },
+   {
+    "url": "https://static.dw.com/image/72592143_804.jpg"
+   },
+   {
+    "url": "https://www.researchgate.net/profile/Stuart-Hamilton-3/publication/309652693/figure/fig2/AS:667698308599808@1536203090000/Burnett-River-January-2013-flood-of-almost-17000-cumecs-in-East-Bundaberg-courtesy-Rod.png"
+   },
+   {
+    "url": "https://live-production.wcms.abc-cdn.net.au/f158deeeaf0f6a94d98e58e72d6a8835?impolicy=wcms_crop_resize&cropH=1070&cropW=1605&xPos=149&yPos=0&width=862&height=575"
+   },
+   {
+    "url": "https://www.designingbuildings.co.uk/w/images/2/28/KatrinaLeveeBreach.jpg"
+   }
+  ],
+  "bestGuessLabels": [
+   {
+    "label": "new orleans katrina flood",
+    "languageCode": "en"
+   }
+  ]
+ }
+}

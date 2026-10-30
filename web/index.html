@@ -1,0 +1,130 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Backstory</title>
+<meta name="description" content="Does the caption fit the photo's past? Backstory finds where a photo or video appeared online before and checks the caption against that record.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@500&display=swap" rel="stylesheet">
+<script>/* a picture another site refuses to serve is hidden, never shown broken */addEventListener("error",(e)=>{if(e.target&&e.target.tagName==="IMG")e.target.classList.add("broken")},true)</script>
+<link rel="stylesheet" href="/static/style.css?v=59">
+</head>
+<body>
+<header class="top">
+  <a class="brand" href="/"><span class="logo"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3.5 12a8.5 8.5 0 1 0 2.6-6.1L3.5 8.5"/><path d="M3.5 3.5v5h5"/><path d="M12 7.5V12l3 2"/></svg></span>Backstory</a>
+  <nav class="nav">
+    <a href="/" class="on" data-nav="home">Check a post</a>
+    <a href="/record">Track record</a>
+    <a href="/tested">Accuracy</a>
+    <a href="https://github.com/stas-gatin/backstory" target="_blank" rel="noopener">Code ↗</a>
+  </nav>
+  <span id="mode" class="mode" title=""></span>
+</header>
+
+<div id="homeView">
+<section class="hero">
+  <div class="hero-text">
+    <h1>Real photo, <span>wrong story?</span></h1>
+    <p>Most viral fakes are real photos with a false caption: an old flood shown as today's, a fire from
+      another country. Backstory's agents find where the exact photo or video appeared online before, date every
+      copy, read how each page describes it, and check the caption against that record.</p>
+    <ul class="promises">
+      <li><span data-icon="grounds"></span>Every verdict cites its evidence, and code checks the proof</li>
+      <li><span data-icon="cannot_tell"></span>No record, no guess: the answer is "Cannot verify"</li>
+    </ul>
+  </div>
+  <section class="card input" id="inputCard">
+    <div class="input-title">Paste a post</div>
+    <div class="tabs" role="tablist">
+      <button type="button" class="tabbtn on" data-tab="link" role="tab">Link to an X post</button>
+      <button type="button" class="tabbtn" data-tab="upload" role="tab">Photo or video + caption</button>
+    </div>
+    <form id="form">
+      <div class="pane" data-pane="link">
+        <div class="linkbox"><span data-icon="link"></span><input type="url" id="postUrl" placeholder="https://x.com/user/status/…" autocomplete="off"></div>
+        <small class="hint">Backstory reads the post's text, date and photo or video itself.</small>
+      </div>
+      <div class="pane" data-pane="upload" hidden>
+        <label class="drop" id="drop">
+          <input type="file" id="file" accept="image/*,video/*" hidden>
+          <span id="dropText" class="droptext"><span data-icon="search"></span><b>Drop a photo or video</b><small>or click to choose · photos up to 20 MB, videos up to 60 MB</small></span>
+        </label>
+        <label class="field">Caption, as it was shared
+          <textarea id="caption" rows="2" placeholder="e.g. Valencia yesterday after the floods. Nobody is talking about this."></textarea>
+        </label>
+        <label class="field">Posted on <span class="hint">(optional, resolves "yesterday")</span>
+          <input type="date" id="posted">
+        </label>
+      </div>
+      <button id="go" type="submit">Check the caption</button>
+      <div id="formError" class="error" role="alert"></div>
+      <small class="hint demo-note" id="demoNote" hidden>This public demo replays recorded checks: pick one of the cases below. New links and uploads are checked when Backstory runs with its keys.</small>
+    </form>
+  </section>
+</section>
+
+<section class="preview-wrap" id="previewWrap" hidden>
+  <div class="section-title">What an answer looks like</div>
+  <div class="hero-preview" id="heroPreview"></div>
+</section>
+
+<section class="examples-wrap" id="examplesWrap" hidden>
+  <div class="section-title">Or open a recorded check <span class="hint">the same agents, replayed step by step</span></div>
+  <div id="examples" class="examples"></div>
+</section>
+
+
+<section class="proofstrip">
+  <a href="/tested" class="ps"><b>20 of 21</b><span>"Does not fit" verdicts right on 207 real posts on X</span></a>
+  <a href="/tested" class="ps"><b>20 of 108</b><span>fakes on those posts caught: it says "Cannot verify" rather than guess</span></a>
+  <a href="/tested" class="ps"><b>79% vs 35%</b><span>false captions caught on fact-checked photos with Meta's models vs plain code</span></a>
+  <a href="/record" class="ps link"><b>All 207 checks</b><span>the track record, every verdict with its evidence &rarr;</span></a>
+</section>
+</div>
+
+<div id="checkView" hidden>
+<div class="checkbar"><a href="/" id="backHome">&larr; New check</a><span id="checkTitle"></span><button type="button" class="sharebtn" id="share" hidden><span data-icon="link"></span><b>Copy link</b></button></div>
+<main class="checkmain">
+ <div class="pair">
+  <aside class="left">
+    <section class="card post" id="postCard" hidden>
+      <div class="section-title">The post being checked</div>
+      <div class="media" id="media"></div>
+      <div class="post-meta" id="postMeta"></div>
+      <p class="post-text" id="postText"></p>
+    </section>
+  </aside>
+
+  <section class="right">
+    <section class="card map" id="mapCard">
+      <div class="map-head">
+        <div class="section-title">The agents <span class="hint" id="mapHint">15 steps in four stages, 8 of them on Meta's models</span></div>
+        <div class="meter" id="meter" hidden><span id="elapsed">0 s</span><span id="calls"></span></div>
+        <div class="replay" id="replay" hidden><button type="button" id="speed" aria-pressed="false">2&times; speed</button><button type="button" id="skip">Skip to answer &rarr;</button></div>
+      </div>
+      <div class="stages" id="stages"></div>
+      <ol class="feed" id="feed" hidden></ol>
+    </section>
+
+    <section class="card result" id="result" hidden></section>
+  </section>
+ </div>
+
+  <section class="card wide" id="graphCard" hidden>
+    <div class="section-title">How the verdict was reached <span class="hint">what was checked, what was searched, what was kept, and what the verdict rests on</span></div>
+    <div class="graph" id="graph"></div>
+  </section>
+
+  <section class="card wide" id="evidenceCard" hidden>
+    <div class="section-title">Evidence <span class="hint">every copy the agents found, dated and read</span></div>
+    <div class="evidence" id="evidence"></div>
+  </section>
+</main>
+</div>
+
+<footer>Backstory · built for the Meta AI Developer Hackathon 2026 on Muse Spark, Muse Wonder, Muse Voice Transcribe and SAM 3.1 · <a href="/">Check a post</a> · <a href="/record">Track record</a> · <a href="/tested">Accuracy</a> · <a href="https://github.com/stas-gatin/backstory" target="_blank" rel="noopener">Code</a></footer>
+<script src="/static/app.js?v=58"></script>
+<script src="/static/motion.js?v=3"></script>
+</body>
+</html>

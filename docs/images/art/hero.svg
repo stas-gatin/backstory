@@ -1,0 +1,95 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1280 400" width="1280" height="400" role="img"
+  aria-label="Backstory: real photo, wrong story? Agents on Meta's models check a viral photo or video against its own past online. Real example: a Palestinian flag on the Leaning Tower of Pisa, shared on X on 18 October 2026 as news; the same footage was on TikTok on 19 November 2023. Verdict: does not fit.">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#0c1626"/><stop offset="1" stop-color="#0a2a5c"/>
+    </linearGradient>
+    <filter id="glow" filterUnits="userSpaceOnUse" x="0" y="0" width="1280" height="400"><feGaussianBlur stdDeviation="4" result="b"/>
+      <feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge></filter>
+    <style>
+      .t { font-family: Inter, -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif; }
+      .m { font-family: 'JetBrains Mono', SFMono-Regular, Menlo, Consolas, monospace; }
+      .scan { animation: scan 9s ease-in-out infinite; }
+      @keyframes scan { 0%, 6% { transform: translateX(0); opacity: 1; } 21% { transform: translateX(-560px); opacity: 1; } 26%, 100% { transform: translateX(-560px); opacity: 0; } }
+      .trail { stroke-dasharray: 560 600; stroke-dashoffset: 560; animation: trail 9s ease-in-out infinite; }
+      @keyframes trail { 0%, 6% { stroke-dashoffset: 560; opacity: 1; } 21%, 90% { stroke-dashoffset: 0; opacity: 1; } 98%, 100% { stroke-dashoffset: 0; opacity: 0; } }
+      .found { opacity: 0; animation: found 9s ease-out infinite; }
+      @keyframes found { 0%, 20% { opacity: 0; } 24%, 90% { opacity: 1; } 98%, 100% { opacity: 0; } }
+      .ring { transform-box: fill-box; transform-origin: center; animation: ring 9s ease-out infinite; }
+      @keyframes ring { 0%, 21% { transform: scale(.4); opacity: 0; } 24% { opacity: .9; } 38%, 100% { transform: scale(2.6); opacity: 0; } }
+      .row { opacity: 0; animation: rowin 9s ease-out infinite; }
+      @keyframes rowin { 0% { opacity: 0; transform: translateX(14px); } 7% { opacity: 1; transform: translateX(0); } 88% { opacity: 1; } 96%, 100% { opacity: 0; } }
+      .badge { opacity: 0; transform-box: fill-box; transform-origin: center; animation: stamp 9s ease-out infinite; animation-delay: 3.3s; }
+      @keyframes stamp { 0% { opacity: 0; transform: scale(1.5); } 4% { opacity: 1; transform: scale(1); } 82% { opacity: 1; } 90%, 100% { opacity: 0; } }
+      .pill { opacity: 0; animation: pin .6s ease-out forwards; }
+      @keyframes pin { to { opacity: 1; } }
+      .live { animation: blink 1.6s ease-in-out infinite; }
+      @keyframes blink { 50% { opacity: .25; } }
+    </style>
+  </defs>
+  <rect width="1280" height="400" rx="24" fill="url(#bg)"/>
+
+  <text x="56" y="68" class="m" font-size="13" letter-spacing="3" fill="#6ea8ff">META AI DEVELOPER HACKATHON 2026 · INDIE DEVELOPER</text>
+  <text x="56" y="130" class="t" font-size="60" font-weight="800" fill="#ffffff">Backstory</text>
+  <text x="56" y="174" class="t" font-size="25" fill="#d5e4ff">Real photo, wrong story?</text>
+  <text x="56" y="210" class="t" font-size="16" fill="#9fb2cc">Agents on Meta's models find where a viral photo or video appeared before,</text>
+  <text x="56" y="234" class="t" font-size="16" fill="#9fb2cc">date every copy, and tell you whether the caption fits it.</text>
+
+  <!-- The search runs back in time: from the day the post was shared to the first copy online. -->
+  <g class="t">
+    <line x1="80" y1="290" x2="700" y2="290" stroke="#ffffff" stroke-opacity=".14" stroke-width="2"/>
+    <g fill="#ffffff" fill-opacity=".35" font-size="11" class="m">
+      <line x1="140" y1="284" x2="140" y2="296" stroke="#ffffff" stroke-opacity=".3"/><text x="140" y="314" text-anchor="middle">2023</text>
+      <line x1="340" y1="284" x2="340" y2="296" stroke="#ffffff" stroke-opacity=".3"/><text x="340" y="314" text-anchor="middle">2024</text>
+      <line x1="540" y1="284" x2="540" y2="296" stroke="#ffffff" stroke-opacity=".3"/><text x="540" y="314" text-anchor="middle">2025</text>
+    </g>
+    <path class="trail" d="M700 290 H140" stroke="#6ea8ff" stroke-width="3" fill="none" stroke-linecap="round" filter="url(#glow)"/>
+    <circle cx="700" cy="290" r="7" fill="#ffffff"/>
+    <text x="700" y="270" font-size="13" font-weight="600" fill="#ffffff" text-anchor="end">Shared as new · Oct 2026</text>
+    <g class="scan"><circle cx="700" cy="290" r="11" fill="none" stroke="#6ea8ff" stroke-width="3" filter="url(#glow)"/>
+      <line x1="708" y1="298" x2="718" y2="308" stroke="#6ea8ff" stroke-width="4" stroke-linecap="round"/></g>
+    <circle class="ring" cx="140" cy="290" r="10" fill="none" stroke="#ff8a80" stroke-width="2"/>
+    <g class="found"><circle cx="140" cy="290" r="7" fill="#ff8a80"/>
+      <text x="140" y="270" font-size="13" font-weight="600" fill="#ff8a80" text-anchor="middle">First seen · Nov 2023</text></g>
+  </g>
+
+  <g class="t" font-size="13" font-weight="600">
+    <g class="pill" style="animation-delay:.2s"><rect x="56" y="346" width="118" height="30" rx="15" fill="#ffffff" fill-opacity=".08"/>
+      <circle cx="74" cy="361" r="5" fill="#6ea8ff"/><text x="86" y="366" fill="#e8eef5">Muse Spark</text></g>
+    <g class="pill" style="animation-delay:.5s"><rect x="184" y="346" width="132" height="30" rx="15" fill="#ffffff" fill-opacity=".08"/>
+      <circle cx="202" cy="361" r="5" fill="#b69cff"/><text x="214" y="366" fill="#e8eef5">Muse Wonder</text></g>
+    <g class="pill" style="animation-delay:.8s"><rect x="326" y="346" width="196" height="30" rx="15" fill="#ffffff" fill-opacity=".08"/>
+      <circle cx="344" cy="361" r="5" fill="#7fd9c8"/><text x="356" y="366" fill="#e8eef5">Muse Voice Transcribe</text></g>
+    <g class="pill" style="animation-delay:1.1s"><rect x="532" y="346" width="90" height="30" rx="15" fill="#ffffff" fill-opacity=".08"/>
+      <circle cx="550" cy="361" r="5" fill="#f5b84d"/><text x="562" y="366" fill="#e8eef5">SAM 3.1</text></g>
+  </g>
+
+  <!-- A real check: the Pisa post. -->
+  <rect x="820" y="40" width="424" height="320" rx="16" fill="#ffffff" fill-opacity=".05" stroke="#ffffff" stroke-opacity=".12"/>
+  <circle class="live" cx="845" cy="68" r="4" fill="#6ea8ff"/>
+  <text x="856" y="72" class="m" font-size="11" letter-spacing="2" fill="#6ea8ff">REAL POST ON X · CHECKED 28 OCT 2026</text>
+  <text x="840" y="108" class="t" font-size="20" font-weight="700" fill="#ffffff">Flag on the Leaning Tower of Pisa</text>
+  <g class="row" style="animation-delay:.5s">
+    <rect x="840" y="126" width="384" height="40" rx="9" fill="#ffffff" fill-opacity=".06"/>
+    <text x="856" y="151" class="t" font-size="13" fill="#9fb2cc">Shared as</text>
+    <text x="1210" y="151" class="t" font-size="14" font-weight="600" fill="#e8eef5" text-anchor="end">Pisa, now · 18 Oct 2026</text>
+  </g>
+  <g class="row" style="animation-delay:1.2s">
+    <rect x="840" y="172" width="384" height="40" rx="9" fill="#ffffff" fill-opacity=".06"/>
+    <text x="856" y="197" class="t" font-size="13" fill="#9fb2cc">Same footage</text>
+    <text x="1210" y="197" class="t" font-size="14" font-weight="600" fill="#e8eef5" text-anchor="end">TikTok · matched by Muse Spark</text>
+  </g>
+  <g class="row" style="animation-delay:1.9s">
+    <rect x="840" y="218" width="384" height="40" rx="9" fill="#ffffff" fill-opacity=".06" stroke="#ff8a80" stroke-opacity=".5"/>
+    <text x="856" y="243" class="t" font-size="13" fill="#9fb2cc">First seen</text>
+    <text x="1210" y="243" class="t" font-size="14" font-weight="700" fill="#ff8a80" text-anchor="end">19 Nov 2023 · almost 3 years earlier</text>
+  </g>
+  <g class="row" style="animation-delay:2.6s">
+    <rect x="840" y="264" width="384" height="40" rx="9" fill="#ffffff" fill-opacity=".06"/>
+    <text x="856" y="289" class="t" font-size="13" fill="#9fb2cc">Re-checked</text>
+    <text x="1210" y="289" class="t" font-size="14" font-weight="600" fill="#e8eef5" text-anchor="end">Muse Wonder · proof checked by code</text>
+  </g>
+  <g class="badge"><rect x="840" y="314" width="150" height="32" rx="8" fill="#C8261B"/>
+    <text x="915" y="336" class="t" font-size="15" font-weight="800" fill="#ffffff" text-anchor="middle">Does not fit</text></g>
+  <text x="1224" y="335" class="t" font-size="12" fill="#9fb2cc" text-anchor="end">$0.15 of Meta model calls</text>
+</svg>

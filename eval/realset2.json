@@ -1,0 +1,479 @@
+[
+ {
+  "group": "fake",
+  "post_url": "https://x.com/FireNewz/status/1950354210815373656",
+  "claimed": "Massive earthquake triggers tsunami taking thousands of lives (shared 30 Jul 2025 amid Kamchatka M8.8 quake warnings)",
+  "truth": "Tsunami caused by a landslide in Greenland (Nuugaatsiaq), June 2017",
+  "media": "video",
+  "source_url": "https://fullfact.org/world/tsunami-video-pacific-misleading/",
+  "notes": "Full Fact quotes this caption and links this post."
+ },
+ {
+  "group": "fake",
+  "post_url": "https://x.com/Sprinter_Press/status/1792243923131285855",
+  "claimed": "Tehran, Iran's capital, has increased security levels (19 May 2024)",
+  "truth": "Trident Pier, the temporary US military aid pier off Gaza, May 2024 (screenshot from a video of the pier)",
+  "media": "photo",
+  "source_url": "https://leadstories.com/hoax-alert/2024/05/fact-check-photo-does-not-show-iranian-capital-tehran-has-increased-security-levels.html",
+  "notes": "Lead Stories links this post (handle Sprinterfactory/Sprinter_Press). CENTCOM confirmed the location."
+ },
+ {
+  "group": "fake",
+  "post_url": "https://x.com/warsurv/status/2020220955034021949",
+  "claimed": "Iran launching missiles from beneath the sea (Feb 2026)",
+  "truth": "Russian Ministry of Defence video, May 2018: submarine Yuri Dolgorukiy test-fires four Bulava ICBMs in the White Sea",
+  "media": "video",
+  "source_url": "https://fullfact.org/conflict/old-video-russian-submarine-test-iran-missiles-false/",
+  "notes": "Full Fact links this post."
+ },
+ {
+  "group": "true",
+  "post_url": "https://x.com/Tuvalu_MJCFA/status/1571432398159749120",
+  "claimed": "State Memorial Service for Queen Elizabeth II hosted in Tuvalu by the Acting Governor General and the Prime Minister's Office (Sep 2022)",
+  "truth": "Same",
+  "media": "photo",
+  "source_url": "https://en.wikipedia.org/wiki/Death_and_state_funeral_of_Elizabeth_II",
+  "notes": "Official Tuvalu ministry account; cited on Wikipedia. Exact service date not checked (post 18 Sep 2022)."
+ },
+ {
+  "group": "true",
+  "post_url": "https://x.com/iCyclone/status/1432103703029354498",
+  "claimed": "Houma, Louisiana, raked by Hurricane Ida's inner eyewall, 5:04 pm (29 Aug 2021)",
+  "truth": "Same",
+  "media": "photo",
+  "source_url": "https://en.wikipedia.org/wiki/Hurricane_Ida",
+  "notes": "Storm chaser Josh Morgerman (iCyclone), eyewitness, live; cited on Wikipedia."
+ },
+ {
+  "group": "fake",
+  "post_url": "https://x.com/RealJamesWoods/status/1931768248019869986",
+  "claimed": "Pallets of bricks staged for the anti-ICE protests in Los Angeles (8 Jun 2025)",
+  "truth": "Bricks stacked for construction work at the West New York waterfront, New Jersey",
+  "media": "photo",
+  "source_url": "https://leadstories.com/hoax-alert/2025/06/fact-check-photo-of-bricks-was-not-taken-in-los-angeles-during-june-2025-protests.html",
+  "notes": "Lead Stories links this post. Caption only implies LA protests ('these protests'); context makes it clear."
+ },
+ {
+  "group": "true",
+  "post_url": "https://x.com/saadmaanoficial/status/1706810281681125649",
+  "claimed": "Civil Defence fighting a fire that broke out in a wedding hall in Nineveh province, Iraq (Qaraqosh, 26 Sep 2023)",
+  "truth": "Same",
+  "media": "photo",
+  "source_url": "https://en.wikipedia.org/wiki/Qaraqosh_wedding_fire",
+  "notes": "Saad Maan, Iraqi Interior Ministry spokesman, posted within hours; cited on Wikipedia. Caption in Arabic, names province not town."
+ },
+ {
+  "group": "true",
+  "post_url": "https://x.com/VaticanNews/status/1915747609282494642",
+  "claimed": "Fourth General Congregation of cardinals in the Vatican's New Synod Hall after Pope Francis's death (25 Apr 2025)",
+  "truth": "Same",
+  "media": "video",
+  "source_url": "https://en.wikipedia.org/wiki/2025_papal_conclave",
+  "notes": "Official Vatican News account, same day; cited on Wikipedia."
+ },
+ {
+  "group": "true",
+  "post_url": "https://x.com/jokowi/status/1212554859372670976",
+  "claimed": "New Year floods in Jakarta and surroundings, worst along the Krukut, Ciliwung, Cakung and Sunter river basins; emergency response (2 Jan 2020)",
+  "truth": "Same",
+  "media": "photo",
+  "source_url": "https://en.wikipedia.org/wiki/2020_Jakarta_floods",
+  "notes": "Official account of Indonesian President Joko Widodo, day after the 1 Jan floods; cited on Wikipedia. Photo content (scene vs. president on site) not viewed."
+ },
+ {
+  "group": "true",
+  "post_url": "https://x.com/tancredipalmeri/status/1343893921278132225",
+  "claimed": "Moment the earthquake struck during live TV in Croatia (Petrinja M6.4, 29 Dec 2020)",
+  "truth": "Same",
+  "media": "video",
+  "source_url": "https://en.wikipedia.org/wiki/2020_Petrinja_earthquake",
+  "notes": "Verified journalist (Tancredi Palmeri) reposting broadcast footage same day; cited on Wikipedia. Not the original broadcaster."
+ },
+ {
+  "group": "true",
+  "post_url": "https://x.com/ChrisJacksonSC/status/1470195144452456453",
+  "claimed": "Intense tornado damage at the University of Kentucky Research Center in Princeton, Kentucky (12 Dec 2021, after 10-11 Dec tornado)",
+  "truth": "Same",
+  "media": "photo",
+  "source_url": "https://en.wikipedia.org/wiki/2021_Western_Kentucky_tornado",
+  "notes": "Storm chaser/meteorologist on site; cited on Wikipedia."
+ },
+ {
+  "group": "fake",
+  "post_url": "https://x.com/AnthonyG0528/status/1866224399654998389",
+  "claimed": "Looting tonight after the Daniel Penny not-guilty verdict in the Jordan Neely case, New York (9 Dec 2024)",
+  "truth": "Looters in a Target store in Minnesota (Minneapolis area), May 2020, two days after George Floyd was killed (Getty/Alamy stock photo)",
+  "media": "photo",
+  "source_url": "https://leadstories.com/hoax-alert/2024/12/fact-check-photo-does-not-show-looting-after-not-guilty-verdict-in-jordan-neely-chokehold-death.html",
+  "notes": "Lead Stories links this post. Caption implies rather than states place/date ('tonight')."
+ },
+ {
+  "group": "true",
+  "post_url": "https://x.com/IAF_MCC/status/1721155481539100785",
+  "claimed": "Indian Air Force C-130J carries relief material and NDRF team to earthquake-affected Nepal (5 Nov 2023)",
+  "truth": "Same",
+  "media": "photo",
+  "source_url": "https://en.wikipedia.org/wiki/2023_Nepal_earthquake",
+  "notes": "Official Indian Air Force account; quake was 3 Nov 2023; cited on Wikipedia."
+ },
+ {
+  "group": "true",
+  "post_url": "https://x.com/BNONews/status/1950360442334831018",
+  "claimed": "Tsunami hits Severo-Kurilsk in Russia's Kuril Islands after M8.8 Kamchatka earthquake (30 Jul 2025)",
+  "truth": "Same",
+  "media": "video",
+  "source_url": "https://en.wikipedia.org/wiki/2025_Kamchatka_earthquake",
+  "notes": "BNO News, posted within hours; cited on Wikipedia. Footage likely from local Russian sources."
+ },
+ {
+  "group": "fake",
+  "post_url": "https://x.com/joekaren46/status/1956038713747570850",
+  "claimed": "Dutch police arrested Israeli Major General 'Shitan Shaul' on a beach in The Hague for war crimes in Rafah (14 Aug 2025)",
+  "truth": "2022 photo of the arrest of suspected Irish gangster 'Johnny Cash' in Spain (Telegraph, 15 Sep 2022)",
+  "media": "photo",
+  "source_url": "https://leadstories.com/hoax-alert/2025/08/fact-check-photo-does-not-show-dutch-police-arresting-israeli-major-general-wanted-under-war-crimes-findings.html",
+  "notes": "Lead Stories links this post."
+ },
+ {
+  "group": "true",
+  "post_url": "https://x.com/CISFHQrs/status/1933107060717371856",
+  "claimed": "CISF rescue operations at the Air India AI171 crash site, Ahmedabad, India (12 Jun 2025)",
+  "truth": "Same",
+  "media": "photo",
+  "source_url": "https://en.wikipedia.org/wiki/Air_India_Flight_171",
+  "notes": "Official account of India's Central Industrial Security Force; cited on Wikipedia. Posted same day."
+ },
+ {
+  "group": "true",
+  "post_url": "https://x.com/monitoreamos/status/1818016940683841980",
+  "claimed": "Maduro banner torn down at Base Aragua, Venezuela, in protest against the 28 July 2024 election fraud (29 Jul 2024)",
+  "truth": "Same: post-election protests in Venezuela, July 2024",
+  "media": "video",
+  "source_url": "https://fullfact.org/world/viral-video-maduro-billboard-2024-not-2026/",
+  "notes": "Venezuelan news/monitoring account, posted day after the election; Full Fact cites it as the original. Same footage as the visegrad24 fake item."
+ },
+ {
+  "group": "fake",
+  "post_url": "https://x.com/warintel4u/status/1813566088615276742",
+  "claimed": "Xi Jinping suffered a stroke during the CCP Third Plenum (July 2024)",
+  "truth": "AP photo of Xi wincing after a sip from a cup at the National People's Congress, Beijing, 11 March 2024",
+  "media": "photo",
+  "source_url": "https://leadstories.com/hoax-alert/2024/07/fact-check-photo-does-not-show-china-president-xi-jinping-suffering-a-stroke-in-july-2024-image-is-from-march-2024.html",
+  "notes": "Lead Stories links this post."
+ },
+ {
+  "group": "fake",
+  "post_url": "https://x.com/SilentlySirs/status/1909016684540657786",
+  "claimed": "Death of US Army 'General John Pagri' in the Gaza Strip (April 2025)",
+  "truth": "Old image taken in Iraq of US soldiers with different names; no such general exists",
+  "media": "photo",
+  "source_url": "https://fullfact.org/online/picture-us-army-general-gaza-iraq/",
+  "notes": "Full Fact quotes and links this post."
+ },
+ {
+  "group": "fake",
+  "post_url": "https://x.com/acnewsitics/status/1793751418081571301",
+  "claimed": "Crowd at Trump's rally in the Bronx, New York (23 May 2024)",
+  "truth": "Barack Obama campaign rally in St. Louis, Missouri, October 2008 (~90,000 people)",
+  "media": "photo",
+  "source_url": "https://leadstories.com/hoax-alert/2024/05/fact-check-social-media-photo-does-not-show-may-2024-trump-rally-in-bronx.html",
+  "notes": "Lead Stories links this post."
+ },
+ {
+  "group": "fake",
+  "post_url": "https://x.com/ImtiazMadmood/status/1791763216986452215",
+  "claimed": "Rafah tunnels to Egypt unearthed (18 May 2024)",
+  "truth": "Tunnel near the Erez crossing between northern Gaza and Israel, found by the Israeli military in mid-December 2023",
+  "media": "photo",
+  "source_url": "https://leadstories.com/hoax-alert/2024/05/fact-check-photo-does-not-show-tunnel-between-gazas-rafah-and-egypt.html",
+  "notes": "Lead Stories links this post."
+ },
+ {
+  "group": "fake",
+  "post_url": "https://x.com/Sniper64286433/status/1850562652399161737",
+  "claimed": "Photo the poster 'took 3 hours ago' of people lined up at Madison Square Garden, New York, for Trump rally (27 Oct 2024)",
+  "truth": "Getty Images photo by Peter Macdiarmid of a crowd in Dublin, Ireland, 2011 (Obama visit, College Green)",
+  "media": "photo",
+  "source_url": "https://www.irishcentral.com/news/trump-crowds-nyc-dublin",
+  "notes": "Debunked by PolitiFact (also reported by IrishCentral, which links the post). Event detail 'Obama visit' is my inference from Getty/2011 Dublin; core fact = Dublin 2011."
+ },
+ {
+  "group": "fake",
+  "post_url": "https://x.com/butterflyteeee/status/1841592595073405004",
+  "claimed": "Thousands trying to flee Israel at Ben Gurion Airport after Iran's missile attack (2 Oct 2024)",
+  "truth": "Crowded Athens International Airport, Greece ('Love Athens' sign), passengers stranded after flights to Israel were cancelled around 30 Sep 2024",
+  "media": "video",
+  "source_url": "https://fullfact.org/online/ben-gurion-airport-athens-flee-israel-miscaptioned-video/",
+  "notes": "Full Fact links this X post. Also debunked by Misbar, Logically, Factly. Original uploader unknown; date within days, place is the false part."
+ },
+ {
+  "group": "fake",
+  "post_url": "https://x.com/araykonho/status/1863973122388488331",
+  "claimed": "Convoys of tanks across Seoul after martial law was declared in South Korea (3 Dec 2024)",
+  "truth": "South Korean army night-time mobile training exercise, 25 January 2024",
+  "media": "photo",
+  "source_url": "https://leadstories.com/hoax-alert/2024/12/fact-check-photo-of-convoy-does-not-show-seoul-south-korea-under-martial-law-training-exercise-picture.html",
+  "notes": "Lead Stories links this post."
+ },
+ {
+  "group": "fake",
+  "post_url": "https://x.com/i/status/1950406910748086763",
+  "claimed": "Five beluga whales washed ashore in Kamchatka, Russia, the day before the 30 Jul 2025 earthquake",
+  "truth": "Clip online since at least August 2023; not linked to the Kamchatka quake",
+  "media": "video",
+  "source_url": "https://fullfact.org/world/whale-beached-kamchatka-miscaptioned-old-footage/",
+  "notes": "Full Fact links this post. Original location not established."
+ },
+ {
+  "group": "true",
+  "post_url": "https://x.com/aleaguemen/status/1779099024114729173",
+  "claimed": "Moment of silence at Allianz Stadium, Sydney, before the Sydney Derby for victims of the Bondi Junction attack (13 Apr 2024)",
+  "truth": "Same",
+  "media": "video",
+  "source_url": "https://en.wikipedia.org/wiki/Bondi_Junction_stabbings",
+  "notes": "Official A-League account; same day; cited on Wikipedia."
+ },
+ {
+  "group": "fake",
+  "post_url": "https://x.com/Yampeleg/status/1787588727516131497",
+  "claimed": "Rafah ground offensive started (6 May 2024)",
+  "truth": "Image published in media reports in November 2023 during Israel's ground offensive in Gaza, predates the Rafah operation",
+  "media": "photo",
+  "source_url": "https://dfrac.org/?p=45514",
+  "notes": "DFRAC (Indian fact-checker) embeds the post; exact original location not identified. Also posted by @TheSaviour (1787579622189633869)."
+ },
+ {
+  "group": "fake",
+  "post_url": "https://x.com/ChuckPfarrer/status/2010063955331559487",
+  "claimed": "Iranians battling security forces in anti-government protests in Iran (10 Jan 2026)",
+  "truth": "Clashes in Thessaloniki, Greece, November 2025, after a rap concert",
+  "media": "video",
+  "source_url": "https://fullfact.org/conflict/iran-protest-video-old-footage-greece/",
+  "notes": "Full Fact links this post."
+ },
+ {
+  "group": "fake",
+  "post_url": "https://x.com/AyshaSusmaz/status/1914305735871115479",
+  "claimed": "Pope Francis's last public address (Easter 2025) calling for Gaza ceasefire",
+  "truth": "Video of a different speech by Pope Francis from December 2023",
+  "media": "video",
+  "source_url": "https://fullfact.org/news/pope-francis-final-address-gaza-misleading-video/",
+  "notes": "Full Fact links this post (handle now AyshaSusmaz, was ayshaahmeds). Words partly accurate (he did appeal for ceasefire at Easter), footage is from Dec 2023."
+ },
+ {
+  "group": "true",
+  "post_url": "https://x.com/TelePinar/status/1431393611686596608",
+  "claimed": "Weather deteriorating in Pinar del Río, Cuba, as Hurricane Ida arrives; residents of La Coloma (27 Aug 2021)",
+  "truth": "Same",
+  "media": "photo",
+  "source_url": "https://en.wikipedia.org/wiki/Hurricane_Ida",
+  "notes": "Cuban provincial TV station Tele Pinar, same day; cited on Spanish/English Wikipedia (Ida)."
+ },
+ {
+  "group": "true",
+  "post_url": "https://x.com/jensstoltenberg/status/1654849060749164544",
+  "claimed": "NATO Secretary General attending the Coronation of King Charles III, London (6 May 2023)",
+  "truth": "Same",
+  "media": "photo",
+  "source_url": "https://en.wikipedia.org/wiki/Coronation_of_Charles_III_and_Camilla",
+  "notes": "Official/verified account, same day; cited on Wikipedia. Caption names event but not the city."
+ },
+ {
+  "group": "fake",
+  "post_url": "https://x.com/ashrafhamaad/status/1767387683075019222",
+  "claimed": "A British delegation lying on the ground after sirens at Ben Gurion Airport, Israel, during an Islamic Resistance in Iraq drone attack on 11-12 March 2024",
+  "truth": "German Chancellor Olaf Scholz's delegation taking cover on the tarmac at Ben Gurion Airport during a rocket alert on 17 October 2023",
+  "media": "photo",
+  "source_url": "https://www.misbar.com/en/factcheck/2024/03/15/old-photo-misleadingly-shared-israel%E2%80%99s-ben-gurion-airport-hit-islamic-resistance-iraq",
+  "notes": "Misbar says photo predates the attack and links the Oct 2023 posts (UK_REPT 1714367323258126480, sara__si video); origin identified via those posts."
+ },
+ {
+  "group": "true",
+  "post_url": "https://x.com/Liveuamap/status/1578635882701242369",
+  "claimed": "Video of the explosion on the Crimean (Kerch) Bridge (8 Oct 2022)",
+  "truth": "Same",
+  "media": "video",
+  "source_url": "https://en.wikipedia.org/wiki/2022_Crimean_Bridge_explosion",
+  "notes": "Liveuamap news-mapping outlet, same morning; cited on Wikipedia. Post has video + photo; caption names event but not date. Footage credited via @RALee85 (reposted)."
+ },
+ {
+  "group": "fake",
+  "post_url": "https://x.com/Doranimated/status/1935661587492147664",
+  "claimed": "Israel sends special planes to rescue Israelis stranded in Europe and fly them home (June 2025 Israel-Iran war)",
+  "truth": "Video from October 2023: Arkia Israeli Airlines flight attendant waving an Israeli flag and singing with passengers, posted on Facebook 14 Oct 2023",
+  "media": "video",
+  "source_url": "https://leadstories.com/hoax-alert/2025/06/fact-check-old-video-shows-flight-attendant-waving-israeli-flag-and-singing-with-passengers.html",
+  "notes": "Lead Stories names this post."
+ },
+ {
+  "group": "fake",
+  "post_url": "https://x.com/ShaykhSulaiman/status/1840932321559491023",
+  "claimed": "US military base comes under attack in Baghdad (30 Sep 2024)",
+  "truth": "Hazmat fire at the former Spectra Gases facility, Alpha, New Jersey, April 2011",
+  "media": "photo",
+  "source_url": "https://leadstories.com/hoax-alert/2024/10/fact-check-image-does-not-show-us-military-base-under-attack-in-baghdad-2011-new-jersey-photo.html",
+  "notes": "Lead Stories links this post."
+ },
+ {
+  "group": "true",
+  "post_url": "https://x.com/inquirerdotnet/status/1976484691424227625",
+  "claimed": "Students gathered outside buildings at Davao de Oro State College after the M7.6 (later 7.4) Davao Oriental earthquake, Philippines (10 Oct 2025)",
+  "truth": "Same",
+  "media": "photo",
+  "source_url": "https://en.wikipedia.org/wiki/2025_Davao_Oriental_earthquakes",
+  "notes": "Philippine Daily Inquirer, same day; cited on Wikipedia."
+ },
+ {
+  "group": "fake",
+  "post_url": "https://x.com/TheLaikYobaz/status/2040057311545188632",
+  "claimed": "US Black Hawk helicopter shot down in Iran while searching for downed US pilots (3 Apr 2026)",
+  "truth": "Image of a helicopter crash published in Honduras in March 2025",
+  "media": "video",
+  "source_url": "https://leadstories.com/hoax-alert/2026/04/fact-check-image-of-crashed-helicopter-is-not-from-iran-it-predated-2026-escalation.html",
+  "notes": "Lead Stories links this post. The 'video' is a 16-second clip of a single still image."
+ },
+ {
+  "group": "fake",
+  "post_url": "https://x.com/SMO_VZ/status/1822320460790464712",
+  "claimed": "First picture of a Ukrainian chemical (chlorine) artillery attack in Kursk region, Russia (10 Aug 2024)",
+  "truth": "Orange smoke cloud photographed in Iraq in 2015, online since March 2015",
+  "media": "photo",
+  "source_url": "https://leadstories.com/hoax-alert/2024/08/fact-check-photo-does-not-show-ukraine-using-chemical-weapons-in-russias-kursk-region-its-from-iraq-in-2015.html",
+  "notes": "Lead Stories links this post."
+ },
+ {
+  "group": "fake",
+  "post_url": "https://x.com/rkmtimes/status/2007354972338565181",
+  "claimed": "US special forces (Delta Force) have just landed in Caracas, Venezuela (3 Jan 2026)",
+  "truth": "US military exercise in North Carolina filmed in June 2025 (soldiers abseiling from a helicopter onto a building)",
+  "media": "video",
+  "source_url": "https://fullfact.org/conflict/2025-us-military-video/",
+  "notes": "Full Fact links this post."
+ },
+ {
+  "group": "fake",
+  "post_url": "https://x.com/mrsunshinebaby/status/2010783577164653054",
+  "claimed": "Indian man and son dump garbage into a London river (Jan 2026)",
+  "truth": "Clip filmed in Mumbai, India",
+  "media": "video",
+  "source_url": "https://fullfact.org/world/rubbish-london-river-mumbai/",
+  "notes": "Full Fact quotes and links this post."
+ },
+ {
+  "group": "fake",
+  "post_url": "https://x.com/NavCom24/status/1792246481249833460",
+  "claimed": "Iranian intelligence and special forces raided the Indian embassy in Tehran (19 May 2024)",
+  "truth": "Photo from a 2015 special forces exercise in Germany",
+  "media": "photo",
+  "source_url": "https://leadstories.com/hoax-alert/2024/05/fact-check-photo-does-not-show-irans-special-forces-raiding-india-embassy-in-tehran-it-is-from-2015-germany.html",
+  "notes": "Lead Stories embeds this post."
+ },
+ {
+  "group": "true",
+  "post_url": "https://x.com/KYTCDistrict12/status/1554079891024498688",
+  "claimed": "Renewed flash flooding over KY 550 in Knott County, eastern Kentucky (1 Aug 2022)",
+  "truth": "Same",
+  "media": "photo",
+  "source_url": "https://en.wikipedia.org/wiki/2022_Kentucky_floods",
+  "notes": "Official Kentucky Transportation Cabinet District 12 account; cited on Wikipedia."
+ },
+ {
+  "group": "fake",
+  "post_url": "https://x.com/visegrad24/status/2007439222471295424",
+  "claimed": "Venezuelans tearing down Maduro posters following his arrest by US Delta Force (3 Jan 2026)",
+  "truth": "Video filmed in July 2024 during protests after Venezuela's disputed presidential election (Maduro banner torn down, Base Aragua)",
+  "media": "video",
+  "source_url": "https://fullfact.org/world/viral-video-maduro-billboard-2024-not-2026/",
+  "notes": "Full Fact links this post and the July 2024 originals."
+ },
+ {
+  "group": "fake",
+  "post_url": "https://x.com/dizneyx/status/1988271467700592995",
+  "claimed": "Collapse of the newly built Hongqi Bridge, southwest China (11 Nov 2025)",
+  "truth": "Photos show other bridges, not the Hongqi bridge (which did collapse that day)",
+  "media": "photo",
+  "source_url": "https://leadstories.com/hoax-alert/2025/11/fact-check-some-photos-circulating-do-not-show-the-nov-11-2025-hongqi-bridge-collapse-in-southwest-china.html",
+  "notes": "Lead Stories names this post. Event is real; photos are of other bridges. Origin of each photo not checked by me. Post is a reply."
+ },
+ {
+  "group": "true",
+  "post_url": "https://x.com/sara__si/status/1714363378708148588",
+  "claimed": "Rocket alarm in Tel Aviv; German government plane evacuated, Chancellor Scholz taken to a shelter, journalists lie down in front of the plane (17 Oct 2023)",
+  "truth": "Same: Scholz delegation takes cover at Ben Gurion Airport during rocket alert, 17 Oct 2023",
+  "media": "video",
+  "source_url": "https://www.misbar.com/en/factcheck/2024/03/15/old-photo-misleadingly-shared-israel%E2%80%99s-ben-gurion-airport-hit-islamic-resistance-iraq",
+  "notes": "Bild journalist Sara Sievert, eyewitness, posted same day; widely reported (Scholz visit to Israel). Same scene as the fake item above (different media)."
+ },
+ {
+  "group": "true",
+  "post_url": "https://x.com/AP/status/1950499162388090961",
+  "claimed": "Tsunami waves reach Oahu, Hawaii, after the Kamchatka earthquake; no damage so far (30 Jul 2025)",
+  "truth": "Same",
+  "media": "video",
+  "source_url": "https://en.wikipedia.org/wiki/2025_Kamchatka_earthquake",
+  "notes": "Associated Press; cited on Wikipedia. I did not view the video; caption may be paired with a general Hawaii shoreline shot."
+ },
+ {
+  "group": "true",
+  "post_url": "https://x.com/ANI/status/1664871074356690945",
+  "claimed": "Aerial drone visuals of the Balasore train accident, Odisha, India (3 Jun 2023)",
+  "truth": "Same",
+  "media": "video",
+  "source_url": "https://en.wikipedia.org/wiki/2023_Odisha_train_collision",
+  "notes": "ANI news agency, day after the 2 Jun crash; cited on Wikipedia."
+ },
+ {
+  "group": "true",
+  "post_url": "https://x.com/TheCalGuard/status/1692927290693329293",
+  "claimed": "California National Guard pre-positions resources across Southern California ahead of Hurricane Hilary (19 Aug 2023)",
+  "truth": "Same",
+  "media": "photo",
+  "source_url": "https://en.wikipedia.org/wiki/Hurricane_Hilary",
+  "notes": "Official California National Guard account; cited on Wikipedia. Event is storm preparation rather than impact."
+ },
+ {
+  "group": "true",
+  "post_url": "https://x.com/ABC/status/1432117109061046277",
+  "claimed": "Hurricane Ida winds rip off part of the roof of Lady of the Sea General Hospital in Cut Off, Louisiana (29 Aug 2021)",
+  "truth": "Same",
+  "media": "video",
+  "source_url": "https://en.wikipedia.org/wiki/Hurricane_Ida",
+  "notes": "ABC News, same day; cited on Wikipedia."
+ },
+ {
+  "group": "fake",
+  "post_url": "https://x.com/jurgen_nauditt/status/1826463362328199217",
+  "claimed": "Moscow remains dark due to severe electricity shortage caused by Western sanctions (Aug 2024)",
+  "truth": "Kremlin with lights switched off for WWF Earth Hour, Moscow, March 2014",
+  "media": "photo",
+  "source_url": "https://leadstories.com/hoax-alert/2024/08/fact-check-photo-does-not-show-moscow-with-power-off-in-august-2024-due-to-western-sanctions-image-is-from-2014.html",
+  "notes": "Lead Stories links this post."
+ },
+ {
+  "group": "true",
+  "post_url": "https://x.com/ALCEagles/status/1552771040647970822",
+  "claimed": "Alice Lloyd College campus (Pippa Passes, Kentucky) devastated by flash flooding last night (28 Jul 2022)",
+  "truth": "Same",
+  "media": "photo",
+  "source_url": "https://en.wikipedia.org/wiki/2022_Kentucky_floods",
+  "notes": "Official college account; caption says 'our campus' without naming the town (place implied by account)."
+ },
+ {
+  "group": "fake",
+  "post_url": "https://x.com/BasilTheGreat/status/1920141488350007685",
+  "claimed": "Pakistan protests in Britain after Indian strikes on Pakistan (May 2025)",
+  "truth": "Video filmed on Manchester's Curry Mile before September 2023, circulating since at least August 2024; unrelated to May 2025 strikes",
+  "media": "video",
+  "source_url": "https://fullfact.org/conflict/old-video-doesnt-show-uk-protests-following-indian-strikes-on-pakistan/",
+  "notes": "Full Fact links this post (handle was Basil_TGMD). Place (UK) is right; date/event is false."
+ },
+ {
+  "group": "true",
+  "post_url": "https://x.com/brijdavidson/status/1571791713706053633",
+  "claimed": "Flower tributes for Queen Elizabeth II outside the British Consulate-General in Hong Kong (19 Sep 2022)",
+  "truth": "Same",
+  "media": "photo",
+  "source_url": "https://en.wikipedia.org/wiki/Death_and_state_funeral_of_Elizabeth_II",
+  "notes": "British Consul-General in Hong Kong; cited on Wikipedia. Tributes ongoing for 11 days, posted on funeral day."
+ }
+]
