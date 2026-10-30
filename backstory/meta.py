@@ -73,9 +73,15 @@ def _post(body):
             # the host's log shows every refused call, so a failure on a public copy can be traced
             print("meta call refused: %s, tools %s, request id %s" % (last, [t.get("type") for t in body.get("tools", [])],
                                                                      r.headers.get("x-request-id", "?")), file=sys.stderr, flush=True)
-            if r.status_code == 404 and "model_not_found" in r.text and body["model"] in config.FALLBACK:
-                body = dict(body, model=config.FALLBACK[body["model"]])
-                continue
+            if r.status_code == 404 and "model_not_found" in r.text:
+                if body["model"] in config.FALLBACK:
+                    body = dict(body, model=config.FALLBACK[body["model"]])
+                    continue
+                if body.get("tools"):
+                    # From some hosts (Render, Oregon, 30 Oct 2026) every call with the web_search tool got this answer
+                    # while the same call without it worked: ask again without the search
+                    body = {k: v for k, v in body.items() if k not in ("tools", "include")}
+                    continue
             if r.status_code in (400, 401, 403):
                 break
         except requests.RequestException as e:
