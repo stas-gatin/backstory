@@ -3,7 +3,7 @@ from backstory import config, meta
 
 class Answer:
     def __init__(self, code, body):
-        self.status_code, self._body, self.text = code, body, str(body)
+        self.status_code, self._body, self.text, self.headers = code, body, str(body), {}
 
     def json(self):
         return self._body
