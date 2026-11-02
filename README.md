@@ -1,5 +1,5 @@
 <p align="center">
-  <img src="docs/images/art/hero.svg" width="100%" alt="Backstory: real photo, wrong story? A real check: a Palestinian flag on the Leaning Tower of Pisa, shared on X on 18 October 2026 as news; the same footage was on TikTok on 19 November 2023. Does not fit">
+  <img src="docs/images/art/hero.svg" width="100%" alt="Backstory: real photo, wrong story? A real check: a video of a freeway lined with flames, shared on X in January 2025 as the Los Angeles fires; Business Insider published the same footage on 6 December 2017, from a wildfire in Ventura. Does not fit">
 </p>
 
 # Backstory
@@ -55,8 +55,7 @@ Meta AI Developer Hackathon 2026 · Indie Developer track · Team CurrentSky (St
 ## The problem in one minute
 
 When something terrible happens, the photos that spread fastest are often real, but from somewhere else. Footage
-of a 2017 wildfire went around as the January 2025 Los Angeles fires. A crowd at Athens airport was shared as
-people fleeing Israel. A flood photo from years before became "Valencia today". The pixels are genuine, so a detector that looks for edited or AI-made images sees nothing wrong. What is
+of a 2017 wildfire went around as the January 2025 Los Angeles fires. A flood photo from years before became "Valencia today". The pixels are genuine, so a detector that looks for edited or AI-made images sees nothing wrong. What is
 wrong is the caption.
 
 Fact-checkers catch these by hand: reverse image search, find the oldest copy, read where it came from, compare
