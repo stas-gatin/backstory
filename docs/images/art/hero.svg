@@ -1,5 +1,5 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1280 400" width="1280" height="400" role="img"
-  aria-label="Backstory: real photo, wrong story? Agents on Meta's models check a viral photo or video against its own past online. Real example: a Palestinian flag on the Leaning Tower of Pisa, shared on X on 18 October 2026 as news; the same footage was on TikTok on 19 November 2023. Verdict: does not fit.">
+  aria-label="Backstory: real photo, wrong story? Agents on Meta's models check a viral photo or video against its own past online. Real example: a video of a freeway lined with flames, shared on X in January 2025 as the Los Angeles fires; Business Insider published the same footage on 6 December 2017, from a wildfire in Ventura. Verdict: does not fit.">
   <defs>
     <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
       <stop offset="0" stop-color="#0c1626"/><stop offset="1" stop-color="#0a2a5c"/>
@@ -39,18 +39,18 @@
   <g class="t">
     <line x1="80" y1="290" x2="700" y2="290" stroke="#ffffff" stroke-opacity=".14" stroke-width="2"/>
     <g fill="#ffffff" fill-opacity=".35" font-size="11" class="m">
-      <line x1="140" y1="284" x2="140" y2="296" stroke="#ffffff" stroke-opacity=".3"/><text x="140" y="314" text-anchor="middle">2023</text>
-      <line x1="340" y1="284" x2="340" y2="296" stroke="#ffffff" stroke-opacity=".3"/><text x="340" y="314" text-anchor="middle">2024</text>
-      <line x1="540" y1="284" x2="540" y2="296" stroke="#ffffff" stroke-opacity=".3"/><text x="540" y="314" text-anchor="middle">2025</text>
+      <line x1="225" y1="284" x2="225" y2="296" stroke="#ffffff" stroke-opacity=".3"/><text x="225" y="314" text-anchor="middle">2019</text>
+      <line x1="383" y1="284" x2="383" y2="296" stroke="#ffffff" stroke-opacity=".3"/><text x="383" y="314" text-anchor="middle">2021</text>
+      <line x1="541" y1="284" x2="541" y2="296" stroke="#ffffff" stroke-opacity=".3"/><text x="541" y="314" text-anchor="middle">2023</text>
     </g>
     <path class="trail" d="M700 290 H140" stroke="#6ea8ff" stroke-width="3" fill="none" stroke-linecap="round" filter="url(#glow)"/>
     <circle cx="700" cy="290" r="7" fill="#ffffff"/>
-    <text x="700" y="270" font-size="13" font-weight="600" fill="#ffffff" text-anchor="end">Shared as new · Oct 2026</text>
+    <text x="700" y="270" font-size="13" font-weight="600" fill="#ffffff" text-anchor="end">Shared as new · Jan 2025</text>
     <g class="scan"><circle cx="700" cy="290" r="11" fill="none" stroke="#6ea8ff" stroke-width="3" filter="url(#glow)"/>
       <line x1="708" y1="298" x2="718" y2="308" stroke="#6ea8ff" stroke-width="4" stroke-linecap="round"/></g>
     <circle class="ring" cx="140" cy="290" r="10" fill="none" stroke="#ff8a80" stroke-width="2"/>
     <g class="found"><circle cx="140" cy="290" r="7" fill="#ff8a80"/>
-      <text x="140" y="270" font-size="13" font-weight="600" fill="#ff8a80" text-anchor="middle">First seen · Nov 2023</text></g>
+      <text x="140" y="270" font-size="13" font-weight="600" fill="#ff8a80" text-anchor="middle">First seen · Dec 2017</text></g>
   </g>
 
   <g class="t" font-size="13" font-weight="600">
@@ -64,32 +64,32 @@
       <circle cx="550" cy="361" r="5" fill="#f5b84d"/><text x="562" y="366" fill="#e8eef5">SAM 3.1</text></g>
   </g>
 
-  <!-- A real check: the Pisa post. -->
+  <!-- A real check: the LA fires post. -->
   <rect x="820" y="40" width="424" height="320" rx="16" fill="#ffffff" fill-opacity=".05" stroke="#ffffff" stroke-opacity=".12"/>
   <circle class="live" cx="845" cy="68" r="4" fill="#6ea8ff"/>
-  <text x="856" y="72" class="m" font-size="11" letter-spacing="2" fill="#6ea8ff">REAL POST ON X · CHECKED 28 OCT 2026</text>
-  <text x="840" y="108" class="t" font-size="20" font-weight="700" fill="#ffffff">Flag on the Leaning Tower of Pisa</text>
+  <text x="856" y="72" class="m" font-size="11" letter-spacing="2" fill="#6ea8ff">REAL POST ON X · RECORDED CHECK</text>
+  <text x="840" y="108" class="t" font-size="20" font-weight="700" fill="#ffffff">“LA fires” freeway video</text>
   <g class="row" style="animation-delay:.5s">
     <rect x="840" y="126" width="384" height="40" rx="9" fill="#ffffff" fill-opacity=".06"/>
     <text x="856" y="151" class="t" font-size="13" fill="#9fb2cc">Shared as</text>
-    <text x="1210" y="151" class="t" font-size="14" font-weight="600" fill="#e8eef5" text-anchor="end">Pisa, now · 18 Oct 2026</text>
+    <text x="1210" y="151" class="t" font-size="14" font-weight="600" fill="#e8eef5" text-anchor="end">Los Angeles fires · Jan 2025</text>
   </g>
   <g class="row" style="animation-delay:1.2s">
     <rect x="840" y="172" width="384" height="40" rx="9" fill="#ffffff" fill-opacity=".06"/>
-    <text x="856" y="197" class="t" font-size="13" fill="#9fb2cc">Same footage</text>
-    <text x="1210" y="197" class="t" font-size="14" font-weight="600" fill="#e8eef5" text-anchor="end">TikTok · matched by Muse Spark</text>
+    <text x="856" y="197" class="t" font-size="13" fill="#9fb2cc">Read in the scene</text>
+    <text x="1210" y="197" class="t" font-size="14" font-weight="600" fill="#e8eef5" text-anchor="end">Street signs · Muse Wonder</text>
   </g>
   <g class="row" style="animation-delay:1.9s">
     <rect x="840" y="218" width="384" height="40" rx="9" fill="#ffffff" fill-opacity=".06" stroke="#ff8a80" stroke-opacity=".5"/>
     <text x="856" y="243" class="t" font-size="13" fill="#9fb2cc">First seen</text>
-    <text x="1210" y="243" class="t" font-size="14" font-weight="700" fill="#ff8a80" text-anchor="end">19 Nov 2023 · almost 3 years earlier</text>
+    <text x="1210" y="243" class="t" font-size="14" font-weight="700" fill="#ff8a80" text-anchor="end">6 Dec 2017 · 7 years earlier</text>
   </g>
   <g class="row" style="animation-delay:2.6s">
     <rect x="840" y="264" width="384" height="40" rx="9" fill="#ffffff" fill-opacity=".06"/>
     <text x="856" y="289" class="t" font-size="13" fill="#9fb2cc">Re-checked</text>
-    <text x="1210" y="289" class="t" font-size="14" font-weight="600" fill="#e8eef5" text-anchor="end">Muse Wonder · proof checked by code</text>
+    <text x="1210" y="289" class="t" font-size="14" font-weight="600" fill="#e8eef5" text-anchor="end">Critic approved · date rule by code</text>
   </g>
   <g class="badge"><rect x="840" y="314" width="150" height="32" rx="8" fill="#C8261B"/>
     <text x="915" y="336" class="t" font-size="15" font-weight="800" fill="#ffffff" text-anchor="middle">Does not fit</text></g>
-  <text x="1224" y="335" class="t" font-size="12" fill="#9fb2cc" text-anchor="end">$0.15 of Meta model calls</text>
+  <text x="1224" y="335" class="t" font-size="12" fill="#9fb2cc" text-anchor="end">$0.17 of Meta model calls</text>
 </svg>
