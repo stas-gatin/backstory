@@ -354,4 +354,4 @@ tests/       offline tests
 | `replay/` | The public-domain examples' recorded answers | Titles, dates, short excerpts and captions of the pages where the photos appear, and the models' answers |
 | `examples/recorded/` | Recorded checks of seven real posts on X | Each agent's messages, the evidence rows (links, dates, descriptions) and the verdict; no media. The post is shown through X's official embed |
 
-Everything in this repository was written during the hackathon (26 October – 4 November 2026). Code: MIT.
+Everything in this repository was written during the hackathon (26 October – 4 November 2026). Code: [AGPL-3.0](LICENSE), copyright © 2026 Stanislav Gatin.
