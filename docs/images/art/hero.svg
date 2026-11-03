@@ -1,5 +1,5 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1280 400" width="1280" height="400" role="img"
-  aria-label="Backstory: real photo, wrong story? Agents on Meta's models check a viral photo or video against its own past online. Real example: a video of a freeway lined with flames, shared on X in January 2025 as the Los Angeles fires; Business Insider published the same footage on 6 December 2017, from a wildfire in Ventura. Verdict: does not fit.">
+  aria-label="Backstory: real photo, wrong story? Agents on Meta's models check a viral photo or video against its own past online. Real example: a video of a freeway lined with flames, shared on X in January 2025 as the Los Angeles fires; Business Insider published the same footage on 6 December 2017. Verdict: does not fit.">
   <defs>
     <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
       <stop offset="0" stop-color="#0c1626"/><stop offset="1" stop-color="#0a2a5c"/>

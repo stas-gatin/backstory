@@ -1,5 +1,5 @@
 <p align="center">
-  <img src="docs/images/art/hero.svg" width="100%" alt="Backstory: real photo, wrong story? A real check: a video of a freeway lined with flames, shared on X in January 2025 as the Los Angeles fires; Business Insider published the same footage on 6 December 2017, from a wildfire in Ventura. Does not fit">
+  <img src="docs/images/art/hero.svg" width="100%" alt="Backstory: real photo, wrong story? A real check: a video of a freeway lined with flames, shared on X in January 2025 as the Los Angeles fires; Business Insider published the same footage on 6 December 2017. Does not fit">
 </p>
 
 # Backstory
